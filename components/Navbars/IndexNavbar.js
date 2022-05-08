@@ -3,11 +3,14 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 // components
 
+import { useTranslation } from "next-i18next";
+
 import IndexDropdown from "components/Dropdowns/IndexDropdown.js";
 
 export default function Navbar(props) {
   const router = useRouter();
   const [navbarOpen, setNavbarOpen] = React.useState(false);
+  const { t } = useTranslation('index');
 
   const handleLocaleChange = (event) => {
     const value = event.target.value;
@@ -26,7 +29,7 @@ export default function Navbar(props) {
                 className="text-blueGray-700 text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
                 href="#pablo"
               >
-                Notus NextJS
+                {t('welcome')}
               </a>
             </Link>
             <button

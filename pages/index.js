@@ -1,20 +1,29 @@
 /* eslint-disable react/jsx-no-target-blank */
 import React from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Footer from "components/Footers/Footer.js";
 
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+
 export default function Index() {
+  
+  const { locale } = useRouter();
+  const { t } = useTranslation("index");
+
   return (
     <>
+    
       <IndexNavbar fixed />
       <section className="header relative pt-16 items-center flex h-screen max-h-860-px">
         <div className="container mx-auto items-center flex flex-wrap">
           <div className="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4">
             <div className="pt-32 sm:pt-0">
               <h2 className="font-semibold text-4xl text-blueGray-600">
-                Notus NextJS - A beautiful extension for Tailwind CSS.
+              {locale} Notus NextJS - A beautiful extension for Tailwind CSS. {t('welcome')} 
               </h2>
               <p className="mt-4 text-lg leading-relaxed text-blueGray-500">
                 Notus NextJS is Free and Open Source. It does not change any of
@@ -665,3 +674,9 @@ export default function Index() {
     </>
   );
 }
+
+export const getStaticProps = async ({ locale }) => ({
+  props: {
+    ...await serverSideTranslations(locale, ['common', 'index']),
+  },
+})

@@ -1,14 +1,17 @@
 import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
 
 // components
 
-import Navbar from "components/Navbars/AuthNavbar.js";
+import Navbar from "components/Navbars/IndexNavbar";
 import Footer from "components/Footers/Footer.js";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
+
 export default function Landing() {
+  const { t } = useTranslation('index');
   return (
     <>
       <Navbar transparent />
@@ -18,7 +21,7 @@ export default function Landing() {
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{
               backgroundImage:
-                "url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80')",
+                "url('/img/image_ds.jpg')",
             }}
           >
             <span
@@ -31,15 +34,24 @@ export default function Landing() {
               <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
                 <div className="pr-12">
                   <h1 className="text-white font-semibold text-5xl">
-                    Your story starts with us.
+                    {t('AtelierDS')}
                   </h1>
                   <p className="mt-4 text-lg text-blueGray-200">
-                    This is a simple example of a Landing Page you can build
-                    using Notus NextJS. It features multiple CSS components
-                    based on the Tailwind CSS design system.
+                    Welcome to AtelierDS. We are Citroen DS enthusiasts who will make your DS look like it just came out of factory.
+                    Along with detailng and restoration, we offer already finished Citroen DS cars for sale.
                   </p>
-                </div>
+                </div>          
               </div>
+            </div>
+            <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
+              <p className="mt-4 text-lg text-blueGray-200"></p>
+              {/* <a
+                        href="https://github.com/creativetimofficial/notus-nextjs?ref=nnjs-index"
+                        target="_blank"
+                        className="sm:ml-1 text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-teal-500 active:bg-teal-600 uppercase text-sm shadow hover:shadow-lg"
+                      >
+                        <span>Buy your Citroen</span>
+                      </a> */}
             </div>
           </div>
           <div
@@ -70,13 +82,22 @@ export default function Landing() {
                 <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
                   <div className="px-4 py-5 flex-auto">
                     <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400">
-                      <i className="fas fa-award"></i>
+                      <img src="/img/icons/car_seat_icon.png"></img>
                     </div>
-                    <h6 className="text-xl font-semibold">Awarded Agency</h6>
+                    <h6 className="text-xl font-semibold">Interior</h6>
                     <p className="mt-2 mb-4 text-blueGray-500">
                       Divide details about your product or agency work into
-                      parts. A paragraph describing a feature will be enough.
+                      parts.
                     </p>
+                    <div className="sm:block flex flex-col">
+                      <a
+                        href="https://github.com/creativetimofficial/notus-nextjs?ref=nnjs-index"
+                        target="_blank"
+                        className="github-star sm:ml-1 text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blueGray-700 active:bg-blueGray-600 uppercase text-sm shadow hover:shadow-lg"
+                      >
+                        <span>See more</span>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -87,11 +108,18 @@ export default function Landing() {
                     <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-lightBlue-400">
                       <i className="fas fa-retweet"></i>
                     </div>
-                    <h6 className="text-xl font-semibold">Free Revisions</h6>
+                    <h6 className="text-xl font-semibold">Chrome parts</h6>
                     <p className="mt-2 mb-4 text-blueGray-500">
                       Keep you user engaged by providing meaningful information.
                       Remember that by this time, the user is curious.
                     </p>
+                    <a
+                      href="https://github.com/creativetimofficial/notus-nextjs?ref=nnjs-index"
+                      target="_blank"
+                      className="github-star sm:ml-1 text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blueGray-700 active:bg-blueGray-600 uppercase text-sm shadow hover:shadow-lg"
+                    >
+                      <span>See more</span>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -100,13 +128,20 @@ export default function Landing() {
                 <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
                   <div className="px-4 py-5 flex-auto">
                     <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-emerald-400">
-                      <i className="fas fa-fingerprint"></i>
+                      <img src="/img/icons/car_icon.png"></img>
                     </div>
-                    <h6 className="text-xl font-semibold">Verified Company</h6>
+                    <h6 className="text-xl font-semibold">Body restoration</h6>
                     <p className="mt-2 mb-4 text-blueGray-500">
                       Write a few lines about each one. A paragraph describing a
                       feature will be enough. Keep you user engaged!
                     </p>
+                    <a
+                      href="https://github.com/creativetimofficial/notus-nextjs?ref=nnjs-index"
+                      target="_blank"
+                      className="github-star sm:ml-1 text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blueGray-700 active:bg-blueGray-600 uppercase text-sm shadow hover:shadow-lg"
+                    >
+                      <span>See more</span>
+                    </a>
                   </div>
                 </div>
               </div>

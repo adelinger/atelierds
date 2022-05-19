@@ -1,0 +1,85 @@
+import React from "react";
+import { createPopper } from "@popperjs/core";
+import { useRouter } from "next/router";
+
+const LanguagesDropdown = () => {
+  // dropdown props
+  const [dropdownPopoverShow, setDropdownPopoverShow] = React.useState(false);
+  const btnDropdownRef = React.createRef();
+  const popoverDropdownRef = React.createRef();
+  const router = useRouter();
+  const openDropdownPopover = () => {
+    createPopper(btnDropdownRef.current, popoverDropdownRef.current, {
+      placement: "bottom-start",
+    });
+    setDropdownPopoverShow(true);
+  };
+  const closeDropdownPopover = () => {
+    setDropdownPopoverShow(false);
+  };
+
+
+  const handleLocaleChange = (value) => (event) => {
+    router.push(router.route, router.asPath, {
+      locale: value,
+    });
+  };
+  return (
+    <>
+      <a
+        className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+        href="#"
+        ref={btnDropdownRef}
+        onClick={(e) => {
+          e.preventDefault();
+          dropdownPopoverShow ? closeDropdownPopover() : openDropdownPopover();
+        }}
+      >
+         {router.locale === 'en' && 'English'}
+        {router.locale === 'de' && 'Deutsch'}
+         {router.locale === 'fr' && 'French'}
+         {router.locale === 'it' && 'Italian'}
+      </a>
+      <div
+        ref={popoverDropdownRef}
+        className={
+          (dropdownPopoverShow ? "block " : "hidden ") +
+          "bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
+        }
+      >
+           {router.locales.map(element=>{
+            <span
+            className={
+              "text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-blueGray-400"
+            }
+          >
+            {router.locale}
+          </span>
+       })}
+           
+         {router.locales.map((element) => {  
+              if(router.locale !== element){
+                return(
+                    
+                    <button  className="{py-2 px-4  bg-transparent text-blueGray-700 left}" onClick={handleLocaleChange(element)} >
+                    <a 
+                      className={
+                        "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+                      }
+                    >   
+                        <img src={'/img/flags/' + element + '.svg'}  height="25px" width="25px" title="Language-flag"/> 
+                        
+                    </a>
+                   
+                  </button>);
+
+              }
+            
+            
+       })}
+      </div>
+    </>
+  );
+};
+
+export default LanguagesDropdown;

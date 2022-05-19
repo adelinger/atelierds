@@ -9,7 +9,7 @@ export default function Auth({ children }) {
           <div
             className="absolute top-0 w-full h-full"
             style={{
-              backgroundImage: "url('/img/B2HMrK.jpg')",
+              backgroundImage: "url('/img/login_page_background.jpg')",
             }}
           ></div>
           {children}

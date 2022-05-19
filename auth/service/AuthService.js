@@ -32,11 +32,13 @@ export const AuthService = {
 			};
 		} catch (e) {
 			return {
+
 				error: e.message,
 			};
 		}
 	},
 	signInUserWithEmailAndPassword: async (email, password) => {
+		let msg;
 		try {
 			const userCred = await firebase
 				.auth()
@@ -46,8 +48,15 @@ export const AuthService = {
 
 			};
 		} catch (e) {
+			if (e.code === 'auth/wrong-password') {
+				msg = 'Wrong password. Please try again.'
+			} else if (e.code === 'auth/too-many-requests') {
+				msg = 'You typed the wrong password too many times. Please try again.'
+			} else {
+				msg = "Login not successful. Please try again."
+			}
 			return {
-				error: e.message,
+				error : msg,
 			};
 		}
 	},

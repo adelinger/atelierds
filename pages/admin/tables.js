@@ -7,11 +7,13 @@ import CardTable from "components/Cards/CardTable.js";
 // layout for page
 
 import Admin from "layouts/Admin.js";
+import { withProtected } from "auth/hook/route";
 
-export default function Tables() {
+function Tables() {
   return (
     <>
-      <div className="flex flex-wrap mt-4">
+    <Admin>
+    <div className="flex flex-wrap mt-4">
         <div className="w-full mb-12 px-4">
           <CardTable />
         </div>
@@ -19,8 +21,9 @@ export default function Tables() {
           <CardTable color="dark" />
         </div>
       </div>
+    </Admin>
     </>
   );
 }
 
-Tables.layout = Admin;
+export default withProtected(Tables);

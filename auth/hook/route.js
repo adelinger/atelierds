@@ -24,7 +24,7 @@ export function withProtected(Component) {
 		const pathname = router.pathname;
 
 		if (!auth.user) {
-			router.replace("/auth/login");
+			router.replace("/admin/login");
 			return PageChange
 		}
 		return <Component auth={auth} pathname={pathname} {...props} />;

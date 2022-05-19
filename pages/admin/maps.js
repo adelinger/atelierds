@@ -7,19 +7,23 @@ import MapExample from "components/Maps/MapExample.js";
 // layout for page
 
 import Admin from "layouts/Admin.js";
+import { withProtected } from "auth/hook/route";
 
-export default function Maps() {
+function Maps() {
   return (
     <>
-      <div className="flex flex-wrap">
-        <div className="w-full px-4">
-          <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
-            <MapExample />
+      <Admin>
+        <div className="flex flex-wrap">
+          <div className="w-full px-4">
+            <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+              <MapExample />
+            </div>
           </div>
         </div>
-      </div>
+      </Admin>
+
     </>
   );
 }
 
-Maps.layout = Admin;
+export default withProtected(Maps);

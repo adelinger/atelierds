@@ -9,6 +9,8 @@ import PageChange from "components/PageChange/PageChange.js";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "styles/tailwind.css";
+import { AuthProvider } from "auth/hook/auth";
+import AuthStateChanged from "auth/layout/AuthStateChanges";
 
 Router.events.on("routeChangeStart", (url) => {
   console.log(`Loading: ${url}`);
@@ -76,8 +78,13 @@ class MyApp extends App {
           <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
         </Head>
         <Layout>
-
+        <AuthProvider>
+          <AuthStateChanged>
           <Component {...pageProps} />
+          </AuthStateChanged>
+        
+        </AuthProvider>
+          
         </Layout>
       </React.Fragment>
     );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 // components
@@ -6,8 +6,31 @@ import PropTypes from "prop-types";
 import TableDropdown from "components/Dropdowns/TableDropdown.js";
 
 export default function CarsTable({ color }) {
+  const [ cars, setCars ] = useState()
+  const [isLoading, setIsLoading] = useState(false)
+
+
+  useEffect(() => {
+    setIsLoading(true)
+    fetch('https://jsonplaceholder.typicode.com/posts?_limit=5')
+        .then(response => response.json())
+        .then(data => {
+          setCars(data) // Set the toDo variable
+            setIsLoading(false)
+        })
+}, [])
+
+if (isLoading) {
+  return <p>Loading....</p>
+}
+if (!cars) {
+  return <p>No List to show</p>
+}
+
   return (
+    
     <>
+    
       <div
         className={
           "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded " +
@@ -29,9 +52,10 @@ export default function CarsTable({ color }) {
           </div>
         </div>
         <div className="block w-full overflow-x-auto">
-          {/* Projects table */}
+          
           <table className="items-center w-full bg-transparent border-collapse">
             <thead>
+            {cars.map( car =>
               <tr>
                 <th
                   className={
@@ -92,6 +116,7 @@ export default function CarsTable({ color }) {
                   }
                 ></th>
               </tr>
+            )}
             </thead>
             <tbody>
               <tr>
@@ -223,7 +248,7 @@ export default function CarsTable({ color }) {
             </tbody>
           </table>
         </div>
-      </div>
+      </div> 
     </>
   );
 }

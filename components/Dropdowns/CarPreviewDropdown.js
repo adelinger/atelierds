@@ -1,31 +1,35 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { createPopper } from "@popperjs/core";
 import PropTypes from "prop-types";
+import onClickOutside from 'react-onclickoutside'
+import listenForOutsideClicks from "utils/listen-for-outside-clicks";
 
-export default function CarPreviewDropdown({ dropDownShow }) {
-  // dropdown props
-   
-  const btnDropdownRef = React.createRef();
+
+function CarPreviewDropdown({ dropDownShow }) {
+  
   const popoverDropdownRef = React.createRef();
-  const openDropdownPopover = () => {
-    createPopper(btnDropdownRef.current, popoverDropdownRef.current, {
+  const btnRef = useRef(null);
+  const [listening, setListening] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const toggle = () =>{
+    createPopper(btnRef.current, popoverDropdownRef.current, {
       placement: "left-start",
     });
-    //setDropdownPopoverShow(true);
-    dropDownShow = true;
-  };
-  const closeDropdownPopover = () => {
-    //setDropdownPopoverShow(false);
-  };
+    setIsOpen(!isOpen);
+  } 
+
+  useEffect(listenForOutsideClicks(listening, setListening, btnRef, setIsOpen));
+
+
   return (
     <>
       <a
         className="text-blueGray-500 py-1 px-3"
-        href="#pablo"
-        ref={btnDropdownRef}
+        href="#"
+        ref={btnRef}
         onClick={(e) => {
           e.preventDefault();
-          dropDownShow ? closeDropdownPopover() : openDropdownPopover();
+          toggle();
         }}
       >
         <i className="fas fa-ellipsis-v"></i>
@@ -33,12 +37,12 @@ export default function CarPreviewDropdown({ dropDownShow }) {
       <div
         ref={popoverDropdownRef}
         className={
-          (dropDownShow ? "block " : "hidden ") +
+          (isOpen ? "block " : "hidden ") +
           "bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
         }
       >
         <a
-          href="#pablo"
+          href="#"
           className={
             "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
           }
@@ -69,11 +73,5 @@ export default function CarPreviewDropdown({ dropDownShow }) {
   );
 };
 
-CarPreviewDropdown.defaultProps = {
-    dropDownShow: false,
-  };
-  
-  CarPreviewDropdown.propTypes = {
-    dropDownShow : PropTypes.oneOf([true, false]),
-  };
+export default CarPreviewDropdown;
 

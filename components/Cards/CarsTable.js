@@ -2,14 +2,11 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 // components
-
-import TableDropdown from "components/Dropdowns/TableDropdown.js";
 import CarPreviewDropdown from "components/Dropdowns/CarPreviewDropdown";
 
 export default function CarsTable({ color }) {
   const [ cars, setCars ] = useState()
   const [isLoading, setIsLoading] = useState(false)
-  const [closeDropDown, setCloseDropDown] = useState(false);
 
   useEffect(() => {
     setIsLoading(true)
@@ -26,10 +23,6 @@ if (isLoading) {
 }
 if (!cars) {
   return <p>No List to show</p>
-}
-
-const setTrue = () => {
-  setCloseDropDown(true);
 }
 
   return (
@@ -53,7 +46,7 @@ const setTrue = () => {
               >
                 Added Cars overview
               </h3>
-              <button onClick={setTrue}>Close</button>
+            
             </div>
           </div>
         </div>
@@ -184,7 +177,7 @@ const setTrue = () => {
                   </div>
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-                  <CarPreviewDropdown dropDownShow = {closeDropDown} />
+                  <CarPreviewDropdown/>
                 </td>
               </tr>
             )}

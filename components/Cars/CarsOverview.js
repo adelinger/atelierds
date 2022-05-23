@@ -3,7 +3,7 @@ import CarsTable from "components/Cards/CarsTable";
 import React from "react";
 
 
-export default function PostsOverview() {
+export default function CarsOverview() {
   return (
     <>
     <div className="flex flex-wrap mt-4">

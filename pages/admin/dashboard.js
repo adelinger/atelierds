@@ -3,7 +3,7 @@ import { withProtected } from "auth/hook/route";
 
 import Admin from "layouts/Admin.js";
 
-import PostsOverview from "components/Posts/PostsOverview";
+import CarsOverview from "components/Cars/CarsOverview";
 
 function Dashboard({ auth, pathname }) {
   const { logout, user, error } = auth;
@@ -12,7 +12,7 @@ function Dashboard({ auth, pathname }) {
       <>
       <div className="flex flex-wrap mt-4">
         <div className="w-full mb-12 px-4">
-          <PostsOverview />
+          <CarsOverview />
         </div>
       </div>
     </>

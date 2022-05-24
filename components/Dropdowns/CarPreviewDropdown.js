@@ -1,11 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { createPopper } from "@popperjs/core";
 import PropTypes from "prop-types";
-import onClickOutside from 'react-onclickoutside'
 import listenForOutsideClicks from "utils/listen-for-outside-clicks";
 
 
-function CarPreviewDropdown({ dropDownShow }) {
+function CarPreviewDropdown() {
   
   const popoverDropdownRef = React.createRef();
   const btnRef = useRef(null);
@@ -17,6 +16,16 @@ function CarPreviewDropdown({ dropDownShow }) {
     });
     setIsOpen(!isOpen);
   } 
+
+  const handleOnDeleteClick = () => {
+    fetch('https://jsonplaceholder.typicode.com/posts/1', {
+      method:'DELETE'
+    })
+    .then(response => response.json())
+    .then(data => {
+   
+    })
+  }
 
   useEffect(listenForOutsideClicks(listening, setListening, btnRef, setIsOpen));
 
@@ -48,7 +57,7 @@ function CarPreviewDropdown({ dropDownShow }) {
           }
           onClick={(e) => e.preventDefault()}
         >
-          Action
+          Update
         </a>
         <a
           href="#pablo"
@@ -57,16 +66,19 @@ function CarPreviewDropdown({ dropDownShow }) {
           }
           onClick={(e) => e.preventDefault()}
         >
-          Another action
+          Mark as sold
         </a>
         <a
           href="#pablo"
           className={
             "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
           }
-          onClick={(e) => e.preventDefault()}
+          onClick={(e) => {
+            e.preventDefault();
+            handleOnDeleteClick();
+          }}
         >
-          Something else here
+          Delete
         </a>
       </div>
     </>

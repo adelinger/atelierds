@@ -12,7 +12,12 @@ export default function listenForOutsideClicks(
         document.addEventListener(`click`, (evt) => {
           const cur = menuRef.current;
           const node = evt.target;
-          if (cur.contains(node)) return;
+          try {
+            if (cur.contains(node)) return;
+          } catch (error) {
+            
+          }
+          
           setIsOpen(false);
         });
       });

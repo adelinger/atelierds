@@ -3,23 +3,32 @@ import PropTypes from "prop-types";
 
 // components
 import CarPreviewDropdown from "components/Dropdowns/CarPreviewDropdown";
+import ApiService from "auth/service/ApiService";
+import PageChange from "components/PageChange/PageChange";
 
 export default function CarsTable({ color }) {
   const [ cars, setCars ] = useState()
   const [isLoading, setIsLoading] = useState(false)
 
+  const api = new ApiService();
+  const fetchCars = () => {
+    api
+      .getCars()
+              .then(response => response.data)
+      .then(data => {
+         setCars(data) 
+             setIsLoading(false)
+         })
+  };
+
   useEffect(() => {
     setIsLoading(true)
-    fetch('https://jsonplaceholder.typicode.com/posts?_limit=5')
-        .then(response => response.json())
-        .then(data => {
-          setCars(data) 
-            setIsLoading(false)
-        })
+    fetchCars();
+    
 }, [])
 
 if (isLoading) {
-  return <p>Loading....</p>
+  return PageChange;
 }
 if (!cars) {
   return <p>No List to show</p>
@@ -130,14 +139,14 @@ if (!cars) {
                       +(color === "light" ? "text-blueGray-600" : "text-white")
                     }
                   >
-                    Citroen DS
+                    {car.carMake + ' ' + car.carModel}
                   </span>
                 </th>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  $2,500 USD
+                  {car.carPrice}
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <i className="fas fa-circle text-orange-500 mr-2"></i> pending
+                  <i className="fas fa-circle text-orange-500 mr-2"></i> {car.atelierCarStatus.carStatus}
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                   <div className="flex">

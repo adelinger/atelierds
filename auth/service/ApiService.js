@@ -40,6 +40,6 @@ export default class ApiService {
     return this.init().post("/users", data);
   };
   deleteCar = (id) => {
-    return this.init().delete("/"+id, data);
+    return this.init().delete("/"+id  );
   };
 }

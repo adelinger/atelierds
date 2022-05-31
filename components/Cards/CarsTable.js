@@ -5,10 +5,24 @@ import PropTypes from "prop-types";
 import CarPreviewDropdown from "components/Dropdowns/CarPreviewDropdown";
 import ApiService from "auth/service/ApiService";
 import PageChange from "components/PageChange/PageChange";
+import Alert from "components/Alerts/Alert";
+import ConfirmDialog from "components/Alerts/ConfirmDialog";
 
 export default function CarsTable({ color }) {
-  const [ cars, setCars ] = useState()
+  const [cars, setCars ] = useState()
   const [isLoading, setIsLoading] = useState(false)
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
+
+  function handleApiResponse(Success) {
+    setIsSuccess(Success);
+    setShowAlert(true);
+  }
+
+  function handleConfirm(show){
+    setShowConfirm(show);
+  }
 
   const api = new ApiService();
   const fetchCars = () => {
@@ -20,6 +34,24 @@ export default function CarsTable({ color }) {
              setIsLoading(false)
          })
   };
+
+  function onDeleteClick (id) {
+    setShowConfirm(true);
+  }
+
+  const handleDelete = () => {
+     // api
+    // .deleteCar(id)
+    //         .then(response => console.log(response))
+    // .then(data => {
+    //   console.log(data)
+    //   handleApiResponse(true);
+    //    })
+    //    .catch((error) => {
+    //      handleApiResponse(false);
+    //   });
+  }
+
 
   useEffect(() => {
     setIsLoading(true)
@@ -44,6 +76,14 @@ if (!cars) {
           (color === "light" ? "bg-white" : "bg-blueGray-700 text-white")
         }
       >
+        {showAlert&& 
+        <Alert color={isSuccess? 'emerald' : 'red'}></Alert>
+        }
+
+        {showConfirm&&
+          <ConfirmDialog showConfirm={showConfirm} handleConfirm={handleConfirm}></ConfirmDialog>
+        }
+        
         <div className="rounded-t mb-0 px-4 py-3 border-0">
           <div className="flex flex-wrap items-center">
             <div className="relative w-full px-4 max-w-full flex-grow flex-1">
@@ -126,7 +166,7 @@ if (!cars) {
             </thead>
             <tbody>
             {cars.map( car =>
-              <tr>
+              <tr data={car.atelierCarID}>
                 <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
                   <img
                     src="/img/image_ds.jpg"
@@ -186,7 +226,7 @@ if (!cars) {
                   </div>
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-                  <CarPreviewDropdown/>
+                  <CarPreviewDropdown onDeleteClick={onDeleteClick} />
                 </td>
               </tr>
             )}
@@ -194,6 +234,7 @@ if (!cars) {
           </table>
         </div>
       </div> 
+      
     </>
   );
 }

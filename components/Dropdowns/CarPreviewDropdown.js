@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { createPopper } from "@popperjs/core";
 import listenForOutsideClicks from "utils/listen-for-outside-clicks";
+import ConfirmDialog from "components/Alerts/ConfirmDialog";
 
 
 function CarPreviewDropdown({onDeleteClick}) {
@@ -9,6 +10,9 @@ function CarPreviewDropdown({onDeleteClick}) {
   const btnRef = useRef(null);
   const [listening, setListening] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
+
   const toggle = () =>{
     createPopper(btnRef.current, popoverDropdownRef.current, {
       placement: "left-start",
@@ -16,10 +20,16 @@ function CarPreviewDropdown({onDeleteClick}) {
     setIsOpen(!isOpen);
   } 
 
+  function handleConfirm(show, deleteItem){
+    setShowConfirm(show);
 
-  const handleOnDeleteClick = (id) => {
-   //deleteCar(id);
-   onDeleteClick(id);
+    if(deleteItem){
+      handleOnDeleteClick();
+    }
+  }
+
+  const handleOnDeleteClick = () => {
+   onDeleteClick(selectedItem);
   }
 
   useEffect(listenForOutsideClicks(listening, setListening, btnRef, setIsOpen));
@@ -27,6 +37,9 @@ function CarPreviewDropdown({onDeleteClick}) {
 
   return (
     <>
+     {showConfirm&&
+          <ConfirmDialog showConfirm={showConfirm} handleConfirm={handleConfirm}></ConfirmDialog>
+        }
       <a
         className="text-blueGray-500 py-1 px-3"
         href="#"
@@ -70,7 +83,8 @@ function CarPreviewDropdown({onDeleteClick}) {
           }
           onClick={(e) => {
             e.preventDefault();
-            handleOnDeleteClick(e.target.parentElement.parentElement.parentElement.getAttribute('data'));
+            setShowConfirm(true);
+            setSelectedItem(e.target.parentElement.parentElement.parentElement.getAttribute('data'));
           }}
         >
           Delete

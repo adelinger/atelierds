@@ -6,68 +6,61 @@ import CarPreviewDropdown from "components/Dropdowns/CarPreviewDropdown";
 import ApiService from "auth/service/ApiService";
 import PageChange from "components/PageChange/PageChange";
 import Alert from "components/Alerts/Alert";
-import ConfirmDialog from "components/Alerts/ConfirmDialog";
+import { CircularProgress } from "@mui/material";
 
 export default function CarsTable({ color }) {
-  const [cars, setCars ] = useState()
-  const [isLoading, setIsLoading] = useState(false)
+  const [cars, setCars] = useState()
   const [isSuccess, setIsSuccess] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
-  const [showConfirm, setShowConfirm] = useState(false);
+  const [showloader, setShowLoader] = useState(false);
+
 
   function handleApiResponse(Success) {
     setIsSuccess(Success);
     setShowAlert(true);
+    setShowLoader(false);
   }
 
-  function handleConfirm(show){
-    setShowConfirm(show);
-  }
 
   const api = new ApiService();
   const fetchCars = () => {
+    setShowLoader(true);
     api
       .getCars()
-              .then(response => response.data)
+      .then(response => response.data)
       .then(data => {
-         setCars(data) 
-             setIsLoading(false)
-         })
+        setCars(data)
+        setShowLoader(false);
+      })
+      .catch((error) => {
+        setShowLoader(false);
+      });
   };
 
-  function onDeleteClick (id) {
-    setShowConfirm(true);
+  function onDeleteClick(id) {
+    setShowLoader(true);
+    api
+      .deleteCar(id)
+      .then(response => console.log(response))
+      .then(data => {
+       handleApiResponse(true);
+      })
+      .catch((error) => {
+        handleApiResponse(false);
+      });
   }
-
-  const handleDelete = () => {
-     // api
-    // .deleteCar(id)
-    //         .then(response => console.log(response))
-    // .then(data => {
-    //   console.log(data)
-    //   handleApiResponse(true);
-    //    })
-    //    .catch((error) => {
-    //      handleApiResponse(false);
-    //   });
-  }
-
 
   useEffect(() => {
-    setIsLoading(true)
     fetchCars();
-    
-}, [])
+  }, [])
 
-if (isLoading) {
-  return PageChange;
-}
-if (!cars) {
-  return <p>No List to show</p>
-}
+
+  if (!cars) {
+    return <p>No List to show</p>
+  }
 
   return (
-    
+
     <>
     
       <div
@@ -76,14 +69,12 @@ if (!cars) {
           (color === "light" ? "bg-white" : "bg-blueGray-700 text-white")
         }
       >
-        {showAlert&& 
-        <Alert color={isSuccess? 'emerald' : 'red'}></Alert>
+        {showAlert &&
+          <Alert color={isSuccess ? 'emerald' : 'red'}></Alert>
         }
 
-        {showConfirm&&
-          <ConfirmDialog showConfirm={showConfirm} handleConfirm={handleConfirm}></ConfirmDialog>
-        }
-        
+
+
         <div className="rounded-t mb-0 px-4 py-3 border-0">
           <div className="flex flex-wrap items-center">
             <div className="relative w-full px-4 max-w-full flex-grow flex-1">
@@ -95,14 +86,20 @@ if (!cars) {
               >
                 Added Cars overview
               </h3>
-            
+              {showloader &&
+                <div className=" mx-auto max-w-sm text-center relative">
+                  <CircularProgress />
+
+                </div>
+              }
+
             </div>
           </div>
         </div>
         <div className="block w-full overflow-x-auto">
-          
+
           <table className="items-center w-full bg-transparent border-collapse">
-            <thead>          
+            <thead>
               <tr>
                 <th
                   className={
@@ -165,76 +162,76 @@ if (!cars) {
               </tr>
             </thead>
             <tbody>
-            {cars.map( car =>
-              <tr data={car.atelierCarID}>
-                <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
-                  <img
-                    src="/img/image_ds.jpg"
-                    className="h-12 w-12 bg-white rounded-full border"
-                    alt="..."
-                  ></img>{" "}
-                  <span
-                    className={
-                      "ml-3 font-bold " +
-                      +(color === "light" ? "text-blueGray-600" : "text-white")
-                    }
-                  >
-                    {car.carMake + ' ' + car.carModel}
-                  </span>
-                </th>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  {car.carPrice}
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <i className="fas fa-circle text-orange-500 mr-2"></i> {car.atelierCarStatus.carStatus}
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <div className="flex">
+              {cars.map(car =>
+                <tr data={car.atelierCarID}>
+                  <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
                     <img
-                      src="/img/team-1-800x800.jpg"
+                      src="/img/image_ds.jpg"
+                      className="h-12 w-12 bg-white rounded-full border"
                       alt="..."
-                      className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow"
-                    ></img>
-                    <img
-                      src="/img/team-2-800x800.jpg"
-                      alt="..."
-                      className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
-                    ></img>
-                    <img
-                      src="/img/team-3-800x800.jpg"
-                      alt="..."
-                      className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
-                    ></img>
-                    <img
-                      src="/img/team-4-470x470.png"
-                      alt="..."
-                      className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
-                    ></img>
-                  </div>
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <div className="flex items-center">
-                    <span className="mr-2">60%</span>
-                    <div className="relative w-full">
-                      <div className="overflow-hidden h-2 text-xs flex rounded bg-red-200">
-                        <div
-                          style={{ width: "60%" }}
-                          className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
-                        ></div>
+                    ></img>{" "}
+                    <span
+                      className={
+                        "ml-3 font-bold " +
+                        +(color === "light" ? "text-blueGray-600" : "text-white")
+                      }
+                    >
+                      {car.carMake + ' ' + car.carModel}
+                    </span>
+                  </th>
+                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                    {car.carPrice}
+                  </td>
+                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                    <i className="fas fa-circle text-orange-500 mr-2"></i> {car.atelierCarStatus.carStatus}
+                  </td>
+                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                    <div className="flex">
+                      <img
+                        src="/img/team-1-800x800.jpg"
+                        alt="..."
+                        className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow"
+                      ></img>
+                      <img
+                        src="/img/team-2-800x800.jpg"
+                        alt="..."
+                        className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
+                      ></img>
+                      <img
+                        src="/img/team-3-800x800.jpg"
+                        alt="..."
+                        className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
+                      ></img>
+                      <img
+                        src="/img/team-4-470x470.png"
+                        alt="..."
+                        className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
+                      ></img>
+                    </div>
+                  </td>
+                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                    <div className="flex items-center">
+                      <span className="mr-2">60%</span>
+                      <div className="relative w-full">
+                        <div className="overflow-hidden h-2 text-xs flex rounded bg-red-200">
+                          <div
+                            style={{ width: "60%" }}
+                            className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
+                          ></div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-                  <CarPreviewDropdown onDeleteClick={onDeleteClick} />
-                </td>
-              </tr>
-            )}
+                  </td>
+                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
+                    <CarPreviewDropdown onDeleteClick={onDeleteClick} />
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>
-      </div> 
-      
+      </div>
+
     </>
   );
 }

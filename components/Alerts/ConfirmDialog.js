@@ -10,8 +10,12 @@ export default function ConfirmDialog({showConfirm, handleConfirm}) {
 
 
   const handleClose = () => {
-    handleConfirm(false);
+    handleConfirm(false, false);
   };
+
+  const handleDelete = () => {
+    handleConfirm(false, true);
+  }
   
 
   return (
@@ -27,12 +31,12 @@ export default function ConfirmDialog({showConfirm, handleConfirm}) {
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Are you sure you want delete selected item? 
+            Are you sure you want to delete selected item? 
           </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>
+          <Button onClick={handleDelete}>
             Delete
           </Button>
         </DialogActions>

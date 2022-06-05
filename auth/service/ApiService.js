@@ -1,15 +1,3 @@
-// import { useState, useEffect } from 'react';
-// const getCars = (url = 'https://localhost:5001/api/ateliercars', options = null) => {
-//   const [data, setData] = useState(null);
-//   useEffect(() => {
-//     fetch(url, options)
-//       .then(res => res.json())
-//       .then(data => setData(data));
-//   }, [url, options]);
-//   return {data}
-// }
-// export default getCars;
-
 import axios from "axios";
 
 export default class ApiService {
@@ -36,8 +24,8 @@ export default class ApiService {
   getCars = (params) => {
     return this.init().get("", {params: params});
   };
-  addNewUser = (data) => {
-    return this.init().post("/users", data);
+  addNewCar = (data) => {
+    return this.init().post("", data);
   };
   deleteCar = (id) => {
     return this.init().delete("/"+id  );

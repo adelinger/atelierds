@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 // components
 import CarPreviewDropdown from "components/Dropdowns/CarPreviewDropdown";
 import ApiService from "auth/service/ApiService";
-import PageChange from "components/PageChange/PageChange";
 import Alert from "components/Alerts/Alert";
 import { CircularProgress } from "@mui/material";
 
@@ -16,6 +15,7 @@ export default function CarsTable({ color }) {
 
 
   function handleApiResponse(Success) {
+    window.scrollTo(0, 0)
     setIsSuccess(Success);
     setShowAlert(true);
     setShowLoader(false);
@@ -44,6 +44,7 @@ export default function CarsTable({ color }) {
       .then(response => console.log(response))
       .then(data => {
        handleApiResponse(true);
+       fetchCars();
       })
       .catch((error) => {
         handleApiResponse(false);

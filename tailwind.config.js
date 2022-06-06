@@ -5,7 +5,7 @@ module.exports = {
   purge: {
     enabled: true,
     content: ["./**/*.html", "./*.html", "./**/*.js", "./*.js"],
-    options: {
+    options: {  
       safelist: [],
     },
   },

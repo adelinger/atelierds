@@ -140,7 +140,7 @@ export default function CarsTable({ color }) {
                       : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
                   }
                 >
-                  Users
+                  Added by user
                 </th>
                 <th
                   className={
@@ -150,7 +150,7 @@ export default function CarsTable({ color }) {
                       : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
                   }
                 >
-                  Completion
+                  Views
                 </th>
                 <th
                   className={
@@ -184,43 +184,17 @@ export default function CarsTable({ color }) {
                     {car.carPrice}
                   </td>
                   <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    <i className="fas fa-circle text-orange-500 mr-2"></i> {car.atelierCarStatus.carStatus}
+                    <i className={car.atelierCarStatus.carStatus === 'Available' ? 'fas fa-circle mr-2 text-blue-600' : 'fas fa-circle mr-2 text-orange-500'}></i> {car.atelierCarStatus.carStatus}
                   </td>
                   <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                     <div className="flex">
-                      <img
-                        src="/img/team-1-800x800.jpg"
-                        alt="..."
-                        className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow"
-                      ></img>
-                      <img
-                        src="/img/team-2-800x800.jpg"
-                        alt="..."
-                        className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
-                      ></img>
-                      <img
-                        src="/img/team-3-800x800.jpg"
-                        alt="..."
-                        className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
-                      ></img>
-                      <img
-                        src="/img/team-4-470x470.png"
-                        alt="..."
-                        className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
-                      ></img>
+                    <i className="fas fa-user text-bluegray-500 mr-2"></i> {car.addedByUser}
+                   
                     </div>
                   </td>
                   <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                     <div className="flex items-center">
-                      <span className="mr-2">60%</span>
-                      <div className="relative w-full">
-                        <div className="overflow-hidden h-2 text-xs flex rounded bg-red-200">
-                          <div
-                            style={{ width: "60%" }}
-                            className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
-                          ></div>
-                        </div>
-                      </div>
+                      <i className="fas fa-table text-bluegray-500 mr-2"></i> 500
                     </div>
                   </td>
                   <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">

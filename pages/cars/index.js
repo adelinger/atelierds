@@ -7,7 +7,7 @@ import { useTranslation } from "next-i18next";
 import Navbar from "components/Navbars/IndexNavbar";
 import Footer from "components/Footers/Footer.js";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { loadCars } from "lib/apiCalls";
+import { getSingleCar, loadCars } from "lib/apiCalls";
 import ItemListCard from "components/Cards/ItemListCard";
 
 export default function carsForSale({cars}) {
@@ -79,4 +79,15 @@ export async function getStaticProps({locale}){
         ...await serverSideTranslations(locale, ['common', 'index']),
       }
   }
+}
+
+
+export async function getCarData(id) {
+    const car = await getSingleCar(id);
+
+  // Combine the data with the id
+  return {
+    id,
+    ...car,
+  };
 }

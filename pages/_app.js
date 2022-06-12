@@ -4,6 +4,7 @@ import App from "next/app";
 import Head from "next/head";
 import Router from "next/router";
 import { appWithTranslation } from "next-i18next";
+import { CookiesProvider } from "react-cookie";
 
 import PageChange from "components/PageChange/PageChange.js";
 
@@ -69,12 +70,13 @@ class MyApp extends App {
 
     return (
       <React.Fragment>
+         <CookiesProvider>
         <Head>
           <meta
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
-          <title>My app</title>
+          <title>Atelier DS</title>
           <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
         </Head>
         <Layout>
@@ -86,6 +88,7 @@ class MyApp extends App {
         </AuthProvider>
           
         </Layout>
+        </CookiesProvider>
       </React.Fragment>
     );
   }

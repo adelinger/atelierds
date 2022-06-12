@@ -4,8 +4,7 @@ export default class ApiService {
   constructor() {
     this.api_token = null;
     this.client = null;
-    // this.api_url = process.env.API_ENDPOINT;
-    this.api_url = "https://localhost:5001/api/ateliercars";
+   this.api_url = process.env.NEXT_PUBLIC_URL;
   }
   init = () => {
     // this.api_token = getCookie("ACCESS_TOKEN");

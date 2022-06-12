@@ -1,14 +1,27 @@
-import React from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "next-i18next";
+import listenForOutsideClicks from "utils/listen-for-outside-clicks";
+import { createPopper } from "@popperjs/core";
 
 // components
 import LanguagesDropdown from 'components/Dropdowns/languagesDropdown.js';
 
 export default function Navbar(props) {
-  const [navbarOpen, setNavbarOpen] = React.useState(false);
+  const popoverDropdownRef = React.createRef();
+  const btnRef = useRef(null);
+  const [listening, setListening] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation('index');
+
+  const toggle = () =>{
+    createPopper(btnRef.current, popoverDropdownRef.current, {
+      placement: "left-start",
+    });
+    setIsOpen(!isOpen);
+  } 
+
+  useEffect(listenForOutsideClicks(listening, setListening, btnRef, setIsOpen));
 
   return (
     <>
@@ -24,24 +37,26 @@ export default function Navbar(props) {
               </a>
             </Link>
             <button
+              ref={btnRef}
               className="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
               type="button"
-              onClick={() => setNavbarOpen(!navbarOpen)}
+              onClick={() => toggle()}
             >
               <i className="text-white fas fa-bars"></i>
             </button>
           </div>
           <div
+          
             className={
               "lg:flex flex-grow items-center bg-white lg:bg-opacity-0 lg:shadow-none" +
-              (navbarOpen ? " block rounded shadow-lg" : " hidden")
+              (isOpen ? " block rounded shadow-lg" : " hidden")
             }
             id="example-navbar-warning"
           >
             <ul className="flex flex-col lg:flex-row list-none mr-auto">
 
               <li className="flex items-center">
-                <Link href="/carsForSale">
+                <Link href="/cars">
                   <a
                     href="#"
                     className={

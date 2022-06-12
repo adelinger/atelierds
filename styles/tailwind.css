@@ -1367,9 +1367,19 @@ select {
   background-color: rgba(30, 41, 59, var(--tw-bg-opacity));
 }
 
+.hover\:bg-indigo-600:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(79, 70, 229, var(--tw-bg-opacity));
+}
+
 .hover\:bg-blue-800:hover {
   --tw-bg-opacity: 1;
   background-color: rgba(30, 64, 175, var(--tw-bg-opacity));
+}
+
+.hover\:bg-gray-200:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(228, 228, 231, var(--tw-bg-opacity));
 }
 
 .focus\:bg-white:focus {
@@ -2304,6 +2314,10 @@ select {
   margin-bottom: 1rem;
 }
 
+.ml-4 {
+  margin-left: 1rem;
+}
+
 .mt-5 {
   margin-top: 1.25rem;
 }
@@ -2338,6 +2352,14 @@ select {
 
 .mt-10 {
   margin-top: 2.5rem;
+}
+
+.mb-10 {
+  margin-bottom: 2.5rem;
+}
+
+.ml-10 {
+  margin-left: 2.5rem;
 }
 
 .mt-12 {
@@ -2466,6 +2488,10 @@ select {
 
 .object-scale-down {
   object-fit: scale-down;
+}
+
+.object-center {
+  object-position: center;
 }
 
 .opacity-50 {
@@ -2648,6 +2674,11 @@ select {
 .py-5 {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
+}
+
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 
 .py-6 {
@@ -3400,6 +3431,10 @@ select {
   width: 50%;
 }
 
+.w-5\/6 {
+  width: 83.333333%;
+}
+
 .w-6\/12 {
   width: 50%;
 }
@@ -3607,6 +3642,11 @@ select {
     display: block;
   }
 
+  .sm\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
   .sm\:mt-0 {
     margin-top: 0px;
   }
@@ -3645,6 +3685,10 @@ select {
     flex-wrap: nowrap;
   }
 
+  .md\:items-start {
+    align-items: flex-start;
+  }
+
   .md\:items-stretch {
     align-items: stretch;
   }
@@ -3669,6 +3713,10 @@ select {
   .md\:text-3xl {
     font-size: 1.875rem;
     line-height: 2.25rem;
+  }
+
+  .md\:mb-0 {
+    margin-bottom: 0px;
   }
 
   .md\:mt-4 {
@@ -3721,6 +3769,10 @@ select {
     padding-right: 3rem;
   }
 
+  .md\:pl-16 {
+    padding-left: 4rem;
+  }
+
   .md\:pt-32 {
     padding-top: 8rem;
   }
@@ -3756,6 +3808,10 @@ select {
 
   .md\:w-64 {
     width: 16rem;
+  }
+
+  .md\:w-1\/2 {
+    width: 50%;
   }
 
   .md\:w-4\/12 {
@@ -3816,6 +3872,10 @@ select {
     justify-content: flex-start;
   }
 
+  .lg\:flex-grow {
+    flex-grow: 1;
+  }
+
   .lg\:order-1 {
     order: 1;
   }
@@ -3846,6 +3906,10 @@ select {
 
   .lg\:-mt-64 {
     margin-top: -16rem;
+  }
+
+  .lg\:max-w-lg {
+    max-width: 32rem;
   }
 
   .lg\:p-10 {
@@ -3886,6 +3950,10 @@ select {
 
   .lg\:pt-24 {
     padding-top: 6rem;
+  }
+
+  .lg\:pl-24 {
+    padding-left: 6rem;
   }
 
   .lg\:pb-64 {
@@ -3946,6 +4014,10 @@ select {
 
   .lg\:w-9\/12 {
     width: 75%;
+  }
+
+  .lg\:w-full {
+    width: 100%;
   }
 
   .lg\:gap-4 {

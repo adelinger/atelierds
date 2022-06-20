@@ -2,9 +2,13 @@ import ApiService from "auth/service/ApiService";
 import React, { useState } from "react";
 import { CircularProgress } from "@mui/material";
 import Alert from "components/Alerts/Alert";
+import { maxHeight } from "tailwindcss/defaultTheme";
 
 export default function CardSettings({ auth }) {
-    const { logout, user, error } = auth;
+    const { user } = auth;
+
+    const [images, setImages] = useState([]);
+    const [createObjectURL, setCreateObjectURL] = useState([]);
 
     const [carModel, setCarModel] = useState();
     const [carMake, setCarMake] = useState();
@@ -17,6 +21,7 @@ export default function CardSettings({ auth }) {
     const [isSuccess, setIsSuccess] = useState(false);
     const [showAlert, setShowAlert] = useState(false);
     const [showloader, setShowLoader] = useState(false);
+    const [carKilometers, setCarkilometers] = useState(false);
 
     const carObject = {
         "atelierCarStatus": {
@@ -32,7 +37,8 @@ export default function CardSettings({ auth }) {
         "carPrice": parseFloat(carPrice),
         "addedByUser": user.email,
         "carProfilePhotoPath": null,
-        "carPhotosPath": null
+        "carPhotosPath": null,
+        "carKilometers": carKilometers
     }
 
     const api = new ApiService();
@@ -57,6 +63,32 @@ export default function CardSettings({ auth }) {
         setIsSuccess(Success);
         setShowLoader(false);
         setShowAlert(true);
+    }
+
+    const uploadToClient = (event) => {
+        if (event.target.files && event.target.files[0]) {
+            const i = event.target.files;
+
+            let files = [];
+            for (let file of event.target.files) {
+                files.push(URL.createObjectURL(file));
+            }
+            setImages(files);
+
+        }
+    };
+
+    const uploadToServer = async (event) => {
+        const body = new FormData();
+        body.append("file", images);
+        const response = await fetch("/api/file", {
+            method: "POST",
+            body
+        });
+    };
+
+    const handleImageOnClick = (event) => {
+        event.preventDefault();
     }
 
     return (
@@ -205,6 +237,77 @@ export default function CardSettings({ auth }) {
                                     />
                                 </div>
                             </div>
+                            <div className="w-full lg:w-6/12 px-4">
+                                <div className="relative w-full mb-3">
+                                    <label
+                                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                    >
+                                        Kilometers
+
+                                    </label>
+                                    <input
+                                        required
+                                        type="number"
+                                        min="0.00"
+                                        step="0.01"
+
+                                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                        placeholder="Type the kilometers here"
+
+                                        onChange={e => setCarkilometers(e.target.value)}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            {Object.keys(images) == 0 && <h4 className="float-left">Select Images</h4>
+
+                            }
+
+<div className="container mx-auto ">
+                
+<div class="grid grid-cols-1 md:grid-cols-6 gap-6">
+             {images.map ((item, key) => 
+                     <div className="mt-5 mb-5" style={{ width: "200px", height: "200px" }} >
+                       <a href="#" onClick={handleImageOnClick}>
+                                        <img src={item} class="h-48 w-96 mr-5 mb-1" style={{ width: "100%", height: "85%" }}></img>
+                                    </a>
+                               
+<button class="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
+   >
+<i class="fa-solid fa-x"></i> Delete
+</button>
+                       </div>
+                     
+                   
+                    )}
+                 
+              </div>
+  
+                </div>
+
+
+
+                            <div>   
+                                <div>
+                                    <input name="myImage" onChange={uploadToClient}
+                                        class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 
+focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                        type="file" multiple ></input>
+                                </div>
+                                <div class="flex justify-center items-center w-full mt-5">
+                                    <button
+                                        className="content-between text-center bg-blueGray-700 active:bg-blueGray-600 text-white font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                                        type="submit"
+                                        onClick={uploadToServer}
+                                    >
+                                        Send to server
+                                    </button>
+                                </div>
+
+
+                            </div>
                         </div>
 
                         <hr className="mt-6 border-b-1 border-blueGray-300" />
@@ -232,11 +335,13 @@ export default function CardSettings({ auth }) {
                                 </div>
                             </div>
                         </div>
+
+
                         <div class="flex justify-between mt-5">
                             <div class="flex px-2"></div>
                             <div class="flex px-2 ">
                                 <button
-                                    className="content-between bg-lightBlue-500 active:bg-lightBlue-500 text-white font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                                    className="content-between bg-lightBlue-500 active:bg-lightBlue-700 hover:shadow-lg text-white font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                                     type="submit    "
                                 //onClick={handleSubmit}
                                 >

@@ -67,8 +67,6 @@ export default function CardSettings({ auth }) {
 
     const uploadToClient = (event) => {
         if (event.target.files && event.target.files[0]) {
-            const i = event.target.files;
-
             let files = [];
             for (let file of event.target.files) {
                 files.push(URL.createObjectURL(file));
@@ -89,6 +87,13 @@ export default function CardSettings({ auth }) {
 
     const handleImageOnClick = (event) => {
         event.preventDefault();
+    }
+
+    const handleImageDeleteClick = (event) => {
+        event.preventDefault();
+
+        setImages(images.filter(item => item !== images[event.target.value]));
+        
     }
 
     return (
@@ -260,41 +265,39 @@ export default function CardSettings({ auth }) {
                             </div>
                         </div>
 
-                        <div>
-                            {Object.keys(images) == 0 && <h4 className="float-left">Select Images</h4>
+                        <div className="ml-4">
+                            <div className="container">
+                                <div class="grid grid-cols-1 md:grid-cols-6 gap-6">
+                                    {images.map((item, key) =>
+                                        <div className="mt-5 mb-5" style={{ width: "200px", height: "200px" }} >
+                                            <a href="#" onClick={handleImageOnClick}>
+                                                <img src={item} class="h-48 w-96 mr-5 mb-1" style={{ width: "100%", height: "85%" }}></img>
+                                            </a>
+                                            <button class="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-xs px-4 py-2 
+                                            rounded shadow hover:shadow-md outline-none 
+                                            focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
+                                            onClick={handleImageDeleteClick} value={key}
+                                            >
+                                                <i class="fa-solid fa-x"></i> Delete
+                                            </button>
+                                        </div>
+                                    )}
 
-                            }
+                                </div>
 
-<div className="container mx-auto ">
-                
-<div class="grid grid-cols-1 md:grid-cols-6 gap-6">
-             {images.map ((item, key) => 
-                     <div className="mt-5 mb-5" style={{ width: "200px", height: "200px" }} >
-                       <a href="#" onClick={handleImageOnClick}>
-                                        <img src={item} class="h-48 w-96 mr-5 mb-1" style={{ width: "100%", height: "85%" }}></img>
-                                    </a>
-                               
-<button class="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
-   >
-<i class="fa-solid fa-x"></i> Delete
-</button>
-                       </div>
-                     
-                   
-                    )}
-                 
-              </div>
-  
-                </div>
+                            </div>
 
-
-
-                            <div>   
+                            <div>
                                 <div>
+                                <label
+                                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                        htmlFor="text"
+                                    >Add pictures for car</label>
                                     <input name="myImage" onChange={uploadToClient}
-                                        class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 
-focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                        type="file" multiple ></input>
+                                        class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border
+                                         border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none 
+                                         dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                        type="file" multiple></input>
                                 </div>
                                 <div class="flex justify-center items-center w-full mt-5">
                                     <button
@@ -343,7 +346,6 @@ focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-4
                                 <button
                                     className="content-between bg-lightBlue-500 active:bg-lightBlue-700 hover:shadow-lg text-white font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                                     type="submit    "
-                                //onClick={handleSubmit}
                                 >
                                     Add new car
                                 </button></div>

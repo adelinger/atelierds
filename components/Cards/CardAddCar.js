@@ -77,9 +77,14 @@ export default function CardSettings({ auth }) {
     };
 
     const uploadToServer = async (event) => {
+        event.preventDefault();
+
+        if(images.length === 0){
+            return; 
+        }
         const body = new FormData();
-        body.append("file", images);
-        const response = await fetch("/api/file", {
+        body.append("uploadedImages", images[0]);
+        const response = await fetch("https://localhost:5001/api/ateliercars/uploadFile", {
             method: "POST",
             body
         });
@@ -293,11 +298,11 @@ export default function CardSettings({ auth }) {
                                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                                         htmlFor="text"
                                     >Add pictures for car</label>
-                                    <input name="myImage" onChange={uploadToClient}
+                                    <input name="myImage" id="imageInput" onChange={uploadToClient}
                                         class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border
                                          border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none 
                                          dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                        type="file" multiple></input>
+                                        type="file" multiple required></input>
                                 </div>
                                 <div class="flex justify-center items-center w-full mt-5">
                                     <button

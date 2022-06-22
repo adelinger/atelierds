@@ -83,9 +83,17 @@ export default function CardSettings({ auth }) {
             return; 
         }
         const body = new FormData();
-        body.append("uploadedImages", images[0]);
+
+        var imageFiles = document.getElementById("imageInput"),
+        filesLength = imageFiles.files.length;
+        for (var i = 0; i < filesLength; i++) {
+            body.append("uploadedImages", imageFiles.files[i]);
+        }
+
+        
         const response = await fetch("https://localhost:5001/api/ateliercars/uploadFile", {
             method: "POST",
+           
             body
         });
     };

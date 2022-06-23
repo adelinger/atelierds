@@ -8,6 +8,7 @@ export default function CardSettings({ auth }) {
     const { user } = auth;
 
     const [images, setImages] = useState([]);
+    const [uploadImages, setUploadImages] = useState([]);
     const [createObjectURL, setCreateObjectURL] = useState([]);
 
     const [carModel, setCarModel] = useState();
@@ -68,11 +69,13 @@ export default function CardSettings({ auth }) {
     const uploadToClient = (event) => {
         if (event.target.files && event.target.files[0]) {
             let files = [];
+            let uploadFiles = [];
             for (let file of event.target.files) {
                 files.push(URL.createObjectURL(file));
+                uploadFiles.push(file);
             }
             setImages(files);
-
+            setUploadImages(uploadFiles);
         }
     };
 
@@ -83,11 +86,9 @@ export default function CardSettings({ auth }) {
             return; 
         }
         const body = new FormData();
-
-        var imageFiles = document.getElementById("imageInput"),
-        filesLength = imageFiles.files.length;
+        var filesLength = uploadImages.length;
         for (var i = 0; i < filesLength; i++) {
-            body.append("uploadedImages", imageFiles.files[i]);
+            body.append("uploadedImages", uploadImages[i]);
         }
 
         
@@ -106,7 +107,7 @@ export default function CardSettings({ auth }) {
         event.preventDefault();
 
         setImages(images.filter(item => item !== images[event.target.value]));
-        
+        setUploadImages(uploadImages.filter(item => item !== uploadImages[event.target.value]))
     }
 
     return (

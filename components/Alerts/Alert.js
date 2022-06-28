@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Alert = ({color}) => {
+const Alert = ({color, message}) => {
   
   return (
     <>
@@ -13,7 +13,7 @@ const Alert = ({color}) => {
             <i className="fas fa-bell" />
           </span>
           <span className="inline-block align-middle mr-8">
-            <b className="capitalize">{color==='emerald' ? ' Success' : '   Error'}</b>{color==='emerald' ? '  Your action was successful.' : '  Something went wrong.'}
+            <b className="capitalize">{color==='emerald' ? ' Success ' : '   Error '}</b>{message}
           </span>
         </div>
     

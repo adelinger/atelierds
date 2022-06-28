@@ -10,7 +10,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { getSingleCar, loadCars } from "lib/apiCalls";
 import ItemListCard from "components/Cards/ItemListCard";
 
-export default function carsForSale({cars}) {
+export default function carsForSale({cars, serverUrl}) {
 
 
   const { t } = useTranslation('index');
@@ -48,7 +48,7 @@ export default function carsForSale({cars}) {
               <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-3">
            {cars.map (car => 
                    <div className="mt-5 mb-5" >
-                     <ItemListCard car={car}></ItemListCard>
+                     <ItemListCard car={car} serverUrl={serverUrl}></ItemListCard>
                      </div>
                    
                  
@@ -72,10 +72,11 @@ export default function carsForSale({cars}) {
 
 export async function getStaticProps({locale}){
   const cars =  await loadCars();
-
+  const { STATIC_FILES_URL } = process.env;
   return {
       props: {
         cars: cars,
+        serverUrl: STATIC_FILES_URL,
         ...await serverSideTranslations(locale, ['common', 'index']),
       }
   }

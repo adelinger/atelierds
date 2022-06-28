@@ -3,7 +3,7 @@ import Navbar from 'components/Navbars/IndexNavbar';
 import Footer from 'components/Footers/Footer';
 import { getSingleCar, loadCars } from 'lib/apiCalls';
 
-function viewCar({ carData }) {
+function viewCar({ carData, STATIC_FILES_URL }) {
   return (
     <>
       <Navbar />
@@ -27,7 +27,7 @@ function viewCar({ carData }) {
             <section class="text-gray-600 body-font">
               <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
                 <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
-                  <img class="object-cover object-center rounded" alt="hero" src='/img/image_ds.jpg'></img>
+                  <img class="object-cover object-center rounded" alt="car for sale cover image" src={STATIC_FILES_URL + carData.carPhotosPath + '/' + carData.carProfilePhotoPath}></img>
                 </div>
                 <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
                   <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-white">{carData.carModel + ' ' + carData.carMake}
@@ -57,9 +57,11 @@ export default viewCar;
 
 export async function getStaticProps({ params }) {
   const carData = await getSingleCar(params.car);
+  const { STATIC_FILES_URL } = process.env;
   return {
     props: {
       carData,
+      STATIC_FILES_URL,
     },
   };
 }

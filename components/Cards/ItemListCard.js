@@ -4,7 +4,7 @@ import React from "react";
 
 // components
 
-export default function ItemListCard({car}) {
+export default function ItemListCard({car, serverUrl}) {
 
   const { t } = useTranslation('index');
 
@@ -14,7 +14,7 @@ export default function ItemListCard({car}) {
     <main>
     <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
     <a href={`/cars/${encodeURIComponent(car.atelierCarID)}`}>
-        <img class="rounded-t-lg" src="/img/image_ds.jpg" alt="Car for sale" />
+        <img class="rounded-t-lg" src={serverUrl + car.carPhotosPath + '/' + car.carProfilePhotoPath} alt="Car for sale" />
     </a>
     <div class="p-5">
         <a href="#">

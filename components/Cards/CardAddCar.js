@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { CircularProgress } from "@mui/material";
 import Alert from "components/Alerts/Alert";
 import { maxHeight } from "tailwindcss/defaultTheme";
+import { uploadeImages, addNewCar } from "lib/apiCalls";
 
 export default function CardSettings({ auth }) {
     const { user } = auth;
@@ -10,19 +11,22 @@ export default function CardSettings({ auth }) {
     const [images, setImages] = useState([]);
     const [uploadImages, setUploadImages] = useState([]);
     const [createObjectURL, setCreateObjectURL] = useState([]);
+    
+    const [alertMessage, setAlertMessage] = useState('Error. Something went wrong.');
 
     const [carModel, setCarModel] = useState();
     const [carMake, setCarMake] = useState();
     const [carYear, setCarYear] = useState();
     const [carColor, setCarColor] = useState();
     const [carEnginePower, setCarEnginePower] = useState();
-    const [carEngineType, setCarEngineType] = useState();
+    const [carEngineType, setCarEngineType] = useState('Diesel');
     const [carDescription, setCarDescription] = useState();
     const [carPrice, setCarPrice] = useState();
     const [isSuccess, setIsSuccess] = useState(false);
     const [showAlert, setShowAlert] = useState(false);
     const [showloader, setShowLoader] = useState(false);
     const [carKilometers, setCarkilometers] = useState(false);
+    
 
     const carObject = {
         "atelierCarStatus": {
@@ -37,30 +41,40 @@ export default function CardSettings({ auth }) {
         "carDescription": carDescription,
         "carPrice": parseFloat(carPrice),
         "addedByUser": user.email,
-        "carProfilePhotoPath": null,
-        "carPhotosPath": null,
-        "carKilometers": carKilometers
+        "carProfilePhotoPath": '',
+        "carPhotosPath": '',
+        "carKilometers": parseInt(carKilometers),
     }
 
     const api = new ApiService();
 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setShowLoader(true);
         setShowAlert(false);
 
+        const upload = await uploadToServer();
+
+        if(!upload){
+            handleApiResponse(false, 'Your images are not uploaded');
+            return;
+        }
+
         api
             .addNewCar(carObject)
             .then(data => {
-                handleApiResponse(true);
+                handleApiResponse(true, 'You added car successfuly.');
             })
             .catch((error) => {
                 handleApiResponse(false);
             });
+
+       
     }
 
-    function handleApiResponse(Success) {
+    function handleApiResponse(Success, message = 'Something went wrong.') {
+        setAlertMessage(message);
         setIsSuccess(Success);
         setShowLoader(false);
         setShowAlert(true);
@@ -79,24 +93,33 @@ export default function CardSettings({ auth }) {
         }
     };
 
-    const uploadToServer = async (event) => {
-        event.preventDefault();
-
+    const uploadToServer = async () => {
+      
         if(images.length === 0){
-            return; 
+            return false; 
         }
         const body = new FormData();
+        
+
+        let timestamp = new Date().getTime();
+        carObject.carPhotosPath = carMake + "_" + carModel + "_"+ timestamp;
+        var imageFiles = document.getElementById("imageInput");
         var filesLength = uploadImages.length;
         for (var i = 0; i < filesLength; i++) {
             body.append("uploadedImages", uploadImages[i]);
         }
+        body.append("folderName", carObject.carPhotosPath);
+        carObject.carProfilePhotoPath =uploadImages[0].name;
+       
 
-        
-        const response = await fetch("https://localhost:5001/api/ateliercars/uploadFile", {
-            method: "POST",
-           
-            body
-        });
+       try {
+        const upload = await uploadeImages(body)
+
+        return true;
+       } catch (error) {
+        return false;
+       }
+
     };
 
     const handleImageOnClick = (event) => {
@@ -132,14 +155,14 @@ export default function CardSettings({ auth }) {
                                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                                         htmlFor="grid-password"
                                     >
-                                        Car model
+                                        Car make
                                     </label>
                                     <input
                                         type="text"
                                         required
                                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                        placeholder="Type car model here"
-                                        onChange={e => setCarModel(e.target.value)}
+                                        placeholder="Type car make here"
+                                        onChange={e => setCarMake(e.target.value)}
                                     />
                                 </div>
                             </div>
@@ -149,14 +172,14 @@ export default function CardSettings({ auth }) {
                                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                                         htmlFor="grid-password"
                                     >
-                                        Car Make
+                                        Car Model
                                     </label>
                                     <input
                                         required
                                         type="text"
                                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                        placeholder="Type car make here"
-                                        onChange={e => setCarMake(e.target.value)}
+                                        placeholder="Type car model here"
+                                        onChange={e => setCarModel(e.target.value)}
                                     />
                                 </div>
                             </div>
@@ -374,7 +397,7 @@ export default function CardSettings({ auth }) {
                         }
                         {showAlert &&
                             <div className="mt-5">
-                                <Alert color={isSuccess ? 'emerald' : 'red'}></Alert>
+                                <Alert color={isSuccess ? 'emerald' : 'red'} message={alertMessage}></Alert>
                             </div>
 
                         }

@@ -12,6 +12,7 @@ export default function CarsTable({ color }) {
   const [isSuccess, setIsSuccess] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [showloader, setShowLoader] = useState(false);
+  const { NEXT_PUBLIC_STATIC_FILES_URL } = process.env;
 
 
   function handleApiResponse(Success) {
@@ -167,7 +168,7 @@ export default function CarsTable({ color }) {
                 <tr data={car.atelierCarID}>
                   <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
                     <img
-                      src="/img/image_ds.jpg"
+                      src={process.env.NEXT_PUBLIC_STATIC_FILES_URL + car.carPhotosPath +'/' + car.carProfilePhotoPath}
                       className="h-12 w-12 bg-white rounded-full border"
                       alt="..."
                     ></img>{" "}

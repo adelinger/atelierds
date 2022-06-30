@@ -11,6 +11,7 @@ export default function CardSettings({ auth }) {
     const [images, setImages] = useState([]);
     const [uploadImages, setUploadImages] = useState([]);
     const [createObjectURL, setCreateObjectURL] = useState([]);
+    const [selectedImage, setSelectedImage] = useState();
     
     const [alertMessage, setAlertMessage] = useState('Error. Something went wrong.');
 
@@ -99,11 +100,8 @@ export default function CardSettings({ auth }) {
             return false; 
         }
         const body = new FormData();
-        
-
         let timestamp = new Date().getTime();
         carObject.carPhotosPath = carMake + "_" + carModel + "_"+ timestamp;
-        var imageFiles = document.getElementById("imageInput");
         var filesLength = uploadImages.length;
         for (var i = 0; i < filesLength; i++) {
             body.append("uploadedImages", uploadImages[i]);
@@ -114,8 +112,9 @@ export default function CardSettings({ auth }) {
 
        try {
         const upload = await uploadeImages(body)
+        
+        return true;    
 
-        return true;
        } catch (error) {
         return false;
        }
@@ -316,6 +315,13 @@ export default function CardSettings({ auth }) {
                                             onClick={handleImageDeleteClick} value={key}
                                             >
                                                 <i class="fa-solid fa-x"></i> Delete
+                                            </button>
+                                            <button class="bg-blueGray-200 text-¸black active:bg-blueGray-800 font-bold uppercase text-xs px-4 py-2 
+                                            rounded shadow hover:shadow-md outline-none 
+                                            focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
+                                            value={key}
+                                            >
+                                                <i class="fa-solid fa-x"></i> Set as main
                                             </button>
                                         </div>
                                     )}

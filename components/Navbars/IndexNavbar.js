@@ -31,7 +31,7 @@ export default function Navbar(props) {
             <Link href="/">
               <a
                 className="text-white text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
-                href="#pablo"
+                href="#"
               >
                 {t('atelierDS')}
               </a>
@@ -64,6 +64,45 @@ export default function Navbar(props) {
                     }
                   >
                     Cars for sale
+                  </a>
+                </Link>
+
+              </li>
+              <li className="flex items-center">
+                <Link href="/">
+                  <a
+                    href="#"
+                    className={
+                      "lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                    }
+                  >
+                    Interior
+                  </a>
+                </Link>
+
+              </li>
+              <li className="flex items-center">
+                <Link href="/">
+                  <a
+                    href="#"
+                    className={
+                      "lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                    }
+                  >
+                    Chrome parts
+                  </a>
+                </Link>
+
+              </li>
+              <li className="flex items-center">
+                <Link href="/">
+                  <a
+                    href="#"
+                    className={
+                      "lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                    }
+                  >
+                    Body restoration
                   </a>
                 </Link>
 

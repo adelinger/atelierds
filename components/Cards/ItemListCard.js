@@ -1,6 +1,8 @@
 import { Link } from "@mui/material";
+import { auto } from "@popperjs/core";
 import { useTranslation } from "next-i18next";
 import React from "react";
+import { height } from "tailwindcss/defaultTheme";
 
 // components
 
@@ -13,8 +15,8 @@ export default function ItemListCard({car, serverUrl}) {
     
     <main>
     <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-    <a href={`/cars/${encodeURIComponent(car.atelierCarID)}`}>
-        <img class="rounded-t-lg" src={serverUrl + car.carPhotosPath + '/' + car.carProfilePhotoPath} alt="Car for sale" />
+    <a href={`/cars/${encodeURIComponent(car.atelierCarID)}`} >
+        <img class="rounded-t-lg" src={serverUrl + car.carPhotosPath + '/' + car.carProfilePhotoPath} style={{maxHeight:300, width:auto}} alt="Car for sale" />
     </a>
     <div class="p-5">
         <a href="#">

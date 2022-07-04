@@ -10,8 +10,7 @@ export default function CardSettings({ auth }) {
 
     const [images, setImages] = useState([]);
     const [uploadImages, setUploadImages] = useState([]);
-    const [createObjectURL, setCreateObjectURL] = useState([]);
-    const [selectedImage, setSelectedImage] = useState();
+    const [selectedImage, setSelectedImage] = useState('');
     
     const [alertMessage, setAlertMessage] = useState('Error. Something went wrong.');
 
@@ -91,6 +90,7 @@ export default function CardSettings({ auth }) {
             }
             setImages(files);
             setUploadImages(uploadFiles);
+            setSelectedImage(uploadFiles[0])
         }
     };
 
@@ -107,7 +107,7 @@ export default function CardSettings({ auth }) {
             body.append("uploadedImages", uploadImages[i]);
         }
         body.append("folderName", carObject.carPhotosPath);
-        carObject.carProfilePhotoPath =uploadImages[0].name;
+        carObject.carProfilePhotoPath = selectedImage.name;
        
 
        try {
@@ -130,6 +130,18 @@ export default function CardSettings({ auth }) {
 
         setImages(images.filter(item => item !== images[event.target.value]));
         setUploadImages(uploadImages.filter(item => item !== uploadImages[event.target.value]))
+        if(selectedImage===uploadImages[event.target.value]){
+            setSelectedImage(uploadImages[1]);
+        }
+    }
+    
+    const handleSelectedImageClick = (event) => {
+        event.preventDefault();
+
+        let image = uploadImages[event.target.value]
+        setSelectedImage(image);
+
+        
     }
 
     return (
@@ -316,10 +328,8 @@ export default function CardSettings({ auth }) {
                                             >
                                                 <i class="fa-solid fa-x"></i> Delete
                                             </button>
-                                            <button class="bg-blueGray-200 text-¸black active:bg-blueGray-800 font-bold uppercase text-xs px-4 py-2 
-                                            rounded shadow hover:shadow-md outline-none 
-                                            focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
-                                            value={key}
+                                            <button class={`font-bold ${uploadImages[key] === selectedImage ? 'bg-blueGray-800 text-white black active:bg-blueGray-800' : 'bg-blueGray-200 text-gray black active:bg-blueGray-800'}  uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150`} type="button"
+                                            value={key} onClick={handleSelectedImageClick}
                                             >
                                                 <i class="fa-solid fa-x"></i> Set as main
                                             </button>
@@ -342,17 +352,6 @@ export default function CardSettings({ auth }) {
                                          dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                                         type="file" multiple required></input>
                                 </div>
-                                <div class="flex justify-center items-center w-full mt-5">
-                                    <button
-                                        className="content-between text-center bg-blueGray-700 active:bg-blueGray-600 text-white font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-                                        type="submit"
-                                        onClick={uploadToServer}
-                                    >
-                                        Send to server
-                                    </button>
-                                </div>
-
-
                             </div>
                         </div>
 

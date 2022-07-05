@@ -41,9 +41,9 @@ export default function Landing() {
                     Along with detailng and restoration, we offer already finished Citroen DS cars for sale.
                   </p>
 
-                  <button type="button" class="mt-5 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4
- focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 
- dark:focus:ring-gray-700 dark:border-gray-700">See cars</button>
+                  <Link href="cars">
+                  <a  className="mt-5 inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">{t('Check our cars')}</a>                 
+                       </Link>
 
                 </div>
               </div>
@@ -88,9 +88,7 @@ export default function Landing() {
                       <a
                         href="https://github.com/creativetimofficial/notus-nextjs?ref=nnjs-index"
                         target="_blank"
-                        className="mt-5 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4
- focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 
- dark:focus:ring-gray-700 dark:border-gray-700"
+                        className="inline-flex text-white bg-indigo-500 border-0 py-1 px-3 focus:outline-none hover:bg-indigo-600 rounded text-lg"
                       >
                         <span>See more</span>
                       </a>
@@ -113,9 +111,7 @@ export default function Landing() {
                     <a
                       href="https://github.com/creativetimofficial/notus-nextjs?ref=nnjs-index"
                       target="_blank"
-                      className="mt-5 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4
-                      focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 
-                      dark:focus:ring-gray-700 dark:border-gray-700"
+                      className="inline-flex text-white bg-indigo-500 border-0 py-1 px-3 focus:outline-none hover:bg-indigo-600 rounded text-lg"
                                            >
                       <span>See more</span>
                     </a>
@@ -137,9 +133,7 @@ export default function Landing() {
                     <a
                       href="https://github.com/creativetimofficial/notus-nextjs?ref=nnjs-index"
                       target="_blank"
-                      className="mt-5 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4
-                      focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 
-                      dark:focus:ring-gray-700 dark:border-gray-700"
+                      className="inline-flex text-white bg-indigo-500 border-0 py-1 px-3 focus:outline-none hover:bg-indigo-600 rounded text-lg"
                                            >
                       <span>See more</span>
                     </a>

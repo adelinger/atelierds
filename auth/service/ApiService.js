@@ -27,7 +27,13 @@ export default class ApiService {
   addNewCar = (data) => {
     return this.init().post("/add", data);
   };
+  updateCar = (data) => {
+    return this.init().put("/", data);
+  };
   deleteCar = (id) => {
-    return this.init().delete("/"+id  );
+    return this.init().delete("/"+id);
+  };
+  deleteFile = (fileName) => {
+    return this.init().delete("/DeleteFile/"+ fileName);
   };
 }

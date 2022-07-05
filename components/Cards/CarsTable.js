@@ -5,14 +5,13 @@ import PropTypes from "prop-types";
 import CarPreviewDropdown from "components/Dropdowns/CarPreviewDropdown";
 import ApiService from "auth/service/ApiService";
 import Alert from "components/Alerts/Alert";
-import { CircularProgress } from "@mui/material";
+import { CircularProgress, Link } from "@mui/material";
 
 export default function CarsTable({ color }) {
   const [cars, setCars] = useState()
   const [isSuccess, setIsSuccess] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [showloader, setShowLoader] = useState(false);
-  const { NEXT_PUBLIC_STATIC_FILES_URL } = process.env;
 
 
   function handleApiResponse(Success) {
@@ -167,19 +166,22 @@ export default function CarsTable({ color }) {
               {cars.map(car =>
                 <tr data={car.atelierCarID}>
                   <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
+                    <Link href={`update/${encodeURIComponent(car.atelierCarID)}`}>
                     <img
                       src={process.env.NEXT_PUBLIC_STATIC_FILES_URL + car.carPhotosPath +'/' + car.carProfilePhotoPath}
                       className="h-12 w-12 bg-white rounded-full border"
                       alt="..."
                     ></img>{" "}
-                    <span
-                      className={
+                    </Link>
+                  
+                    <Link href={`update/${encodeURIComponent(car.atelierCarID)}`}>
+                      <a className={
                         "ml-3 font-bold " +
                         +(color === "light" ? "text-blueGray-600" : "text-white")
-                      }
-                    >
+                      }></a>
+                    
                       {car.carMake + ' ' + car.carModel}
-                    </span>
+                    </Link>
                   </th>
                   <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                     {car.carPrice}

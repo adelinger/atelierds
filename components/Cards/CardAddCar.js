@@ -1,31 +1,43 @@
 import ApiService from "auth/service/ApiService";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CircularProgress } from "@mui/material";
 import Alert from "components/Alerts/Alert";
 import { maxHeight } from "tailwindcss/defaultTheme";
 import { uploadeImages, addNewCar } from "lib/apiCalls";
 
-export default function CardSettings({ auth }) {
+export default function CardSettings({ auth, carData }) {
     const { user } = auth;
 
     const [images, setImages] = useState([]);
-    const [uploadImages, setUploadImages] = useState([]);
-    const [selectedImage, setSelectedImage] = useState('');
+    const [uploadImages, setUploadImages] = useState(carData?.listOfImages ?? []);
+    const [selectedImage, setSelectedImage] = useState(carData?.carProfilePhotoPath);
     
     const [alertMessage, setAlertMessage] = useState('Error. Something went wrong.');
 
-    const [carModel, setCarModel] = useState();
-    const [carMake, setCarMake] = useState();
-    const [carYear, setCarYear] = useState();
-    const [carColor, setCarColor] = useState();
-    const [carEnginePower, setCarEnginePower] = useState();
-    const [carEngineType, setCarEngineType] = useState('Diesel');
-    const [carDescription, setCarDescription] = useState();
-    const [carPrice, setCarPrice] = useState();
+    const [carModel, setCarModel] = useState(carData?.carModel);
+    const [carMake, setCarMake] = useState(carData?.carMake);
+    const [carYear, setCarYear] = useState(carData?.carYear);
+    const [carColor, setCarColor] = useState(carData?.carColor);
+    const [carEnginePower, setCarEnginePower] = useState(carData?.carEnginePower);
+    const [carEngineType, setCarEngineType] = useState(carData?.carEngineType ?? 'Diesel');
+    const [carDescription, setCarDescription] = useState(carData?.carDescription);
+    const [carPrice, setCarPrice] = useState(carData?.carPrice);
     const [isSuccess, setIsSuccess] = useState(false);
     const [showAlert, setShowAlert] = useState(false);
     const [showloader, setShowLoader] = useState(false);
-    const [carKilometers, setCarkilometers] = useState(false);
+    const [carKilometers, setCarkilometers] = useState(carData?.carKilometers);
+
+    const [isUpdate, setIsUpdate] = useState(false);
+
+    useEffect(() => {
+        if(carData){
+            setImages(carData?.listOfImages)
+            setIsUpdate(true)
+        }else{
+            setIsUpdate(false);
+        }
+      }, [])
+    
     
 
     const carObject = {
@@ -41,9 +53,10 @@ export default function CardSettings({ auth }) {
         "carDescription": carDescription,
         "carPrice": parseFloat(carPrice),
         "addedByUser": user.email,
-        "carProfilePhotoPath": '',
-        "carPhotosPath": '',
+        "carProfilePhotoPath": selectedImage ?? '',
+        "carPhotosPath": carData?.carPhotosPath ?? '',
         "carKilometers": parseInt(carKilometers),
+        "atelierCarID" : carData?.atelierCarID ?? null
     }
 
     const api = new ApiService();
@@ -54,14 +67,24 @@ export default function CardSettings({ auth }) {
         setShowLoader(true);
         setShowAlert(false);
 
-        const upload = await uploadToServer();
+        //const upload = await uploadToServer();
 
-        if(!upload){
-            handleApiResponse(false, 'Your images are not uploaded');
-            return;
-        }
+        // if(!upload){
+        //     handleApiResponse(false, 'Your images are not uploaded');
+        //     return;
+        // }
 
-        api
+        if(isUpdate){
+            api
+            .updateCar(carObject)
+            .then(data => {
+                handleApiResponse(true, 'Changes saved successfuly.');
+            })
+            .catch((error) => {
+                handleApiResponse(false);
+            });
+        }else{
+            api
             .addNewCar(carObject)
             .then(data => {
                 handleApiResponse(true, 'You added car successfuly.');
@@ -69,6 +92,8 @@ export default function CardSettings({ auth }) {
             .catch((error) => {
                 handleApiResponse(false);
             });
+        }
+       
 
        
     }
@@ -90,7 +115,7 @@ export default function CardSettings({ auth }) {
             }
             setImages(files);
             setUploadImages(uploadFiles);
-            setSelectedImage(uploadFiles[0])
+            setSelectedImage(uploadFiles[0].name)
         }
     };
 
@@ -107,7 +132,7 @@ export default function CardSettings({ auth }) {
             body.append("uploadedImages", uploadImages[i]);
         }
         body.append("folderName", carObject.carPhotosPath);
-        carObject.carProfilePhotoPath = selectedImage.name;
+        carObject.carProfilePhotoPath = selectedImage;
        
 
        try {
@@ -128,20 +153,32 @@ export default function CardSettings({ auth }) {
     const handleImageDeleteClick = (event) => {
         event.preventDefault();
 
+        if(isUpdate){
+            setShowLoader(true);
+         api
+      .deleteFile(carData.carPhotosPath + '/' + uploadImages[event.target.value])
+      .then(response => handleApiResponse(true, 'Successfully deleted image.'))
+      .catch((error) => {
+        handleApiResponse(false);
+      });
+        }
+
         setImages(images.filter(item => item !== images[event.target.value]));
         setUploadImages(uploadImages.filter(item => item !== uploadImages[event.target.value]))
         if(selectedImage===uploadImages[event.target.value]){
-            setSelectedImage(uploadImages[1]);
+            setSelectedImage(uploadImages[1].name);
         }
+       
     }
     
     const handleSelectedImageClick = (event) => {
-        event.preventDefault();
-
         let image = uploadImages[event.target.value]
-        setSelectedImage(image);
 
-        
+        if(isUpdate){
+            setSelectedImage(image);
+        }else{
+            setSelectedImage(image.name);
+        } 
     }
 
     return (
@@ -149,7 +186,7 @@ export default function CardSettings({ auth }) {
             <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
                 <div className="rounded-t bg-white mb-0 px-6 py-6">
                     <div className="text-center flex justify-between">
-                        <h6 className="text-blueGray-700 text-xl font-bold">Add new car</h6>
+                        <h6 className="text-blueGray-700 text-xl font-bold">{isUpdate? 'Update data' : 'Add new car'}</h6>
                     </div>
 
                 </div>
@@ -169,6 +206,7 @@ export default function CardSettings({ auth }) {
                                         Car make
                                     </label>
                                     <input
+                                         value={carMake}
                                         type="text"
                                         required
                                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
@@ -186,6 +224,7 @@ export default function CardSettings({ auth }) {
                                         Car Model
                                     </label>
                                     <input
+                                        value={carModel}
                                         required
                                         type="text"
                                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
@@ -203,6 +242,7 @@ export default function CardSettings({ auth }) {
                                         Car year
                                     </label>
                                     <input
+                                    value={carYear}
                                         required
                                         type="number"
                                         min="1800"
@@ -222,6 +262,7 @@ export default function CardSettings({ auth }) {
                                         Car color
                                     </label>
                                     <input
+                                    value={carColor}
                                         type="text"
                                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                         placeholder="Type car color here"
@@ -238,6 +279,7 @@ export default function CardSettings({ auth }) {
                                         Engine power (ps)
                                     </label>
                                     <input
+                                    value={carEnginePower}
                                         type="text"
                                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                         placeholder="Type car engine power here"
@@ -252,7 +294,7 @@ export default function CardSettings({ auth }) {
                                     >
                                         Engine type
                                     </label>
-                                    <select onChange={e => setCarEngineType(e.target.value)}
+                                    <select value={carEngineType} onChange={e => setCarEngineType(e.target.value)}
                                         class="form-select appearance-noneblock w-full px-3 py-1.5 text-base font-normal text-gray-700
                                          bg-white bg-clip-padding bg-no-repeat
                                          border border-solid border-gray-300
@@ -262,10 +304,10 @@ export default function CardSettings({ auth }) {
                                          m-0
                                         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                         aria-label="select-engine-type">
-                                        <option value="diesel">Diesel</option>
-                                        <option value="bensin">Bensin</option>
-                                        <option value="electric">Electric</option>
-                                        <option value="hybrid">Hybrid</option>
+                                        <option value="Diesel">Diesel</option>
+                                        <option value="Bensin">Bensin</option>
+                                        <option value="Electric">Electric</option>
+                                        <option value="Hybrid">Hybrid</option>
                                     </select>
                                 </div>
                             </div>
@@ -278,6 +320,7 @@ export default function CardSettings({ auth }) {
 
                                     </label>
                                     <input
+                                    value={carPrice}
                                         required
                                         type="number"
                                         min="0.00"
@@ -299,11 +342,11 @@ export default function CardSettings({ auth }) {
 
                                     </label>
                                     <input
+                                    value={carKilometers}
                                         required
                                         type="number"
-                                        min="0.00"
-                                        step="0.01"
-
+                                        min="1"
+                                        step="1"
                                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                         placeholder="Type the kilometers here"
 
@@ -319,7 +362,7 @@ export default function CardSettings({ auth }) {
                                     {images.map((item, key) =>
                                         <div className="mt-5 mb-5" style={{ width: "200px", height: "200px" }} >
                                             <a href="#" onClick={handleImageOnClick}>
-                                                <img src={item} class="h-48 w-96 mr-5 mb-1" style={{ width: "100%", height: "85%" }}></img>
+                                                <img src={isUpdate ? process.env.NEXT_PUBLIC_STATIC_FILES_URL +carData.carPhotosPath + '/' + item : item} class="h-48 w-96 mr-5 mb-1" style={{ width: "100%", height: "85%" }}></img>
                                             </a>
                                             <button class="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-xs px-4 py-2 
                                             rounded shadow hover:shadow-md outline-none 
@@ -328,8 +371,10 @@ export default function CardSettings({ auth }) {
                                             >
                                                 <i class="fa-solid fa-x"></i> Delete
                                             </button>
+
                                             <button class={`font-bold ${uploadImages[key] === selectedImage ? 'bg-blueGray-800 text-white black active:bg-blueGray-800' : 'bg-blueGray-200 text-gray black active:bg-blueGray-800'}  uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150`} type="button"
                                             value={key} onClick={handleSelectedImageClick}
+                                           
                                             >
                                                 <i class="fa-solid fa-x"></i> Set as main
                                             </button>
@@ -350,7 +395,7 @@ export default function CardSettings({ auth }) {
                                         class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border
                                          border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none 
                                          dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                        type="file" multiple required></input>
+                                        type="file" multiple {...isUpdate ? '' : 'required'} ></input>
                                 </div>
                             </div>
                         </div>
@@ -370,6 +415,7 @@ export default function CardSettings({ auth }) {
                                         Car description
                                     </label>
                                     <textarea
+                                        value={carDescription}
                                         required
                                         type="text"
                                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
@@ -389,7 +435,7 @@ export default function CardSettings({ auth }) {
                                     className="content-between bg-lightBlue-500 active:bg-lightBlue-700 hover:shadow-lg text-white font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                                     type="submit    "
                                 >
-                                    Add new car
+                                 {isUpdate ? 'Save changes' : 'Add new car'} 
                                 </button></div>
                             <div class="flex px-2 "></div>
 

@@ -6,6 +6,7 @@ import CarPreviewDropdown from "components/Dropdowns/CarPreviewDropdown";
 import ApiService from "auth/service/ApiService";
 import Alert from "components/Alerts/Alert";
 import { CircularProgress, Link } from "@mui/material";
+import router from "next/router";
 
 export default function CarsTable({ color }) {
   const [cars, setCars] = useState()
@@ -201,7 +202,7 @@ export default function CarsTable({ color }) {
                     </div>
                   </td>
                   <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-                    <CarPreviewDropdown onDeleteClick={onDeleteClick} />
+                    <CarPreviewDropdown onDeleteClick={onDeleteClick} carId={car.atelierCarID} />
                   </td>
                 </tr>
               )}

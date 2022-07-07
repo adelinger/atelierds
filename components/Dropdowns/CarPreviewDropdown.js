@@ -2,9 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import { createPopper } from "@popperjs/core";
 import listenForOutsideClicks from "utils/listen-for-outside-clicks";
 import ConfirmDialog from "components/Alerts/ConfirmDialog";
+import { Link } from "@mui/material";
 
 
-function CarPreviewDropdown({onDeleteClick}) {
+function CarPreviewDropdown({onDeleteClick, carId}) {
   
   const popoverDropdownRef = React.createRef();
   const btnRef = useRef(null);
@@ -32,6 +33,7 @@ function CarPreviewDropdown({onDeleteClick}) {
    onDeleteClick(selectedItem);
   }
 
+
   useEffect(listenForOutsideClicks(listening, setListening, btnRef, setIsOpen));
 
 
@@ -58,15 +60,16 @@ function CarPreviewDropdown({onDeleteClick}) {
           "bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
         }
       >
+        <Link href={`update/${encodeURIComponent(carId)}`} style={{ textDecoration: 'none' }}>
         <a
-          href="#"
           className={
             "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
           }
-          onClick={(e) => e.preventDefault()}
+         
         >
           Update
         </a>
+        </Link>
         <a
           href="#"
           className={

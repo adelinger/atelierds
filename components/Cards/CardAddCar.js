@@ -2,15 +2,16 @@ import ApiService from "auth/service/ApiService";
 import React, { useEffect, useState } from "react";
 import { CircularProgress } from "@mui/material";
 import Alert from "components/Alerts/Alert";
-import { maxHeight } from "tailwindcss/defaultTheme";
 import { uploadeImages, addNewCar } from "lib/apiCalls";
+import { useRouter } from 'next/router'
 
 export default function CardSettings({ auth, carData }) {
     const { user } = auth;
 
-    const [images, setImages] = useState([]);
-    const [uploadImages, setUploadImages] = useState(carData?.listOfImages ?? []);
+    const [images, setImages] = useState(carData?.listOfImages ?? []);
+    const [uploadImages, setUploadImages] = useState([]);
     const [selectedImage, setSelectedImage] = useState(carData?.carProfilePhotoPath);
+    const [imageKey, setImageKey] = useState(Math.random());
     
     const [alertMessage, setAlertMessage] = useState('Error. Something went wrong.');
 
@@ -56,7 +57,7 @@ export default function CardSettings({ auth, carData }) {
         "carProfilePhotoPath": selectedImage ?? '',
         "carPhotosPath": carData?.carPhotosPath ?? '',
         "carKilometers": parseInt(carKilometers),
-        "atelierCarID" : carData?.atelierCarID ?? null
+        "atelierCarID" : carData?.atelierCarID ?? 0
     }
 
     const api = new ApiService();
@@ -67,12 +68,29 @@ export default function CardSettings({ auth, carData }) {
         setShowLoader(true);
         setShowAlert(false);
 
-        //const upload = await uploadToServer();
+        //when adding new car, uploading at least one picture is mandatory
+        if(!isUpdate && uploadImages.length === 0){
+            handleApiResponse(false, 'You have to upload at least one picture.');
+            return;
+        }
 
-        // if(!upload){
-        //     handleApiResponse(false, 'Your images are not uploaded');
-        //     return;
-        // }
+        //in cases of update, user deletes all the pictures, uploadImages will be 0. Check total 
+        //amount of images for this car, if zero, throw error
+        if(images.length === 0){
+            handleApiResponse(false, 'You have to upload at least one picture.');
+            return;
+        }
+
+        if(uploadImages.length > 0){
+            const upload = await uploadToServer();
+
+            if(!upload){
+                handleApiResponse(false, 'Your images are not uploaded');
+                return;
+            }
+        }   
+
+       
 
         if(isUpdate){
             api
@@ -88,6 +106,7 @@ export default function CardSettings({ auth, carData }) {
             .addNewCar(carObject)
             .then(data => {
                 handleApiResponse(true, 'You added car successfuly.');
+                router.push('/admin/dashboard')
             })
             .catch((error) => {
                 handleApiResponse(false);
@@ -107,33 +126,44 @@ export default function CardSettings({ auth, carData }) {
 
     const uploadToClient = (event) => {
         if (event.target.files && event.target.files[0]) {
-            let files = [];
-            let uploadFiles = [];
             for (let file of event.target.files) {
-                files.push(URL.createObjectURL(file));
-                uploadFiles.push(file);
+
+                let url = (URL.createObjectURL(file));
+                let index = images.findIndex(x => x==url)
+                index === -1 ? images.push(url) : null
+
+                index = -1; 
+                if(uploadImages.length > 0){
+                    index = uploadImages.findIndex(x => x.name==file.name)
+                }
+                (index === -1 && URL.createObjectURL(file).includes('blob')) ? uploadImages.push(file) : null
             }
-            setImages(files);
-            setUploadImages(uploadFiles);
-            setSelectedImage(uploadFiles[0].name)
+            if(images.length ===1 && uploadImages.length === 1){
+                setSelectedImage(uploadImages[0].name);
+            }
+
+            setImageKey(Math.random())
         }
     };
 
-    const uploadToServer = async () => {
-      
-        if(images.length === 0){
-            return false; 
+    const uploadToServer = async () => {   
+        if(uploadImages.length === 0){
+            handleApiResponse(false, 'You have to upload at least one image.')
         }
         const body = new FormData();
         let timestamp = new Date().getTime();
-        carObject.carPhotosPath = carMake + "_" + carModel + "_"+ timestamp;
+        if(!isUpdate){
+            carObject.carPhotosPath = carMake + "_" + carModel + "_"+ timestamp;
+        }
+        
         var filesLength = uploadImages.length;
         for (var i = 0; i < filesLength; i++) {
             body.append("uploadedImages", uploadImages[i]);
         }
+
         body.append("folderName", carObject.carPhotosPath);
-        carObject.carProfilePhotoPath = selectedImage;
        
+        carObject.carProfilePhotoPath = selectedImage;
 
        try {
         const upload = await uploadeImages(body)
@@ -153,10 +183,15 @@ export default function CardSettings({ auth, carData }) {
     const handleImageDeleteClick = (event) => {
         event.preventDefault();
 
-        if(isUpdate){
+        if(images.length === 1){
+            handleApiResponse(false, "You can't delete last photo.");
+            return; 
+        }
+
+        if(isUpdate && !images[event.target.value].includes('blob') ){
             setShowLoader(true);
          api
-      .deleteFile(carData.carPhotosPath + '/' + uploadImages[event.target.value])
+      .deleteFile(carData.carPhotosPath + '/' + images[event.target.value])
       .then(response => handleApiResponse(true, 'Successfully deleted image.'))
       .catch((error) => {
         handleApiResponse(false);
@@ -166,19 +201,15 @@ export default function CardSettings({ auth, carData }) {
         setImages(images.filter(item => item !== images[event.target.value]));
         setUploadImages(uploadImages.filter(item => item !== uploadImages[event.target.value]))
         if(selectedImage===uploadImages[event.target.value]){
-            setSelectedImage(uploadImages[1].name);
+            setSelectedImage(uploadImages[0].name);
         }
        
     }
     
     const handleSelectedImageClick = (event) => {
-        let image = uploadImages[event.target.value]
+        let imageName = event.target.value;
 
-        if(isUpdate){
-            setSelectedImage(image);
-        }else{
-            setSelectedImage(image.name);
-        } 
+        setSelectedImage(imageName);
     }
 
     return (
@@ -359,10 +390,11 @@ export default function CardSettings({ auth, carData }) {
                         <div className="ml-4">
                             <div className="container">
                                 <div class="grid grid-cols-1 md:grid-cols-6 gap-6">
-                                    {images.map((item, key) =>
+                                    {images.map((item, key) =>  
                                         <div className="mt-5 mb-5" style={{ width: "200px", height: "200px" }} >
                                             <a href="#" onClick={handleImageOnClick}>
-                                                <img src={isUpdate ? process.env.NEXT_PUBLIC_STATIC_FILES_URL +carData.carPhotosPath + '/' + item : item} class="h-48 w-96 mr-5 mb-1" style={{ width: "100%", height: "85%" }}></img>
+                                                <img src={(isUpdate && !item.includes('blob')) ? process.env.NEXT_PUBLIC_STATIC_FILES_URL +carData.carPhotosPath + '/' + item : item} 
+                                                class="h-48 w-96 mr-5 mb-1" style={{ width: "100%", height: "85%" }}></img>
                                             </a>
                                             <button class="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-xs px-4 py-2 
                                             rounded shadow hover:shadow-md outline-none 
@@ -371,9 +403,10 @@ export default function CardSettings({ auth, carData }) {
                                             >
                                                 <i class="fa-solid fa-x"></i> Delete
                                             </button>
-
-                                            <button class={`font-bold ${uploadImages[key] === selectedImage ? 'bg-blueGray-800 text-white black active:bg-blueGray-800' : 'bg-blueGray-200 text-gray black active:bg-blueGray-800'}  uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150`} type="button"
-                                            value={key} onClick={handleSelectedImageClick}
+                                            {/* Unexplainable disaster.  */}
+                                            <button class={`font-bold ${(images[key] === selectedImage || (key > images.length-uploadImages.length && uploadImages[(images.length-uploadImages.length)-1]?.name === selectedImage)) 
+                                            ? 'bg-blueGray-800 text-white black active:bg-blueGray-800' : 'bg-blueGray-200 text-gray black active:bg-blueGray-800'}  uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150`} type="button"
+                                            value={images[key].includes('blob') ? uploadImages[uploadImages.length - (images.length - key)-1]?.name : images[key]} key={imageKey} onClick={handleSelectedImageClick}
                                            
                                             >
                                                 <i class="fa-solid fa-x"></i> Set as main

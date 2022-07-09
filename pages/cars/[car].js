@@ -96,19 +96,18 @@ export async function getStaticProps({ params, locale }) {
 }
 
 
-export async function getStaticPaths() {
+
+export async function getStaticPaths({ locales }) {
   const cars = await loadCars();
 
   // generate the paths
-  const paths = cars.map(car => ({
-    params: { car: car.atelierCarID.toString() }
-  })
-  );
-
-  return {
-    paths,
-    fallback: true,
-  }
+  const paths = cars.map((car) => locales.map((locale) => ({
+    params: { car: car.atelierCarID.toString() },
+    locale:locale
+  })))
+  .flat() // Flatten array to avoid nested arrays
+  
+  return { paths, fallback: true }
 
 }
 

@@ -42,7 +42,6 @@ export default function CarsTable({ color }) {
     setShowLoader(true);
     api
       .deleteCar(id)
-      .then(response => console.log(response))
       .then(data => {
        handleApiResponse(true);
        fetchCars();
@@ -55,6 +54,21 @@ export default function CarsTable({ color }) {
   useEffect(() => {
     fetchCars();
   }, [])
+
+  function colorDot(car) {
+   
+   if(car.atelierCarStatus.carStatus === 'Available'){
+    return <i className='fas fa-circle mr-2 text-blue-600'>Available</i>
+   }
+   if(car.atelierCarStatus.carStatus === 'Reserved'){
+    return <i className='fas fa-circle mr-2 text-orange-500'>Reservered</i>
+   }
+   if(car.atelierCarStatus.carStatus === 'Sold'){
+    return <i className='fas fa-circle mr-2 text-gray-500'>Sold</i>
+   }
+
+    return <i className='fas fa-circle mr-2 text-blue-600'>Available</i>
+  }
 
 
   if (!cars) {
@@ -188,7 +202,7 @@ export default function CarsTable({ color }) {
                     {car.carPrice}
                   </td>
                   <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    <i className={car.atelierCarStatus.carStatus === 'Available' ? 'fas fa-circle mr-2 text-blue-600' : 'fas fa-circle mr-2 text-orange-500'}></i> {car.atelierCarStatus.carStatus}
+                    {colorDot(car)}
                   </td>
                   <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                     <div className="flex">
@@ -202,7 +216,7 @@ export default function CarsTable({ color }) {
                     </div>
                   </td>
                   <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-                    <CarPreviewDropdown onDeleteClick={onDeleteClick} carId={car.atelierCarID} />
+                    <CarPreviewDropdown onDeleteClick={onDeleteClick} carId={car.atelierCarID} carStatus={car.atelierCarStatus.carStatus} />
                   </td>
                 </tr>
               )}

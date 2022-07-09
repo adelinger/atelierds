@@ -3,10 +3,11 @@ import React, { useEffect, useState } from "react";
 import { CircularProgress } from "@mui/material";
 import Alert from "components/Alerts/Alert";
 import { uploadeImages, addNewCar } from "lib/apiCalls";
-import { useRouter } from 'next/router'
+import  { useRouter } from 'next/router'
 
 export default function CardSettings({ auth, carData }) {
     const { user } = auth;
+    const router = useRouter()
 
     const [images, setImages] = useState(carData?.listOfImages ?? []);
     const [uploadImages, setUploadImages] = useState([]);
@@ -27,6 +28,7 @@ export default function CardSettings({ auth, carData }) {
     const [showAlert, setShowAlert] = useState(false);
     const [showloader, setShowLoader] = useState(false);
     const [carKilometers, setCarkilometers] = useState(carData?.carKilometers);
+    const [carStatus, setCarStatus] = useState(carData?.atelierCarStatus?.atelierCarStatusID ?? 1)
 
     const [isUpdate, setIsUpdate] = useState(false);
 
@@ -43,7 +45,7 @@ export default function CardSettings({ auth, carData }) {
 
     const carObject = {
         "atelierCarStatus": {
-            "atelierCarStatusID": 1
+            "atelierCarStatusID": carStatus
         },
         "carModel": carModel,
         "carMake": carMake,
@@ -388,6 +390,32 @@ export default function CardSettings({ auth, carData }) {
                         </div>
 
                         <div className="ml-4">
+                        
+                            <div>
+                                <div>
+                                <label
+                                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                        htmlFor="text"
+                                    >Car status</label>
+                                    <select value={carStatus} onChange={e => setCarStatus(e.target.value)}
+                                        class="form-select appearance-noneblock w-full px-3 py-1.5 text-base font-normal text-gray-700
+                                         bg-white bg-clip-padding bg-no-repeat
+                                         border border-solid border-gray-300
+                                         rounded
+                                         transition
+                                         ease-in-out
+                                         m-0
+                                        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                        aria-label="select-engine-type">
+                                        <option value="1">Available</option>
+                                        <option value="2">Sold</option>
+                                        <option value="3">Reserved</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="ml-4 mt-5">
                             <div className="container">
                                 <div class="grid grid-cols-1 md:grid-cols-6 gap-6">
                                     {images.map((item, key) =>  

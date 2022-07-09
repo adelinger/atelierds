@@ -5,7 +5,7 @@ import ConfirmDialog from "components/Alerts/ConfirmDialog";
 import { Link } from "@mui/material";
 
 
-function CarPreviewDropdown({onDeleteClick, carId}) {
+function CarPreviewDropdown({onDeleteClick, carId, carStatus}) {
   
   const popoverDropdownRef = React.createRef();
   const btnRef = useRef(null);
@@ -72,6 +72,7 @@ function CarPreviewDropdown({onDeleteClick, carId}) {
         </Link>
         <a
           href="#"
+          {...carStatus === 'Sold' ? 'Disabled' : ''} 
           className={
             "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
           }

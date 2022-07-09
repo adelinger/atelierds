@@ -404,9 +404,9 @@ export default function CardSettings({ auth, carData }) {
                                                 <i class="fa-solid fa-x"></i> Delete
                                             </button>
                                             {/* Unexplainable disaster.  */}
-                                            <button class={`font-bold ${(images[key] === selectedImage || (key > images.length-uploadImages.length && uploadImages[(images.length-uploadImages.length)-1]?.name === selectedImage)) 
+                                            <button class={`font-bold ${(images[key] === selectedImage || (key >= images.length-uploadImages.length && uploadImages[(uploadImages.length-(images.length-key))]?.name === selectedImage)) 
                                             ? 'bg-blueGray-800 text-white black active:bg-blueGray-800' : 'bg-blueGray-200 text-gray black active:bg-blueGray-800'}  uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150`} type="button"
-                                            value={images[key].includes('blob') ? uploadImages[uploadImages.length - (images.length - key)-1]?.name : images[key]} key={imageKey} onClick={handleSelectedImageClick}
+                                            value={images[key].includes('blob') ? uploadImages[uploadImages.length - (images.length - key)]?.name : images[key]} key={imageKey} onClick={handleSelectedImageClick}
                                            
                                             >
                                                 <i class="fa-solid fa-x"></i> Set as main

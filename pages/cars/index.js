@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 
@@ -7,9 +7,12 @@ import { useTranslation } from "next-i18next";
 import Navbar from "components/Navbars/IndexNavbar";
 import Footer from "components/Footers/Footer.js";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { getSingleCar, loadCars } from "lib/apiCalls";
+import ItemListCard from "components/Cards/ItemListCard";
+
+export default function carsForSale({cars, serverUrl}) {
 
 
-export default function carsForSale() {
   const { t } = useTranslation('index');
   return (
     <>
@@ -25,7 +28,7 @@ export default function carsForSale() {
           >
             <span
               id="blackOverlay"
-              className="w-full h-full absolute opacity-75 bg-black"
+              className="w-full h-full absolute opacity-50 bg-black"
             ></span>
           </div>
           <div className="container relative mx-auto">
@@ -40,8 +43,24 @@ export default function carsForSale() {
                   </p>
                 </div>
               </div>
+              <div className="container mx-auto ">
+                
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-3">
+           {cars.map (car => 
+                   <div className="mt-5 mb-5" >
+                     <ItemListCard car={car} serverUrl={serverUrl}></ItemListCard>
+                     </div>
+                   
+                 
+                  )}
+               
+            </div>
+
+              </div>
+              
             </div>
           </div>
+        
           </div>
 
       </main>
@@ -50,8 +69,26 @@ export default function carsForSale() {
   );
 }
 
-export const getStaticProps = async ({ locale }) => ({
-  props: {
-    ...await serverSideTranslations(locale, ['common', 'index']),
-  },
-})
+
+export async function getStaticProps({locale}){
+  const cars =  await loadCars();
+  const { STATIC_FILES_URL } = process.env;
+  return {
+      props: {
+        cars: cars,
+        serverUrl: STATIC_FILES_URL,
+        ...await serverSideTranslations(locale, ['common', 'index']),
+      }
+  }
+}
+
+
+export async function getCarData(id) {
+    const car = await getSingleCar(id);
+
+  // Combine the data with the id
+  return {
+    id,
+    ...car,
+  };
+}

@@ -40,18 +40,13 @@ export default function Landing() {
                     Welcome to AtelierDS. We are Citroen DS enthusiasts who will make your DS look like it just came out of factory.
                     Along with detailng and restoration, we offer already finished Citroen DS cars for sale.
                   </p>
-                </div>          
+
+                  <Link href="cars">
+                  <a  className="mt-5 inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">{t('Check our cars')}</a>                 
+                       </Link>
+
+                </div>
               </div>
-            </div>
-            <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
-              <p className="mt-4 text-lg text-blueGray-200"></p>
-              {/* <a
-                        href="https://github.com/creativetimofficial/notus-nextjs?ref=nnjs-index"
-                        target="_blank"
-                        className="sm:ml-1 text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-teal-500 active:bg-teal-600 uppercase text-sm shadow hover:shadow-lg"
-                      >
-                        <span>Buy your Citroen</span>
-                      </a> */}
             </div>
           </div>
           <div
@@ -93,7 +88,7 @@ export default function Landing() {
                       <a
                         href="https://github.com/creativetimofficial/notus-nextjs?ref=nnjs-index"
                         target="_blank"
-                        className="github-star sm:ml-1 text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blueGray-700 active:bg-blueGray-600 uppercase text-sm shadow hover:shadow-lg"
+                        className="inline-flex text-white bg-indigo-500 border-0 py-1 px-3 focus:outline-none hover:bg-indigo-600 rounded text-lg"
                       >
                         <span>See more</span>
                       </a>
@@ -116,8 +111,8 @@ export default function Landing() {
                     <a
                       href="https://github.com/creativetimofficial/notus-nextjs?ref=nnjs-index"
                       target="_blank"
-                      className="github-star sm:ml-1 text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blueGray-700 active:bg-blueGray-600 uppercase text-sm shadow hover:shadow-lg"
-                    >
+                      className="inline-flex text-white bg-indigo-500 border-0 py-1 px-3 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+                                           >
                       <span>See more</span>
                     </a>
                   </div>
@@ -138,8 +133,8 @@ export default function Landing() {
                     <a
                       href="https://github.com/creativetimofficial/notus-nextjs?ref=nnjs-index"
                       target="_blank"
-                      className="github-star sm:ml-1 text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blueGray-700 active:bg-blueGray-600 uppercase text-sm shadow hover:shadow-lg"
-                    >
+                      className="inline-flex text-white bg-indigo-500 border-0 py-1 px-3 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+                                           >
                       <span>See more</span>
                     </a>
                   </div>
@@ -177,7 +172,7 @@ export default function Landing() {
                 <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-blueGray-700">
                   <img
                     alt="..."
-                    src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80"
+                    src="https://scontent-sof1-1.xx.fbcdn.net/v/t1.6435-9/101025174_2732516400311760_1171002582483599360_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=730e14&_nc_ohc=BNmXGkM0FeMAX9EHgyD&_nc_ht=scontent-sof1-1.xx&oh=00_AT_qbnIX33GvBHIfYgwk3ZnLkCtY3BBkwtjbWAYLHAY93g&oe=62E75DD2"
                     className="w-full align-middle rounded-t-lg"
                   />
                   <blockquote className="relative p-8 mb-4">
@@ -193,12 +188,11 @@ export default function Landing() {
                       ></polygon>
                     </svg>
                     <h4 className="text-xl font-bold text-white">
-                      Top Notch Services
+                      Quality service all-round
                     </h4>
                     <p className="text-md font-light mt-2 text-white">
-                      The Arctic Ocean freezes every winter and much of the
-                      sea-ice then thaws every summer, and that process will
-                      continue whatever happens.
+                      Atelierds provides quality service on all aspects of car restoration. With our partners in Croatia for bodywork restoration, we offer complete restoration of Citroen DS.
+
                     </p>
                   </blockquote>
                 </div>

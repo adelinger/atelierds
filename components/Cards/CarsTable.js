@@ -1,19 +1,96 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 // components
-
-import TableDropdown from "components/Dropdowns/TableDropdown.js";
+import CarPreviewDropdown from "components/Dropdowns/CarPreviewDropdown";
+import ApiService from "auth/service/ApiService";
+import Alert from "components/Alerts/Alert";
+import { CircularProgress, Link } from "@mui/material";
+import router from "next/router";
 
 export default function CarsTable({ color }) {
+  const [cars, setCars] = useState()
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
+  const [showloader, setShowLoader] = useState(false);
+
+
+  function handleApiResponse(Success) {
+    window.scrollTo(0, 0)
+    setIsSuccess(Success);
+    setShowAlert(true);
+    setShowLoader(false);
+  }
+
+
+  const api = new ApiService();
+  const fetchCars = () => {
+    setShowLoader(true);
+    api
+      .getCars()
+      .then(response => response.data)
+      .then(data => {
+        setCars(data)
+        setShowLoader(false);
+      })
+      .catch((error) => {
+        setShowLoader(false);
+      });
+  };
+
+  function onDeleteClick(id) {
+    setShowLoader(true);
+    api
+      .deleteCar(id)
+      .then(data => {
+       handleApiResponse(true);
+       fetchCars();
+      })
+      .catch((error) => {
+        handleApiResponse(false);
+      });
+  }
+
+  useEffect(() => {
+    fetchCars();
+  }, [])
+
+  function colorDot(car) {
+   
+   if(car.atelierCarStatus.carStatus === 'Available'){
+    return <i className='fas fa-circle mr-2 text-blue-600'>Available</i>
+   }
+   if(car.atelierCarStatus.carStatus === 'Reserved'){
+    return <i className='fas fa-circle mr-2 text-orange-500'>Reservered</i>
+   }
+   if(car.atelierCarStatus.carStatus === 'Sold'){
+    return <i className='fas fa-circle mr-2 text-gray-500'>Sold</i>
+   }
+
+    return <i className='fas fa-circle mr-2 text-blue-600'>Available</i>
+  }
+
+
+  if (!cars) {
+    return <p>No List to show</p>
+  }
+
   return (
+
     <>
+    
       <div
         className={
           "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded " +
           (color === "light" ? "bg-white" : "bg-blueGray-700 text-white")
         }
       >
+        {showAlert &&
+          <Alert color={isSuccess ? 'emerald' : 'red'}></Alert>
+        }
+
+
+
         <div className="rounded-t mb-0 px-4 py-3 border-0">
           <div className="flex flex-wrap items-center">
             <div className="relative w-full px-4 max-w-full flex-grow flex-1">
@@ -25,11 +102,18 @@ export default function CarsTable({ color }) {
               >
                 Added Cars overview
               </h3>
+              {showloader &&
+                <div className=" mx-auto max-w-sm text-center relative">
+                  <CircularProgress />
+
+                </div>
+              }
+
             </div>
           </div>
         </div>
         <div className="block w-full overflow-x-auto">
-          {/* Projects table */}
+
           <table className="items-center w-full bg-transparent border-collapse">
             <thead>
               <tr>
@@ -41,7 +125,7 @@ export default function CarsTable({ color }) {
                       : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
                   }
                 >
-                  Cars
+                  Car
                 </th>
                 <th
                   className={
@@ -71,7 +155,7 @@ export default function CarsTable({ color }) {
                       : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
                   }
                 >
-                  Users
+                  Added by user
                 </th>
                 <th
                   className={
@@ -81,7 +165,7 @@ export default function CarsTable({ color }) {
                       : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
                   }
                 >
-                  Completion
+                  Views
                 </th>
                 <th
                   className={
@@ -94,136 +178,53 @@ export default function CarsTable({ color }) {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
-                  <img
-                    src="/img/image_ds.jpg"
-                    className="h-12 w-12 bg-white rounded-full border"
-                    alt="..."
-                  ></img>{" "}
-                  <span
-                    className={
-                      "ml-3 font-bold " +
-                      +(color === "light" ? "text-blueGray-600" : "text-white")
-                    }
-                  >
-                    Citroen DS
-                  </span>
-                </th>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  $2,500 USD
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <i className="fas fa-circle text-orange-500 mr-2"></i> pending
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <div className="flex">
+              {cars.map(car =>
+                <tr data={car.atelierCarID}>
+                  <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
+                    <Link href={`update/${encodeURIComponent(car.atelierCarID)}`}>
                     <img
-                      src="/img/team-1-800x800.jpg"
+                      src={process.env.NEXT_PUBLIC_STATIC_FILES_URL + car.carPhotosPath +'/' + car.carProfilePhotoPath}
+                      className="h-12 w-12 bg-white rounded-full border"
                       alt="..."
-                      className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow"
-                    ></img>
-                    <img
-                      src="/img/team-2-800x800.jpg"
-                      alt="..."
-                      className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
-                    ></img>
-                    <img
-                      src="/img/team-3-800x800.jpg"
-                      alt="..."
-                      className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
-                    ></img>
-                    <img
-                      src="/img/team-4-470x470.png"
-                      alt="..."
-                      className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
-                    ></img>
-                  </div>
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <div className="flex items-center">
-                    <span className="mr-2">60%</span>
-                    <div className="relative w-full">
-                      <div className="overflow-hidden h-2 text-xs flex rounded bg-red-200">
-                        <div
-                          style={{ width: "60%" }}
-                          className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
-                        ></div>
-                      </div>
+                    ></img>{" "}
+                    </Link>
+                  
+                    <Link href={`update/${encodeURIComponent(car.atelierCarID)}`}>
+                      <a className={
+                        "ml-3 font-bold " +
+                        +(color === "light" ? "text-blueGray-600" : "text-white")
+                      }></a>
+                    
+                      {car.carMake + ' ' + car.carModel}
+                    </Link>
+                  </th>
+                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                    {car.carPrice}
+                  </td>
+                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                    {colorDot(car)}
+                  </td>
+                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                    <div className="flex">
+                    <i className="fas fa-user text-bluegray-500 mr-2"></i> {car.addedByUser}
+                   
                     </div>
-                  </div>
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-                  <TableDropdown />
-                </td>
-              </tr>
-              <tr>
-                <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
-                  <img
-                    src="/img/ds_front_picture.png"
-                    className="h-12 w-12 bg-white rounded-full border"
-                    alt="..."
-                  ></img>{" "}
-                  <span
-                    className={
-                      "ml-3 font-bold " +
-                      +(color === "light" ? "text-blueGray-600" : "text-white")
-                    }
-                  >
-                    Citroen DS
-                  </span>
-                </th>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  $2,500 USD
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <i className="fas fa-circle text-orange-500 mr-2"></i> pending
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <div className="flex">
-                    <img
-                      src="/img/team-1-800x800.jpg"
-                      alt="..."
-                      className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow"
-                    ></img>
-                    <img
-                      src="/img/team-2-800x800.jpg"
-                      alt="..."
-                      className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
-                    ></img>
-                    <img
-                      src="/img/team-3-800x800.jpg"
-                      alt="..."
-                      className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
-                    ></img>
-                    <img
-                      src="/img/team-4-470x470.png"
-                      alt="..."
-                      className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
-                    ></img>
-                  </div>
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <div className="flex items-center">
-                    <span className="mr-2">60%</span>
-                    <div className="relative w-full">
-                      <div className="overflow-hidden h-2 text-xs flex rounded bg-red-200">
-                        <div
-                          style={{ width: "60%" }}
-                          className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
-                        ></div>
-                      </div>
+                  </td>
+                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                    <div className="flex items-center">
+                      <i className="fas fa-table text-bluegray-500 mr-2"></i> 500
                     </div>
-                  </div>
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-                  <TableDropdown />
-                </td>
-              </tr>
+                  </td>
+                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
+                    <CarPreviewDropdown onDeleteClick={onDeleteClick} carId={car.atelierCarID} carStatus={car.atelierCarStatus.carStatus} />
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>
       </div>
+
     </>
   );
 }

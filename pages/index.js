@@ -32,17 +32,17 @@ export default function Landing() {
           <div className="container relative mx-auto">
             <div className="items-center flex flex-wrap">
               <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
-                <div className="pr-12">
+                <div>
                   <h1 className="text-white font-semibold text-5xl">
                     {t('AtelierDS')}
                   </h1>
-                  <p className="mt-4 text-lg text-blueGray-200">
+                  <p className="mt-4 text-lg text-blueGray-200 text-center">
                     Welcome to AtelierDS. We are Citroen DS enthusiasts who will make your DS look like it just came out of factory.
                     Along with detailng and restoration, we offer already finished Citroen DS cars for sale.
                   </p>
 
                   <Link href="cars">
-                  <a  className="mt-5 inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">{t('Check our cars')}</a>                 
+                  <a  className="text-center mt-5 inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">{t('Check our cars')}</a>                 
                        </Link>
 
                 </div>
@@ -81,18 +81,18 @@ export default function Landing() {
                     </div>
                     <h6 className="text-xl font-semibold">Interior</h6>
                     <p className="mt-2 mb-4 text-blueGray-500">
-                      Divide details about your product or agency work into
-                      parts.
+                      We offer complete interior restoration with the top quality.
                     </p>
-                    <div className="sm:block flex flex-col">
+                    
+                      <Link href="/interior">
                       <a
-                        href="https://github.com/creativetimofficial/notus-nextjs?ref=nnjs-index"
-                        target="_blank"
+                        href="/interior"
                         className="inline-flex text-white bg-indigo-500 border-0 py-1 px-3 focus:outline-none hover:bg-indigo-600 rounded text-lg"
                       >
                         <span>See more</span>
                       </a>
-                    </div>
+                      </Link>
+                    
                   </div>
                 </div>
               </div>
@@ -105,16 +105,17 @@ export default function Landing() {
                     </div>
                     <h6 className="text-xl font-semibold">Chrome parts</h6>
                     <p className="mt-2 mb-4 text-blueGray-500">
-                      Keep you user engaged by providing meaningful information.
-                      Remember that by this time, the user is curious.
+                      If your chrome does not look nice and shiny as it used to be... well, we will bring it to it's original shiny condition!
                     </p>
+                    <Link href="chrome">
+
                     <a
-                      href="https://github.com/creativetimofficial/notus-nextjs?ref=nnjs-index"
-                      target="_blank"
+                      href="/chrome"
                       className="inline-flex text-white bg-indigo-500 border-0 py-1 px-3 focus:outline-none hover:bg-indigo-600 rounded text-lg"
-                                           >
+                            >
                       <span>See more</span>
                     </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -127,16 +128,16 @@ export default function Landing() {
                     </div>
                     <h6 className="text-xl font-semibold">Body restoration</h6>
                     <p className="mt-2 mb-4 text-blueGray-500">
-                      Write a few lines about each one. A paragraph describing a
-                      feature will be enough. Keep you user engaged!
+                      To wrap it all up, we provide complete body restoration in Croatia. 
                     </p>
+                    <Link href="bodywork">
                     <a
-                      href="https://github.com/creativetimofficial/notus-nextjs?ref=nnjs-index"
-                      target="_blank"
+                     href="bodywork"
                       className="inline-flex text-white bg-indigo-500 border-0 py-1 px-3 focus:outline-none hover:bg-indigo-600 rounded text-lg"
                                            >
                       <span>See more</span>
                     </a>
+                    </Link>
                   </div>
                 </div>
               </div>

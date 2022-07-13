@@ -90,9 +90,13 @@ module.exports = {
     "visited",
     "disabled",
   ],
+  corePlugins: {
+    aspectRatio: false,
+  },
   plugins: [
     require('flowbite/plugin'),
-    require("@tailwindcss/forms"),   
+    require("@tailwindcss/forms"),  
+    require('@tailwindcss/aspect-ratio'), 
     plugin(function ({ addComponents, theme }) {
       const screens = theme("screens", {});
       addComponents([

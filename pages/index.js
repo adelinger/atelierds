@@ -152,19 +152,17 @@ export default function Landing() {
                   Working with us is a pleasure
                 </h3>
                 <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
-                  Don't let your uses guess by attaching tooltips and popoves to
-                  any element. Just make sure you enable them first via
-                  JavaScript.
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                 </p>
                 <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
-                  The kit comes with three pre-built pages to help you get
-                  started faster. You can change the text and images and you're
-                  good to go. Just make sure you enable them first via
-                  JavaScript.
+                It has survived not only five centuries, but also the leap into electronic typesetting, 
+                remaining essentially unchanged. 
                 </p>
                 <Link href="/">
-                  <a href="#pablo" className="font-bold text-blueGray-700 mt-8">
-                    Check Notus NextJS!
+                  <a href="#" className="font-bold text-blueGray-700 mt-8">
+                    Check it out!
                   </a>
                 </Link>
               </div>
@@ -239,9 +237,9 @@ export default function Landing() {
                   </div>
                   <h3 className="text-3xl font-semibold">A growing company</h3>
                   <p className="mt-4 text-lg leading-relaxed text-blueGray-500">
-                    The extension comes with three pre-built pages to help you
-                    get started faster. You can change the text and images and
-                    you're good to go.
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                   Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                    when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                   </p>
                   <ul className="list-none mt-6">
                     <li className="py-2">
@@ -297,11 +295,10 @@ export default function Landing() {
           <div className="container mx-auto px-4">
             <div className="flex flex-wrap justify-center text-center mb-24">
               <div className="w-full lg:w-6/12 px-4">
-                <h2 className="text-4xl font-semibold">Here are our heroes</h2>
+                <h2 className="text-4xl font-semibold">People working on a project</h2>
                 <p className="text-lg leading-relaxed m-4 text-blueGray-500">
-                  According to the National Oceanic and Atmospheric
-                  Administration, Ted, Scambos, NSIDClead scentist, puts the
-                  potentially record maximum.
+                 It is impossible to maintain viable business without quality people, 
+                 so these are the people that stand behind AtelierDS.
                 </p>
               </div>
             </div>

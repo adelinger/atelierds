@@ -6,14 +6,14 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-export default function ConfirmDialog({showConfirm, handleConfirm}) {
+export default function ConfirmDialog({showConfirm, handleConfirm, confirmButton = 'Delete' ,message='Are you sure you want to delete this item?'}) {
 
 
   const handleClose = () => {
     handleConfirm(false, false);
   };
 
-  const handleDelete = () => {
+  const handleConfirmAnswer = () => {
     handleConfirm(false, true);
   }
   
@@ -27,17 +27,17 @@ export default function ConfirmDialog({showConfirm, handleConfirm}) {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          {"Delete item?"}
+          {"Please confirm"}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Are you sure you want to delete selected item? 
+            {message}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleDelete}>
-            Delete
+          <Button onClick={handleConfirmAnswer}>
+            {confirmButton}
           </Button>
         </DialogActions>
       </Dialog>

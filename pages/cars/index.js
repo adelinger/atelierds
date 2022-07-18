@@ -77,7 +77,7 @@ export async function getStaticProps({locale}){
       props: {
         cars: cars,
         serverUrl: STATIC_FILES_URL,
-        ...await serverSideTranslations(locale, ['common', 'index']),
+        ...await serverSideTranslations(locale, ['common', 'index', 'footer']),
       }
   }
 }

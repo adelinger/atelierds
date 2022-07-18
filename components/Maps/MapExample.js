@@ -63,12 +63,12 @@ function MapExample() {
       position: myLatlng,
       map: map,
       animation: google.maps.Animation.DROP,
-      title: "Notus NextJS!",
+      title: "Atelier DS",
     });
 
     const contentString =
-      '<div class="info-window-content"><h2>Notus NextJS</h2>' +
-      "<p>A free Admin for Tailwind CSS, React, React Hooks, and NextJS.</p></div>";
+      '<div class="info-window-content"><h2>Atelier DS</h2>' +
+      "<p></p></div>";
 
     const infowindow = new google.maps.InfoWindow({
       content: contentString,

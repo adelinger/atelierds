@@ -88,7 +88,7 @@ export async function getStaticProps({ params, locale }) {
   const { STATIC_FILES_URL } = process.env;
   return {
     props: {
-      ...await serverSideTranslations(locale, ['common', 'index']),
+      ...await serverSideTranslations(locale, ['common', 'index', 'footer']),
       carData,
       STATIC_FILES_URL,
     },

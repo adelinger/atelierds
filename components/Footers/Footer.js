@@ -1,33 +1,50 @@
 import React from "react";
+import { useTranslation } from "next-i18next";
 
 export default function Footer() {
+    const { t } = useTranslation();
   return (
     <>
      
 <footer class="p-4 bg-white sm:p-6 dark:bg-gray-800">
     <div class="md:flex md:justify-between">
         <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
-            <div>
-                <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">The office</h2>
+            <div className="mr-5">
+                <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">{t('footer:office_title')}</h2>
                 <ul class="text-gray-600 dark:text-gray-400">
                         <li><i class="fa fa-user"></i> Enzo Forgione </li>
-                        <li class="hover:underline"><i class="fa fa-map-marker"></i><a target="_blank" rel="noopener noreferrer" href="https://goo.gl/maps/kkYBJw6h1TzhvsUKA"> I-39100 Bolzano</a></li>                          
-                        <li class="hover:underline"><i class="fa fa-mobile"></i> <a href="tel:(39) 3472408435">+39/347/2408435</a> </li>
-                        <li class="hover:underline"><i class="fa fa-envelope"></i><a href="mailto:info@atelierds.net"> info@atelierds.net</a></li> 
+                        <li class="hover:underline mt-2"><i class="fa fa-map-marker"></i><a target="_blank" rel="noopener noreferrer" href="https://goo.gl/maps/kkYBJw6h1TzhvsUKA"> I-39100 Bolzano</a></li>                          
+                        <li class="hover:underline mt-2"><i class="fa fa-mobile"></i> <a href="tel:(39) 3472408435">+39/347/2408435</a> </li>
+                        <li class="hover:underline mt-2"><i class="fa fa-envelope"></i><a href="mailto:info@atelierds.net"> info@atelierds.net</a></li> 
                                      
                 </ul>
             </div>
-            <div>
-                <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
+            <div className="ml-5">
+                <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Our work</h2>
                 <ul class="text-gray-600 dark:text-gray-400">
-                    <li class="mb-4">
-                        <a href="#" class="hover:underline">Privacy Policy</a>
-                    </li>
                     <li>
-                        <a href="#" class="hover:underline">Terms &amp; Conditions</a>
+                        <a href="/interior" class="hover:underline">{t('common:interior')}</a>
+                    </li>
+                    <li class="mt-2">
+                        <a href="/chrome" class="hover:underline">{t('common:chrome')}</a>
+                    </li>
+                    <li className="mt-2">
+                        <a href="/bodywork" class="hover:underline">{t('common:bodywork')}</a>
                     </li>
                 </ul>
             </div>
+            <div className="ml-5">
+                <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">{t('footer:about_us')}</h2>
+                <ul class="text-gray-600 dark:text-gray-400">
+                    <li >
+                        <a href="/contact" class="hover:underline">{t('footer:about_us')}</a>
+                    </li>
+                    <li class="mt-2">
+                        <a href="https://autotoni.hr" target={'_blank'} class="hover:underline">{t('footer:our_partner')}</a>
+                    </li>
+                </ul>
+            </div>
+            
         </div>
         <div class="mb-6 md:mb-0">
             <a href="/" class="flex items-center">
@@ -39,7 +56,7 @@ export default function Footer() {
 
     <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"></hr>
     <div class="sm:flex sm:items-center sm:justify-between">
-        <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© {new Date().getFullYear()}{" "} <a href="https://flowbite.com/" class="hover:underline">Atelier DS</a>. All Rights Reserved.
+        <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© {new Date().getFullYear()}{" "} <a href="https://flowbite.com/" class="hover:underline"></a>{t('footer:copyright')}
         </span>
         <div class="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
             <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
@@ -59,3 +76,4 @@ export default function Footer() {
     </>
   );
 }
+

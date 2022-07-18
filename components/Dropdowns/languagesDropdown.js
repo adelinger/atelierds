@@ -35,11 +35,13 @@ const LanguagesDropdown = () => {
           dropdownPopoverShow ? closeDropdownPopover() : openDropdownPopover();
         }}
       >
-         {router.locale === 'en' && 'English'}
-        {router.locale === 'de' && 'Deutsch'}
-         {router.locale === 'fr' && 'French'}
-         {router.locale === 'it' && 'Italian'}
+         {router.locale === 'en' && ( <> <img class='md:hidden mr-2' src={'/img/flags/' + 'de' + '.svg'}  height="20px" width="20px" title="Language-flag"/> English </> )}
+         {router.locale === 'de' && ( <> <img class='md:hidden mr-2' src={'/img/flags/' + 'de' + '.svg'}  height="20px" width="20px" title="Language-flag"/> Deutsch </> )}
+         {router.locale === 'fr'&& ( <> <img class='md:hidden mr-2' src={'/img/flags/' + 'de' + '.svg'}  height="20px" width="20px" title="Language-flag"/> Franch </> )}
+         {router.locale === 'it' && ( <> <img class='md:hidden mr-2' src={'/img/flags/' + 'de' + '.svg'}  height="20px" width="20px" title="Language-flag"/> Italian </> )}
+
       </a>
+      
       <div
         ref={popoverDropdownRef}
         className={
@@ -67,15 +69,13 @@ const LanguagesDropdown = () => {
                         "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
                       }
                     >   
-                        <img src={'/img/flags/' + element + '.svg'}  height="25px" width="25px" title="Language-flag"/> 
+                        <img src={'/img/flags/' + element + '.svg'}  height="20px" width="20px" title="Language-flag"/> 
                         
                     </a>
                    
                   </button>);
 
-              }
-            
-            
+              }  
        })}
       </div>
     </>

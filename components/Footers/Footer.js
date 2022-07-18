@@ -30,7 +30,7 @@ export default function Footer() {
             </div>
         </div>
         <div class="mb-6 md:mb-0">
-            <a href="https://flowbite.com/" class="flex items-center">
+            <a href="/" class="flex items-center">
                 <img src="../../img/logo/logo.png" class="mr-3 h-8" alt="AtelierDS Logo"  style={{height:70, width:120}}></img>
                 <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"></span>
             </a>

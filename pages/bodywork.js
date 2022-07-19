@@ -2,6 +2,8 @@ import Footer from 'components/Footers/Footer';
 import Navbar from 'components/Navbars/IndexNavbar';
 import React from 'react';
 
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+
 
 export default function bodywork () {
     return (
@@ -27,3 +29,9 @@ export default function bodywork () {
         </>
     );
 }
+
+export const getStaticProps = async ({ locale }) => ({
+  props: {
+    ...await serverSideTranslations(locale, ['common', 'index', 'footer']),
+  },
+})

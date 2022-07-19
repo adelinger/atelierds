@@ -1,9 +1,9 @@
 {
-  "name": "notus-nextjs",
-  "homepage": "https://demos.creative-tim.com/notus-nextjs",
+  "name": "atelier-ds",
+  "homepage": "atelierds.net",
   "version": "1.1.0",
-  "description": "Notus NextJS - A free Tailwind CSS, NextJS and React Ui Kit and Admin by Creative Tim.",
-  "repository": "https://github.com/creativetimofficial/notus-nextjs",
+  "description": "AtelierDS - Citroen ds website",
+  "repository": "https://github.com/adelinger/atelierds",
   "license": "MIT",
   "dependencies": {
     "@emotion/react": "^11.9.0",

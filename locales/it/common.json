@@ -1,3 +1,6 @@
 {
-    "send_inquiry" : "Send an inquiry"
+    "send_inquiry" : "Send an inquiry",
+    "interior": "Interior",
+    "bodywork":"Bodywork", 
+    "chrome":"Chrome"
 }

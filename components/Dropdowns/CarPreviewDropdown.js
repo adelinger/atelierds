@@ -5,7 +5,7 @@ import ConfirmDialog from "components/Alerts/ConfirmDialog";
 import { Link } from "@mui/material";
 
 
-function CarPreviewDropdown({onDeleteClick, carId, carStatus}) {
+function CarPreviewDropdown({onDeleteClick, onStatusUpdate, carId, carStatus}) {
   
   const popoverDropdownRef = React.createRef();
   const btnRef = useRef(null);
@@ -13,6 +13,9 @@ function CarPreviewDropdown({onDeleteClick, carId, carStatus}) {
   const [isOpen, setIsOpen] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [confirmDialogMessage, setConfirmDialogMessage] = useState(null);
+  const [confirmDialogButton, setConfirmDialogButton] = useState(null);
+  const [isDelete, setIsDelete] = useState(false);
 
   const toggle = () =>{
     createPopper(btnRef.current, popoverDropdownRef.current, {
@@ -21,17 +24,26 @@ function CarPreviewDropdown({onDeleteClick, carId, carStatus}) {
     setIsOpen(!isOpen);
   } 
 
-  function handleConfirm(show, deleteItem){
+  function handleConfirm(show, confirmed){
     setShowConfirm(show);
 
-    if(deleteItem){
-      handleOnDeleteClick();
+    if(confirmed){
+      if(isDelete){
+        handleOnDeleteClick();
+      }else{
+        handleOnMarkAsSoldClick();
+      }
+      
     }
   }
 
   const handleOnDeleteClick = () => {
    onDeleteClick(selectedItem);
   }
+
+  const handleOnMarkAsSoldClick = () => {
+    onStatusUpdate(carId);
+   }
 
 
   useEffect(listenForOutsideClicks(listening, setListening, btnRef, setIsOpen));
@@ -40,7 +52,7 @@ function CarPreviewDropdown({onDeleteClick, carId, carStatus}) {
   return (
     <>
      {showConfirm&&
-          <ConfirmDialog showConfirm={showConfirm} handleConfirm={handleConfirm}></ConfirmDialog>
+          <ConfirmDialog message = {confirmDialogMessage} confirmButton={confirmDialogButton} showConfirm={showConfirm} handleConfirm={handleConfirm}></ConfirmDialog>
         }
       <a
         className="text-blueGray-500 py-1 px-3"
@@ -76,7 +88,13 @@ function CarPreviewDropdown({onDeleteClick, carId, carStatus}) {
           className={
             "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
           }
-          onClick={(e) => e.preventDefault()}
+          onClick={(e) => {
+            e.preventDefault();
+            setConfirmDialogMessage('Are you sure you want to mark this car as sold?');
+            setConfirmDialogButton('Mark as sold');
+            setIsDelete(false);
+            setShowConfirm(true);
+          }}
         >
           Mark as sold
         </a>
@@ -88,6 +106,9 @@ function CarPreviewDropdown({onDeleteClick, carId, carStatus}) {
           onClick={(e) => {
             e.preventDefault();
             setShowConfirm(true);
+            setConfirmDialogMessage('Are you sure you want to delete this car?');
+            setConfirmDialogButton('Delete');
+            setIsDelete(true)
             setSelectedItem(e.target.parentElement.parentElement.parentElement.getAttribute('data'));
           }}
         >

@@ -1,11 +1,11 @@
-import Footer from 'components/Footers/Footer';
-import Navbar from 'components/Navbars/IndexNavbar';
-import React from 'react';
+import Footer from "components/Footers/Footer";
+import Navbar from "components/Navbars/IndexNavbar";
 
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-export default function chrome () {
-    return (
+
+function contact () {
+    return ( 
         <>
         <Navbar transparent></Navbar>
         <main>
@@ -26,11 +26,13 @@ export default function chrome () {
         </main>
         <Footer></Footer>
         </>
-    );
+     );
 }
 
+export default contact;
+
 export const getStaticProps = async ({ locale }) => ({
-  props: {
-    ...await serverSideTranslations(locale, ['common', 'index', 'footer']),
-  },
-})
+    props: {
+      ...await serverSideTranslations(locale, ['common', 'index', 'footer']),
+    },
+  })

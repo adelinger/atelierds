@@ -1,9 +1,12 @@
 import Footer from 'components/Footers/Footer';
 import Navbar from 'components/Navbars/IndexNavbar';
 import React from 'react';
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 
 export default function interior() {
+    const { t } = useTranslation(['index', 'footer', 'common']);
     return (
         <>
             <Navbar transparent></Navbar>
@@ -128,3 +131,9 @@ export default function interior() {
 
     );
 }
+
+export const getStaticProps = async ({ locale }) => ({
+    props: {
+      ...await serverSideTranslations(locale, ['common', 'index', 'footer']),
+    },
+  })

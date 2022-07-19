@@ -36,4 +36,7 @@ export default class ApiService {
   deleteFile = (fileName) => {
     return this.init().delete("/DeleteFile/"+ fileName);
   };
+  updateCarStatus = (carId, newCarStatusId) => {
+    return this.init().put("/UpdateCarStatus?carId="+carId+"&newCarStatusId="+newCarStatusId);
+  };
 }

@@ -21,20 +21,18 @@ export default function Navbar(props) {
     setIsOpen(!isOpen);
   } 
 
-  useEffect(listenForOutsideClicks(listening, setListening, btnRef, setIsOpen));
+  // useEffect(listenForOutsideClicks(listening, setListening, btnRef, setIsOpen));
 
   return (
     <>
       <nav className="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg">
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
-          <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
+          <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start mt-2">
             <Link href="/">
-              <a
-                className="text-white text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
-                href="#"
-              >
-                {t('atelierDS')}
-              </a>
+            <a href="https://flowbite.com/" class="flex items-center">
+                <img src="../../img/logo/logo_white.png" class="h-8 " alt="AtelierDS Logo"  style={{height:70, width:120}}></img>
+                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"></span>
+            </a>
             </Link>
             <button
               ref={btnRef}
@@ -52,6 +50,7 @@ export default function Navbar(props) {
               (isOpen ? " block rounded shadow-lg" : " hidden")
             }
             id="example-navbar-warning"
+            
           >
             <ul className="flex flex-col lg:flex-row list-none mr-auto">
 
@@ -105,6 +104,18 @@ export default function Navbar(props) {
                     Body restoration
                   </a>
                 </Link>
+              </li>
+              <li className="flex items-center">
+                <Link href="/contact">
+                  <a
+                    href="/contact"
+                    className={
+                      "lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                    }
+                  >
+                    Contact
+                  </a>
+                </Link>
 
               </li>
             </ul>
@@ -114,22 +125,22 @@ export default function Navbar(props) {
               <li className="flex items-center">
                 <a
                   className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                  href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdemos.creative-tim.com%2Fnotus-nextjs%2F"
+                  href=""
                   target="_blank"
                 >
                   <i className="lg:text-blueGray-200 text-blueGray-400 fab fa-facebook text-lg leading-lg " />
-                  <span className="lg:hidden inline-block ml-2">Share</span>
+                  <span className="lg:hidden inline-block ml-2">Check our Facebook</span>
                 </a>
               </li>
 
               <li className="flex items-center">
                 <a
                   className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                  href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdemos.creative-tim.com%2Fnotus-nextjs%2F&text=Start%20your%20development%20with%20a%20Free%20Tailwind%20CSS%20and%20NextJS%20UI%20Kit%20and%20Admin.%20Let%20Notus%20NextJS%20amaze%20you%20with%20its%20cool%20features%20and%20build%20tools%20and%20get%20your%20project%20to%20a%20whole%20new%20level."
+                  href=""
                   target="_blank"
                 >
-                  <i className="lg:text-blueGray-200 text-blueGray-400 fab fa-twitter text-lg leading-lg " />
-                  <span className="lg:hidden inline-block ml-2">Tweet</span>
+                  <i className="lg:text-blueGray-200 text-blueGray-400 fab fa-instagram text-lg leading-lg " />
+                  <span className="lg:hidden inline-block ml-2">Check our instagram</span>
                 </a>
               </li>
               <li className="flex items-center">

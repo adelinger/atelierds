@@ -6,7 +6,6 @@ import CarPreviewDropdown from "components/Dropdowns/CarPreviewDropdown";
 import ApiService from "auth/service/ApiService";
 import Alert from "components/Alerts/Alert";
 import { CircularProgress, Link } from "@mui/material";
-import router from "next/router";
 
 export default function CarsTable({ color }) {
   const [cars, setCars] = useState()
@@ -38,6 +37,19 @@ export default function CarsTable({ color }) {
       });
   };
 
+  function onChangeStatusClick(id){
+    setShowLoader(true);
+    api
+      .updateCarStatus(id, 2)
+      .then(data => {
+       handleApiResponse(true);
+       fetchCars();
+      })
+      .catch((error) => {
+        handleApiResponse(false);
+      });
+  }
+
   function onDeleteClick(id) {
     setShowLoader(true);
     api
@@ -57,13 +69,13 @@ export default function CarsTable({ color }) {
 
   function colorDot(car) {
    
-   if(car.atelierCarStatus.carStatus === 'Available'){
+   if(car.atelierCarStatus.atelierCarStatusID === 1){
     return <i className='fas fa-circle mr-2 text-blue-600'>Available</i>
    }
-   if(car.atelierCarStatus.carStatus === 'Reserved'){
+   if(car.atelierCarStatus.atelierCarStatusID === 3){
     return <i className='fas fa-circle mr-2 text-orange-500'>Reservered</i>
    }
-   if(car.atelierCarStatus.carStatus === 'Sold'){
+   if(car.atelierCarStatus.atelierCarStatusID === 2){
     return <i className='fas fa-circle mr-2 text-gray-500'>Sold</i>
    }
 
@@ -86,7 +98,7 @@ export default function CarsTable({ color }) {
         }
       >
         {showAlert &&
-          <Alert color={isSuccess ? 'emerald' : 'red'}></Alert>
+          <Alert message={'There was an error. Please try again.'} color={isSuccess ? 'emerald' : 'red'}></Alert>
         }
 
 
@@ -216,7 +228,7 @@ export default function CarsTable({ color }) {
                     </div>
                   </td>
                   <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-                    <CarPreviewDropdown onDeleteClick={onDeleteClick} carId={car.atelierCarID} carStatus={car.atelierCarStatus.carStatus} />
+                    <CarPreviewDropdown onDeleteClick={onDeleteClick} onStatusUpdate={onChangeStatusClick} carId={car.atelierCarID} carStatus={car.atelierCarStatus.carStatus} />
                   </td>
                 </tr>
               )}

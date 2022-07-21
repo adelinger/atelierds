@@ -33,9 +33,9 @@ export default function carsForSale({cars, serverUrl}) {
           </div>
           <div className="container relative mx-auto">
             <div className="items-center flex flex-wrap">
-              <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
+              <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center mt-5">
                 <div className="pr-12">
-                  <h1 className="text-white font-semibold text-5xl">
+                  <h1 className="text-white font-semibold text-5xl mt-5">
                     {t('Cars for sale')}
                   </h1>
                   <p className="mt-4 text-lg text-blueGray-200">

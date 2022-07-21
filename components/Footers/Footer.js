@@ -33,7 +33,7 @@ export default function Footer() {
                     </li>
                 </ul>
             </div>
-            <div className="ml-5">
+            <div className="md:ml-5">
                 <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">{t('footer:about_us')}</h2>
                 <ul class="text-gray-600 dark:text-gray-400">
                     <li >

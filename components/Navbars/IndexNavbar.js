@@ -29,8 +29,8 @@ export default function Navbar(props) {
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start mt-2">
             <Link href="/">
-            <a href="https://flowbite.com/" class="flex items-center">
-                <img src="../../img/logo/logo_white.png" class="h-8 " alt="AtelierDS Logo"  style={{height:70, width:120}}></img>
+            <a href="/" class="flex items-center">
+                <img src="../../img/logo/logo_white.png" class="h-8 " alt="AtelierDS Logo" style={{height:70, width:120}}></img>
                 <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"></span>
             </a>
             </Link>

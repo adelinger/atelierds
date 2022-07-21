@@ -142,7 +142,7 @@ export default function Landing() {
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center mt-32">
+            <div className="flex flex-wrap items-center mt-15 md:mt-32">
               <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
                 <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white mr-5">
                   <i class="fas fa-box-open"></i>
@@ -291,7 +291,7 @@ export default function Landing() {
           </div>
         </section>
 
-        <section className="pt-20 pb-48">
+        <section className="pt-15 md:pt-20 pb-48">
           <div className="container mx-auto px-4">
             <div className="flex flex-wrap justify-center text-center mb-24">
               <div className="w-full lg:w-6/12 px-4">
@@ -350,7 +350,7 @@ export default function Landing() {
                   </div>
                 </div>
               </div>
-              <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
+              <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 px-4">
               <div className="px-6">
                   <img
                     alt="..."

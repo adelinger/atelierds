@@ -3579,6 +3579,11 @@ select {
   color: rgba(2, 132, 199, var(--tw-text-opacity));
 }
 
+.hover\:text-gray-500:hover {
+  --tw-text-opacity: 1;
+  color: rgba(107, 114, 128, var(--tw-text-opacity));
+}
+
 .hover\:text-gray-600:hover {
   --tw-text-opacity: 1;
   color: rgba(75, 85, 99, var(--tw-text-opacity));
@@ -4197,6 +4202,10 @@ select {
 
   .md\:ml-64 {
     margin-left: 16rem;
+  }
+
+  .md\:-mt-10 {
+    margin-top: -2.5rem;
   }
 
   .md\:max-w-xl {

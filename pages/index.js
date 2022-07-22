@@ -41,8 +41,8 @@ export default function Landing() {
                   </p>
 
                   <Link href="cars">
-                  <a  className="text-center mt-5 inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">{t('Check our cars')}</a>                 
-                       </Link>
+                    <a className="text-center mt-5 inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">{t('Check our cars')}</a>
+                  </Link>
 
                 </div>
               </div>
@@ -75,23 +75,23 @@ export default function Landing() {
               <div className="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
                 <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
                   <div className="px-4 py-5 flex-auto">
-                  <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-blueGray-700">
-                  <i class="fas fa-couch"></i>
+                    <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-blueGray-700">
+                      <i class="fas fa-couch"></i>
                     </div>
                     <h6 className="text-xl font-semibold">Interior</h6>
                     <p className="mt-2 mb-4 text-blueGray-500">
                       We offer complete interior restoration with the top quality.
                     </p>
-                    
-                      <Link href="/interior">
+
+                    <Link href="/interior">
                       <a
                         href="/interior"
                         className="inline-flex text-white bg-indigo-500 border-0 py-1 px-3 focus:outline-none hover:bg-indigo-600 rounded text-lg"
                       >
                         <span>See more</span>
                       </a>
-                      </Link>
-                    
+                    </Link>
+
                   </div>
                 </div>
               </div>
@@ -99,8 +99,8 @@ export default function Landing() {
               <div className="w-full md:w-4/12 px-4 text-center">
                 <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
                   <div className="px-4 py-5 flex-auto">
-                  <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-blueGray-700">
-                  <i class="fas fa-hard-hat"></i>
+                    <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-blueGray-700">
+                      <i class="fas fa-hard-hat"></i>
                     </div>
                     <h6 className="text-xl font-semibold">Chrome parts</h6>
                     <p className="mt-2 mb-4 text-blueGray-500">
@@ -108,12 +108,12 @@ export default function Landing() {
                     </p>
                     <Link href="chrome">
 
-                    <a
-                      href="/chrome"
-                      className="inline-flex text-white bg-indigo-500 border-0 py-1 px-3 focus:outline-none hover:bg-indigo-600 rounded text-lg"
-                            >
-                      <span>See more</span>
-                    </a>
+                      <a
+                        href="/chrome"
+                        className="inline-flex text-white bg-indigo-500 border-0 py-1 px-3 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+                      >
+                        <span>See more</span>
+                      </a>
                     </Link>
                   </div>
                 </div>
@@ -122,20 +122,20 @@ export default function Landing() {
               <div className="pt-6 w-full md:w-4/12 px-4 text-center">
                 <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
                   <div className="px-4 py-5 flex-auto">
-                  <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-blueGray-700">
-                    <i class="fas fa-car"></i>
+                    <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-blueGray-700">
+                      <i class="fas fa-car"></i>
                     </div>
                     <h6 className="text-xl font-semibold">Body restoration</h6>
                     <p className="mt-2 mb-4 text-blueGray-500">
-                      To wrap it all up, we provide complete body restoration in Croatia. 
+                      To wrap it all up, we provide complete body restoration in Croatia.
                     </p>
                     <Link href="bodywork">
-                    <a
-                     href="bodywork"
-                      className="inline-flex text-white bg-indigo-500 border-0 py-1 px-3 focus:outline-none hover:bg-indigo-600 rounded text-lg"
-                                           >
-                      <span>See more</span>
-                    </a>
+                      <a
+                        href="bodywork"
+                        className="inline-flex text-white bg-indigo-500 border-0 py-1 px-3 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+                      >
+                        <span>See more</span>
+                      </a>
                     </Link>
                   </div>
                 </div>
@@ -148,7 +148,7 @@ export default function Landing() {
                   <i class="fas fa-box-open"></i>
                 </div>
                 <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white mr-5">
-                <i class="fas fa-wrench"></i>
+                  <i class="fas fa-wrench"></i>
                 </div>
                 <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white">
                   <i class="fas fa-shipping-fast"></i>
@@ -157,13 +157,13 @@ export default function Landing() {
                   Working with us is a pleasure
                 </h3>
                 <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                  when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                 </p>
                 <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
-                It has survived not only five centuries, but also the leap into electronic typesetting, 
-                remaining essentially unchanged. 
+                  It has survived not only five centuries, but also the leap into electronic typesetting,
+                  remaining essentially unchanged.
                 </p>
                 <Link href="/">
                   <a href="#" className="font-bold text-blueGray-700 mt-8">
@@ -229,16 +229,16 @@ export default function Landing() {
           <div className="container mx-auto px-4">
             <div className="items-center flex flex-wrap">
               <div className="w-full md:w-6/12 mr-auto px-4">
-              <div class="aspect-w-16 aspect-h-9">
-              <iframe  src="https://www.youtube.com/embed/pubCOysznOE" title="Modà - Vittima - Videoclip Ufficiale" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
+                <div class="aspect-w-16 aspect-h-9">
+                  <iframe src="https://www.youtube.com/embed/pubCOysznOE" title="Modà - Vittima - Videoclip Ufficiale" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
               </div>
               <div className="w-full md:w-5/12 ml-auto px-4">
                 <div className="md:pr-12">
                   <h3 className="text-3xl font-semibold">A growing company</h3>
                   <p className="mt-4 text-lg leading-relaxed text-blueGray-500">
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                   Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
                     when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                   </p>
                   <ul className="list-none mt-6">
@@ -255,17 +255,17 @@ export default function Landing() {
                           </h4>
                         </div>
                       </div>
-                    </li>         
+                    </li>
                     <li className="py-2">
                       <div className="flex items-center">
                         <div>
                           <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-blueGray-100 mr-3">
-                          <i class="fas fa-paint-brush"></i>
+                            <i class="fas fa-paint-brush"></i>
                           </span>
                         </div>
                         <div>
                           <h4 className="text-blueGray-500">
-                           A perfect blend of creativity and quality
+                            A perfect blend of creativity and quality
                           </h4>
                         </div>
                       </div>
@@ -274,7 +274,7 @@ export default function Landing() {
                       <div className="flex items-center">
                         <div>
                           <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-blueGray-100 mr-3">
-                          <i class="fab fa-gratipay"></i>
+                            <i class="fab fa-gratipay"></i>
                           </span>
                         </div>
                         <div>
@@ -297,7 +297,7 @@ export default function Landing() {
               <div className="w-full lg:w-6/12 px-4">
                 <h2 className="text-4xl font-semibold">People working on a project</h2>
                 <p className="text-lg leading-relaxed m-4 text-blueGray-500">
-                 It is impossible to maintain viable business without quality people. Each of our divisions have a person in charge.
+                  It is impossible to maintain viable business without quality people. Each of our divisions have a person in charge.
                 </p>
               </div>
             </div>
@@ -314,12 +314,12 @@ export default function Landing() {
                     <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
                       CEO
                     </p>
-                   
+
                   </div>
                 </div>
               </div>
               <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
-              <div className="px-6">
+                <div className="px-6">
                   <img
                     alt="..."
                     src="/img/team-1-800x800.jpg"
@@ -330,12 +330,12 @@ export default function Landing() {
                     <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
                       Chrome & interior
                     </p>
-                   
+
                   </div>
                 </div>
               </div>
               <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
-              <div className="px-6">
+                <div className="px-6">
                   <img
                     alt="..."
                     src="/img/team-1-800x800.jpg"
@@ -346,12 +346,12 @@ export default function Landing() {
                     <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
                       Transportation and logistics
                     </p>
-                   
+
                   </div>
                 </div>
               </div>
               <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 px-4">
-              <div className="px-6">
+                <div className="px-6">
                   <img
                     alt="..."
                     src="/img/team-1-800x800.jpg"
@@ -362,7 +362,7 @@ export default function Landing() {
                     <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
                       Bodywork restoration
                     </p>
-                   
+
                   </div>
                 </div>
               </div>
@@ -412,7 +412,7 @@ export default function Landing() {
                   We are growing
                 </h5>
                 <p className="mt-2 mb-4 text-blueGray-400">
-                  We are trying to offer full restoration and not lock ourselves only on interior. 
+                  We are trying to offer full restoration and not lock ourselves only on interior.
                   So whatever your Citroen car needs, we can do it.
                 </p>
               </div>

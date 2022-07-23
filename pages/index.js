@@ -29,6 +29,13 @@ export default function Landing() {
     setIsSuccess(success);
     setShowAlert(true);
     setAlertMessage(success ? 'Your email was sent. We will get back to you as soon as possible.' : 'Something went wrong. Please try again.')
+
+    if(success){
+      setFirstName('');
+      setLastName('');
+      setEmail('');
+      setMessage('');
+    }
   }
 
   const handleSendEmail = (e) => {
@@ -490,6 +497,7 @@ export default function Landing() {
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         placeholder="First Name"
                         required
+                        value={firstName}
                         onChange={e => setFirstName(e.target.value)}
                       />
                     </div>
@@ -504,6 +512,7 @@ export default function Landing() {
                         type="text"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         placeholder="Last Name"
+                        value={lastName}
                         required
                         onChange={e => setLastName(e.target.value)}
                       />
@@ -520,6 +529,7 @@ export default function Landing() {
                         type="email"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         placeholder="Email"
+                        value={email}
                         required
                         onChange={e=>setEmail(e.target.value)}
                       />
@@ -537,6 +547,7 @@ export default function Landing() {
                         cols="80"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
                         placeholder="Type a message..."
+                        value={message}
                         required
                         onChange={e=> setMessage(e.target.value)}
                       />

@@ -50,8 +50,6 @@ export default function carsForSale({cars, serverUrl}) {
                    <div className="mt-5 mb-5" >
                      <ItemListCard car={car} serverUrl={serverUrl}></ItemListCard>
                      </div>
-                   
-                 
                   )}
                
             </div>

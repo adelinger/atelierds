@@ -13,7 +13,7 @@ const Alert = ({color, message}) => {
             <i className="fas fa-bell" />
           </span>
           <span className="inline-block align-middle mr-8">
-            <b className="capitalize">{color==='emerald' ? ' Success ' : '   Error '}</b>{message}
+            <p className="capitalize">{color==='emerald' ? ' ' : '   Error '}</p>{message}
           </span>
         </div>
     

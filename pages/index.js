@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 
@@ -7,10 +7,53 @@ import { useTranslation } from "next-i18next";
 import Navbar from "components/Navbars/IndexNavbar";
 import Footer from "components/Footers/Footer.js";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import ApiService from "auth/service/ApiService";
+import { CircularProgress } from "@mui/material";
+import Alert from "components/Alerts/Alert";
 
 
 export default function Landing() {
   const { t } = useTranslation(['index', 'footer', 'common']);
+
+  const [firstName, setFirstName] = useState();
+  const [lastName, setLastName] = useState();
+  const [email, setEmail] = useState();
+  const [message, setMessage] = useState();
+  const [showLoader, setShowLoader] = useState();
+  const [showAlert, setShowAlert] = useState();
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [alertMessage, setAlertMessage] = useState('Error. Something went wrong.');
+
+  const onPostApiResponse = (success) => {
+    setShowLoader(false);
+    setIsSuccess(success);
+    setShowAlert(true);
+    setAlertMessage(success ? 'Your email was sent. We will get back to you as soon as possible.' : 'Something went wrong. Please try again.')
+  }
+
+  const handleSendEmail = (e) => {
+  e.preventDefault();
+  setShowLoader(true);
+
+  const guestEmailObject = { };
+  guestEmailObject.firstName = firstName;
+  guestEmailObject.lastName = lastName;
+  guestEmailObject.email = email;
+  guestEmailObject.subject = 'Contact from website';
+  guestEmailObject.message = message;
+
+  const api = new ApiService();
+            api
+            .sendEmail(guestEmailObject)
+            .then(data => {
+                onPostApiResponse(true);
+            })
+            .catch((error) => {
+                onPostApiResponse(false);
+            });
+
+  }
+
   return (
     <>
       <Navbar transparent />
@@ -37,7 +80,7 @@ export default function Landing() {
                   </h1>
                   <p className="mt-4 text-lg text-blueGray-200 text-center">
                     Welcome to AtelierDS. We are Citroen DS enthusiasts who will make your DS look like it just came out of factory.
-                    Along with detailng and restoration, we offer already finished Citroen DS cars for sale. {t('footer:office_title')}
+                    Along with the detailing and restoration, we offer already finished Citroen DS cars for sale. {t('footer:office_title')}
                   </p>
 
                   <Link href="cars">
@@ -430,6 +473,7 @@ export default function Landing() {
             <div className="flex flex-wrap justify-center lg:-mt-64 -mt-48">
               <div className="w-full lg:w-6/12 px-4">
                 <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200">
+                <form onSubmit={handleSendEmail}>
                   <div className="flex-auto p-5 lg:p-10">
                     <h4 className="text-2xl font-semibold">
                       Contact us for further information
@@ -439,12 +483,29 @@ export default function Landing() {
                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                         htmlFor="full-name"
                       >
-                        Full Name
+                        First Name
                       </label>
                       <input
                         type="text"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                        placeholder="Full Name"
+                        placeholder="First Name"
+                        required
+                        onChange={e => setFirstName(e.target.value)}
+                      />
+                    </div>
+                    <div className="relative w-full mb-3 ">
+                      <label
+                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        htmlFor="full-name"
+                      >
+                        Last Name
+                      </label>
+                      <input
+                        type="text"
+                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        placeholder="Last Name"
+                        required
+                        onChange={e => setLastName(e.target.value)}
                       />
                     </div>
 
@@ -459,6 +520,8 @@ export default function Landing() {
                         type="email"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         placeholder="Email"
+                        required
+                        onChange={e=>setEmail(e.target.value)}
                       />
                     </div>
 
@@ -474,17 +537,32 @@ export default function Landing() {
                         cols="80"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
                         placeholder="Type a message..."
+                        required
+                        onChange={e=> setMessage(e.target.value)}
                       />
                     </div>
                     <div className="text-center mt-6">
                       <button
                         className="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                        type="button"
+                        type="submit"
                       >
                         Send Message
                       </button>
                     </div>
+                    {showLoader &&
+                            <div className=" mx-auto max-w-sm text-center relative mt-5">
+                                <CircularProgress />
+
+                            </div>
+                        }
+                          {showAlert &&
+                            <div className="mt-5">
+                                <Alert color={isSuccess ? 'emerald' : 'red'} message={alertMessage}></Alert>
+                            </div>
+
+                        }
                   </div>
+                  </form>
                 </div>
               </div>
             </div>

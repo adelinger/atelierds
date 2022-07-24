@@ -84,7 +84,7 @@ function contact () {
 
 Vispero needs the contact information you provide to us to contact you about our products and services, therefore, by submitting this form you are confirming you agree to such contact. You may unsubscribe from these communications at any time. For information on how to unsubscribe, as well as our privacy practices and commitment to protecting your privacy, check out our Privacy Policy.</p> 
                       </div>
-                     <br>
+                     <br></br>
                      <button>Click me</button>
                     </li>
                     <li className="py-2 mt-2">

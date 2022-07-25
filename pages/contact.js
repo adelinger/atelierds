@@ -80,9 +80,7 @@ function contact () {
                     </li>
                     <li className="py-2 mt-2">
                       <div className="flex items-center">
-                         <p className="text-white">Privacy Policy
-
-Vispero needs the contact information you provide to us to contact you about our products and services, therefore, by submitting this form you are confirming you agree to such contact. You may unsubscribe from these communications at any time. For information on how to unsubscribe, as well as our privacy practices and commitment to protecting your privacy, check out our Privacy Policy.</p> 
+                         <p className="text-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p> 
                       </div>
                     </li>
                     <li className="py-2 mt-2">

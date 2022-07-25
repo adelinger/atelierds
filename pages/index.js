@@ -165,11 +165,6 @@ export default function Landing() {
                   It has survived not only five centuries, but also the leap into electronic typesetting,
                   remaining essentially unchanged.
                 </p>
-                <Link href="/">
-                  <a href="#" className="font-bold text-blueGray-700 mt-8">
-                    Check it out!
-                  </a>
-                </Link>
               </div>
 
               <div className="w-full md:w-4/12 px-4 mr-auto ml-auto">

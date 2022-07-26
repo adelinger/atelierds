@@ -14,7 +14,6 @@
     "@fortawesome/react-fontawesome": "^0.1.18",
     "@mui/material": "^5.8.2",
     "@popperjs/core": "2.9.1",
-    "@tailwindcss/forms": "0.2.1",
     "axios": "^0.27.2",
     "chart.js": "2.9.4",
     "country-flag-icons": "^1.4.26",
@@ -29,8 +28,7 @@
     "react-dom": "17.0.1",
     "react-onclickoutside": "^6.12.1",
     "react-scripts": "4.0.3",
-    "react-slideshow-image": "^3.7.5",
-    "tailwindcss": "2.0.4"
+    "react-slideshow-image": "^3.7.5"
   },
   "scripts": {
     "start": "next start",
@@ -59,7 +57,11 @@
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.0",
-    "autoprefixer": "10.2.5",
-    "postcss": "8.2.8"
+    "@tailwindcss/forms": "^0.5.2",
+    "@tailwindcss/line-clamp": "^0.4.0",
+    "@tailwindcss/typography": "^0.5.4",
+    "autoprefixer": "^10.4.7",
+    "postcss": "^8.4.14",
+    "tailwindcss": "^3.1.6"
   }
 }

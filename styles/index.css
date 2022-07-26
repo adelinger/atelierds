@@ -3,3 +3,11 @@
 @tailwind components;
 
 @tailwind utilities;
+
+@layer components {
+     /* custom css classes example. Here we write custom css classes */
+    .red-btn {
+     background-color:#FF0000;
+    }
+    
+  }

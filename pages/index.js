@@ -8,58 +8,12 @@ import Navbar from "components/Navbars/IndexNavbar";
 import Footer from "components/Footers/Footer.js";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import ApiService from "auth/service/ApiService";
-import { CircularProgress } from "@mui/material";
-import Alert from "components/Alerts/Alert";
+
+import CardEmail from "components/Cards/CardEmail";
 
 
 export default function Landing() {
   const { t } = useTranslation(['index', 'footer', 'common']);
-
-  const [firstName, setFirstName] = useState();
-  const [lastName, setLastName] = useState();
-  const [email, setEmail] = useState();
-  const [message, setMessage] = useState();
-  const [showLoader, setShowLoader] = useState();
-  const [showAlert, setShowAlert] = useState();
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [alertMessage, setAlertMessage] = useState('Error. Something went wrong.');
-
-  const onPostApiResponse = (success) => {
-    setShowLoader(false);
-    setIsSuccess(success);
-    setShowAlert(true);
-    setAlertMessage(success ? 'Your email was sent. We will get back to you as soon as possible.' : 'Something went wrong. Please try again.')
-
-    if(success){
-      setFirstName('');
-      setLastName('');
-      setEmail('');
-      setMessage('');
-    }
-  }
-
-  const handleSendEmail = (e) => {
-  e.preventDefault();
-  setShowLoader(true);
-
-  const guestEmailObject = { };
-  guestEmailObject.firstName = firstName;
-  guestEmailObject.lastName = lastName;
-  guestEmailObject.email = email;
-  guestEmailObject.subject = 'Contact from website';
-  guestEmailObject.message = message;
-
-  const api = new ApiService();
-            api
-            .sendEmail(guestEmailObject)
-            .then(data => {
-                onPostApiResponse(true);
-            })
-            .catch((error) => {
-                onPostApiResponse(false);
-            });
-
-  }
 
   return (
     <>
@@ -476,108 +430,11 @@ export default function Landing() {
           </div>
         </section>
         <section className="relative block py-24 lg:pt-0 bg-blueGray-800">
-          <div className="container mx-auto px-4">
-            <div className="flex flex-wrap justify-center lg:-mt-64 -mt-48">
-              <div className="w-full lg:w-6/12 px-4">
-                <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200">
-                <form onSubmit={handleSendEmail}>
-                  <div className="flex-auto p-5 lg:p-10">
-                    <h4 className="text-2xl font-semibold">
-                      Contact us for further information
-                    </h4>
-                    <div className="relative w-full mb-3 mt-8">
-                      <label
-                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlFor="full-name"
-                      >
-                        First Name
-                      </label>
-                      <input
-                        type="text"
-                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                        placeholder="First Name"
-                        required
-                        value={firstName}
-                        onChange={e => setFirstName(e.target.value)}
-                      />
-                    </div>
-                    <div className="relative w-full mb-3 ">
-                      <label
-                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlFor="full-name"
-                      >
-                        Last Name
-                      </label>
-                      <input
-                        type="text"
-                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                        placeholder="Last Name"
-                        value={lastName}
-                        required
-                        onChange={e => setLastName(e.target.value)}
-                      />
-                    </div>
-
-                    <div className="relative w-full mb-3">
-                      <label
-                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlFor="email"
-                      >
-                        Email
-                      </label>
-                      <input
-                        type="email"
-                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                        placeholder="Email"
-                        value={email}
-                        required
-                        onChange={e=>setEmail(e.target.value)}
-                      />
-                    </div>
-
-                    <div className="relative w-full mb-3">
-                      <label
-                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlFor="message"
-                      >
-                        Message
-                      </label>
-                      <textarea
-                        rows="4"
-                        cols="80"
-                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
-                        placeholder="Type a message..."
-                        value={message}
-                        required
-                        onChange={e=> setMessage(e.target.value)}
-                      />
-                    </div>
-                    <div className="text-center mt-6">
-                      <button
-                        className="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                        type="submit"
-                      >
-                        Send Message
-                      </button>
-                    </div>
-                    {showLoader &&
-                            <div className=" mx-auto max-w-sm text-center relative mt-5">
-                                <CircularProgress />
-
-                            </div>
-                        }
-                          {showAlert &&
-                            <div className="mt-5">
-                                <Alert color={isSuccess ? 'emerald' : 'red'} message={alertMessage}></Alert>
-                            </div>
-
-                        }
-                  </div>
-                  </form>
-                </div>
-              </div>
-            </div>
+        <div className="container mx-auto px-4">
+          <div className="flex flex-wrap justify-center lg:-mt-64 -mt-48">
+              <CardEmail t={t}></CardEmail>
           </div>
+        </div>
         </section>
       </main>
       <Footer />

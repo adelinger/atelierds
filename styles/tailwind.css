@@ -1130,21 +1130,6 @@ select {
 
 /* custom css classes example. Here we write custom css classes */
 
-center-btn{
-  height:20px;
-  width:100px;
-  margin: -20px -50px;
-  position:relative;
-  top:50%;
-  left:50%;
-}
-
-#div-center-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .pointer-events-none {
   pointer-events: none;
 }
@@ -1417,6 +1402,14 @@ center-btn{
 
 .mr-0 {
   margin-right: 0px;
+}
+
+.mt-10 {
+  margin-top: 2.5rem;
+}
+
+.-mt-5 {
+  margin-top: -1.25rem;
 }
 
 .block {

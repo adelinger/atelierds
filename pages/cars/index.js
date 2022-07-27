@@ -13,7 +13,7 @@ import ItemListCard from "components/Cards/ItemListCard";
 export default function carsForSale({cars, serverUrl}) {
 
 
-  const { t } = useTranslation('index');
+  const { t } = useTranslation('carsPage');
   return (
     <>
       <Navbar/>
@@ -36,10 +36,10 @@ export default function carsForSale({cars, serverUrl}) {
               <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center mt-5">
                 <div className="pr-12">
                   <h1 className="text-white font-semibold text-5xl mt-5">
-                    {t('Cars for sale')}
+                    {t('cars_for_sale')}
                   </h1>
                   <p className="mt-4 text-lg text-blueGray-200">
-                    Here you can see which cars do we have for sale at the moment.
+                  {t('title_message')}
                   </p>
                 </div>
               </div>
@@ -75,7 +75,7 @@ export async function getStaticProps({locale}){
       props: {
         cars: cars,
         serverUrl: STATIC_FILES_URL,
-        ...await serverSideTranslations(locale, ['common', 'index', 'footer']),
+        ...await serverSideTranslations(locale, ['common', 'carsPage', 'footer']),
       }
   }
 }

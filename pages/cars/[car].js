@@ -6,10 +6,13 @@ import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import CardEmail from 'components/Cards/CardEmail';
 
 function viewCar({ carData, STATIC_FILES_URL }) {
   const { t } = useTranslation('common');
   const FILES_URL = STATIC_FILES_URL + carData.carPhotosPath + '/';
+  const [showEmailForm, setShowEmailForm] = useState();
+
   return (
     <>
       <Navbar />
@@ -60,13 +63,24 @@ function viewCar({ carData, STATIC_FILES_URL }) {
                 <p class="mb-5 mt-5 leading-relaxed text-white ml-5">{carData.carDescription}</p>
               </div>
               <div class="flex justify-center">
-                      <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                     
-                      <span className='mr-2'> {t('send_inquiry')}</span>
-                      <i class="fas fa-envelope mt-1"></i>
-                        </button>
-                      
-                    </div>
+                <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg" onClick={() => setShowEmailForm(!showEmailForm)}>
+
+                  <span className='mr-2'> {t('send_inquiry')}</span>
+                  <i class="fas fa-envelope mt-1"></i>
+                </button>
+
+              </div>
+            </section>
+
+            <section className="relative block py-24 lg:pt-0 mt-10">
+              <div className="container mx-auto px-4">
+
+                <div className="flex flex-wrap justify-center">
+                  {/* Add car specific email with message and subject related to the car */}
+                  {showEmailForm &&
+                    <CardEmail t={t} car = {carData}></CardEmail>}
+                </div>
+              </div>
             </section>
 
 
@@ -88,7 +102,7 @@ export async function getStaticProps({ params, locale }) {
   const { STATIC_FILES_URL } = process.env;
   return {
     props: {
-      ...await serverSideTranslations(locale, ['common', 'index', 'footer']),
+      ...await serverSideTranslations(locale, ['common', 'footer']),
       carData,
       STATIC_FILES_URL,
     },
@@ -103,10 +117,10 @@ export async function getStaticPaths({ locales }) {
   // generate the paths
   const paths = cars.map((car) => locales.map((locale) => ({
     params: { car: car.atelierCarID.toString() },
-    locale:locale
+    locale: locale
   })))
-  .flat() // Flatten array to avoid nested arrays
-  
+    .flat() // Flatten array to avoid nested arrays
+
   return { paths, fallback: true }
 
 }

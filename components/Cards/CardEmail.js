@@ -8,7 +8,7 @@ function CardEmail({ t, car = null }) {
     const [firstName, setFirstName] = useState();
     const [lastName, setLastName] = useState();
     const [email, setEmail] = useState();
-    const [message, setMessage] = useState(car !== null ? car : '');
+    const [message, setMessage] = useState();
     const [showLoader, setShowLoader] = useState();
     const [showAlert, setShowAlert] = useState();
     const [isSuccess, setIsSuccess] = useState(false);
@@ -36,8 +36,8 @@ function CardEmail({ t, car = null }) {
         guestEmailObject.firstName = firstName;
         guestEmailObject.lastName = lastName;
         guestEmailObject.email = email;
-        guestEmailObject.subject = 'Contact from website';
-        guestEmailObject.message = message;
+        guestEmailObject.subject = car ? 'Inquiry about ' + car.carMake + ' ' + car.carModel : 'Contact from website';
+        guestEmailObject.message = car ? '<h3>'+car.carMake + ' ' + car.carModel + '</h3>' + 'Inquiry about the following car: <br />' + window.location.href + '<br /> <br />' + message : message;
 
         const api = new ApiService();
         api

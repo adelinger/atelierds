@@ -1,5 +1,4 @@
 import Footer from "components/Footers/Footer";
-import MapExample from "components/Maps/MapExample";
 import Navbar from "components/Navbars/IndexNavbar";
 
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";

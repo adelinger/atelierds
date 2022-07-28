@@ -9,5 +9,9 @@
     .red-btn {
      background-color:#FF0000;
     }
+
+    .max-height-450{
+      max-height: 450px;
+    }
     
   }

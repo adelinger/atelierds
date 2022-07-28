@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import ApiService from "auth/service/ApiService";
 import { CircularProgress } from "@mui/material";
@@ -13,6 +13,12 @@ function CardEmail({ t, car = null }) {
     const [showAlert, setShowAlert] = useState();
     const [isSuccess, setIsSuccess] = useState(false);
     const [alertMessage, setAlertMessage] = useState(t('common:email_alert_error'));
+    const emailRef = useRef(null);
+
+    useEffect(() => {
+        emailRef.current.scrollIntoView({behavior: 'smooth'});
+    },
+    );
 
     const onPostApiResponse = (success) => {
         setShowLoader(false);
@@ -52,7 +58,7 @@ function CardEmail({ t, car = null }) {
 
     return (
         <>
-            <div className="w-full lg:w-6/12 px-4">
+            <div ref={emailRef} className="w-full lg:w-6/12 px-4">
                 <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200">
                     <form onSubmit={handleSendEmail}>
                         <div className="flex-auto p-5 lg:p-10">

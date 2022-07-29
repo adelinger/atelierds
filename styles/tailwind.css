@@ -1130,9 +1130,11 @@ select {
 
 /* custom css classes example. Here we write custom css classes */
 
-.left-right-margins{
-  max-width:92%;
-  margin-left:6%;
+.height-500
+
+    .left-right-margins{
+  max-width:90%;
+  margin-left:8%;
 }
 
 .no-left-right-margins{
@@ -1478,8 +1480,8 @@ select {
   height: 1rem;
 }
 
-.h-28 {
-  height: 7rem;
+.h-32 {
+  height: 8rem;
 }
 
 .h-48 {
@@ -2694,6 +2696,13 @@ select {
     max-height: 450px;
   }
 
+  .md\:height-500
+
+    .left-right-margins{
+    max-width:90%;
+    margin-left:8%;
+  }
+
   .md\:fixed {
     position: fixed;
   }
@@ -2900,6 +2909,11 @@ select {
   .md\:text-lg {
     font-size: 1.125rem;
     line-height: 1.75rem;
+  }
+
+  .md\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 
   .md\:opacity-100 {

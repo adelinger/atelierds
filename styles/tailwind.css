@@ -1130,6 +1130,16 @@ select {
 
 /* custom css classes example. Here we write custom css classes */
 
+.left-right-margins{
+  max-width:96%;
+  margin-left:2%;
+}
+
+.no-left-right-margins{
+  max-width:100%;
+  margin-left:0;
+}
+
 .pointer-events-none {
   pointer-events: none;
 }
@@ -1348,10 +1358,6 @@ select {
   margin-bottom: 2.5rem;
 }
 
-.mt-7 {
-  margin-top: 1.75rem;
-}
-
 .mr-2 {
   margin-right: 0.5rem;
 }
@@ -1398,6 +1404,10 @@ select {
 
 .-mt-1 {
   margin-top: -0.25rem;
+}
+
+.mt-7 {
+  margin-top: 1.75rem;
 }
 
 .ml-5 {
@@ -2059,16 +2069,6 @@ select {
   padding-right: 0px;
 }
 
-.px-8 {
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-
-.px-10 {
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
-}
-
 .pt-16 {
   padding-top: 4rem;
 }
@@ -2097,6 +2097,10 @@ select {
   padding-top: 0px;
 }
 
+.pt-20 {
+  padding-top: 5rem;
+}
+
 .pr-4 {
   padding-right: 1rem;
 }
@@ -2123,10 +2127,6 @@ select {
 
 .pt-1 {
   padding-top: 0.25rem;
-}
-
-.pt-20 {
-  padding-top: 5rem;
 }
 
 .text-left {
@@ -2730,16 +2730,16 @@ select {
     margin-top: -1.25rem;
   }
 
+  .md\:mt-7 {
+    margin-top: 1.75rem;
+  }
+
   .md\:ml-5 {
     margin-left: 1.25rem;
   }
 
   .md\:mt-4 {
     margin-top: 1rem;
-  }
-
-  .md\:mt-7 {
-    margin-top: 1.75rem;
   }
 
   .md\:block {
@@ -2756,12 +2756,6 @@ select {
 
   .md\:h-full {
     height: 100%;
-  }
-
-  .md\:max-h-fit {
-    max-height: -webkit-fit-content;
-    max-height: -moz-fit-content;
-    max-height: fit-content;
   }
 
   .md\:min-h-full {
@@ -2854,9 +2848,9 @@ select {
     padding-bottom: 0px;
   }
 
-  .md\:px-10 {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
+  .md\:px-5 {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
 
   .md\:py-2 {
@@ -2864,29 +2858,14 @@ select {
     padding-bottom: 0.5rem;
   }
 
-  .md\:px-6 {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-
-  .md\:px-8 {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-
-  .md\:px-5 {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-  }
-
-  .md\:py-20 {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-  }
-
   .md\:px-4 {
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+
+  .md\:px-10 {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
   }
 
   .md\:pr-12 {
@@ -2895,6 +2874,10 @@ select {
 
   .md\:pt-20 {
     padding-top: 5rem;
+  }
+
+  .md\:pb-32 {
+    padding-bottom: 8rem;
   }
 
   .md\:pl-16 {
@@ -2907,10 +2890,6 @@ select {
 
   .md\:pb-2 {
     padding-bottom: 0.5rem;
-  }
-
-  .md\:pb-32 {
-    padding-bottom: 8rem;
   }
 
   .md\:text-3xl {

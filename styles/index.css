@@ -13,5 +13,14 @@
     .max-height-450{
       max-height: 450px;
     }
+
+    .left-right-margins{
+      max-width:96%;
+      margin-left:2%;
+    }
+    .no-left-right-margins{
+      max-width:100%;
+      margin-left:0;
+    }
     
   }

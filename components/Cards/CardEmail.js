@@ -16,7 +16,10 @@ function CardEmail({ t, car = null }) {
     const emailRef = useRef(null);
 
     useEffect(() => {
-        emailRef.current.scrollIntoView({behavior: 'smooth'});
+        if(car){
+            emailRef.current.scrollIntoView({behavior: 'smooth'});
+        }
+       
     },
     );
 

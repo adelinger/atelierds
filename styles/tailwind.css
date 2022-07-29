@@ -1131,8 +1131,8 @@ select {
 /* custom css classes example. Here we write custom css classes */
 
 .left-right-margins{
-  max-width:96%;
-  margin-left:2%;
+  max-width:92%;
+  margin-left:6%;
 }
 
 .no-left-right-margins{

@@ -1130,16 +1130,8 @@ select {
 
 /* custom css classes example. Here we write custom css classes */
 
-.height-500
-
-    .left-right-margins{
-  max-width:90%;
-  margin-left:8%;
-}
-
-.no-left-right-margins{
-  max-width:100%;
-  margin-left:0;
+.mobile-width{
+  width:22rem;
 }
 
 .pointer-events-none {
@@ -1480,8 +1472,8 @@ select {
   height: 1rem;
 }
 
-.h-32 {
-  height: 8rem;
+.h-36 {
+  height: 9rem;
 }
 
 .h-48 {
@@ -2044,11 +2036,6 @@ select {
 .py-3 {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
-}
-
-.px-5 {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
 }
 
 .py-4 {
@@ -2696,13 +2683,6 @@ select {
     max-height: 450px;
   }
 
-  .md\:height-500
-
-    .left-right-margins{
-    max-width:90%;
-    margin-left:8%;
-  }
-
   .md\:fixed {
     position: fixed;
   }
@@ -2785,6 +2765,10 @@ select {
 
   .md\:w-1\/2 {
     width: 50%;
+  }
+
+  .md\:w-96 {
+    width: 24rem;
   }
 
   .md\:w-64 {
@@ -2911,11 +2895,6 @@ select {
     line-height: 1.75rem;
   }
 
-  .md\:text-2xl {
-    font-size: 1.5rem;
-    line-height: 2rem;
-  }
-
   .md\:opacity-100 {
     opacity: 1;
   }
@@ -2928,9 +2907,8 @@ select {
 }
 
 @media (min-width: 1024px) {
-  .lg\:no-left-right-margins{
-    max-width:100%;
-    margin-left:0;
+  .lg\:images-width{
+    width:38rem;
   }
 
   .lg\:static {

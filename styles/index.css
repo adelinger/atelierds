@@ -14,15 +14,11 @@
       max-height: 450px;
     }
 
-    .height-500
-
-    .left-right-margins{
-      max-width:90%;
-      margin-left:8%;
+    .mobile-width{
+      width:22rem;
     }
-    .no-left-right-margins{
-      max-width:100%;
-      margin-left:0;
+    .images-width{
+      width:38rem;
     }
     
   }

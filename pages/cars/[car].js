@@ -46,22 +46,22 @@ function viewCar({ carData, STATIC_FILES_URL }) {
             <section class="text-gray-600 body-font">
               <div class="container pt-20 md:py-0 mx-auto flex md:px-5 -pt-5 md:pt-20 md:flex-row flex-col items-center">
 
-                <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:height-500">
-                  <div className="w-96 px-3 left-right-margins lg:no-left-right-margins py-2 bg-slate-200 px-5 rounded-xl focus:outline-0">
+                <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start items-center" style={{ height: 500 }}>
+                  <div className="mobile-width md:w-96 px-3 py-2 bg-slate-200 rounded-xl focus:outline-0 ">
                     <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium font-bold text-black">
                       {carData.carMake + ' ' + carData.carModel}
                     </h1>
-                    <p className="mb-2 text-1x1  md:text-2xl leading-relaxed text-black">Year: {carData.carYear}</p>
-                    <p className="mb-2 text-1x1  md:text-2xl leading-relaxed text-black">Color: {carData.carColor}</p>
-                    <p className="mb-2 text-1x1  md:text-2xl leading-relaxed text-black">Engine power: {carData.carYear}</p>
-                    <p className="mb-2 text-1x1  md:text-2xl leading-relaxed text-black">Engine type: {carData.carYear}</p>
-                    <p className="mb-2 text-1x1  md:text-2xl leading-relaxed text-black">Kilometers: {carData.carYear}</p>
-                    <p className="mb-1 text-1x1  md:text-2xl leading-relaxed text-black font-bold">Price: {carData.carYear} (€)</p>
+                    <p className="mb-2 text-1x1 leading-relaxed text-black">Year: {carData.carYear}</p>
+                    <p className="mb-2 text-1x1 leading-relaxed text-black">Color: {carData.carColor}</p>
+                    <p className="mb-2 text-1x1 leading-relaxed text-black">Engine power: {carData.carYear}</p>
+                    <p className="mb-2 text-1x1 leading-relaxed text-black">Engine type: {carData.carYear}</p>
+                    <p className="mb-2 text-1x1 leading-relaxed text-black">Kilometers: {carData.carYear}</p>
+                    <p className="mb-1 text-1x1 leading-relaxed text-black font-bold">Price: {carData.carYear} (€)</p>
 
                   </div>
 
                   <div>
-                    <textarea class="w-96 h-32 text-1x1 px-3 py-2 bg-slate-200 rounded-xl focus:outline-0 mt-5 left-right-margins lg:no-left-right-margins"
+                    <textarea class="mobile-width md:w-96 h-36 px-3 py-2 bg-slate-200 rounded-xl focus:outline-0 mt-5"
                       placeholder="Description">
                       Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
                       standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
@@ -73,12 +73,12 @@ function viewCar({ carData, STATIC_FILES_URL }) {
                   </div>
                 </div>
 
-                <div class="lg:max-w-lg lg:w-full md:w-1/2 w-full mb-10 md:mb-0 mt-5 md:-mt-5" style={{ maxWidth: 700 }}>
+                <div class="lg:max-w-lg lg:w-full md:w-1/2 w-full mb-10 md:mb-0 md:-mt-5" style={{ maxWidth: 700 }}>
                   <Slide>
                     {carData.listOfImages.map((slideImage, index) => (
                       <div className="each-slide md:h-full" key={index} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundSize: 'cover'}}>
                         <div >
-                          <img className='max-h-72 md:max-height-450 left-right-margins lg:no-left-right-margins' src={FILES_URL + slideImage} ></img>
+                          <img className='max-h-72 md:max-height-450 mobile-width lg:images-width' src={FILES_URL + slideImage} ></img>
                         </div>
                       </div>
                     ))}
@@ -146,4 +146,3 @@ export async function getStaticPaths({ locales }) {
   return { paths, fallback: true }
 
 }
-

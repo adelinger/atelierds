@@ -2928,6 +2928,11 @@ select {
 }
 
 @media (min-width: 1024px) {
+  .lg\:no-left-right-margins{
+    max-width:100%;
+    margin-left:0;
+  }
+
   .lg\:static {
     position: static;
   }

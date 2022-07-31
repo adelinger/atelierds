@@ -16,10 +16,10 @@ function CardEmail({ t, car = null }) {
     const emailRef = useRef(null);
 
     useEffect(() => {
-        if(car){
-            emailRef.current.scrollIntoView({behavior: 'smooth'});
+        if (car) {
+            emailRef.current.scrollIntoView({ behavior: 'smooth' });
         }
-       
+
     },
     );
 
@@ -46,7 +46,7 @@ function CardEmail({ t, car = null }) {
         guestEmailObject.lastName = lastName;
         guestEmailObject.email = email;
         guestEmailObject.subject = car ? 'Inquiry about ' + car.carMake + ' ' + car.carModel : 'Contact from website';
-        guestEmailObject.message = car ? '<h3>'+car.carMake + ' ' + car.carModel + '</h3>' + 'Inquiry about the following car: <br />' + window.location.href + '<br /> <br />' + message : message;
+        guestEmailObject.message = car ? '<h3>' + car.carMake + ' ' + car.carModel + '</h3>' + 'Inquiry about the following car: <br />' + window.location.href + '<br /> <br />' + message : message;
 
         const api = new ApiService();
         api
@@ -61,7 +61,13 @@ function CardEmail({ t, car = null }) {
 
     return (
         <>
-            <div ref={emailRef} className="w-full lg:w-6/12 px-4">
+
+            <div className="w-full lg:w-6/12 px-4">
+            {car &&
+                <div ref={emailRef} className='mb-5'>
+                    <p className='invisible'>dummy text</p>
+                </div>
+            }
                 <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200">
                     <form onSubmit={handleSendEmail}>
                         <div className="flex-auto p-5 lg:p-10">

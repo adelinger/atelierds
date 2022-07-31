@@ -2747,6 +2747,10 @@ select {
     margin-top: 1.25rem;
   }
 
+  .md\:mt-10 {
+    margin-top: 2.5rem;
+  }
+
   .md\:block {
     display: block;
   }

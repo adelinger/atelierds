@@ -7,8 +7,6 @@ import { useTranslation } from "next-i18next";
 import Navbar from "components/Navbars/IndexNavbar";
 import Footer from "components/Footers/Footer.js";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import ApiService from "auth/service/ApiService";
-
 import CardEmail from "components/Cards/CardEmail";
 
 
@@ -34,7 +32,7 @@ export default function Landing() {
           </div>
           <div className="container relative mx-auto">
             <div className="items-center flex flex-wrap">
-              <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
+              <div className="w-full lg:w-6/12 mt-5 md:mt-0 md:px-4 ml-auto mr-auto text-center">
                 <div>
                   <h1 className="text-white font-semibold text-5xl">
                     {t('AtelierDS')}

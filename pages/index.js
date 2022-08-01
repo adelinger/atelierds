@@ -22,7 +22,7 @@ export default function Landing() {
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{
               backgroundImage:
-                "url('/img/image_ds.jpg')",
+                "url('/img/image_ds.webp')",
             }}
           >
             <span
@@ -37,7 +37,7 @@ export default function Landing() {
                   <h1 className="text-white font-semibold text-5xl">
                     {t('AtelierDS')}
                   </h1>
-                  <p className="mt-4 text-lg text-blueGray-200 text-center">
+                  <p className="mt-4 text-lg text-blueGray-200 px-1">
                     Welcome to AtelierDS. We are Citroen DS enthusiasts who will make your DS look like it just came out of factory.
                     Along with the detailing and restoration, we offer already finished Citroen DS cars for sale. {t('footer:office_title')}
                   </p>
@@ -172,8 +172,8 @@ export default function Landing() {
               <div className="w-full md:w-4/12 px-4 mr-auto ml-auto">
                 <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-blueGray-700">
                   <img
-                    alt="..."
-                    src="https://scontent-sof1-1.xx.fbcdn.net/v/t1.6435-9/101025174_2732516400311760_1171002582483599360_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=730e14&_nc_ohc=BNmXGkM0FeMAX9EHgyD&_nc_ht=scontent-sof1-1.xx&oh=00_AT_qbnIX33GvBHIfYgwk3ZnLkCtY3BBkwtjbWAYLHAY93g&oe=62E75DD2"
+                    alt="Citroen Garrage"
+                    src="/img/citroen_ds_garrage.webp"
                     className="w-full align-middle rounded-t-lg"
                   />
                   <blockquote className="relative p-8 mb-4">

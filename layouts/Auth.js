@@ -5,7 +5,7 @@ export default function Auth({ children }) {
     <>
      
       <main>
-        <section className="relative w-full h-full py-40 min-h-screen">
+        <section className="relative w-full h-full py-40 min-h-screen-100" style={{minHeight: '100vh'}}>
           <div
             className="absolute top-0 w-full h-full"
             style={{

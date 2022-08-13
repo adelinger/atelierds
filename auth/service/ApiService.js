@@ -1,15 +1,16 @@
 import axios from "axios";
+import { Cookies as ReactCookies } from 'react-cookie';
 
 export default class ApiService {
   constructor() {
+    this._cookies = new ReactCookies();
     this.api_token = null;
     this.client = null;
-     //this.api_url = "https://localhost:5001/api/ateliercars";
-    this.api_url = process.env.NEXT_PUBLIC_URL;
+     this.api_url = "https://localhost:5001/api/ateliercars";
+    //this.api_url = process.env.NEXT_PUBLIC_URL;
   }
   init = () => {
-    // this.api_token = getCookie("ACCESS_TOKEN");
-    this.api_token = "";
+    this.api_token = this._cookies.get("auth-token");
     let headers = {
       Accept: "application/json",
     };
@@ -22,7 +23,7 @@ export default class ApiService {
     return this.client;
   };
   getCars = (params) => {
-    return this.init().get("", {params: params});
+    return this.init().get("get-private", {params: params});
   };
   addNewCar = (data) => {
     return this.init().post("/add", data);

@@ -1,6 +1,8 @@
 import { useRouter } from "next/router";
 import { createContext, useContext, useState } from "react";
+import { useCookies } from "react-cookie";
 import { AuthService } from "../service/AuthService";
+
 
 const authContext = createContext();
 
@@ -12,37 +14,16 @@ export function AuthProvider(props) {
 	const [user, setUser] = useState(null);
 	const [error, setError] = useState();
 
+	const [setCookie, removeCookie] = useCookies(['auth-token']);
+
 	const router = useRouter();
 	const pathname = router.pathname;
 
-	const loginWithGoogle = async () => {
-		const { error, user } = await AuthService.loginWithGoogle();
-		if (error) {
-			setError({ [pathname]: error });
-		}
-		setUser(user ?? null);
-	};
 
 	const logout = async () => {
 		await AuthService.logout();
+		removeCookie('auth-token');
 		setUser(null);
-	};
-
-	const createUserWithEmailAndPassword = async (email, password) => {
-		if (email && password) {
-			const { error, user } = await AuthService.createUserWithEmailAndPassword(
-				email,
-				password
-			);
-			if (error) {
-				setError({ [pathname]: error });
-				return;
-			}
-			setUser(user ?? null);
-			router.push(`/verify?email=${email}`);
-		} else {
-			setError({ [pathname]: "Email and password can not be empty" });
-		}
 	};
 
 	const signInUserWithEmailAndPassword = async (email, password) => {
@@ -56,6 +37,7 @@ export function AuthProvider(props) {
 				return;
 			}
 			setUser(user ?? null);
+			setCookie('auth-token', user._delegate.accessToken);
 			router.push("/admin/dashboard");
 		} else {
 			setError({ [pathname]: "Email and password can not be empty" });
@@ -74,11 +56,6 @@ export function AuthProvider(props) {
 		}
 	};
 
-	const deleteAccount = async () => {
-		const error = await AuthService.deleteAccount();
-		setError({ [pathname]: error });
-	};
-
 	const updatePassword = async (confirmPassword, password) => {
 		if (confirmPassword === password) {
 			const error = await AuthService.updatePassword(password);
@@ -91,13 +68,10 @@ export function AuthProvider(props) {
 	const value = {
 		user,
 		error,
-		loginWithGoogle,
 		logout,
 		setUser,
-		createUserWithEmailAndPassword,
 		signInUserWithEmailAndPassword,
 		resetPassword,
-		deleteAccount,
 		updatePassword,
 	};
 

@@ -14,7 +14,7 @@ export function AuthProvider(props) {
 	const [user, setUser] = useState(null);
 	const [error, setError] = useState();
 
-	const [setCookie, removeCookie] = useCookies(['auth-token']);
+	const [cookies, setCookie, removeCookie] = useCookies(['auth-token']);
 
 	const router = useRouter();
 	const pathname = router.pathname;
@@ -37,7 +37,9 @@ export function AuthProvider(props) {
 				return;
 			}
 			setUser(user ?? null);
-			setCookie('auth-token', user._delegate.accessToken);
+			setCookie("auth-token", user._delegate.accessToken, {
+				path: "/"
+			  });
 			router.push("/admin/dashboard");
 		} else {
 			setError({ [pathname]: "Email and password can not be empty" });

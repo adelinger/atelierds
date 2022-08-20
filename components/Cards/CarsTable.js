@@ -7,7 +7,8 @@ import ApiService from "auth/service/ApiService";
 import Alert from "components/Alerts/Alert";
 import { CircularProgress, Link } from "@mui/material";
 
-export default function CarsTable({ color }) {
+export default function CarsTable({ color, auth }) {
+  const {logout} = auth;
   const [cars, setCars] = useState()
   const [isSuccess, setIsSuccess] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
@@ -33,6 +34,9 @@ export default function CarsTable({ color }) {
         setShowLoader(false);
       })
       .catch((error) => {
+        if(error.response.status === 401){
+          logout();
+        }
         setShowLoader(false);
       });
   };
@@ -211,7 +215,7 @@ export default function CarsTable({ color }) {
                     </Link>
                   </th>
                   <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    {car.carPrice}
+                    {car.carPrice}€
                   </td>
                   <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                     {colorDot(car)}

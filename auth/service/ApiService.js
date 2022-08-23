@@ -6,7 +6,7 @@ export default class ApiService {
     this._cookies = new ReactCookies();
     this.api_token = null;
     this.client = null;
-     this.api_url = "https://localhost:5001/api/ateliercars";
+    this.api_url = "https://localhost:5001/api/ateliercars";
     //this.api_url = process.env.NEXT_PUBLIC_URL;
   }
   init = () => {
@@ -42,5 +42,8 @@ export default class ApiService {
   };
   sendEmail = (emailData) => {
     return this.init().post('/sendEmail', emailData);
+  }
+  checkAuth = () => {
+    return this.init().post('auth');
   }
 }

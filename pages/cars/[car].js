@@ -76,7 +76,7 @@ function viewCar({ carData, STATIC_FILES_URL }) {
                     {carData.listOfImages.map((slideImage, index) => (
                       <div className="each-slide md:h-full" key={index} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundSize: 'cover'}}>
                         <div >
-                          <img className='max-h-72 md:max-height-450 mobile-width lg:images-width' src={FILES_URL + slideImage} ></img>
+                          <img alt='car for sale' className='max-h-72 md:max-height-450 mobile-width lg:images-width' src={FILES_URL + slideImage} ></img>
                         </div>
                       </div>
                     ))}

@@ -1,25 +1,29 @@
 import Footer from 'components/Footers/Footer';
 import Navbar from 'components/Navbars/IndexNavbar';
 import React, { useRef, useState } from 'react';
+import Image from 'next/image';
 
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import ImagePreview from 'components/Modals/ImagePreview';
-import {BrowserView} from 'react-device-detect';
-import {isMobile} from 'react-device-detect';
+import { BrowserView } from 'react-device-detect';
+import { isMobile } from 'react-device-detect';
+import { getPictures } from 'lib/apiCalls';
 
-export default function chrome() {
+
+export default function chrome({ images, STATIC_FILES_URL }) {
+  const FILES_URL = STATIC_FILES_URL + 'chrome/';
   const scrollRef = useRef(null)
-  const executeScroll = () => scrollRef.current.scrollIntoView({behavior: 'smooth'});
+  const executeScroll = () => scrollRef.current.scrollIntoView({ behavior: 'smooth' });
 
   const [showModal, setShowModal] = useState(false);
   const [imgSrc, setImgSrc] = useState();
 
   const toggleModal = () => {
-    if(!isMobile){
+    if (!isMobile) {
       setShowModal(!showModal);
     }
   }
-  
+
   return (
     <>
       <Navbar transparent></Navbar>
@@ -196,31 +200,25 @@ export default function chrome() {
                   </div>
                   <div className="mt-5">
                     <div class="container mx-auto space-y-2 lg:space-y-0 lg:gap-2 lg:grid lg:grid-cols-3">
-                      <div class="w-full rounded hover:opacity-50 cursor-pointer">
-                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=989&q=80"
-                          alt="image" onClick={() => {toggleModal(), setImgSrc("https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=989&q=80")}}></img>
-                      </div>
-                      <div class="w-full rounded hover:opacity-50 cursor-pointer">
-                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=989&q=80"
-                          alt="image" onClick={() => {setImgSrc("https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=989&q=80")}}></img>
-                      </div>
-                      <div class="w-full rounded hover:opacity-50 cursor-pointer">
-                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=989&q=80"
-                          alt="image"></img>
-                      </div>
+                      {images.listOfImages.map((image, index) => {
+                        return <div class="w-full rounded hover:opacity-50 cursor-pointer">
+                          <img src={FILES_URL + image}
+                            alt="chrome restoration image"  onClick={() => { toggleModal(), setImgSrc(FILES_URL + image) }}>
+                            </img>
+                        </div>
+                      })}
                     </div>
-
                   </div>
                 </div>
               </section>
             </div>
           </div>
           {BrowserView &&
-           <ImagePreview 
-           showModal={showModal} 
-           src={imgSrc} 
-           toggleModal={toggleModal} 
-           ></ImagePreview>
+            <ImagePreview
+              showModal={showModal}
+              src={imgSrc}
+              toggleModal={toggleModal}
+            ></ImagePreview>
           }
         </div>
       </main>
@@ -229,8 +227,16 @@ export default function chrome() {
   );
 }
 
-export const getStaticProps = async ({ locale }) => ({
-  props: {
-    ...await serverSideTranslations(locale, ['common', 'index', 'footer']),
-  },
-})
+export async function getStaticProps({ params, locale }) {
+  const images = await getPictures('chrome');
+
+  const { STATIC_FILES_URL } = process.env;
+
+  return {
+    props: {
+      ...await serverSideTranslations(locale, ['common', 'index', 'footer']),
+      images,
+      STATIC_FILES_URL,
+    },
+  };
+}

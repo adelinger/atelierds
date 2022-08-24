@@ -46,4 +46,7 @@ export default class ApiService {
   checkAuth = () => {
     return this.init().post('auth');
   }
+  getImages = (folderName) => {
+    return this.init().post('get-images', folderName)
+  }
 }

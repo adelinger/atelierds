@@ -83,7 +83,7 @@ export default function chrome({ images, STATIC_FILES_URL }) {
                       <div className="relative flex flex-col min-w-0 break-words bg-white w-full md:w-4/6 mb-6 shadow-lg rounded-lg bg-blueGray-700 md:float-right mx-auto ">
                         <Image
                           alt="Citroen ds chrome door part"
-                          src="/img/chrome/ds-door-handle.webp"
+                          src="/img/ds-door-handle.webp"
                           className="w-full align-middle rounded-t-lg"
                           width={500}
                           height={300}

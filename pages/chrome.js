@@ -117,7 +117,7 @@ export default function chrome({ images, STATIC_FILES_URL }) {
               <section id='second-section' className='min-w-full px-8'>
                 <div className="container mx-auto ">
                   <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
-                    <div className="md:mt-10 pr-12">
+                    <div className="md:mt-10">
                       <h1 className="text-white font-semibold text-3xl">
                         What do we fix?
                       </h1>
@@ -193,7 +193,7 @@ export default function chrome({ images, STATIC_FILES_URL }) {
               <section id='third-section' ref={scrollRef} className='min-w-full px-5'>
                 <div className="container mx-auto ">
                   <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
-                    <div className="mt-10 pr-12">
+                    <div className="mt-10">
                       <h1 className="text-white font-semibold text-3xl">
                         Gallery
                       </h1>
@@ -203,7 +203,7 @@ export default function chrome({ images, STATIC_FILES_URL }) {
                   <div className="mt-5">
                     <div class="container mx-auto space-y-2 lg:space-y-0 lg:gap-2 lg:grid lg:grid-cols-3">
                       {images.listOfImages.map((image, index) => {
-                        return <div class="w-full rounded hover:opacity-50 md:cursor-pointer">
+                        return <div class="w-full rounded md:hover:opacity-50 md:cursor-pointer">
                           <img src={FILES_URL + image}
                             alt="chrome restoration image"  onClick={() => { toggleModal(), setImgSrc(FILES_URL + image) }}>
                             </img>

@@ -44,7 +44,7 @@ export default function chrome({ images, STATIC_FILES_URL }) {
           <div className="container relative mx-auto collapse">
             <div className="items-center flex flex-wrap">
               <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
-                <div className="mt-10 pr-12">
+                <div className="mt-10  text-center">
                   <h1 className="text-white font-semibold text-5xl">
                     Chrome
                   </h1>
@@ -61,7 +61,7 @@ export default function chrome({ images, STATIC_FILES_URL }) {
                       <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-white">
                         Preparation service for normally disassembled, scratched and dented stainless steel parts and the bumpers,
                         it is not about stainless steel (inox) but about ferrochrome (slightly magnetic) at Citroen,
-                        all errors are corrected as far as possible and the polish is even better and deeper than the original
+                        all errors are corrected as far as possible and the polish is even better and deeper than the original.
                       </p>
                       <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-white">
                         In the case of a high-quality restoration, the old built-in stainless steel parts usually
@@ -203,7 +203,7 @@ export default function chrome({ images, STATIC_FILES_URL }) {
                   <div className="mt-5">
                     <div class="container mx-auto space-y-2 lg:space-y-0 lg:gap-2 lg:grid lg:grid-cols-3">
                       {images.listOfImages.map((image, index) => {
-                        return <div class="w-full rounded hover:opacity-50 cursor-pointer">
+                        return <div class="w-full rounded hover:opacity-50 md:cursor-pointer">
                           <img src={FILES_URL + image}
                             alt="chrome restoration image"  onClick={() => { toggleModal(), setImgSrc(FILES_URL + image) }}>
                             </img>

@@ -1687,6 +1687,14 @@ select {
   width: 50%;
 }
 
+.w-5\/6 {
+  width: 83.333333%;
+}
+
+.w-4\/6 {
+  width: 66.666667%;
+}
+
 .min-w-0 {
   min-width: 0px;
 }
@@ -2889,6 +2897,10 @@ select {
     bottom: 0px;
   }
 
+  .md\:float-right {
+    float: right;
+  }
+
   .md\:mt-10 {
     margin-top: 2.5rem;
   }
@@ -2979,6 +2991,10 @@ select {
 
   .md\:w-64 {
     width: 16rem;
+  }
+
+  .md\:w-4\/6 {
+    width: 66.666667%;
   }
 
   .md\:min-w-full {

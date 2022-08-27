@@ -18,7 +18,7 @@ export default function carsForSale({cars, serverUrl}) {
     <>
       <Navbar/>
       <main>
-      <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
+      <div className="relative pt-16 pb-16 md:pb-32 flex content-center items-center justify-center min-h-screen-75">
           <div
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{
@@ -34,7 +34,7 @@ export default function carsForSale({cars, serverUrl}) {
           <div className="container relative mx-auto">
             <div className="items-center flex flex-wrap">
               <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center mt-5">
-                <div className="pr-12">
+                <div className="">
                   <h1 className="text-white font-semibold text-5xl mt-5">
                     {t('cars_for_sale')}
                   </h1>
@@ -47,7 +47,7 @@ export default function carsForSale({cars, serverUrl}) {
                 
               <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-3">
            {cars.map (car => 
-                   <div className="mt-5 mb-5" >
+                   <div className="mt-5 mb-5 ml-auto mr-auto" >
                      <ItemListCard car={car} serverUrl={serverUrl}></ItemListCard>
                      </div>
                   )}

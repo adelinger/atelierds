@@ -18,11 +18,11 @@ function viewCar({ carData, STATIC_FILES_URL }) {
     setShowEmailForm(!showEmailForm);
 
 
-    if(showEmailForm){
-      baseRef.current.scrollIntoView({behavior: 'smooth'});
+    if (showEmailForm) {
+      baseRef.current.scrollIntoView({ behavior: 'smooth' });
     }
 
-    
+
   }
 
   return (
@@ -74,7 +74,7 @@ function viewCar({ carData, STATIC_FILES_URL }) {
                 <div class="lg:max-w-lg lg:w-full md:w-1/2 w-full mb-2 md:mb-0 mt-5 md:-mt-5" style={{ maxWidth: 700 }}>
                   <Slide>
                     {carData.listOfImages.map((slideImage, index) => (
-                      <div className="each-slide md:h-full" key={index} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundSize: 'cover'}}>
+                      <div className="each-slide md:h-full" key={index} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundSize: 'cover' }}>
                         <div >
                           <img alt='car for sale' className='max-h-72 md:max-height-450 mobile-width lg:images-width' src={FILES_URL + slideImage} ></img>
                         </div>
@@ -83,19 +83,19 @@ function viewCar({ carData, STATIC_FILES_URL }) {
                   </Slide>
                 </div>
               </div>
-
-              <div class="flex justify-center -mt-15 md:mt-5 ">
-              <button class="inline-flex text-white bg-indigo-500 border-0 md:py-2 md:px-4 py-4 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg" onClick={handleEmailbtnClick}>
-
-                <span className='mr-2'> {t('send_inquiry')}</span>
-                <i class="fas fa-envelope mt-1"></i>
-              </button>
-
-            </div>
-
             </section>
 
+
             <section className="relative block lg:pt-0 mt-10">
+              <div class="w-full justify-center text-center -mt-15 md:mt-20">
+                <button onClick={handleEmailbtnClick} type="button" class="text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-base px-6 py-3.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">
+
+                  <span className='mr-2'> {t('send_inquiry')}</span>
+                  <i class="fas fa-envelope mt-1"></i>
+                </button>
+
+              </div>
+
               <div className="container mx-auto px-4">
 
                 <div className="flex flex-wrap justify-center">

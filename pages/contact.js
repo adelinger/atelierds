@@ -9,7 +9,7 @@ function contact() {
     <>
       <Navbar transparent></Navbar>
       <main>
-        <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
+        <div className="relative pt-16 pb-20 flex content-center items-center justify-center min-h-screen-75">
           <div
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{
@@ -23,12 +23,12 @@ function contact() {
             ></span>
           </div>
           <div className="container relative mx-auto ">
-            <div className="container mx-auto py-24">
+            <div className="container mx-auto py-10 md:py-24">
               <div className="items-center flex flex-wrap">
-                <div className="w-full md:w-6/12 mr-auto px-4">
+                <div className="w-full md:w-6/12 mr-auto px-4 order-2  mt-5 md:mt-0">
                   <iframe className="w-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2747.043428777947!2d11.349270715443705!3d46.4874524791264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47829d237ca09b07%3A0x27e4b5c51d4a05e3!2sAtelier%20Ds!5e0!3m2!1shr!2shr!4v1658485833256!5m2!1shr!2shr" width="600" height="350" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
-                <div className="w-full px-3 mt-5  md:w-5/12 ml-auto md:-mt-10" style={{ height: 350 }}>
+                <div className="w-full px-3 mt-5 order-1 md:w-5/12 ml-auto md:-mt-10" >
                   <h1 className="text-white text-3x1" style={{ fontSize: 30 }}>Atelier DS</h1>
                   <div className="md:pr-12">
                     <ul className="list-none mt-2">
@@ -42,7 +42,7 @@ function contact() {
                           <div>
                             <h4 className="text-white">
                               <a target="_blank" className="hover:underline" and rel="noopener noreferrer" href="https://goo.gl/maps/X7fC51eWrJwaedux5">Via Aurelio Nicolodi, 28/65, 39100,
-                                Bolzano BZ, Italija
+                                Bolzano BZ, Italy
                               </a>
                             </h4>
                           </div>
@@ -82,7 +82,7 @@ function contact() {
                           <p className="text-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                         </div>
                       </li>
-                      <li className="py-2 mt-2">
+                      <li className="py-2 md:mt-2">
                         <div className="flex items-center">
                           <div class="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
                             <a href="#" class="text-white hover:text-gray-500 dark:hover:text-white">

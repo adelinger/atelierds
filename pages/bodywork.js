@@ -41,7 +41,7 @@ export default function bodywork() {
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{
               backgroundImage:
-                "url('/img/light-grey-19.jpg')",
+                "url('/img/light-grey-19.webp')",
             }}
           >
             <span
@@ -131,7 +131,7 @@ export default function bodywork() {
                   </div>
 
                   <div class="col-span-3 px-5">
-                    <Image src='/img/body_work_place.jpeg' alt='bodywork place' width={700} height={500} />
+                    <Image src='/img/body_work_place.webp' alt='bodywork place' width={700} height={500} />
                   </div>
 
                 </div>

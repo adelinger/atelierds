@@ -16,7 +16,7 @@ export default function interior() {
                         className="absolute top-0 w-full h-full bg-center bg-cover"
                         style={{
                             backgroundImage:
-                                "url('/img/light-grey-19.jpg')",
+                                "url('/img/light-grey-19.webp')",
                         }}
                     >
                         <span

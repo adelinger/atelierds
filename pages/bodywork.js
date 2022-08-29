@@ -1,17 +1,42 @@
 import Footer from 'components/Footers/Footer';
 import Navbar from 'components/Navbars/IndexNavbar';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { isMobile } from 'react-device-detect';
+import ImagePreview from 'components/Modals/ImagePreview';
 
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 
 export default function bodywork() {
+  const [showModal, setShowModal] = useState(false);
+  const [imgSrc, setImgSrc] = useState();
+
+  const toggleModal = () => {
+    if (!isMobile) {
+      setShowModal(!showModal);
+    }
+  }
+
+  useEffect(() => {
+    const handleEsc = (event) => {
+       if (event.keyCode === 27) {
+        setShowModal(false);
+      }
+    };
+    window.addEventListener('keydown', handleEsc);
+
+    return () => {
+      window.removeEventListener('keydown', handleEsc);
+    };
+  }, []);
+
+  
   return (
     <>
       <Navbar transparent></Navbar>
       <main>
-        <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
+        <div className="relative pt-16 md:pb-32 flex content-center items-center justify-center min-h-screen-75">
           <div
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{
@@ -113,141 +138,155 @@ export default function bodywork() {
               </div>
 
               <div className='container'>
-              <div className="text-center px-5 py-10 md:mt-10" >
+                <div className="text-center px-5 py-5 md:mt-10" >
                   <h3 className="text-white font-semibold text-3xl">
                     Work gallery
                   </h3>
                 </div>
-		<div id="portfolio" class="section relative z-0 py-12 md:py-16 bg-white">
-			
+                <div id="portfolio" class="section relative z-0 py-12 md:py-8 ">
+                  <div class="flex flex-wrap flex-row">
+                    <figure class="flex-shrink max-w-full px-3 w-full sm:w-1/2 lg:w-1/5 group wow fadeInUp" data-wow-duration="1s">
+                      <div class="relative overflow-hidden cursor-pointer mb-6">
+                        <a role='button' data-gallery="gallery1" data-glightbox="title: My title; description: This is a wider card with supporting text below as a natural lead-in to additional content" class="glightbox3">
+                          <img class="block w-full h-auto transform duration-500 hover:scale-125"
+                          onClick={() => { toggleModal(), setImgSrc('/img/bodywork/slika1.webp') }} src="/img/bodywork/slika1.webp" alt="Citroen DS"></img>
+                          <div class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
+                            <h3 class="text-base leading-normal font-semibold my-1 text-white">Citroen</h3>
+                            <small class="d-block">DS</small>
+                          </div>
+                        </a>
+                      </div>
+                    </figure>
 
-			<div class="flex flex-wrap flex-row">
-			  <figure class="flex-shrink max-w-full px-3 w-full sm:w-1/2 lg:w-1/5 group wow fadeInUp" data-wow-duration="1s">
-			    <div class="relative overflow-hidden cursor-pointer mb-6">
-			      <a role='button' data-gallery="gallery1" data-glightbox="title: My title; description: This is a wider card with supporting text below as a natural lead-in to additional content" class="glightbox3">
-			        <img class="block w-full h-auto transform duration-500 hover:scale-125" src="/img/dummy/slika1.jpeg" alt="Image Description"></img>
-			        <div class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
-			          <h3 class="text-base leading-normal font-semibold my-1 text-white">Citroen</h3>
-			          <small class="d-block">Branding</small>
-			        </div>
-			      </a>
-			    </div>
-			  </figure>
+                    <figure class="flex-shrink max-w-full px-3 w-full sm:w-1/2 lg:w-1/5 group wow fadeInUp" data-wow-duration="1s" data-wow-delay=".1s">
+                      <div class="relative overflow-hidden cursor-pointer mb-6">
+                        <a role='button' data-gallery="gallery1" data-glightbox="title: My title; description: This is a wider card with supporting text below as a natural lead-in to additional content" class="glightbox3">
+                          <img class="block w-full h-auto transform duration-500 hover:scale-125"
+                           onClick={() => { toggleModal(), setImgSrc('/img/bodywork/slika2.webp') }} src="/img/bodywork/slika2.webp" alt="Citroen DS"></img>
+                          <div class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
+                            <h3 class="text-base leading-normal font-semibold my-1 text-white">Citroen</h3>
+                            <small class="d-block">DS</small>
+                          </div>
+                        </a>
+                      </div>
+                    </figure>
 
-			  <figure class="flex-shrink max-w-full px-3 w-full sm:w-1/2 lg:w-1/5 group wow fadeInUp" data-wow-duration="1s" data-wow-delay=".1s">
-			    <div class="relative overflow-hidden cursor-pointer mb-6">
-			      <a role='button' data-gallery="gallery1" data-glightbox="title: My title; description: This is a wider card with supporting text below as a natural lead-in to additional content" class="glightbox3">
-			        <img class="block w-full h-auto transform duration-500 hover:scale-125" src="/img/dummy/slika2.jpeg" alt="Image Description"></img>
-			        <div class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
-			          <h3 class="text-base leading-normal font-semibold my-1 text-white">Citroen</h3>
-			          <small class="d-block">Web</small>
-			        </div>
-			      </a>
-			    </div>
-			  </figure>
+                    <figure class="flex-shrink max-w-full px-3 w-full sm:w-1/2 lg:w-1/5 group wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
+                      <div class="relative overflow-hidden cursor-pointer mb-6">
+                        <a role='button' data-gallery="gallery1" data-glightbox="title: My title; description: This is a wider card with supporting text below as a natural lead-in to additional content" class="glightbox3">
+                          <img class="block w-full h-auto transform duration-500 hover:scale-125" 
+                           onClick={() => { toggleModal(), setImgSrc('/img/bodywork/slika3.webp') }} src="/img/bodywork/slika3.webp" alt="Citroen DS"></img>
+                          <div class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
+                            <h3 class="text-base leading-normal font-semibold my-1 text-white">Citroen</h3>
+                            <small class="d-block">DS</small>
+                          </div>
+                        </a>
+                      </div>
+                    </figure>
 
-			  <figure class="flex-shrink max-w-full px-3 w-full sm:w-1/2 lg:w-1/5 group wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
-			    <div class="relative overflow-hidden cursor-pointer mb-6">
-			      <a role='button' data-gallery="gallery1" data-glightbox="title: My title; description: This is a wider card with supporting text below as a natural lead-in to additional content" class="glightbox3">
-			        <img class="block w-full h-auto transform duration-500 hover:scale-125" src="/img/dummy/slika3.jpeg" alt="Image Description"></img>
-			        <div class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
-			          <h3 class="text-base leading-normal font-semibold my-1 text-white">Citroen</h3>
-			          <small class="d-block">Graphic</small>
-			        </div>
-			      </a>
-			    </div>
-			  </figure>
+                    <figure class="flex-shrink max-w-full px-3 w-full sm:w-1/2 lg:w-1/5 group wow fadeInUp" data-wow-duration="1s" data-wow-delay=".5s">
+                      <div class="relative overflow-hidden cursor-pointer mb-6">
+                        <a role='button' data-gallery="gallery1" data-glightbox="title: My title; description:  This is a wider card with supporting text below as a natural lead-in to additional content" class="glightbox3">
+                          <img class="block w-full h-auto transform duration-500 hover:scale-125" 
+                          onClick={() => { toggleModal(), setImgSrc('/img/bodywork/slika4.webp') }} src="/img/bodywork/slika4.webp" alt="Citroen DS"></img>
+                          <div class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
+                            <h3 class="text-base leading-normal font-semibold my-1 text-white">Citroen</h3>
+                            <small class="d-block">DS</small>
+                          </div>
+                        </a>
+                      </div>
+                    </figure>
 
-			  <figure class="flex-shrink max-w-full px-3 w-full sm:w-1/2 lg:w-1/5 group wow fadeInUp" data-wow-duration="1s" data-wow-delay=".5s">
-			    <div class="relative overflow-hidden cursor-pointer mb-6">
-			      <a role='button' data-gallery="gallery1" data-glightbox="title: My title; description:  This is a wider card with supporting text below as a natural lead-in to additional content" class="glightbox3">
-			        <img class="block w-full h-auto transform duration-500 hover:scale-125" src="/img/dummy/slika4.jpeg" alt="Image Description"></img>
-			        <div class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
-			          <h3 class="text-base leading-normal font-semibold my-1 text-white">Citroen</h3>
-			          <small class="d-block">Branding</small>
-			        </div>
-			      </a>
-			    </div>
-			  </figure>
+                    <figure class="flex-shrink max-w-full px-3 w-full sm:w-1/2 lg:w-1/5 group wow fadeInUp" data-wow-duration="1s" data-wow-delay=".7s">
+                      <div class="relative overflow-hidden cursor-pointer mb-6">
+                        <a role='button' data-gallery="gallery1" data-glightbox="title: My title; description:  This is a wider card with supporting text below as a natural lead-in to additional content" class="glightbox3">
+                          <img class="block w-full h-auto transform duration-500 hover:scale-125" 
+                          onClick={() => { toggleModal(), setImgSrc('/img/bodywork/slika5.webp') }} src="/img/bodywork/slika5.webp" alt="Citroen CX"></img>
+                          <div class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
+                            <h3 class="text-base leading-normal font-semibold my-1 text-white">Citroen</h3>
+                            <small class="d-block">CX</small>
+                          </div>
+                        </a>
+                      </div>
+                    </figure>
 
-			  <figure class="flex-shrink max-w-full px-3 w-full sm:w-1/2 lg:w-1/5 group wow fadeInUp" data-wow-duration="1s" data-wow-delay=".7s">
-			    <div class="relative overflow-hidden cursor-pointer mb-6">
-			      <a role='button' data-gallery="gallery1" data-glightbox="title: My title; description:  This is a wider card with supporting text below as a natural lead-in to additional content" class="glightbox3">
-			        <img class="block w-full h-auto transform duration-500 hover:scale-125" src="/img/dummy/slika5.jpeg" alt="Image Description"></img>
-			        <div class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
-			          <h3 class="text-base leading-normal font-semibold my-1 text-white">Citroen</h3>
-			          <small class="d-block">Web</small>
-			        </div>
-			      </a>
-			    </div>
-			  </figure>
+                    <figure class="flex-shrink max-w-full px-3 w-full sm:w-1/2 lg:w-1/5 group wow fadeInUp" data-wow-duration="1s">
+                      <div class="relative overflow-hidden cursor-pointer mb-6">
+                        <a role='button' data-gallery="gallery1" data-glightbox="title: Graphic Design; description: This is a wider card with supporting text below as a natural lead-in to additional content" class="glightbox3">
+                          <img class="block w-full h-auto transform duration-500 hover:scale-125" 
+                          onClick={() => { toggleModal(), setImgSrc('/img/bodywork/slika6.webp') }} src="/img/bodywork/slika6.webp" alt="Citroen CX"></img>
+                          <div class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
+                            <h3 class="text-base leading-normal font-semibold my-1 text-white">Citroen</h3>
+                            <small class="d-block">CX</small>
+                          </div>
+                        </a>
+                      </div>
+                    </figure>
 
-			  <figure class="flex-shrink max-w-full px-3 w-full sm:w-1/2 lg:w-1/5 group wow fadeInUp" data-wow-duration="1s">
-			    <div class="relative overflow-hidden cursor-pointer mb-6">
-			      <a role='button' data-gallery="gallery1" data-glightbox="title: Graphic Design; description: This is a wider card with supporting text below as a natural lead-in to additional content" class="glightbox3">
-			        <img class="block w-full h-auto transform duration-500 hover:scale-125" src="/img/dummy/slika6.jpeg" alt="Image Description"></img>
-			        <div class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
-			          <h3 class="text-base leading-normal font-semibold my-1 text-white">Citroen</h3>
-			          <small class="d-block">Graphic</small>
-			        </div>
-			      </a>
-			    </div>
-			  </figure>
+                    <figure class="flex-shrink max-w-full px-3 w-full sm:w-1/2 lg:w-1/5 group wow fadeInUp" data-wow-duration="1s" data-wow-delay=".1s">
+                      <div class="relative overflow-hidden cursor-pointer mb-6">
+                        <a role='button' data-gallery="gallery1" data-glightbox="title: Logo Design; description: This is a wider card with supporting text below as a natural lead-in to additional content" class="glightbox3">
+                          <img class="block w-full h-auto transform duration-500 hover:scale-125" 
+                          onClick={() => { toggleModal(), setImgSrc('/img/bodywork/slika7.webp') }} src="/img/bodywork/slika7.webp" alt="Citroen DS Convertible"></img>
+                          <div class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
+                            <h3 class="text-base leading-normal font-semibold my-1 text-white">Citroen</h3>
+                            <small class="d-block">DS Convertible</small>
+                          </div>
+                        </a>
+                      </div>
+                    </figure>
 
-			  <figure class="flex-shrink max-w-full px-3 w-full sm:w-1/2 lg:w-1/5 group wow fadeInUp" data-wow-duration="1s" data-wow-delay=".1s">
-			    <div class="relative overflow-hidden cursor-pointer mb-6">
-			      <a role='button' data-gallery="gallery1" data-glightbox="title: Logo Design; description: This is a wider card with supporting text below as a natural lead-in to additional content" class="glightbox3">
-			        <img class="block w-full h-auto transform duration-500 hover:scale-125" src="/img/dummy/slika7.jpeg" alt="Image Description"></img>
-			        <div class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
-			          <h3 class="text-base leading-normal font-semibold my-1 text-white">Citroen</h3>
-			          <small class="d-block">Branding</small>
-			        </div>
-			      </a>
-			    </div>
-			  </figure>
+                    <figure class="flex-shrink max-w-full px-3 w-full sm:w-1/2 lg:w-1/5 group wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
+                      <div class="relative overflow-hidden cursor-pointer mb-6">
+                        <a role='button' data-gallery="gallery1" data-glightbox="title: Web Development; description: This is a wider card with supporting text below as a natural lead-in to additional content" class="glightbox3">
+                          <img class="block w-full h-auto transform duration-500 hover:scale-125" 
+                          onClick={() => { toggleModal(), setImgSrc('/img/bodywork/slika8.webp') }} src="/img/bodywork/slika8.webp" alt="Citroen DS Convertible"></img>
+                          <div class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
+                            <h3 class="text-base leading-normal font-semibold my-1 text-white">Citroen</h3>
+                            <small class="d-block">DS Convertible</small>
+                          </div>
+                        </a>
+                      </div>
+                    </figure>
 
-			  <figure class="flex-shrink max-w-full px-3 w-full sm:w-1/2 lg:w-1/5 group wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
-			    <div class="relative overflow-hidden cursor-pointer mb-6">
-			      <a role='button' data-gallery="gallery1" data-glightbox="title: Web Development; description: This is a wider card with supporting text below as a natural lead-in to additional content" class="glightbox3">
-			        <img class="block w-full h-auto transform duration-500 hover:scale-125" src="/img/dummy/slika8.jpeg" alt="Image Description"></img>
-			        <div class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
-			          <h3 class="text-base leading-normal font-semibold my-1 text-white">Citroen</h3>
-			          <small class="d-block">Web</small>
-			        </div>
-			      </a>
-			    </div>
-			  </figure>
+                    <figure class="flex-shrink max-w-full px-3 w-full sm:w-1/2 lg:w-1/5 group wow fadeInUp" data-wow-duration="1s" data-wow-delay=".5s">
+                      <div class="relative overflow-hidden cursor-pointer mb-6">
+                        <a hrole='button' data-gallery="gallery1" data-glightbox="title: Graphic Design; description: This is a wider card with supporting text below as a natural lead-in to additional content" class="glightbox3">
+                          <img class="block w-full h-auto transform duration-500 hover:scale-125" 
+                          onClick={() => { toggleModal(), setImgSrc('/img/bodywork/slika9.webp') }} src="/img/bodywork/slika9.webp" alt="Citroen DS Convertible"></img>
+                          <div class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
+                            <h3 class="text-base leading-normal font-semibold my-1 text-white">Citroen</h3>
+                            <small class="d-block">DS Convertible</small>
+                          </div>
+                        </a>
+                      </div>
+                    </figure>
 
-			  <figure class="flex-shrink max-w-full px-3 w-full sm:w-1/2 lg:w-1/5 group wow fadeInUp" data-wow-duration="1s" data-wow-delay=".5s">
-			    <div class="relative overflow-hidden cursor-pointer mb-6">
-			      <a hrole='button' data-gallery="gallery1" data-glightbox="title: Graphic Design; description: This is a wider card with supporting text below as a natural lead-in to additional content" class="glightbox3">
-			        <img class="block w-full h-auto transform duration-500 hover:scale-125" src="/img/dummy/slika9.jpeg" alt="Image Description"></img>
-			        <div class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
-			          <h3 class="text-base leading-normal font-semibold my-1 text-white">Citroen</h3>
-			          <small class="d-block">Graphic</small>
-			        </div>
-			      </a>
-			    </div>
-			  </figure>
-
-			  <figure class="flex-shrink max-w-full px-3 w-full sm:w-1/2 lg:w-1/5 group wow fadeInUp" data-wow-duration="1s" data-wow-delay=".7s">
-			    <div class="relative overflow-hidden cursor-pointer mb-6">
-			      <a role='button' data-gallery="gallery1" data-glightbox="title: App Design; description: This is a wider card with supporting text below as a natural lead-in to additional content" class="glightbox3">
-			        <img class="block w-full h-auto transform duration-500 hover:scale-125" src="/img/dummy/slika10.jpeg" alt="Image Description"></img>
-			        <div class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
-			          <h3 class="text-base leading-normal font-semibold my-1 text-white">Citroen</h3>
-			          <small class="d-block">App</small>
-			        </div>
-			      </a>
-			    </div>
-			  </figure>
-			</div>
-		</div>
+                    <figure class="flex-shrink max-w-full px-3 w-full sm:w-1/2 lg:w-1/5 group wow fadeInUp" data-wow-duration="1s" data-wow-delay=".7s">
+                      <div class="relative overflow-hidden cursor-pointer mb-6">
+                        <a role='button' data-gallery="gallery1" data-glightbox="title: App Design; description: This is a wider card with supporting text below as a natural lead-in to additional content" class="glightbox3">
+                          <img class="block w-full h-auto transform duration-500 hover:scale-125" 
+                          onClick={() => { toggleModal(), setImgSrc('/img/bodywork/slika10.webp') }} src="/img/bodywork/slika10.webp" alt="Citroen DS Break"></img>
+                          <div class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
+                            <h3 class="text-base leading-normal font-semibold my-1 text-white">Citroen</h3>
+                            <small class="d-block">DS Break</small>
+                          </div>
+                        </a>
+                      </div>
+                    </figure>
+                  </div>
+                </div>
               </div>
 
             </div>
           </div>
-
+          {!isMobile &&
+            <ImagePreview
+              showModal={showModal}
+              src={imgSrc}
+              toggleModal={toggleModal}
+            ></ImagePreview>
+          }
         </div>
       </main>
       <Footer></Footer>

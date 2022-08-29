@@ -1,10 +1,33 @@
-import React, { useRef } from 'react';
-import { useDetectClickOutside } from 'react-detect-click-outside';
+import React, { useEffect, useRef } from 'react';
 
-function ImagePreview({showModal, src, toggleModal}) {
+function ImagePreview({showModal, setShowModal, src, toggleModal}) {
     const imageTagRef = useRef(null);
 
-    const ref = useDetectClickOutside({ onTriggered: toggleModal });
+    const ref = useRef();
+
+    useEffect(() => {
+        const handleEsc = (event) => {
+            if (event.keyCode === 27) 
+                setShowModal(false);
+        };
+
+        const handleClick = (event) => {
+            if(ref){
+              if(event.target.id === 'modal' && event.target.id !== 'modal-img') {
+                setShowModal(false);
+            }
+            }
+        }
+
+        window.addEventListener('keydown', handleEsc);
+    
+        document.body.addEventListener('click', handleClick);
+    
+        return () => {
+            document.body.removeEventListener('click', handleClick);
+            window.removeEventListener('keydown', handleEsc);
+          };
+        }, []);
 
     return (
     <>
@@ -16,7 +39,7 @@ function ImagePreview({showModal, src, toggleModal}) {
         >&times;</a>
 
     
-    <img id="modal-img" ref={imageTagRef} src={src} class="max-w-[800px] max-h-[600px] object-cover px-20 py-20" />
+    <img id="modal-img" ref={imageTagRef} src={src} class="max-w-[1000px] max-h-[800px] object-cover px-20 py-20" />
     </div>
     }
         

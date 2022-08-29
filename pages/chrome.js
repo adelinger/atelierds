@@ -27,6 +27,8 @@ export default function chrome({ images, STATIC_FILES_URL }) {
     }
   }
 
+  
+
 
   return (
     <>
@@ -220,7 +222,7 @@ export default function chrome({ images, STATIC_FILES_URL }) {
                       {images.listOfImages.map((image, index) => {
                         return <div class="w-full rounded md:hover:opacity-50 md:cursor-pointer">
                           <img src={FILES_URL + image}
-                            alt="chrome restoration image" onClick={() => { toggleModal(), setImgSrc(FILES_URL + image) }}>
+                            alt="chrome restoration image"  onClick={() => { toggleModal(), setImgSrc(FILES_URL + image) }}>
                           </img>
                         </div>
                       })}
@@ -233,6 +235,7 @@ export default function chrome({ images, STATIC_FILES_URL }) {
           {BrowserView &&
             <ImagePreview
               showModal={showModal}
+              setShowModal={setShowModal}
               src={imgSrc}
               toggleModal={toggleModal}
             ></ImagePreview>

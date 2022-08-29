@@ -138,7 +138,7 @@ export default function bodywork() {
                         <a role='button' data-gallery="gallery1" data-glightbox="title: My title; description: This is a wider card with supporting text below as a natural lead-in to additional content" class="glightbox3">
                           <img class="block w-full h-auto transform duration-500 hover:scale-125"
                           onClick={() => { toggleModal(), setImgSrc('/img/bodywork/slika1.webp') }} src="/img/bodywork/slika1.webp" alt="Citroen DS"></img>
-                          <div class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
+                          <div onClick={() => { toggleModal(), setImgSrc('/img/bodywork/slika1.webp') }} class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
                             <h3 class="text-base leading-normal font-semibold my-1 text-white">Citroen</h3>
                             <small class="d-block">DS</small>
                           </div>
@@ -151,7 +151,7 @@ export default function bodywork() {
                         <a role='button' data-gallery="gallery1" data-glightbox="title: My title; description: This is a wider card with supporting text below as a natural lead-in to additional content" class="glightbox3">
                           <img class="block w-full h-auto transform duration-500 hover:scale-125"
                            onClick={() => { toggleModal(), setImgSrc('/img/bodywork/slika2.webp') }} src="/img/bodywork/slika2.webp" alt="Citroen DS"></img>
-                          <div class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
+                          <div onClick={() => { toggleModal(), setImgSrc('/img/bodywork/slika2.webp') }} class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
                             <h3 class="text-base leading-normal font-semibold my-1 text-white">Citroen</h3>
                             <small class="d-block">DS</small>
                           </div>
@@ -164,7 +164,7 @@ export default function bodywork() {
                         <a role='button' data-gallery="gallery1" data-glightbox="title: My title; description: This is a wider card with supporting text below as a natural lead-in to additional content" class="glightbox3">
                           <img class="block w-full h-auto transform duration-500 hover:scale-125" 
                            onClick={() => { toggleModal(), setImgSrc('/img/bodywork/slika3.webp') }} src="/img/bodywork/slika3.webp" alt="Citroen DS"></img>
-                          <div class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
+                          <div onClick={() => { toggleModal(), setImgSrc('/img/bodywork/slika3.webp') }} class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
                             <h3 class="text-base leading-normal font-semibold my-1 text-white">Citroen</h3>
                             <small class="d-block">DS</small>
                           </div>
@@ -177,7 +177,7 @@ export default function bodywork() {
                         <a role='button' data-gallery="gallery1" data-glightbox="title: My title; description:  This is a wider card with supporting text below as a natural lead-in to additional content" class="glightbox3">
                           <img class="block w-full h-auto transform duration-500 hover:scale-125" 
                           onClick={() => { toggleModal(), setImgSrc('/img/bodywork/slika4.webp') }} src="/img/bodywork/slika4.webp" alt="Citroen DS"></img>
-                          <div class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
+                          <div onClick={() => { toggleModal(), setImgSrc('/img/bodywork/slika4.webp') }} class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
                             <h3 class="text-base leading-normal font-semibold my-1 text-white">Citroen</h3>
                             <small class="d-block">DS</small>
                           </div>
@@ -190,7 +190,7 @@ export default function bodywork() {
                         <a role='button' data-gallery="gallery1" data-glightbox="title: My title; description:  This is a wider card with supporting text below as a natural lead-in to additional content" class="glightbox3">
                           <img class="block w-full h-auto transform duration-500 hover:scale-125" 
                           onClick={() => { toggleModal(), setImgSrc('/img/bodywork/slika5.webp') }} src="/img/bodywork/slika5.webp" alt="Citroen CX"></img>
-                          <div class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
+                          <div onClick={() => { toggleModal(), setImgSrc('/img/bodywork/slika5.webp') }}  class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
                             <h3 class="text-base leading-normal font-semibold my-1 text-white">Citroen</h3>
                             <small class="d-block">CX</small>
                           </div>
@@ -203,7 +203,7 @@ export default function bodywork() {
                         <a role='button' data-gallery="gallery1" data-glightbox="title: Graphic Design; description: This is a wider card with supporting text below as a natural lead-in to additional content" class="glightbox3">
                           <img class="block w-full h-auto transform duration-500 hover:scale-125" 
                           onClick={() => { toggleModal(), setImgSrc('/img/bodywork/slika6.webp') }} src="/img/bodywork/slika6.webp" alt="Citroen CX"></img>
-                          <div class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
+                          <div onClick={() => { toggleModal(), setImgSrc('/img/bodywork/slika6.webp') }} class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
                             <h3 class="text-base leading-normal font-semibold my-1 text-white">Citroen</h3>
                             <small class="d-block">CX</small>
                           </div>
@@ -216,7 +216,7 @@ export default function bodywork() {
                         <a role='button' data-gallery="gallery1" data-glightbox="title: Logo Design; description: This is a wider card with supporting text below as a natural lead-in to additional content" class="glightbox3">
                           <img class="block w-full h-auto transform duration-500 hover:scale-125" 
                           onClick={() => { toggleModal(), setImgSrc('/img/bodywork/slika7.webp') }} src="/img/bodywork/slika7.webp" alt="Citroen DS Convertible"></img>
-                          <div class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
+                          <div onClick={() => { toggleModal(), setImgSrc('/img/bodywork/slika7.webp') }} class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
                             <h3 class="text-base leading-normal font-semibold my-1 text-white">Citroen</h3>
                             <small class="d-block">DS Convertible</small>
                           </div>
@@ -229,7 +229,7 @@ export default function bodywork() {
                         <a role='button' data-gallery="gallery1" data-glightbox="title: Web Development; description: This is a wider card with supporting text below as a natural lead-in to additional content" class="glightbox3">
                           <img class="block w-full h-auto transform duration-500 hover:scale-125" 
                           onClick={() => { toggleModal(), setImgSrc('/img/bodywork/slika8.webp') }} src="/img/bodywork/slika8.webp" alt="Citroen DS Convertible"></img>
-                          <div class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
+                          <div onClick={() => { toggleModal(), setImgSrc('/img/bodywork/slika8.webp') }} class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
                             <h3 class="text-base leading-normal font-semibold my-1 text-white">Citroen</h3>
                             <small class="d-block">DS Convertible</small>
                           </div>
@@ -242,7 +242,7 @@ export default function bodywork() {
                         <a hrole='button' data-gallery="gallery1" data-glightbox="title: Graphic Design; description: This is a wider card with supporting text below as a natural lead-in to additional content" class="glightbox3">
                           <img class="block w-full h-auto transform duration-500 hover:scale-125" 
                           onClick={() => { toggleModal(), setImgSrc('/img/bodywork/slika9.webp') }} src="/img/bodywork/slika9.webp" alt="Citroen DS Convertible"></img>
-                          <div class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
+                          <div onClick={() => { toggleModal(), setImgSrc('/img/bodywork/slika9.webp') }} class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
                             <h3 class="text-base leading-normal font-semibold my-1 text-white">Citroen</h3>
                             <small class="d-block">DS Convertible</small>
                           </div>
@@ -255,7 +255,7 @@ export default function bodywork() {
                         <a role='button' data-gallery="gallery1" data-glightbox="title: App Design; description: This is a wider card with supporting text below as a natural lead-in to additional content" class="glightbox3">
                           <img class="block w-full h-auto transform duration-500 hover:scale-125" 
                           onClick={() => { toggleModal(), setImgSrc('/img/bodywork/slika10.webp') }} src="/img/bodywork/slika10.webp" alt="Citroen DS Break"></img>
-                          <div class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
+                          <div  onClick={() => { toggleModal(), setImgSrc('/img/bodywork/slika10.webp') }} class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
                             <h3 class="text-base leading-normal font-semibold my-1 text-white">Citroen</h3>
                             <small class="d-block">DS Break</small>
                           </div>
@@ -271,6 +271,7 @@ export default function bodywork() {
           {!isMobile &&
             <ImagePreview
               showModal={showModal}
+              setShowModal={setShowModal}
               src={imgSrc}
               toggleModal={toggleModal}
             ></ImagePreview>

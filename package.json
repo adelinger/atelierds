@@ -26,7 +26,6 @@
     "next-i18next": "^11.0.0",
     "react": "17.0.1",
     "react-cookie": "^4.1.1",
-    "react-detect-click-outside": "^1.1.7",
     "react-device-detect": "^2.2.2",
     "react-dom": "17.0.1",
     "react-onclickoutside": "^6.12.2",

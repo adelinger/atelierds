@@ -18,18 +18,6 @@ export default function bodywork() {
     }
   }
 
-  useEffect(() => {
-    const handleEsc = (event) => {
-       if (event.keyCode === 27) {
-        setShowModal(false);
-      }
-    };
-    window.addEventListener('keydown', handleEsc);
-
-    return () => {
-      window.removeEventListener('keydown', handleEsc);
-    };
-  }, []);
 
   
   return (
@@ -66,8 +54,8 @@ export default function bodywork() {
                     <div class="items-center justify-center">
                       <h1 class="text-4xl hidden md:block leading-normal text-white font-bold mb-4 text-center">Bodywork done in<br></br>Croatia</h1>
                       <p class="text-gray-300 leading-relaxed font-light text-xl mx-auto pb-2">For many years we have beeng having
-                        succesfull partnership with Croatian company <a target='_blank' href='https://autotoni.hr'>Auto Toni.</a>
-                        <br></br>   Auto Toni offers high quality work which helps us complete our service. They offer features like:</p>
+                        succesfull partnership with Croatian company <a target='_blank' className='text-orange-300 underline' href='https://autotoni.hr'>Auto Toni.</a>
+                        <br></br>  <a target='_blank' className='text-orange-300 underline' href='https://autotoni.hr'>Auto Toni</a> offers high quality work which helps us complete our service. They offer features like:</p>
 
                     </div>
                     <ul className="list-none mt-6">

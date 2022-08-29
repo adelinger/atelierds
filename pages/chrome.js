@@ -27,18 +27,6 @@ export default function chrome({ images, STATIC_FILES_URL }) {
     }
   }
 
-  useEffect(() => {
-    const handleEsc = (event) => {
-       if (event.keyCode === 27) {
-        setShowModal(false);
-      }
-    };
-    window.addEventListener('keydown', handleEsc);
-
-    return () => {
-      window.removeEventListener('keydown', handleEsc);
-    };
-  }, []);
 
   return (
     <>
@@ -85,7 +73,10 @@ export default function chrome({ images, STATIC_FILES_URL }) {
                       <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-white">
                         {t('our_work_text_2')}
                       </p>
-                      <div className='mt-8 text-center'>
+                      <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-white">
+                        {t('our_work_text_3')}
+                      </p>
+                      <div className='mt-5 mt-20 text-center'>
                         <button onClick={executeScroll} type="button" class="text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 
                         font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">
                           {t('see_gallery_btn')}
@@ -98,13 +89,13 @@ export default function chrome({ images, STATIC_FILES_URL }) {
                     </div>
 
                     <div className="w-full px-4 mr-auto ml-auto mr-auto">
-                      <div className="relative flex flex-col min-w-0 break-words bg-white w-full md:w-4/6 mb-6 shadow-lg rounded-lg bg-blueGray-700 md:float-right mx-auto ">
+                      <div className="relative flex flex-col min-w-0 break-words bg-white w-full md:w-4/6 mb-6 shadow-lg rounded-lg bg-blueGray-700  mx-auto ">
                         <Image
                           alt="Citroen ds chrome door part"
                           src="/img/ds-door-handle.webp"
                           className="w-full align-middle rounded-t-lg"
                           width={500}
-                          height={300}
+                          height={280}
                         />
                         <blockquote className="relative p-8 mb-4">
                           <svg
@@ -181,10 +172,10 @@ export default function chrome({ images, STATIC_FILES_URL }) {
                         <li>{t('fix_2_12')}</li>
                         <li>{t('fix_2_13')}</li>
                         <li>{t('fix_2_14')}</li>
-                        <li className='hidden md:block md:invisible'></li>
-                        <li className='hidden md:block md:invisible'></li>
-                        <li className='hidden md:block md:invisible'></li>
-                        <li className='hidden md:block md:invisible'></li>
+                        {!isMobile &&  <li className='md:invisible'></li> }
+                        {!isMobile &&  <li className='md:invisible'></li> }
+                        {!isMobile &&  <li className='md:invisible'></li> }
+                        {!isMobile &&  <li className='md:invisible'></li> }
                       </ul>
                     </div>
                     < div className="md:mt-5 md:mb-5" >
@@ -202,10 +193,12 @@ export default function chrome({ images, STATIC_FILES_URL }) {
                         <li>{t('fix_3_10')}</li>
                         <li>{t('fix_3_11')}</li>
                         <li>{t('fix_3_12')}</li>
-                        <li className='hidden md:block md:invisible'></li>
-                        <li className='hidden md:block md:invisible'></li>
-                        <li className='hidden md:block md:invisible'></li>
-                        <li className='hidden md:block md:invisible'></li>
+                        {!isMobile &&  <li className='md:invisible'></li> }
+                        {!isMobile &&  <li className='md:invisible'></li> }
+                        {!isMobile &&  <li className='md:invisible'></li> }
+                        {!isMobile &&  <li className='md:invisible'></li> }
+                        {!isMobile &&  <li className='md:invisible'></li> }
+                        {!isMobile &&  <li className='md:invisible'></li> }
                       </ul>
                     </div>
 

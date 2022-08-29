@@ -1,6 +1,6 @@
 import Footer from 'components/Footers/Footer';
 import Navbar from 'components/Navbars/IndexNavbar';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -27,6 +27,19 @@ export default function chrome({ images, STATIC_FILES_URL }) {
     }
   }
 
+  useEffect(() => {
+    const handleEsc = (event) => {
+       if (event.keyCode === 27) {
+        setShowModal(false);
+      }
+    };
+    window.addEventListener('keydown', handleEsc);
+
+    return () => {
+      window.removeEventListener('keydown', handleEsc);
+    };
+  }, []);
+
   return (
     <>
       <Navbar transparent></Navbar>
@@ -36,7 +49,7 @@ export default function chrome({ images, STATIC_FILES_URL }) {
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{
               backgroundImage:
-                "url('/img/light-grey-19.jpg')",
+                "url('/img/light-grey-19.webp')",
             }}
           >
             <span

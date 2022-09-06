@@ -38,12 +38,13 @@ export default function Landing() {
                     {t('AtelierDS')}
                   </h1>
                   <p className="mt-4 text-lg text-blueGray-200 px-1">
-                    Welcome to AtelierDS. We are Citroen DS enthusiasts who will make your DS look like it just came out of factory.
-                    Along with the detailing and restoration, we offer already finished Citroen DS cars for sale. {t('footer:office_title')}
+                   {t('welcome_text')}
                   </p>
 
                   <Link href="cars">
-                    <a className="text-center mt-5 inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">{t('Check our cars')}</a>
+                    <a className="text-center mt-5 inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                    {t('check_our_cars')}
+                    </a>
                   </Link>
 
                 </div>
@@ -80,17 +81,14 @@ export default function Landing() {
                     <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-blueGray-700">
                       <i class="fas fa-couch"></i>
                     </div>
-                    <h6 className="text-xl font-semibold">Interior</h6>
-                    <p className="mt-2 mb-4 text-blueGray-500">
-                      We offer complete interior restoration with the top quality.
-                    </p>
-
+                    <h6 className="text-xl font-semibold">{t('interior')}</h6>
+                    <p className="mt-2 mb-4 text-blueGray-500">{t('interior_text')}</p>
                     <Link href="/interior">
                       <a
                         href="/interior"
                         className="inline-flex text-white bg-indigo-500 border-0 py-1 px-3 focus:outline-none hover:bg-indigo-600 rounded text-lg"
                       >
-                        <span>See more</span>
+                        <span>{t('see_more')}</span>
                       </a>
                     </Link>
 
@@ -104,9 +102,9 @@ export default function Landing() {
                     <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-blueGray-700">
                       <i class="fas fa-hard-hat"></i>
                     </div>
-                    <h6 className="text-xl font-semibold">Chrome parts</h6>
+                    <h6 className="text-xl font-semibold">{t('chrome_parts')}</h6>
                     <p className="mt-2 mb-4 text-blueGray-500">
-                      If your chrome does not look nice and shiny as it used to be... well, we will bring it to it's original shiny condition!
+                    {t('chrome_parts_text')}
                     </p>
                     <Link href="chrome">
 
@@ -114,7 +112,7 @@ export default function Landing() {
                         href="/chrome"
                         className="inline-flex text-white bg-indigo-500 border-0 py-1 px-3 focus:outline-none hover:bg-indigo-600 rounded text-lg"
                       >
-                        <span>See more</span>
+                        <span>{t('see_more')}</span>
                       </a>
                     </Link>
                   </div>
@@ -127,16 +125,16 @@ export default function Landing() {
                     <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-blueGray-700">
                       <i class="fas fa-car"></i>
                     </div>
-                    <h6 className="text-xl font-semibold">Body restoration</h6>
+                    <h6 className="text-xl font-semibold">{t('body_restauration')}</h6>
                     <p className="mt-2 mb-4 text-blueGray-500">
-                      To wrap it all up, we provide complete body restoration in Croatia.
+                    {t('body_restauration_text')}
                     </p>
                     <Link href="bodywork">
                       <a
                         href="bodywork"
                         className="inline-flex text-white bg-indigo-500 border-0 py-1 px-3 focus:outline-none hover:bg-indigo-600 rounded text-lg"
                       >
-                        <span>See more</span>
+                        <span>{t('see_more')}</span>
                       </a>
                     </Link>
                   </div>
@@ -156,16 +154,13 @@ export default function Landing() {
                   <i class="fas fa-shipping-fast"></i>
                 </div>
                 <h3 className="text-3xl mb-2 font-semibold leading-normal">
-                  Working with us is a pleasure
+                {t('working_with_us')}
                 </h3>
                 <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                  when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                {t('working_with_us_text1')}
                 </p>
                 <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
-                  It has survived not only five centuries, but also the leap into electronic typesetting,
-                  remaining essentially unchanged.
+                {t('working_with_us_text2')}
                 </p>
               </div>
 
@@ -189,11 +184,10 @@ export default function Landing() {
                       ></polygon>
                     </svg>
                     <h4 className="text-xl font-bold text-white">
-                      Quality service all-round
+                    {t('quality_service')}
                     </h4>
                     <p className="text-md font-light mt-2 text-white">
-                      Atelierds provides quality service on all aspects of car restoration. With our partners in Croatia for bodywork restoration, we offer complete restoration of Citroen DS.
-
+                    {t('quality_service_text')}
                     </p>
                   </blockquote>
                 </div>
@@ -232,11 +226,9 @@ export default function Landing() {
               </div>
               <div className="w-full md:w-5/12 ml-auto px-4">
                 <div className="md:pr-12">
-                  <h3 className="text-3xl font-semibold">A growing company</h3>
+                  <h3 className="text-3xl font-semibold">{t('a_growing_company')}</h3>
                   <p className="mt-4 text-lg leading-relaxed text-blueGray-500">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                    when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                  {t('a_growing_company_text')}
                   </p>
                   <ul className="list-none mt-6">
                     <li className="py-2">
@@ -248,7 +240,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-500">
-                            Personal touch for all of our work
+                          {t('personal_touch')}
                           </h4>
                         </div>
                       </div>
@@ -262,7 +254,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-500">
-                            A perfect blend of creativity and quality
+                          {t('perfect_blend')}
                           </h4>
                         </div>
                       </div>
@@ -276,7 +268,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-500">
-                            Crafted with love, because we love Citroen DS
+                          {t('crafted_with_love')}
                           </h4>
                         </div>
                       </div>
@@ -292,9 +284,9 @@ export default function Landing() {
           <div className="container mx-auto px-4">
             <div className="flex flex-wrap justify-center text-center mb-24">
               <div className="w-full lg:w-6/12 px-4">
-                <h2 className="text-4xl font-semibold">People working on a project</h2>
+                <h2 className="text-4xl font-semibold">{t('people_working_on_a_project')}</h2>
                 <p className="text-lg leading-relaxed m-4 text-blueGray-500">
-                  It is impossible to maintain viable business without quality people. Each of our divisions have a person in charge.
+                {t('people_working_on_a_project_text')}
                 </p>
               </div>
             </div>
@@ -307,9 +299,9 @@ export default function Landing() {
                     className="shadow-lg rounded-full mx-auto max-w-120-px"
                   />
                   <div className="pt-6 text-center">
-                    <h5 className="text-xl font-bold">Enzo Forgione</h5>
+                    <h5 className="text-xl font-bold">{t('enzo')}</h5>
                     <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
-                      CEO
+                    {t('enzo_text')}
                     </p>
 
                   </div>
@@ -323,9 +315,9 @@ export default function Landing() {
                     className="shadow-lg rounded-full mx-auto max-w-120-px"
                   />
                   <div className="pt-6 text-center">
-                    <h5 className="text-xl font-bold">Luki</h5>
+                    <h5 className="text-xl font-bold">{t('luki')}</h5>
                     <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
-                      Chrome & interior
+                    {t('luki_text')}
                     </p>
 
                   </div>
@@ -339,9 +331,9 @@ export default function Landing() {
                     className="shadow-lg rounded-full mx-auto max-w-120-px"
                   />
                   <div className="pt-6 text-center">
-                    <h5 className="text-xl font-bold">Christian Sturm</h5>
+                    <h5 className="text-xl font-bold">{t('christian')}</h5>
                     <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
-                      Transportation and logistics
+                    {t('christian_text')}
                     </p>
 
                   </div>
@@ -355,9 +347,9 @@ export default function Landing() {
                     className="shadow-lg rounded-full mx-auto max-w-120-px"
                   />
                   <div className="pt-6 text-center">
-                    <h5 className="text-xl font-bold">Antun Delinger</h5>
+                    <h5 className="text-xl font-bold">{t('antun')}</h5>
                     <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
-                      Bodywork restoration
+                    {t('antun_text')}
                     </p>
 
                   </div>
@@ -395,10 +387,10 @@ export default function Landing() {
                   <i className="fas fa-medal text-xl"></i>
                 </div>
                 <h6 className="text-xl mt-5 font-semibold text-white">
-                  Excelent Services
+                {t('excellent_services')}
                 </h6>
                 <p className="mt-2 mb-4 text-blueGray-400">
-                  Quality all around. We devote our full attention to the smallest detail.
+                {t('excellent_services_text')}
                 </p>
               </div>
               <div className="w-full lg:w-3/12 px-4 text-center">
@@ -406,11 +398,10 @@ export default function Landing() {
                   <i className="fas fa-poll text-xl"></i>
                 </div>
                 <h5 className="text-xl mt-5 font-semibold text-white">
-                  We are growing
+                {t('we_growing')}
                 </h5>
                 <p className="mt-2 mb-4 text-blueGray-400">
-                  We are trying to offer full restoration and not lock ourselves only on interior.
-                  So whatever your Citroen car needs, we can do it.
+                {t('we_growing_text')}
                 </p>
               </div>
               <div className="w-full mb-5 lg:-mb-5 lg:w-3/12 px-4 text-center">
@@ -418,10 +409,10 @@ export default function Landing() {
                   <i className="fas fa-lightbulb text-xl"></i>
                 </div>
                 <h5 className="text-xl mt-5 font-semibold text-white">
-                  Like what you see?
+                {t('like')}
                 </h5>
                 <p className="mt-2 mb-4 text-blueGray-400">
-                  Contact us and start the process of making the best of your Citroen!
+                {t('like_text')}
                 </p>
               </div>
             </div>

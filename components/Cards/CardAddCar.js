@@ -7,6 +7,7 @@ import  { useRouter } from 'next/router'
 
 export default function CardSettings({ auth, carData }) {
     const { user } = auth;
+    const {logout} = auth;
     const router = useRouter()
 
     const [images, setImages] = useState(carData?.listOfImages ?? []);
@@ -33,16 +34,31 @@ export default function CardSettings({ auth, carData }) {
     const [isUpdate, setIsUpdate] = useState(false);
 
     useEffect(() => {
+        checkAuth();
+
         if(carData){
             setImages(carData?.listOfImages)
             setIsUpdate(true)
         }else{
             setIsUpdate(false);
         }
+    
       }, [])
-    
-    
 
+     
+     
+       const checkAuth = () => {
+         api
+           .checkAuth()
+           .then(data => {     
+           })
+           .catch((error) => {
+             if(error.response.status === 401){
+               logout();
+             }
+           });
+        }
+    
     const carObject = {
         "atelierCarStatus": {
             "atelierCarStatusID": carStatus

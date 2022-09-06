@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 
@@ -7,10 +7,12 @@ import { useTranslation } from "next-i18next";
 import Navbar from "components/Navbars/IndexNavbar";
 import Footer from "components/Footers/Footer.js";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import CardEmail from "components/Cards/CardEmail";
 
 
 export default function Landing() {
   const { t } = useTranslation(['index', 'footer', 'common']);
+
   return (
     <>
       <Navbar transparent />
@@ -20,7 +22,7 @@ export default function Landing() {
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{
               backgroundImage:
-                "url('/img/image_ds.jpg')",
+                "url('/img/image_ds.webp')",
             }}
           >
             <span
@@ -30,14 +32,14 @@ export default function Landing() {
           </div>
           <div className="container relative mx-auto">
             <div className="items-center flex flex-wrap">
-              <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
+              <div className="w-full lg:w-6/12 mt-5 md:mt-0 md:px-4 ml-auto mr-auto text-center">
                 <div>
                   <h1 className="text-white font-semibold text-5xl">
                     {t('AtelierDS')}
                   </h1>
-                  <p className="mt-4 text-lg text-blueGray-200 text-center">
+                  <p className="mt-4 text-lg text-blueGray-200 px-1">
                     Welcome to AtelierDS. We are Citroen DS enthusiasts who will make your DS look like it just came out of factory.
-                    Along with detailng and restoration, we offer already finished Citroen DS cars for sale. {t('footer:office_title')}
+                    Along with the detailing and restoration, we offer already finished Citroen DS cars for sale. {t('footer:office_title')}
                   </p>
 
                   <Link href="cars">
@@ -170,8 +172,8 @@ export default function Landing() {
               <div className="w-full md:w-4/12 px-4 mr-auto ml-auto">
                 <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-blueGray-700">
                   <img
-                    alt="..."
-                    src="https://scontent-sof1-1.xx.fbcdn.net/v/t1.6435-9/101025174_2732516400311760_1171002582483599360_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=730e14&_nc_ohc=BNmXGkM0FeMAX9EHgyD&_nc_ht=scontent-sof1-1.xx&oh=00_AT_qbnIX33GvBHIfYgwk3ZnLkCtY3BBkwtjbWAYLHAY93g&oe=62E75DD2"
+                    alt="Citroen Garrage"
+                    src="/img/citroen_ds_garrage.webp"
                     className="w-full align-middle rounded-t-lg"
                   />
                   <blockquote className="relative p-8 mb-4">
@@ -428,65 +430,7 @@ export default function Landing() {
         <section className="relative block py-24 lg:pt-0 bg-blueGray-800">
           <div className="container mx-auto px-4">
             <div className="flex flex-wrap justify-center lg:-mt-64 -mt-48">
-              <div className="w-full lg:w-6/12 px-4">
-                <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200">
-                  <div className="flex-auto p-5 lg:p-10">
-                    <h4 className="text-2xl font-semibold">
-                      Contact us for further information
-                    </h4>
-                    <div className="relative w-full mb-3 mt-8">
-                      <label
-                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlFor="full-name"
-                      >
-                        Full Name
-                      </label>
-                      <input
-                        type="text"
-                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                        placeholder="Full Name"
-                      />
-                    </div>
-
-                    <div className="relative w-full mb-3">
-                      <label
-                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlFor="email"
-                      >
-                        Email
-                      </label>
-                      <input
-                        type="email"
-                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                        placeholder="Email"
-                      />
-                    </div>
-
-                    <div className="relative w-full mb-3">
-                      <label
-                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlFor="message"
-                      >
-                        Message
-                      </label>
-                      <textarea
-                        rows="4"
-                        cols="80"
-                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
-                        placeholder="Type a message..."
-                      />
-                    </div>
-                    <div className="text-center mt-6">
-                      <button
-                        className="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                        type="button"
-                      >
-                        Send Message
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <CardEmail t={t}></CardEmail>
             </div>
           </div>
         </section>

@@ -9,5 +9,22 @@
     .red-btn {
      background-color:#FF0000;
     }
-    
+
+    .max-height-450{
+      max-height: 450px;
+    }
+
+    .mobile-width{
+      width:22rem;
+    }
+    .images-width{
+      width:38rem;
+    }
+    .min-h-screen {
+      min-height: 100vh;
+    }
+    .py-40 {
+      padding-top: 10rem;
+      padding-bottom: 10rem;
+    }
   }

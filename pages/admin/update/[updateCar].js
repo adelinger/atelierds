@@ -3,9 +3,29 @@ import CardAddCar from 'components/Cards/CardAddCar';
 import { getSingleCar, loadCars } from "lib/apiCalls";
 import { withProtected } from 'auth/hook/route';
 import { useRouter } from "next/router";
+import ApiService from "auth/service/ApiService";
+import { useEffect } from "react";
 
 function updateCar({carData, auth}) {
-    
+  const {logout} = auth;
+
+    const api = new ApiService();
+
+    useEffect(() => {
+      checkAuth();
+    }, [])
+
+     const checkAuth = () => {
+       api
+         .checkAuth()
+         .then(data => {     
+         })
+         .catch((error) => {
+           if(error.response.status === 401){
+             logout();
+           }
+         });
+      }
 
     return ( 
         <Admin>
@@ -34,7 +54,6 @@ export async function getStaticProps({ params }) {
 
   export async function getStaticPaths() {
     const cars = await loadCars();
-  
     const paths = cars.map(car => ({
       params: { updateCar: car.atelierCarID.toString() }
     })
@@ -44,7 +63,6 @@ export async function getStaticProps({ params }) {
       paths,
       fallback: true,
     }
-  
   }
 
 

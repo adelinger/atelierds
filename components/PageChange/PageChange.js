@@ -12,7 +12,7 @@ export default function PageChange(props) {
         className="bg-cover fixed z-40 w-full h-full top-0 left-0"
         style={{
           backgroundImage:
-              "url('/img/light-grey-19.jpg')",
+              "url('/img/light-grey-19.webp')",
       }}
       ></div>
       <div className="top-0 left-0 w-full h-full block z-50 absolute bg-black bg-opacity-50"></div>

@@ -16,7 +16,7 @@ export default function interior() {
                         className="absolute top-0 w-full h-full bg-center bg-cover"
                         style={{
                             backgroundImage:
-                                "url('/img/light-grey-19.jpg')",
+                                "url('/img/light-grey-19.webp')",
                         }}
                     >
                         <span
@@ -27,13 +27,11 @@ export default function interior() {
                     <div className="container relative mx-auto collapse">
                         <div className="items-center flex flex-wrap">
                             <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
-                                <div className="mt-5 pr-12">
+                                <div className="mt-10 text-center">
                                     <h1 className="text-white font-semibold text-5xl">
                                         Leather
                                     </h1>
-                                    <h1 className="mt-5 text-white font-semibold text-3xl">
-                                        
-                                    </h1>
+
                                 </div>
                             </div>
                             <div className="container mx-auto ">
@@ -101,7 +99,7 @@ export default function interior() {
                                     < div className="mt-5 mb-5" >
                                         <div class="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                                             <a href="#">
-                                                <img class="rounded-t-lg" src="/img/interior/naturelle_foncee.jpg" alt="Naturelle foncée leather" style={{ minHeight: 250, width: 700 }} ></img>  
+                                                <img class="rounded-t-lg" src="/img/interior/naturelle_foncee.jpg" alt="Naturelle foncée leather" style={{ minHeight: 250, width: 700 }} ></img>
                                             </a>
                                             <div class="p-5">
                                                 <div className='text-center'>
@@ -134,6 +132,6 @@ export default function interior() {
 
 export const getStaticProps = async ({ locale }) => ({
     props: {
-      ...await serverSideTranslations(locale, ['common', 'index', 'footer']),
+        ...await serverSideTranslations(locale, ['common', 'index', 'footer']),
     },
-  })
+})

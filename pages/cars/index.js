@@ -13,17 +13,17 @@ import ItemListCard from "components/Cards/ItemListCard";
 export default function carsForSale({cars, serverUrl}) {
 
 
-  const { t } = useTranslation('index');
+  const { t } = useTranslation('carsPage');
   return (
     <>
       <Navbar/>
       <main>
-      <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
+      <div className="relative pt-16 pb-16 md:pb-32 flex content-center items-center justify-center min-h-screen-75">
           <div
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{
               backgroundImage:
-                "url('/img/light-grey-19.jpg')",
+                "url('/img/light-grey-19.webp')",
             }}
           >
             <span
@@ -34,12 +34,12 @@ export default function carsForSale({cars, serverUrl}) {
           <div className="container relative mx-auto">
             <div className="items-center flex flex-wrap">
               <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center mt-5">
-                <div className="pr-12">
+                <div className="">
                   <h1 className="text-white font-semibold text-5xl mt-5">
-                    {t('Cars for sale')}
+                    {t('cars_for_sale')}
                   </h1>
                   <p className="mt-4 text-lg text-blueGray-200">
-                    Here you can see which cars do we have for sale at the moment.
+                  {t('title_message')}
                   </p>
                 </div>
               </div>
@@ -47,11 +47,9 @@ export default function carsForSale({cars, serverUrl}) {
                 
               <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-3">
            {cars.map (car => 
-                   <div className="mt-5 mb-5" >
+                   <div className="mt-5 mb-5 ml-auto mr-auto" >
                      <ItemListCard car={car} serverUrl={serverUrl}></ItemListCard>
                      </div>
-                   
-                 
                   )}
                
             </div>
@@ -77,7 +75,7 @@ export async function getStaticProps({locale}){
       props: {
         cars: cars,
         serverUrl: STATIC_FILES_URL,
-        ...await serverSideTranslations(locale, ['common', 'index', 'footer']),
+        ...await serverSideTranslations(locale, ['common', 'carsPage', 'footer']),
       }
   }
 }

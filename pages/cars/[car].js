@@ -7,6 +7,7 @@ import 'react-slideshow-image/dist/styles.css';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import CardEmail from 'components/Cards/CardEmail';
+import PrimaryButton from 'components/Buttons/PrimaryButton';
 
 function viewCar({ carData, STATIC_FILES_URL }) {
   const { t } = useTranslation('common');
@@ -98,13 +99,7 @@ function viewCar({ carData, STATIC_FILES_URL }) {
                       </button>
                         </div>
                         <div>
-                        <button onClick={handleEmailbtnClick} type="button" class="ml-1 center-image text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 
-                        focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-base px-6 py-3.5 text-center dark:bg-indigo-600 
-                    dark:hover:bg-gray-700 dark:focus:ring-gray-800">
-
-                        <span className='mr-2'> {t('send_inquiry')}</span>
-                        <i class="fas fa-envelope mt-1"></i>
-                      </button>
+                       <PrimaryButton color='gray' iconClass='fas fa-envelope mt-1' title='Send an inquiry' onClickFunction={handleEmailbtnClick}></PrimaryButton>
                         </div>
 
                       </div>

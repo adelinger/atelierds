@@ -58,7 +58,7 @@ export default function Navbar(props) {
                       "lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                     }
                   >
-                    Cars for sale
+                    {t('common:cars_for_sale')}
                   </a>
                 </Link>
 
@@ -71,7 +71,7 @@ export default function Navbar(props) {
                       "lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                     }
                   >
-                    Interior
+                    {t('common:interior_navbar')}
                   </a>
                 </Link>
 
@@ -84,7 +84,7 @@ export default function Navbar(props) {
                       "lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                     }
                   >
-                    Chrome parts
+                   {t('common:chrome_parts')} 
                   </a>
                 </Link>
 
@@ -97,7 +97,7 @@ export default function Navbar(props) {
                       "lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                     }
                   >
-                    Body restoration
+                    {t('common:body_restoration')}
                   </a>
                 </Link>
               </li>
@@ -109,7 +109,7 @@ export default function Navbar(props) {
                       "lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                     }
                   >
-                    Contact
+                   {t('common:contact')} 
                   </a>
                 </Link>
 

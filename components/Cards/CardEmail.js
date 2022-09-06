@@ -87,7 +87,7 @@ function CardEmail({ t, car = null }) {
                                 <input
                                     type="text"
                                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                    placeholder="First Name"
+                                    placeholder={t('common:first_name')}
                                     required
                                     value={firstName}
                                     onChange={e => setFirstName(e.target.value)}
@@ -103,7 +103,7 @@ function CardEmail({ t, car = null }) {
                                 <input
                                     type="text"
                                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                    placeholder="Last Name"
+                                    placeholder={t('common:last_name')}
                                     value={lastName}
                                     required
                                     onChange={e => setLastName(e.target.value)}
@@ -120,7 +120,7 @@ function CardEmail({ t, car = null }) {
                                 <input
                                     type="email"
                                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                    placeholder="Email"
+                                    placeholder={t('common:email')}
                                     value={email}
                                     required
                                     onChange={e => setEmail(e.target.value)}
@@ -138,7 +138,7 @@ function CardEmail({ t, car = null }) {
                                     rows="4"
                                     cols="80"
                                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
-                                    placeholder="Type a message..."
+                                    placeholder={t('common:message_type')}
                                     value={message}
                                     required
                                     onChange={e => setMessage(e.target.value)}

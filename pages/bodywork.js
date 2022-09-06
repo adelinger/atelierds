@@ -6,11 +6,14 @@ import { isMobile } from 'react-device-detect';
 import ImagePreview from 'components/Modals/ImagePreview';
 
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from 'next-i18next';
 
 
 export default function bodywork() {
   const [showModal, setShowModal] = useState(false);
   const [imgSrc, setImgSrc] = useState();
+
+  const {t} = useTranslation('bodyworkPage');
 
   const toggleModal = () => {
     if (!isMobile) {
@@ -43,7 +46,7 @@ export default function bodywork() {
               <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center mt-10">
                 <div className="text-center">
                   <h1 className="text-white font-semibold text-5xl">
-                    Bodywork
+                    {t('main_title')}
                   </h1>
                 </div>
               </div>
@@ -52,10 +55,14 @@ export default function bodywork() {
 
                   <div class="col-span-3 px-5 md:ml-10 md:-mt-10">
                     <div class="items-center justify-center">
-                      <h1 class="text-4xl hidden md:block leading-normal text-white font-bold mb-4 text-center">Bodywork done in<br></br>Croatia</h1>
-                      <p class="text-gray-300 leading-relaxed font-light text-xl mx-auto pb-2">For many years we have beeng having
-                        succesfull partnership with Croatian company <a target='_blank' className='text-orange-300 underline' href='https://autotoni.hr'>Auto Toni.</a>
-                        <br></br>  <a target='_blank' className='text-orange-300 underline' href='https://autotoni.hr'>Auto Toni</a> offers high quality work which helps us complete our service. They offer features like:</p>
+                      <h1 class="text-3xl hidden md:block leading-normal text-white font-bold mb-4 "> <br></br></h1>
+                      <p class="text-gray-300 leading-relaxed font-light text-xl mx-auto pb-2"><div dangerouslySetInnerHTML={
+    {__html: t('text_1', {interpolation: {escapeValue: false}})}
+} />
+                        <br></br>  <div dangerouslySetInnerHTML={
+    {__html: t('text_2', {interpolation: {escapeValue: false}})}
+} />
+                        </p>
 
                     </div>
                     <ul className="list-none mt-6">
@@ -285,6 +292,6 @@ export default function bodywork() {
 
 export const getStaticProps = async ({ locale }) => ({
   props: {
-    ...await serverSideTranslations(locale, ['common', 'index', 'footer']),
+    ...await serverSideTranslations(locale, ['common', 'bodyworkPage', 'footer']),
   },
 })

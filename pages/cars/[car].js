@@ -2,12 +2,13 @@ import React, { useRef, useState } from 'react';
 import Navbar from 'components/Navbars/IndexNavbar';
 import Footer from 'components/Footers/Footer';
 import { getSingleCar, loadCars } from 'lib/apiCalls';
-import Image from 'next/image';
+import { isMobile } from 'react-device-detect';
 import 'react-slideshow-image/dist/styles.css';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import CardEmail from 'components/Cards/CardEmail';
 import PrimaryButton from 'components/Buttons/PrimaryButton';
+import ImagePreview from 'components/Modals/ImagePreview';
 
 function viewCar({ carData, STATIC_FILES_URL }) {
   const { t } = useTranslation('common');
@@ -16,6 +17,9 @@ function viewCar({ carData, STATIC_FILES_URL }) {
   const title = carData.carMake + ' ' + carData.carModel;
   const [showEmailForm, setShowEmailForm] = useState();
   const baseRef = useRef(null);
+  const [showModal, setShowModal] = useState(false);
+  const [imgSrc, setImgSrc] = useState();
+  const galleryRef = useRef(null);
 
   const handleEmailbtnClick = () => {
     setShowEmailForm(!showEmailForm);
@@ -24,6 +28,16 @@ function viewCar({ carData, STATIC_FILES_URL }) {
       baseRef.current.scrollIntoView({ behavior: 'smooth' });
     }
 
+  }
+
+  const handleGalleryBtnClick = () => {
+    galleryRef.current.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  const toggleModal = () => {
+    if (!isMobile) {
+      setShowModal(!showModal);
+    }
   }
 
   return (
@@ -90,21 +104,19 @@ function viewCar({ carData, STATIC_FILES_URL }) {
                     <div className="mobile-width w-auto h-content px-3 py-2 bg-slate-200 rounded-xl focus:outline-0">
                       <div className='grid grid-cols-1 md:grid-cols-2'>
                         <div>
-                        <button onClick={handleEmailbtnClick} type="button" class="mr-1 center-image text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none 
-                    focus:ring-gray-300 font-medium rounded-lg text-base px-6 py-3.5 text-center dark:bg-indigo-600 
-                    dark:hover:bg-indigo-700 dark:focus:ring-gray-800">
-
-                        <span className='mr-2'> See the gallery</span>
-                        <i class="fas fa-image"></i>
-                      </button>
+                        <PrimaryButton color='gray' iconClass='fas fa-image mt-1' title='See the gallery' 
+                        additionalClasses='mr-1 center-image' onClickFunction={handleGalleryBtnClick}>
+                        </PrimaryButton>
                         </div>
                         <div>
-                       <PrimaryButton color='gray' iconClass='fas fa-envelope mt-1' title='Send an inquiry' onClickFunction={handleEmailbtnClick}></PrimaryButton>
+                          <PrimaryButton color='gray' iconClass='fas fa-envelope mt-1' title='Send an inquiry'
+                           additionalClasses='mr-1 center-image' onClickFunction={handleEmailbtnClick}>
+                           </PrimaryButton>
                         </div>
 
                       </div>
-                      
-                     
+
+
                     </div>
                   </div>
 
@@ -112,27 +124,40 @@ function viewCar({ carData, STATIC_FILES_URL }) {
               </div>
             </section>
 
+            <section className="relative block lg:pt-0 mt-10">
+            <div ref={galleryRef} className="mt-5">
+                    <div class="container mx-auto space-y-2 lg:space-y-0 lg:gap-2 lg:grid lg:grid-cols-3">
+                      {carData.listOfImages.map((image, index) => {
+                        return <div  class="w-full rounded md:hover:opacity-50 md:cursor-pointer">
+                          <img src={FILES_URL + image}
+                            alt="chrome restoration image" className='max-h-80' onClick={() => { toggleModal(), setImgSrc(FILES_URL + image) }}>
+                          </img>
+                        </div>
+                      })}
+                    </div>
+                  </div>
+            </section>
+
 
             <section className="relative block lg:pt-0 mt-10">
-              <div class="w-full justify-center text-center -mt-15 md:mt-20 self-center">
-                <button onClick={handleEmailbtnClick} type="button" class="self-center text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-base px-6 py-3.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">
-
-                  <span className='mr-2'> {t('send_inquiry')}</span>
-                  <i class="fas fa-envelope mt-1"></i>
-                </button>
-
-              </div>
-
               <div className="container mx-auto px-4">
-
                 <div className="flex flex-wrap justify-center">
                   {showEmailForm &&
                     <CardEmail t={t} car={carData} ></CardEmail>}
                 </div>
               </div>
-            </section>
-          </div>
+            </section>  
 
+            {!isMobile &&
+            <ImagePreview
+              showModal={showModal}
+              setShowModal={setShowModal}
+              src={imgSrc}
+              toggleModal={toggleModal}
+            ></ImagePreview>
+          }
+                    
+          </div>
         </div>
 
       </main>

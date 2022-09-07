@@ -1,1 +1,11 @@
-{}
+{
+    "main_title": "Carrozzeria",
+    "second_title": "Collaborazione con la carrozzeria",
+    "text_1": "Da molti anni collaboriamo con successo con l'azienda croata <a target='_blank' class='text-indigo-600 underline' href='https://autotoni.hr'>Auto Toni.</a>",
+    "text_2": "<a target='_blank' class='text-indigo-600 underline' href='https://autotoni.hr'>Auto Toni</a> offre un lavoro di alta qualità che ci aiuta a completare il nostro servizio. Offrono funzionalità come:",
+    "direct":"Comunicazione diretta con il cliente",
+    "top":"Verniciatura di prima qualità",
+    "toughest":"Restauri di carrozzeria più difficili",
+    "expert":"Lavoro di meccanico esperto",
+    "work_gallery":"Galleria di lavoro"
+  }

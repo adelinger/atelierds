@@ -1,6 +1,11 @@
 {
-  "main_title": "Bodywork",
-  "second_title": "Bodywork partnership",
-  "text_1": "For many years we have beeng having succesfull partnership with Croatian company <a target='_blank' class='text-orange-300 underline' href='https://autotoni.hr'>Auto Toni.</a>",
-  "text_2": "<a target='_blank' class='text-orange-300 underline' href='https://autotoni.hr'>Auto Toni</a> offers high quality work which helps us complete our service. They offer features like:"
-}
+  "main_title": "Karosserie",
+  "second_title": "Karosseriepartnerschaft",
+  "text_1": "Seit vielen Jahren pflegen wir eine erfolgreiche Partnerschaft mit kroatischen Unternehmen <a target='_blank' class='text-indigo-600 underline' href='https://autotoni.hr'>Auto Toni.</a>",
+  "text_2": "<a target='_blank' class='text-indigo-600 underline' href='https://autotoni.hr'>Auto Toni</a> bietet qualitativ hochwertige Arbeit, die uns hilft, unseren Service zu vervollständigen. Sie bieten Funktionen wie:",
+ "direct":"Direkte Kommunikation mit dem Kunden",
+    "top":"Erstklassige Lackierung",
+    "toughest":"Härteste Karosserierestaurierungen",
+    "expert":"Sachverständiger Mechaniker Job",
+    "work_gallery":"Werkgalerie"
+  } 

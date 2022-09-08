@@ -7,7 +7,6 @@ import 'react-slideshow-image/dist/styles.css';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import CardEmail from 'components/Cards/CardEmail';
-import PrimaryButton from 'components/Buttons/PrimaryButton';
 import ImagePreview from 'components/Modals/ImagePreview';
 
 function viewCar({ carData, STATIC_FILES_URL }) {
@@ -105,14 +104,20 @@ function viewCar({ carData, STATIC_FILES_URL }) {
                     <div className="mobile-width w-auto h-content px-3 py-2 bg-slate-200 rounded-xl focus:outline-0">
                       <div className='grid grid-cols-1 md:grid-cols-2'>
                         <div>
-                        <PrimaryButton color='orange' iconClass='fas fa-image mt-1' title='See the gallery' 
-                        additionalClasses='mr-1 center-image' onClickFunction={handleGalleryBtnClick}>
-                        </PrimaryButton>
+                          <button onClick={handleGalleryBtnClick} type="button" className='mr-1 center-image btn-primary-gray-big'>
+                            <span className='mr-2'>See the gallery</span>
+                            <i class='fas fa-image mt-1'></i>
+                          </button>
+                          </div>
+                          <div>
+                          <button onClick={handleEmailbtnClick} type="button" className=' btn-primary-gray-big'>
+                            <span className='mr-2'>Send an inquiry</span>
+                            <i class='fas fa-envelope mt-1'></i>
+                          </button>
+
                         </div>
                         <div>
-                          <PrimaryButton color='indigo' iconClass='fas fa-envelope mt-1' title='Send an inquiry'
-                           additionalClasses='mr-1 center-image' onClickFunction={handleEmailbtnClick}>
-                           </PrimaryButton>
+
                         </div>
 
                       </div>
@@ -126,17 +131,17 @@ function viewCar({ carData, STATIC_FILES_URL }) {
             </section>
 
             <section className="relative block lg:pt-0 mt-10">
-            <div ref={galleryRef} className="mt-5">
-                    <div class="container mx-auto space-y-2 lg:space-y-0 lg:gap-2 lg:grid lg:grid-cols-3">
-                      {carData.listOfImages.map((image, index) => {
-                        return <div  class="w-full rounded md:hover:opacity-50 md:cursor-pointer">
-                          <img src={FILES_URL + image}
-                            alt="chrome restoration image" className='max-h-80' onClick={() => { toggleModal(), setImgSrc(FILES_URL + image) }}>
-                          </img>
-                        </div>
-                      })}
+              <div ref={galleryRef} className="mt-5">
+                <div class="container mx-auto space-y-2 lg:space-y-0 lg:gap-2 lg:grid lg:grid-cols-3">
+                  {carData.listOfImages.map((image, index) => {
+                    return <div class="w-full rounded md:hover:opacity-50 md:cursor-pointer">
+                      <img src={FILES_URL + image}
+                        alt="chrome restoration image" className='max-h-80' onClick={() => { toggleModal(), setImgSrc(FILES_URL + image) }}>
+                      </img>
                     </div>
-                  </div>
+                  })}
+                </div>
+              </div>
             </section>
 
 
@@ -147,17 +152,17 @@ function viewCar({ carData, STATIC_FILES_URL }) {
                     <CardEmail t={t} car={carData} ></CardEmail>}
                 </div>
               </div>
-            </section>  
+            </section>
 
             {!isMobile &&
-            <ImagePreview
-              showModal={showModal}
-              setShowModal={setShowModal}
-              src={imgSrc}
-              toggleModal={toggleModal}
-            ></ImagePreview>
-          }
-                    
+              <ImagePreview
+                showModal={showModal}
+                setShowModal={setShowModal}
+                src={imgSrc}
+                toggleModal={toggleModal}
+              ></ImagePreview>
+            }
+
           </div>
         </div>
 

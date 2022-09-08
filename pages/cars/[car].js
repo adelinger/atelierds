@@ -73,10 +73,34 @@ function viewCar({ carData, STATIC_FILES_URL }) {
 
             <section>
               <div className="container mx-auto py-5 ">
-                <img className='center-image' src={profilePhoto} style={{ height: '60vh', width: 'auto' }}></img>
-                <div className='grid grid-cols-1 md:grid-cols-7 gap-7 mt-0 md:-mt-10'>
-                  <div className='col-span-2'>
-                    <div className="mobile-width md:w-auto h-auto md:h-17 px-3 py-2 bg-slate-200 rounded-xl focus:outline-0">
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-2 content-start'>
+                  <div>
+                    <img className='center-image' src={profilePhoto}></img>
+                    <div className='px-3 md:px-0 mt-3 mb-1'>    
+                    <div className="md:float-left md:-mt-20 md:absolute h-content px-3 py-2 bg-slate-200 rounded-xl focus:outline-0">
+                      <div className='grid grid-cols-1 grid-flow-col md:grid-cols-2'>
+                        <div>
+                          <button onClick={handleGalleryBtnClick} type="button" className='mr-1 center-image btn-primary-gray-big'>
+                            <span className='mr-2'>See the gallery</span>
+                            <i class='fas fa-image mt-1'></i>
+                          </button>
+                        </div>
+                        
+                        <div>
+                          <button onClick={handleEmailbtnClick} type="button" className='h-full md:h-auto btn-primary-gray-big'>
+                            <span className='mr-2'>Send an inquiry</span>
+                            <i class='fas fa-envelope mt-1'></i>
+                          </button>
+                        </div>
+                        <div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className='md:ml-5 px-3 mb-3'>
+                    <div className="w-auto md:w-auto h-auto md:h-17 px-3 py-2 bg-slate-200 rounded-xl focus:outline-0">
                       <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium font-bold decoration-black">
                         Car specs
                       </h1>
@@ -87,9 +111,7 @@ function viewCar({ carData, STATIC_FILES_URL }) {
                       <li className="mb-2 text-1x1 leading-relaxed decoration-black">Kilometers: {carData.carYear}</li>
                       <p className="mb-1 text-1x1 leading-relaxed text-black font-bold">Price: {carData.carYear} (€)</p>
                     </div>
-                  </div>
-                  <div className='col-span-3'>
-                    <div className="mobile-width w-auto h-full px-3 py-2 bg-slate-200 rounded-xl focus:outline-0">
+                    <div className="mt-3 md:mt-3 w-auto px-3 py-2 bg-slate-200 rounded-xl focus:outline-0 mt-0 md:mt-5">
                       <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium font-bold decoration-black">
                         Description
                       </h1>
@@ -98,40 +120,15 @@ function viewCar({ carData, STATIC_FILES_URL }) {
                         type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining
                         essentially unchanged.</p>
                     </div>
-                  </div>
 
-                  <div className='col-span-2'>
-                    <div className="mobile-width w-auto h-content px-3 py-2 bg-slate-200 rounded-xl focus:outline-0">
-                      <div className='grid grid-cols-1 md:grid-cols-2'>
-                        <div>
-                          <button onClick={handleGalleryBtnClick} type="button" className='mr-1 center-image btn-primary-gray-big'>
-                            <span className='mr-2'>See the gallery</span>
-                            <i class='fas fa-image mt-1'></i>
-                          </button>
-                          </div>
-                          <div>
-                          <button onClick={handleEmailbtnClick} type="button" className=' btn-primary-gray-big'>
-                            <span className='mr-2'>Send an inquiry</span>
-                            <i class='fas fa-envelope mt-1'></i>
-                          </button>
-
-                        </div>
-                        <div>
-
-                        </div>
-
-                      </div>
-
-
-                    </div>
                   </div>
 
                 </div>
               </div>
             </section>
 
-            <section className="relative block lg:pt-0 mt-10">
-              <div ref={galleryRef} className="mt-5">
+            <section className="relative block lg:pt-0 md:mt-10 px-3 md:px-0">
+              <div ref={galleryRef} className="md: mt-5">
                 <div class="container mx-auto space-y-2 lg:space-y-0 lg:gap-2 lg:grid lg:grid-cols-3">
                   {carData.listOfImages.map((image, index) => {
                     return <div class="w-full rounded md:hover:opacity-50 md:cursor-pointer">

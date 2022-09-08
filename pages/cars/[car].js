@@ -1,28 +1,44 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Navbar from 'components/Navbars/IndexNavbar';
 import Footer from 'components/Footers/Footer';
 import { getSingleCar, loadCars } from 'lib/apiCalls';
-import { Slide } from 'react-slideshow-image';
+import { isMobile } from 'react-device-detect';
 import 'react-slideshow-image/dist/styles.css';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import CardEmail from 'components/Cards/CardEmail';
+import PrimaryButton from 'components/Buttons/PrimaryButton';
+import ImagePreview from 'components/Modals/ImagePreview';
 
 function viewCar({ carData, STATIC_FILES_URL }) {
   const { t } = useTranslation('common');
   const FILES_URL = STATIC_FILES_URL + carData.carPhotosPath + '/';
+  const profilePhoto = FILES_URL + carData.carProfilePhotoPath;
+  const title = carData.carMake + ' ' + carData.carModel;
   const [showEmailForm, setShowEmailForm] = useState();
   const baseRef = useRef(null);
+  const [showModal, setShowModal] = useState(false);
+  const [imgSrc, setImgSrc] = useState();
+  const galleryRef = useRef(null);
+
 
   const handleEmailbtnClick = () => {
     setShowEmailForm(!showEmailForm);
-
 
     if (showEmailForm) {
       baseRef.current.scrollIntoView({ behavior: 'smooth' });
     }
 
+  }
 
+  const handleGalleryBtnClick = () => {
+    galleryRef.current.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  const toggleModal = () => {
+    if (!isMobile) {
+      setShowModal(!showModal);
+    }
   }
 
   return (
@@ -42,70 +58,107 @@ function viewCar({ carData, STATIC_FILES_URL }) {
               className="w-full h-full absolute opacity-50 bg-black"
             ></span>
           </div>
+
           <div className="container relative mx-auto">
             <section class="text-gray-600 body-font">
-              <div class="container pt-20 md:py-0 mx-auto flex md:px-5 -pt-5 md:pt-20 md:flex-row flex-col items-center">
-                <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start items-center">
-                  <div className="mobile-width md:w-96 px-3 py-2 bg-slate-200 rounded-xl focus:outline-0 ">
-                    <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium font-bold text-black">
-                      {carData.carMake + ' ' + carData.carModel}
+              <div className="items-center flex flex-wrap">
+                <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center mt-10">
+                  <div className="text-center">
+                    <h1 className="text-white font-semibold text-5xl">
+                      {title}
                     </h1>
-                    <li className="mb-2 text-1x1 leading-relaxed text-black">Year: {carData.carYear}</li>
-                    <li className="mb-2 text-1x1 leading-relaxed text-black">Color: {carData.carColor} </li>
-                    <li className="mb-2 text-1x1 leading-relaxed text-black">Engine power: {carData.carYear}</li>
-                    <li className="mb-2 text-1x1 leading-relaxed text-black">Engine type: {carData.carYear}</li>
-                    <li className="mb-2 text-1x1 leading-relaxed text-black">Kilometers: {carData.carYear}</li>
-                    <p className="mb-1 text-1x1 leading-relaxed text-black font-bold">Price: {carData.carYear} (€)</p>
                   </div>
-
-                  <div>
-                    <textarea class="mobile-width md:w-96 h-36 px-3 py-2 bg-slate-200 rounded-xl focus:outline-0 mt-5"
-                      placeholder="Description">
-                      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
-                      type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining
-                      essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-                      and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
-                    </textarea>
-
-                  </div>
-                </div>
-
-                <div class="lg:max-w-lg lg:w-full md:w-1/2 w-full mb-2 md:mb-0 mt-5 md:-mt-5" style={{ maxWidth: 700 }}>
-                  <Slide>
-                    {carData.listOfImages.map((slideImage, index) => (
-                      <div className="each-slide md:h-full" key={index} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundSize: 'cover' }}>
-                        <div >
-                          <img alt='car for sale' className='max-h-72 md:max-height-450 mobile-width lg:images-width' src={FILES_URL + slideImage} ></img>
-                        </div>
-                      </div>
-                    ))}
-                  </Slide>
                 </div>
               </div>
             </section>
 
+            <section>
+              <div className="container mx-auto py-5 ">
+                <img className='center-image' src={profilePhoto} style={{ height: '60vh', width: 'auto' }}></img>
+                <div className='grid grid-cols-1 md:grid-cols-7 gap-7 mt-0 md:-mt-10'>
+                  <div className='col-span-2'>
+                    <div className="mobile-width md:w-auto h-auto md:h-17 px-3 py-2 bg-slate-200 rounded-xl focus:outline-0">
+                      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium font-bold decoration-black">
+                        Car specs
+                      </h1>
+                      <li className="mb-2 text-1x1 leading-relaxed decoration-black">Year: {carData.carYear}</li>
+                      <li className="mb-2 text-1x1 leading-relaxed decoration-black">Color: {carData.carColor} </li>
+                      <li className="mb-2 text-1x1 leading-relaxed decoration-black">Engine power: {carData.carYear}</li>
+                      <li className="mb-2 text-1x1 leading-relaxed decoration-black">Engine type: {carData.carYear}</li>
+                      <li className="mb-2 text-1x1 leading-relaxed decoration-black">Kilometers: {carData.carYear}</li>
+                      <p className="mb-1 text-1x1 leading-relaxed text-black font-bold">Price: {carData.carYear} (€)</p>
+                    </div>
+                  </div>
+                  <div className='col-span-3'>
+                    <div className="mobile-width w-auto h-full px-3 py-2 bg-slate-200 rounded-xl focus:outline-0">
+                      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium font-bold decoration-black">
+                        Description
+                      </h1>
+                      <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
+                        type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining
+                        essentially unchanged.</p>
+                    </div>
+                  </div>
+
+                  <div className='col-span-2'>
+                    <div className="mobile-width w-auto h-content px-3 py-2 bg-slate-200 rounded-xl focus:outline-0">
+                      <div className='grid grid-cols-1 md:grid-cols-2'>
+                        <div>
+                        <PrimaryButton color='orange' iconClass='fas fa-image mt-1' title='See the gallery' 
+                        additionalClasses='mr-1 center-image' onClickFunction={handleGalleryBtnClick}>
+                        </PrimaryButton>
+                        </div>
+                        <div>
+                          <PrimaryButton color='indigo' iconClass='fas fa-envelope mt-1' title='Send an inquiry'
+                           additionalClasses='mr-1 center-image' onClickFunction={handleEmailbtnClick}>
+                           </PrimaryButton>
+                        </div>
+
+                      </div>
+
+
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </section>
 
             <section className="relative block lg:pt-0 mt-10">
-              <div class="w-full justify-center text-center -mt-15 md:mt-20">
-                <button onClick={handleEmailbtnClick} type="button" class="text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-base px-6 py-3.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">
+            <div ref={galleryRef} className="mt-5">
+                    <div class="container mx-auto space-y-2 lg:space-y-0 lg:gap-2 lg:grid lg:grid-cols-3">
+                      {carData.listOfImages.map((image, index) => {
+                        return <div  class="w-full rounded md:hover:opacity-50 md:cursor-pointer">
+                          <img src={FILES_URL + image}
+                            alt="chrome restoration image" className='max-h-80' onClick={() => { toggleModal(), setImgSrc(FILES_URL + image) }}>
+                          </img>
+                        </div>
+                      })}
+                    </div>
+                  </div>
+            </section>
 
-                  <span className='mr-2'> {t('send_inquiry')}</span>
-                  <i class="fas fa-envelope mt-1"></i>
-                </button>
 
-              </div>
-
+            <section className="relative block lg:pt-0 mt-10">
               <div className="container mx-auto px-4">
-
                 <div className="flex flex-wrap justify-center">
                   {showEmailForm &&
                     <CardEmail t={t} car={carData} ></CardEmail>}
                 </div>
               </div>
-            </section>
-          </div>
+            </section>  
 
+            {!isMobile &&
+            <ImagePreview
+              showModal={showModal}
+              setShowModal={setShowModal}
+              src={imgSrc}
+              toggleModal={toggleModal}
+            ></ImagePreview>
+          }
+                    
+          </div>
         </div>
 
       </main>

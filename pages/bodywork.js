@@ -57,12 +57,12 @@ export default function bodywork() {
                     <div class="items-center justify-center">
                       <h1 class="text-3xl hidden md:block leading-normal text-white font-bold mb-4 "> <br></br></h1>
                       <p class="text-gray-300 leading-relaxed font-light text-xl mx-auto pb-2"><div dangerouslySetInnerHTML={
-    {__html: t('text_1', {interpolation: {escapeValue: false}})}
-} />
+                        { __html: t('text_1', { interpolation: { escapeValue: false } }) }
+                      } />
                         <br></br>  <div dangerouslySetInnerHTML={
-    {__html: t('text_2', {interpolation: {escapeValue: false}})}
-} />
-                        </p>
+                          { __html: t('text_2', { interpolation: { escapeValue: false } }) }
+                        } />
+                      </p>
 
                     </div>
                     <ul className="list-none mt-6">

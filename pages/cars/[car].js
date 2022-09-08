@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Navbar from 'components/Navbars/IndexNavbar';
 import Footer from 'components/Footers/Footer';
 import { getSingleCar, loadCars } from 'lib/apiCalls';
@@ -20,6 +20,7 @@ function viewCar({ carData, STATIC_FILES_URL }) {
   const [showModal, setShowModal] = useState(false);
   const [imgSrc, setImgSrc] = useState();
   const galleryRef = useRef(null);
+
 
   const handleEmailbtnClick = () => {
     setShowEmailForm(!showEmailForm);
@@ -104,12 +105,12 @@ function viewCar({ carData, STATIC_FILES_URL }) {
                     <div className="mobile-width w-auto h-content px-3 py-2 bg-slate-200 rounded-xl focus:outline-0">
                       <div className='grid grid-cols-1 md:grid-cols-2'>
                         <div>
-                        <PrimaryButton color='gray' iconClass='fas fa-image mt-1' title='See the gallery' 
+                        <PrimaryButton color='orange' iconClass='fas fa-image mt-1' title='See the gallery' 
                         additionalClasses='mr-1 center-image' onClickFunction={handleGalleryBtnClick}>
                         </PrimaryButton>
                         </div>
                         <div>
-                          <PrimaryButton color='gray' iconClass='fas fa-envelope mt-1' title='Send an inquiry'
+                          <PrimaryButton color='indigo' iconClass='fas fa-envelope mt-1' title='Send an inquiry'
                            additionalClasses='mr-1 center-image' onClickFunction={handleEmailbtnClick}>
                            </PrimaryButton>
                         </div>

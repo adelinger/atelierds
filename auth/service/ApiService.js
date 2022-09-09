@@ -29,7 +29,7 @@ export default class ApiService {
     return this.init().post("/add", data);
   };
   updateCar = (data) => {
-    return this.init().put("/", data);
+    return this.init().put("/updateCar", data);
   };
   deleteCar = (id) => {
     return this.init().delete("/"+id);

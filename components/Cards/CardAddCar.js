@@ -45,7 +45,13 @@ export default function CardSettings({ auth, carData }) {
     
       }, [])
 
-     
+      function onlyNumbers(num){
+        let value = num;
+        if ( /[^0-9]+/.test(num.value) ){
+            value = num.replace(/[^0-9]*/g,"")
+        }
+        return value;
+    }
      
        const checkAuth = () => {
          api
@@ -372,13 +378,13 @@ export default function CardSettings({ auth, carData }) {
                                     value={carPrice}
                                         required
                                         type="number"
-                                        min="0.00"
-                                        step="0.01"
-
+                                        min="1"
+                                        step="1"
+                                        
                                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                         placeholder="Type the price here"
-
-                                        onChange={e => setCarPrice(e.target.value)}
+                                       
+                                        onChange={e => setCarPrice(onlyNumbers(e.target.value))}
                                     />
                                 </div>
                             </div>

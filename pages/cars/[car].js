@@ -167,7 +167,7 @@ function viewCar({ carData, STATIC_FILES_URL }) {
 
         <div>
           {showUpBtn &&
-            <input ref={upBtnRef} type="image" className='float-right mr-5 fixed bottom-0 right-0 mb-5' src="/img/arrow_up.webp" id="scrollUpBtn" width="60" height="60" 
+            <input type="image" className='float-right mr-5 fixed bottom-0 right-0 mb-5' src="/img/arrow_up.webp" id="scrollUpBtn" width="60" height="60" 
             ></input>
           }
        

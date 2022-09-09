@@ -1,10 +1,11 @@
 import Footer from "components/Footers/Footer";
 import Navbar from "components/Navbars/IndexNavbar";
-
+import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 
 function contact() {
+  const { t } = useTranslation (['footer', 'common', 'contact']);
   return (
     <>
       <Navbar transparent></Navbar>
@@ -79,7 +80,7 @@ function contact() {
                       </li>
                       <li className="py-2 mt-2">
                         <div className="flex items-center">
-                          <p className="text-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                          <p className="text-white">{t('contact:contact_text')}</p>
                         </div>
                       </li>
                       <li className="py-2 md:mt-2">
@@ -111,6 +112,6 @@ export default contact;
 
 export const getStaticProps = async ({ locale }) => ({
   props: {
-    ...await serverSideTranslations(locale, ['common', 'index', 'footer']),
+    ...await serverSideTranslations(locale, ['common', 'footer', 'contact']),
   },
 })

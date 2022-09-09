@@ -19,6 +19,7 @@ function viewCar({ carData, STATIC_FILES_URL }) {
   const [showModal, setShowModal] = useState(false);
   const [imgSrc, setImgSrc] = useState();
   const galleryRef = useRef(null);
+  const [showUpBtn, setShowUpBtn] = useState();
 
 
   const handleEmailbtnClick = () => {
@@ -26,6 +27,7 @@ function viewCar({ carData, STATIC_FILES_URL }) {
 
     if (showEmailForm) {
       baseRef.current.scrollIntoView({ behavior: 'smooth' });
+      setShowUpBtn(true);
     }
 
   }
@@ -161,6 +163,14 @@ function viewCar({ carData, STATIC_FILES_URL }) {
             }
 
           </div>
+        </div>
+
+        <div>
+          {showUpBtn &&
+            <input ref={upBtnRef} type="image" className='float-right mr-5 fixed bottom-0 right-0 mb-5' src="/img/arrow_up.webp" id="scrollUpBtn" width="60" height="60" 
+            ></input>
+          }
+       
         </div>
 
       </main>

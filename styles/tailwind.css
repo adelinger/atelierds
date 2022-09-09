@@ -1300,10 +1300,6 @@ select {
   --tw-ring-color: rgb(31 41 55 / var(--tw-ring-opacity));
 }
 
-.mobile-width{
-  width:22rem;
-}
-
 .min-h-screen {
   min-height: 100vh;
 }
@@ -1409,10 +1405,6 @@ select {
 
 .col-span-3 {
   grid-column: span 3 / span 3;
-}
-
-.col-span-2 {
-  grid-column: span 2 / span 2;
 }
 
 .float-right {
@@ -1642,18 +1634,6 @@ select {
   margin-right: 0px;
 }
 
-.-mt-10 {
-  margin-top: -2.5rem;
-}
-
-.ml-10 {
-  margin-left: 2.5rem;
-}
-
-.-ml-5 {
-  margin-left: -1.25rem;
-}
-
 .block {
   display: block;
 }
@@ -1744,11 +1724,6 @@ select {
 
 .h-8 {
   height: 2rem;
-}
-
-.h-max {
-  height: -webkit-max-content;
-  height: max-content;
 }
 
 .max-h-80 {
@@ -1899,10 +1874,6 @@ select {
   list-style-type: disc;
 }
 
-.grid-flow-row {
-  grid-auto-flow: row;
-}
-
 .grid-flow-col {
   grid-auto-flow: column;
 }
@@ -1913,10 +1884,6 @@ select {
 
 .grid-cols-2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.grid-rows-1 {
-  grid-template-rows: repeat(1, minmax(0, 1fr));
 }
 
 .flex-row {
@@ -1975,16 +1942,12 @@ select {
   gap: 1.5rem;
 }
 
-.gap-7 {
-  gap: 1.75rem;
+.gap-2 {
+  gap: 0.5rem;
 }
 
 .gap-8 {
   gap: 2rem;
-}
-
-.gap-2 {
-  gap: 0.5rem;
 }
 
 .space-y-2 > :not([hidden]) ~ :not([hidden]) {
@@ -2454,10 +2417,6 @@ select {
 
 .pt-1 {
   padding-top: 0.25rem;
-}
-
-.pt-8 {
-  padding-top: 2rem;
 }
 
 .text-left {
@@ -3159,6 +3118,18 @@ select {
     margin-top: 8rem;
   }
 
+  .md\:-mt-20 {
+    margin-top: -5rem;
+  }
+
+  .md\:ml-5 {
+    margin-left: 1.25rem;
+  }
+
+  .md\:mt-3 {
+    margin-top: 0.75rem;
+  }
+
   .md\:ml-64 {
     margin-left: 16rem;
   }
@@ -3167,48 +3138,12 @@ select {
     margin-right: 1.25rem;
   }
 
-  .md\:ml-5 {
-    margin-left: 1.25rem;
-  }
-
   .md\:mb-0 {
     margin-bottom: 0px;
   }
 
   .md\:mt-4 {
     margin-top: 1rem;
-  }
-
-  .md\:-mt-20 {
-    margin-top: -5rem;
-  }
-
-  .md\:mr-1 {
-    margin-right: 0.25rem;
-  }
-
-  .md\:-ml-3 {
-    margin-left: -0.75rem;
-  }
-
-  .md\:-ml-5 {
-    margin-left: -1.25rem;
-  }
-
-  .md\:-ml-2 {
-    margin-left: -0.5rem;
-  }
-
-  .md\:-ml-1 {
-    margin-left: -0.25rem;
-  }
-
-  .md\:ml-1 {
-    margin-left: 0.25rem;
-  }
-
-  .md\:mt-3 {
-    margin-top: 0.75rem;
   }
 
   .md\:block {
@@ -3221,10 +3156,6 @@ select {
 
   .md\:hidden {
     display: none;
-  }
-
-  .md\:h-full {
-    height: 100%;
   }
 
   .md\:h-auto {
@@ -3283,14 +3214,6 @@ select {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .md\:grid-cols-7 {
-    grid-template-columns: repeat(7, minmax(0, 1fr));
-  }
-
-  .md\:grid-rows-2 {
-    grid-template-rows: repeat(2, minmax(0, 1fr));
-  }
-
   .md\:flex-row {
     flex-direction: row;
   }
@@ -3343,19 +3266,14 @@ select {
     padding-right: 1rem;
   }
 
-  .md\:px-10 {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
-  }
-
   .md\:px-0 {
     padding-left: 0px;
     padding-right: 0px;
   }
 
-  .md\:px-3 {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
+  .md\:px-10 {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
   }
 
   .md\:pb-32 {

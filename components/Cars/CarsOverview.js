@@ -1,4 +1,3 @@
-import CardTable from "components/Cards/CardTable";
 import CarsTable from "components/Cards/CarsTable";
 import React from "react";
 

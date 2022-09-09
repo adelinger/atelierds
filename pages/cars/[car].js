@@ -7,7 +7,6 @@ import 'react-slideshow-image/dist/styles.css';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import CardEmail from 'components/Cards/CardEmail';
-import PrimaryButton from 'components/Buttons/PrimaryButton';
 import ImagePreview from 'components/Modals/ImagePreview';
 
 function viewCar({ carData, STATIC_FILES_URL }) {
@@ -20,6 +19,7 @@ function viewCar({ carData, STATIC_FILES_URL }) {
   const [showModal, setShowModal] = useState(false);
   const [imgSrc, setImgSrc] = useState();
   const galleryRef = useRef(null);
+  const [showUpBtn, setShowUpBtn] = useState();
 
 
   const handleEmailbtnClick = () => {
@@ -27,6 +27,7 @@ function viewCar({ carData, STATIC_FILES_URL }) {
 
     if (showEmailForm) {
       baseRef.current.scrollIntoView({ behavior: 'smooth' });
+      setShowUpBtn(true);
     }
 
   }
@@ -74,10 +75,34 @@ function viewCar({ carData, STATIC_FILES_URL }) {
 
             <section>
               <div className="container mx-auto py-5 ">
-                <img className='center-image' src={profilePhoto} style={{ height: '60vh', width: 'auto' }}></img>
-                <div className='grid grid-cols-1 md:grid-cols-7 gap-7 mt-0 md:-mt-10'>
-                  <div className='col-span-2'>
-                    <div className="mobile-width md:w-auto h-auto md:h-17 px-3 py-2 bg-slate-200 rounded-xl focus:outline-0">
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-2 content-start'>
+                  <div>
+                    <img className='center-image' src={profilePhoto}></img>
+                    <div className='px-3 md:px-0 mt-3 mb-1'>    
+                    <div className="md:float-left md:-mt-20 md:absolute h-content px-3 py-2 bg-slate-200 rounded-xl focus:outline-0">
+                      <div className='grid grid-cols-1 grid-flow-col md:grid-cols-2'>
+                        <div>
+                          <button onClick={handleGalleryBtnClick} type="button" className='mr-1 center-image btn-primary-gray-big'>
+                            <span className='mr-2'>See the gallery</span>
+                            <i class='fas fa-image mt-1'></i>
+                          </button>
+                        </div>
+                        
+                        <div>
+                          <button onClick={handleEmailbtnClick} type="button" className='h-full md:h-auto btn-primary-gray-big'>
+                            <span className='mr-2'>Send an inquiry</span>
+                            <i class='fas fa-envelope mt-1'></i>
+                          </button>
+                        </div>
+                        <div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className='md:ml-5 px-3 mb-3'>
+                    <div className="w-auto md:w-auto h-auto md:h-17 px-3 py-2 bg-slate-200 rounded-xl focus:outline-0">
                       <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium font-bold decoration-black">
                         Car specs
                       </h1>
@@ -88,9 +113,7 @@ function viewCar({ carData, STATIC_FILES_URL }) {
                       <li className="mb-2 text-1x1 leading-relaxed decoration-black">Kilometers: {carData.carYear}</li>
                       <p className="mb-1 text-1x1 leading-relaxed text-black font-bold">Price: {carData.carYear} (€)</p>
                     </div>
-                  </div>
-                  <div className='col-span-3'>
-                    <div className="mobile-width w-auto h-full px-3 py-2 bg-slate-200 rounded-xl focus:outline-0">
+                    <div className="mt-3 md:mt-3 w-auto px-3 py-2 bg-slate-200 rounded-xl focus:outline-0 mt-0 md:mt-5">
                       <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium font-bold decoration-black">
                         Description
                       </h1>
@@ -99,44 +122,25 @@ function viewCar({ carData, STATIC_FILES_URL }) {
                         type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining
                         essentially unchanged.</p>
                     </div>
-                  </div>
 
-                  <div className='col-span-2'>
-                    <div className="mobile-width w-auto h-content px-3 py-2 bg-slate-200 rounded-xl focus:outline-0">
-                      <div className='grid grid-cols-1 md:grid-cols-2'>
-                        <div>
-                        <PrimaryButton color='orange' iconClass='fas fa-image mt-1' title='See the gallery' 
-                        additionalClasses='mr-1 center-image' onClickFunction={handleGalleryBtnClick}>
-                        </PrimaryButton>
-                        </div>
-                        <div>
-                          <PrimaryButton color='indigo' iconClass='fas fa-envelope mt-1' title='Send an inquiry'
-                           additionalClasses='mr-1 center-image' onClickFunction={handleEmailbtnClick}>
-                           </PrimaryButton>
-                        </div>
-
-                      </div>
-
-
-                    </div>
                   </div>
 
                 </div>
               </div>
             </section>
 
-            <section className="relative block lg:pt-0 mt-10">
-            <div ref={galleryRef} className="mt-5">
-                    <div class="container mx-auto space-y-2 lg:space-y-0 lg:gap-2 lg:grid lg:grid-cols-3">
-                      {carData.listOfImages.map((image, index) => {
-                        return <div  class="w-full rounded md:hover:opacity-50 md:cursor-pointer">
-                          <img src={FILES_URL + image}
-                            alt="chrome restoration image" className='max-h-80' onClick={() => { toggleModal(), setImgSrc(FILES_URL + image) }}>
-                          </img>
-                        </div>
-                      })}
+            <section className="relative block lg:pt-0 md:mt-10 px-3 md:px-0">
+              <div ref={galleryRef} className="md: mt-5">
+                <div class="container mx-auto space-y-2 lg:space-y-0 lg:gap-2 lg:grid lg:grid-cols-3">
+                  {carData.listOfImages.map((image, index) => {
+                    return <div class="w-full rounded md:hover:opacity-50 md:cursor-pointer">
+                      <img src={FILES_URL + image}
+                        alt="chrome restoration image" className='max-h-80' onClick={() => { toggleModal(), setImgSrc(FILES_URL + image) }}>
+                      </img>
                     </div>
-                  </div>
+                  })}
+                </div>
+              </div>
             </section>
 
 
@@ -147,18 +151,26 @@ function viewCar({ carData, STATIC_FILES_URL }) {
                     <CardEmail t={t} car={carData} ></CardEmail>}
                 </div>
               </div>
-            </section>  
+            </section>
 
             {!isMobile &&
-            <ImagePreview
-              showModal={showModal}
-              setShowModal={setShowModal}
-              src={imgSrc}
-              toggleModal={toggleModal}
-            ></ImagePreview>
-          }
-                    
+              <ImagePreview
+                showModal={showModal}
+                setShowModal={setShowModal}
+                src={imgSrc}
+                toggleModal={toggleModal}
+              ></ImagePreview>
+            }
+
           </div>
+        </div>
+
+        <div>
+          {showUpBtn &&
+            <input ref={upBtnRef} type="image" className='float-right mr-5 fixed bottom-0 right-0 mb-5' src="/img/arrow_up.webp" id="scrollUpBtn" width="60" height="60" 
+            ></input>
+          }
+       
         </div>
 
       </main>

@@ -86,7 +86,7 @@ export default function Landing() {
                     <Link href="/interior">
                       <a
                         href="/interior"
-                        className="inline-flex text-white bg-indigo-500 border-0 py-1 px-3 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+                        className="btn-primary-indigo"
                       >
                         <span>{t('see_more')}</span>
                       </a>
@@ -110,7 +110,7 @@ export default function Landing() {
 
                       <a
                         href="/chrome"
-                        className="inline-flex text-white bg-indigo-500 border-0 py-1 px-3 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+                        className="btn-primary-indigo"
                       >
                         <span>{t('see_more')}</span>
                       </a>
@@ -132,7 +132,7 @@ export default function Landing() {
                     <Link href="bodywork">
                       <a
                         href="bodywork"
-                        className="inline-flex text-white bg-indigo-500 border-0 py-1 px-3 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+                        className="btn-primary-indigo"
                       >
                         <span>{t('see_more')}</span>
                       </a>

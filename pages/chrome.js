@@ -254,7 +254,7 @@ export async function getStaticProps({ params, locale }) {
 
   return {
     props: {
-      ...await serverSideTranslations(locale, ['chromePage', 'footer']),
+      ...await serverSideTranslations(locale, ['common', 'chromePage', 'footer']),
       images,
       STATIC_FILES_URL,
     },

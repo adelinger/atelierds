@@ -37,8 +37,8 @@ const LanguagesDropdown = () => {
       >
          {router.locale === 'en' && ( <> <img class='md:hidden mr-2' src={'/img/flags/' + 'de' + '.svg'}  height="20px" width="20px" title="Language-flag"/> English </> )}
          {router.locale === 'de' && ( <> <img class='md:hidden mr-2' src={'/img/flags/' + 'de' + '.svg'}  height="20px" width="20px" title="Language-flag"/> Deutsch </> )}
-         {router.locale === 'fr'&& ( <> <img class='md:hidden mr-2' src={'/img/flags/' + 'de' + '.svg'}  height="20px" width="20px" title="Language-flag"/> Franch </> )}
-         {router.locale === 'it' && ( <> <img class='md:hidden mr-2' src={'/img/flags/' + 'de' + '.svg'}  height="20px" width="20px" title="Language-flag"/> Italian </> )}
+         {router.locale === 'fr'&& ( <> <img class='md:hidden mr-2' src={'/img/flags/' + 'de' + '.svg'}  height="20px" width="20px" title="Language-flag"/> Francais </> )}
+         {router.locale === 'it' && ( <> <img class='md:hidden mr-2' src={'/img/flags/' + 'de' + '.svg'}  height="20px" width="20px" title="Language-flag"/> Italiano </> )}
 
       </a>
       

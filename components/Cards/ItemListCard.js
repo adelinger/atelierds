@@ -8,7 +8,11 @@ import { height } from "tailwindcss/defaultTheme";
 
 export default function ItemListCard({ car, serverUrl }) {
 
-  const { t } = useTranslation('index');
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
+
+  const { t } = useTranslation('index', 'common', 'carsPage');
 
   return (
     <>
@@ -27,19 +31,21 @@ export default function ItemListCard({ car, serverUrl }) {
             </a>
             <div>
               <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                Year: {car.carYear}
+              {t('carsPage:year')}: {car.carYear}
                 <br>
                 </br>
                 Km: {car.carKilometers}
               </p>
 
               <Link href={`cars/${encodeURIComponent(car.atelierCarID)}`} class="mt-3 inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white
-               bg-gray-600 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700
-                dark:focus:ring-gray-800">
-                Read more
+               bg-indigo-600 rounded-lg hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 dark:bg-gray-600 dark:hover:bg-indigo-700
+                dark:focus:ring-indigo-800">
+                {t('carsPage:read_more')}
                 <svg class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
               </Link>
-              <p className="float-right text-3x1 font-bold mt-7">{car.carPrice}€</p>
+              <p className="float-right text-3x1 font-bold mt-7">
+               {car.carPrice != 0 ? numberWithCommas(car.carPrice)+ ',00' +' €': t('common:price_on_enquiry')}
+                </p>
             </div>
 
 

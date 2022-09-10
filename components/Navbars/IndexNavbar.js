@@ -124,18 +124,18 @@ export default function Navbar(props) {
                   href="https://www.facebook.com/Atelier-DS-2049109098648782/"
                   target="_blank"
                 >
-                  <i className="lg:text-blueGray-200 text-blueGray-400 fab fa-facebook text-lg leading-lg " />
+                  <i className="lg:text-blueGray-200 text-blueGray-400 fab fa-facebook text-lg leading-lg hover:text-gray-500" />
                   <span className="lg:hidden inline-block ml-2" >Check our Facebook</span>
                 </a>
               </li>
 
               <li className="flex items-center">
                 <a
-                  className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                  className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold "
                   href=""
                   target="_blank"
                 >
-                  <i className="lg:text-blueGray-200 text-blueGray-400 fab fa-instagram text-lg leading-lg " />
+                  <i className="lg:text-blueGray-200 text-blueGray-400 fab fa-instagram text-lg leading-lg hover:text-gray-500" />
                   <span className="lg:hidden inline-block ml-2">Check our instagram</span>
                 </a>
               </li>

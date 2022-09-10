@@ -55,7 +55,7 @@ export default function chrome({ images, STATIC_FILES_URL }) {
                   <div className="grid grid-cols-1 gap-6 md:grid-cols-2 py-10 md:py-20">
                     <div className="w-full px-4 mr-auto ml-auto -mt-5">
                       <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto">
-                        <div className="md:mt-10">
+                        <div className="mt-10">
                           <h1 className="text-white font-semibold text-3xl">
                             {t('our_work_title')}
                           </h1>
@@ -71,7 +71,7 @@ export default function chrome({ images, STATIC_FILES_URL }) {
                       <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-white">
                         {t('our_work_text_3')}
                       </p>
-                      <div className='mt-5 mt-20 text-center'>
+                      <div className='md:mt-20 text-center'>
                         <button onClick={executeScroll} type="button" class="text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 
                         font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">
                           {t('see_gallery_btn')}
@@ -140,7 +140,7 @@ export default function chrome({ images, STATIC_FILES_URL }) {
           </div>
         </div>
 
-        <section className="pb-20 -mb-10 bg-blueGray-200 -mt-24">
+        <section className="pb-20 -mb-10 bg-blueGray-200 -mt-24 px-3">
           <div className="container mx-auto px-4 pt-20">
           <div className="container mx-auto mt-5">
                   <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto md:text-center">

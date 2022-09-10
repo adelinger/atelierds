@@ -27,9 +27,9 @@ function viewCar({ carData, STATIC_FILES_URL }) {
 
     if (showEmailForm) {
       baseRef.current.scrollIntoView({ behavior: 'smooth' });
-      setShowUpBtn(true);
     }
 
+    setShowUpBtn(!showUpBtn);
   }
 
   const handleGalleryBtnClick = () => {

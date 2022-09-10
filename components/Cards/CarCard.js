@@ -6,7 +6,7 @@ import { height } from "tailwindcss/defaultTheme";
 
 // components
 
-export default function ItemListCard({ car, serverUrl }) {
+export default function CarCard({ car, serverUrl }) {
 
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");

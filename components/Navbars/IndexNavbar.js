@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "next-i18next";
-import { isMobile } from 'react-device-detect';
+import { useRouter } from 'next/router'
 
 // components
 import LanguagesDropdown from 'components/Dropdowns/languagesDropdown.js';
@@ -11,6 +11,8 @@ export default function Navbar(props) {
   const menuRef = useRef(null);
   const [listening, setListening] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
+  const locale = router.locale;
 
   const { t } = useTranslation('index');
 
@@ -29,7 +31,7 @@ export default function Navbar(props) {
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between" ref={menuRef}>
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start mt-2">
             <Link href="/">
-            <a href="/" class="flex items-center">
+            <a href={`/${router.locale}/`} class="flex items-center">
                 <img src="../../img/logo/logo_white.png" class="h-8 " alt="AtelierDS Logo" style={{height:70, width:120}}></img>
                 <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"></span>
             </a>
@@ -53,7 +55,7 @@ export default function Navbar(props) {
               <li className="flex items-center">
                 <Link href="/cars">
                   <a
-                    href="/cars"
+                    href={`/${router.locale}/cars`}
                     className={
                       "lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                     }
@@ -66,7 +68,7 @@ export default function Navbar(props) {
               <li className="flex items-center">
                 <Link href="/interior">
                   <a
-                    href="/interior"
+                    href={`/${router.locale}/interior`}
                     className={
                       "lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                     }
@@ -79,7 +81,7 @@ export default function Navbar(props) {
               <li className="flex items-center">
                 <Link href="/chrome">
                   <a
-                    href="/chrome"
+                    href={`/${router.locale}/chrome`}
                     className={
                       "lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                     }
@@ -90,9 +92,9 @@ export default function Navbar(props) {
 
               </li>
               <li className="flex items-center">
-                <Link href="/bodywork">
+                <Link href='/bodywork' locale={router.locale}>
                   <a
-                    href="/bodywork"
+                    href={`/${router.locale}/bodywork`}
                     className={
                       "lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                     }

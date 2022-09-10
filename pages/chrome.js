@@ -27,37 +27,30 @@ export default function chrome({ images, STATIC_FILES_URL }) {
     }
   }
 
-  
+
 
 
   return (
     <>
       <Navbar transparent></Navbar>
       <main>
-        <div className="relative pt-16 pb-20 flex content-center items-center justify-center min-h-screen-75">
+        <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
           <div
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{
               backgroundImage:
-                "url('/img/light-grey-19.webp')",
+              "url('/img/light-grey-19.webp')",
             }}
           >
             <span
               id="blackOverlay"
-              className="w-full h-full absolute opacity-50 bg-black"
+              className="w-full h-full absolute opacity-75 bg-black"
             ></span>
           </div>
-          <div className="container relative mx-auto collapse">
-            <div className="items-center flex flex-wrap">
-              <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
-                <div className="mt-10  text-center">
-                  <h1 className="text-white font-semibold text-5xl">
-                    {t('title')}
-                  </h1>
-
-                </div>
-              </div>
-              <section id='first-section'>
+          <div className="container relative mx-auto">
+            
+              
+               
                 <div className="container mx-auto">
                   <div className="grid grid-cols-1 gap-6 md:grid-cols-2 py-10 md:py-20">
                     <div className="w-full px-4 mr-auto ml-auto -mt-5">
@@ -123,21 +116,45 @@ export default function chrome({ images, STATIC_FILES_URL }) {
                     </div>
                   </div>
                 </div>
-              </section>
-              <section id='second-section' className='min-w-full px-8'>
-                <div className="container mx-auto ">
+            
+            
+          </div>
+          <div
+            className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-16"
+            style={{ transform: "translateZ(0)" }}
+          >
+            <svg
+              className="absolute bottom-0 overflow-hidden"
+              xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="none"
+              version="1.1"
+              viewBox="0 0 2560 100"
+              x="0"
+              y="0"
+            >
+              <polygon
+                className="text-blueGray-200 fill-current"
+                points="2560 0 2560 100 0 100"
+              ></polygon>
+            </svg>
+          </div>
+        </div>
+
+        <section className="pb-20 -mb-10 bg-blueGray-200 -mt-24">
+          <div className="container mx-auto px-4 pt-20">
+          <div className="container mx-auto mt-5">
                   <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto md:text-center">
                     <div className="md:mt-10">
-                      <h1 className="text-white font-semibold text-3xl">
+                      <h1 className="text-bluegray-0 font-semibold text-3xl">
                         {t('what_do_we_fix_title')}
                       </h1>
 
                     </div>
                   </div>
-                  <div className="grid grid-cols-1 gap-6 md:grid-cols-3 place-items-center">
-                    <div className="mt-5 mb-5" >
-                      <h3 className="text-1xl mb-2 font-bold leading-normal text-white">{t('fix_type_1')}</h3>
-                      <ul className='list-disc text-white'>
+                  <div className="grid grid-cols-1 gap-6 md:grid-cols-3 place-items-center mt-5">
+                    <div >
+                      <h3 className="text-1xl mb-2 font-bold leading-normal text-blueGray-500">{t('fix_type_1')}</h3>
+                      <ul className='list-disc text-blueGray-500'>
                         <li>{t('fix_1_1')}</li>
                         <li>{t('fix_1_2')}</li>
                         <li>{t('fix_1_3')}</li>
@@ -158,8 +175,8 @@ export default function chrome({ images, STATIC_FILES_URL }) {
                       </ul>
                     </div>
                     < div className="md:mt-5 md:mb-5" >
-                      <h3 className="text-1xl mb-2 font-bold leading-normal text-white">{t('fix_type_2')}</h3>
-                      <ul className='list-disc text-white'>
+                      <h3 className="text-1xl mb-2 font-bold leading-normal text-blueGray-500">{t('fix_type_2')}</h3>
+                      <ul className='list-disc text-blueGray-500'>
                         <li>{t('fix_2_1')}</li>
                         <li>{t('fix_2_2')}</li>
                         <li>{t('fix_2_3')}</li>
@@ -181,8 +198,8 @@ export default function chrome({ images, STATIC_FILES_URL }) {
                       </ul>
                     </div>
                     < div className="md:mt-5 md:mb-5" >
-                      <h3 className="text-1xl mb-2 font-bold leading-normal text-white">{t('fix_type_3')}</h3>
-                      <ul className='list-disc text-white'>
+                      <h3 className="text-1xl mb-2 font-bold leading-normal text-blueGray-500">{t('fix_type_3')}</h3>
+                      <ul className='list-disc text-blueGray-500'>
                         <li>{t('fix_3_1')}</li>
                         <li>{t('fix_3_2')}</li>
                         <li>{t('fix_3_3')}</li>
@@ -206,18 +223,49 @@ export default function chrome({ images, STATIC_FILES_URL }) {
 
                   </div>
                 </div>
-              </section>
-              <section id='third-section' ref={scrollRef} className='min-w-full px-5 mt-10'>
-                <div className="container mx-auto ">
-                  <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto md:text-center">
-                    <div className="md:mt-10">
-                      <h1 className="text-white font-semibold text-3xl">
+          </div>
+        </section>
+
+        <section id='third-section' ref={scrollRef} className="pb-5 relative block bg-blueGray-800">
+          <div
+            className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20"
+            style={{ transform: "translateZ(0)" }}
+          >
+            <svg
+              className="absolute bottom-0 overflow-hidden"
+              xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="none"
+              version="1.1"
+              viewBox="0 0 2560 100"
+              x="0"
+              y="0"
+            >
+              <polygon
+                className="text-blueGray-800 fill-current"
+                points="2560 0 2560 100 0 100"
+              ></polygon>
+            </svg>
+          </div>
+
+          <div className="container mx-auto px-4 lg:pt-23 lg:pb-32">
+          <div className="container mx-auto ">
+                  <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto md:text-center mb-5">
+                    <div>
+                      <h1 className="text-white font-semibold text-3xl invisible">
                         {t('gallery_title')}
                       </h1>
 
                     </div>
                   </div>
-                  <div className="mt-5">
+                  <div className="">
+                  <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto md:text-center mb-20">
+                    <div>
+                      <h1 className="text-white font-semibold text-4xl">
+                        {t('gallery_title')}
+                      </h1>
+
+                    </div>
+                  </div>
                     <div class="container mx-auto space-y-2 lg:space-y-0 lg:gap-2 lg:grid lg:grid-cols-3">
                       {images.listOfImages.map((image, index) => {
                         return <div class="w-full rounded md:hover:opacity-50 md:cursor-pointer">
@@ -229,18 +277,10 @@ export default function chrome({ images, STATIC_FILES_URL }) {
                     </div>
                   </div>
                 </div>
-              </section>
-            </div>
           </div>
-          {BrowserView &&
-            <ImagePreview
-              showModal={showModal}
-              setShowModal={setShowModal}
-              src={imgSrc}
-              toggleModal={toggleModal}
-            ></ImagePreview>
-          }
-        </div>
+        </section>
+       
+       
       </main>
       <Footer></Footer>
     </>

@@ -8,7 +8,7 @@ import Navbar from "components/Navbars/IndexNavbar";
 import Footer from "components/Footers/Footer.js";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { getSingleCar, loadCars } from "lib/apiCalls";
-import ItemListCard from "components/Cards/ItemListCard";
+import CarCard from "components/Cards/CarCard";
 
 export default function carsForSale({cars, serverUrl}) {
 
@@ -48,7 +48,7 @@ export default function carsForSale({cars, serverUrl}) {
               <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-3">
            {cars.map (car => 
                    <div className="mt-5 mb-5 ml-auto mr-auto" >
-                     <ItemListCard car={car} serverUrl={serverUrl}></ItemListCard>
+                     <CarCard car={car} serverUrl={serverUrl}></CarCard>
                      </div>
                   )}
                

@@ -10,7 +10,7 @@ import CardEmail from 'components/Cards/CardEmail';
 import ImagePreview from 'components/Modals/ImagePreview';
 
 function viewCar({ carData, STATIC_FILES_URL }) {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation('common', 'carsPage');
   const FILES_URL = STATIC_FILES_URL + carData.carPhotosPath + '/';
   const profilePhoto = FILES_URL + carData.carProfilePhotoPath;
   const title = carData.carMake + ' ' + carData.carModel;
@@ -74,53 +74,57 @@ function viewCar({ carData, STATIC_FILES_URL }) {
             </section>
 
             <section>
-              <div className="container mx-auto py-5 ">
+              <div className="container mx-auto py-5 md:mt-20">
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-2 content-start'>
                   <div>
                     <img className='center-image' src={profilePhoto}></img>
-                    <div className='px-3 md:px-0 mt-3 mb-1'>    
-                    <div className="md:float-left md:-mt-20 md:absolute h-content px-3 py-2 bg-slate-200 rounded-xl focus:outline-0">
-                      <div className='grid grid-cols-1 grid-flow-col md:grid-cols-2'>
-                        <div>
-                          <button onClick={handleGalleryBtnClick} type="button" className='mr-1 center-image btn-primary-gray-big'>
-                            <span className='mr-2'>See the gallery</span>
-                            <i class='fas fa-image mt-1'></i>
-                          </button>
-                        </div>
-                        
-                        <div>
-                          <button onClick={handleEmailbtnClick} type="button" className='h-full md:h-auto btn-primary-gray-big'>
-                            <span className='mr-2'>Send an inquiry</span>
-                            <i class='fas fa-envelope mt-1'></i>
-                          </button>
-                        </div>
-                        <div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+
                   </div>
 
                   <div className='md:ml-5 px-3 mb-3'>
-                    <div className="w-auto md:w-auto h-auto md:h-17 px-3 py-2 bg-slate-200 rounded-xl focus:outline-0">
-                      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium font-bold decoration-black">
-                        Car specs
-                      </h1>
-                      <li className="mb-2 text-1x1 leading-relaxed decoration-black">Year: {carData.carYear}</li>
-                      <li className="mb-2 text-1x1 leading-relaxed decoration-black">Color: {carData.carColor} </li>
-                      <li className="mb-2 text-1x1 leading-relaxed decoration-black">Engine power: {carData.carYear}</li>
-                      <li className="mb-2 text-1x1 leading-relaxed decoration-black">Engine type: {carData.carYear}</li>
-                      <li className="mb-2 text-1x1 leading-relaxed decoration-black">Kilometers: {carData.carYear}</li>
-                      <p className="mb-1 text-1x1 leading-relaxed text-black font-bold">Price: {carData.carYear} (€)</p>
-                    </div>
-                    <div className="mt-3 md:mt-3 w-auto px-3 py-2 bg-slate-200 rounded-xl focus:outline-0 mt-0 md:mt-5">
-                      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium font-bold decoration-black">
+                    <div className="">
+                      <h1 class="title-font font-size:1.5rem text-xl mb-4 font-medium font-semibold text-white">
                         Description
                       </h1>
-                      <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                      <p className="text-gray-300"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
                         standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
                         type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining
                         essentially unchanged.</p>
+                    </div>
+                    <div className="w-auto md:w-auto h-auto md:h-17  py-2  rounded-xl focus:outline-0">
+                      <h1 class="title-font font-size:1.5rem text-xl mb-4 font-medium font-semibold text-white ">
+                      Car specs
+                      </h1>
+                      <li className=" text-1x1  leading-relaxed text-gray-300">Year: {carData.carYear}</li>
+                      <li className=" text-1x1  leading-relaxed text-gray-300">Color: {carData.carColor} </li>
+                      <li className=" text-1x1  leading-relaxed text-gray-300">Engine power: {carData.carYear}</li>
+                      <li className=" text-1x1  leading-relaxed text-gray-300">Engine type: {carData.carYear}</li>
+                      <li className=" text-1x1  leading-relaxed text-gray-300">Kilometers: {carData.carYear}</li>
+                      <p className="mt-4 text-1x1 leading-relaxed text-white font-bold">Price: {carData.carYear} (€)</p>
+                    </div>
+
+                    <div className=' md:px-0 mt-3 mb-1'>
+                      <div className="md:float-left md:absolute h-content py-2 rounded-xl focus:outline-0">
+                        <div className='grid grid-cols-1 grid-flow-col md:grid-cols-2'>
+                          <div>
+                            <button onClick={handleGalleryBtnClick} type="button" className='text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 
+                        font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800"'>
+                              <span className='mr-2'>See the gallery</span>
+                              <i class='fas fa-image mt-1'></i>
+                            </button>
+                          </div>
+
+                          <div>
+                            <button onClick={handleEmailbtnClick} type="button" className='text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 
+                        font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800"'>
+                              <span className='mr-2'>Send an inquiry</span>
+                              <i class='fas fa-envelope mt-1'></i>
+                            </button>
+                          </div>
+                          <div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
 
                   </div>
@@ -128,6 +132,14 @@ function viewCar({ carData, STATIC_FILES_URL }) {
                 </div>
               </div>
             </section>
+
+            <div className='container'>
+              <div className="text-center px-5 py-5 md:mt-10" >
+                <h3 className="text-white font-semibold text-3xl">
+                  {t('carsPage:car_gallery')}
+                </h3>
+              </div>
+            </div>
 
             <section className="relative block lg:pt-0 md:mt-10 px-3 md:px-0">
               <div ref={galleryRef} className="md: mt-5">
@@ -167,10 +179,10 @@ function viewCar({ carData, STATIC_FILES_URL }) {
 
         <div>
           {showUpBtn &&
-            <input type="image" className='float-right mr-5 fixed bottom-0 right-0 mb-5' src="/img/arrow_up.webp" id="scrollUpBtn" width="60" height="60" 
+            <input type="image" className='float-right mr-5 fixed bottom-0 right-0 mb-5' src="/img/arrow_up.webp" id="scrollUpBtn" width="60" height="60"
             ></input>
           }
-       
+
         </div>
 
       </main>
@@ -187,7 +199,7 @@ export async function getStaticProps({ params, locale }) {
   const { STATIC_FILES_URL } = process.env;
   return {
     props: {
-      ...await serverSideTranslations(locale, ['common', 'footer']),
+      ...await serverSideTranslations(locale, ['common', 'footer', 'carsPage']),
       carData,
       STATIC_FILES_URL,
     },

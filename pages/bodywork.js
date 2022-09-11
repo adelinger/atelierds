@@ -27,7 +27,7 @@ export default function bodywork() {
     <>
       <Navbar transparent></Navbar>
       <main>
-        <div className="relative pt-16 md:pb-32 flex content-center items-center justify-center min-h-screen-75">
+        <div className="relative pt-32 md:pt-0 md:pb-18 md:pb-32 flex content-center items-center justify-center min-h-screen-75">
           <div
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{
@@ -37,106 +37,123 @@ export default function bodywork() {
           >
             <span
               id="blackOverlay"
-              className="w-full h-full absolute opacity-50 bg-black"
+              className="w-full h-full absolute opacity-75 bg-black"
             ></span>
           </div>
-
-          <div className="container relative mx-auto collapse">
-            <div className="items-center flex flex-wrap">
-              <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center mt-10">
-                <div className="text-center">
-                  <h1 className="text-white font-semibold text-5xl">
+          <div className="container relative mx-auto py-5">
+          <div className="w-full lg:w-6/12 ml-auto mr-auto text-center">
+                        <div className="mb-10">
+                        <h1 className="text-white font-semibold text-5xl">
                     {t('main_title')}
                   </h1>
+
+                        </div>
+                      </div>
+            <div class="grid grid-cols-1 md:grid-cols-6 gap-4">
+              <div class="col-span-3 px-5 md:ml-10">
+                <div class="items-center justify-center">
+                  <h1 class="text-3xl hidden md:block leading-normal text-white font-bold mb-4 "> <br></br></h1>
+                  <p class="text-gray-300 leading-relaxed font-light text-xl mx-auto pb-2"><div dangerouslySetInnerHTML={
+                    { __html: t('text_1', { interpolation: { escapeValue: false } }) }
+                  } />
+                    <br></br>  <div dangerouslySetInnerHTML={
+                      { __html: t('text_2', { interpolation: { escapeValue: false } }) }
+                    } />
+                  </p>
+
                 </div>
-              </div>
-              <div className="container mx-auto py-5 md:mt-20">
-                <div class="grid grid-cols-1 md:grid-cols-6 gap-4">
-
-                  <div class="col-span-3 px-5 md:ml-10 md:-mt-10">
-                    <div class="items-center justify-center">
-                      <h1 class="text-3xl hidden md:block leading-normal text-white font-bold mb-4 "> <br></br></h1>
-                      <p class="text-gray-300 leading-relaxed font-light text-xl mx-auto pb-2"><div dangerouslySetInnerHTML={
-                        { __html: t('text_1', { interpolation: { escapeValue: false } }) }
-                      } />
-                        <br></br>  <div dangerouslySetInnerHTML={
-                          { __html: t('text_2', { interpolation: { escapeValue: false } }) }
-                        } />
-                      </p>
-
+                <ul className="list-none mt-6">
+                  <li className="py-2">
+                    <div className="flex items-center">
+                      <div>
+                        <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-blueGray-100 mr-3">
+                          <i className="fas fa-comment"></i>
+                        </span>
+                      </div>
+                      <div>
+                        <h4 className="text-gray-300">
+                          {t('direct')}
+                        </h4>
+                      </div>
                     </div>
-                    <ul className="list-none mt-6">
-                      <li className="py-2">
-                        <div className="flex items-center">
-                          <div>
-                            <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-blueGray-100 mr-3">
-                              <i className="fas fa-comment"></i>
-                            </span>
-                          </div>
-                          <div>
-                            <h4 className="text-gray-300">
-                            {t('direct')}
-                            </h4>
-                          </div>
-                        </div>
-                      </li>
-                      <li className="py-2">
-                        <div className="flex items-center">
-                          <div>
-                            <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-blueGray-100 mr-3">
-                              <i class="fas fa-paint-brush"></i>
-                            </span>
-                          </div>
-                          <div>
-                            <h4 className="text-gray-300">
-                            {t('top')}
-                            </h4>
-                          </div>
-                        </div>
-                      </li>
-                      <li className="py-2">
-                        <div className="flex items-center">
-                          <div>
-                            <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-blueGray-100 mr-3">
-                              <i class="fas fa-hammer"></i>
-                            </span>
-                          </div>
-                          <div>
-                            <h4 className="text-gray-300">
-                            {t('toughest')}
-                            </h4>
-                          </div>
-                        </div>
-                      </li>
-                      <li className="py-2">
-                        <div className="flex items-center">
-                          <div>
-                            <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-blueGray-100 mr-3">
-                              <i class="fas fa-wrench"></i>
-                            </span>
-                          </div>
-                          <div>
-                            <h4 className="text-gray-300">
-                            {t('expert')}
-                            </h4>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div class="col-span-3 px-5">
-                    <Image src='/img/body_work_place.webp' alt='bodywork place' width={700} height={500} />
-                  </div>
-
-                </div>
+                  </li>
+                  <li className="py-2">
+                    <div className="flex items-center">
+                      <div>
+                        <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-blueGray-100 mr-3">
+                          <i class="fas fa-paint-brush"></i>
+                        </span>
+                      </div>
+                      <div>
+                        <h4 className="text-gray-300">
+                          {t('top')}
+                        </h4>
+                      </div>
+                    </div>
+                  </li>
+                  <li className="py-2">
+                    <div className="flex items-center">
+                      <div>
+                        <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-blueGray-100 mr-3">
+                          <i class="fas fa-hammer"></i>
+                        </span>
+                      </div>
+                      <div>
+                        <h4 className="text-gray-300">
+                          {t('toughest')}
+                        </h4>
+                      </div>
+                    </div>
+                  </li>
+                  <li className="py-2">
+                    <div className="flex items-center">
+                      <div>
+                        <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-blueGray-100 mr-3">
+                          <i class="fas fa-wrench"></i>
+                        </span>
+                      </div>
+                      <div>
+                        <h4 className="text-gray-300">
+                          {t('expert')}
+                        </h4>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
               </div>
 
-              <div className='container'>
-                <div className="text-center px-5 py-5 md:mt-10" >
-                  <h3 className="text-white font-semibold text-3xl">
+              <div class="col-span-3 px-5 mt-10">
+                <Image src='/img/body_work_place.webp' alt='bodywork place' width={700} height={500} />
+              </div>
+
+            </div>
+          </div>
+          <div
+            className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-16"
+            style={{ transform: "translateZ(0)" }}
+          >
+            <svg
+              className="absolute bottom-0 overflow-hidden"
+              xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="none"
+              version="1.1"
+              viewBox="0 0 2560 100"
+              x="0"
+              y="0"
+            >
+              <polygon
+                className="text-blueGray-200 fill-current"
+                points="2560 0 2560 100 0 100"
+              ></polygon>
+            </svg>
+          </div>
+        </div>
+
+        <section className="md:pb-20 -mb-10 bg-blueGray-200 -mt-24 px-3">
+          <div className="container mx-auto px-4 pt-20">
+           <div className="text-center py-5 md:mt-10" >
+                  <h3 className="text-bluegray-0 font-semibold text-3xl">
                   {t('work_gallery')}
-                    
                   </h3>
                 </div>
                 <div id="portfolio" class="section relative z-0 py-12 md:py-8 ">
@@ -274,18 +291,21 @@ export default function bodywork() {
                 </div>
               </div>
 
-            </div>
-          </div>
-          {!isMobile &&
-            <ImagePreview
-              showModal={showModal}
-              setShowModal={setShowModal}
-              src={imgSrc}
-              toggleModal={toggleModal}
-            ></ImagePreview>
-          }
-        </div>
+        </section>
+
+        
+
+        {!isMobile &&
+          <ImagePreview
+            showModal={showModal}
+            setShowModal={setShowModal}
+            src={imgSrc}
+            toggleModal={toggleModal}
+          ></ImagePreview>
+        }
+
       </main>
+
       <Footer></Footer>
     </>
   );

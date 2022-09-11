@@ -13,12 +13,11 @@ export default function CarCard({ car, serverUrl }) {
   }
 
   const { t } = useTranslation('index', 'common', 'carsPage');
+    
 
   return (
     <>
-
       <main>
-
           <div className="w-full px-4 mr-auto ml-auto mr-auto" >
             <div className="break-words bg-white w-full shadow-lg rounded-lg bg-blueGray-700  mx-auto" style={{ minHeight: 530 }}>
               <a href={`cars/${encodeURIComponent(car.atelierCarID)}`}  >
@@ -45,7 +44,7 @@ export default function CarCard({ car, serverUrl }) {
               {t('carsPage:year')}: {car.carYear}
                 <br>
                 </br>
-                Km: {car.carKilometers}
+                Km: {numberWithCommas(car.carKilometers)}
               </p>
 
               <Link href={`cars/${encodeURIComponent(car.atelierCarID)}`} class="mt-3 btn-primary-indigo-slim">

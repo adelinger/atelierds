@@ -2,10 +2,8 @@ import Footer from 'components/Footers/Footer';
 import Navbar from 'components/Navbars/IndexNavbar';
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import ImagePreview from 'components/Modals/ImagePreview';
-import { BrowserView } from 'react-device-detect';
 import { isMobile } from 'react-device-detect';
 import { getPictures } from 'lib/apiCalls';
 import { useTranslation } from 'next-i18next';
@@ -34,7 +32,7 @@ export default function chrome({ images, STATIC_FILES_URL }) {
     <>
       <Navbar transparent></Navbar>
       <main>
-        <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
+        <div className="relative pt-16 pb-18 md:pb-32 flex content-center items-center justify-center min-h-screen-75">
           <div
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{
@@ -48,13 +46,10 @@ export default function chrome({ images, STATIC_FILES_URL }) {
             ></span>
           </div>
           <div className="container relative mx-auto">
-            
-              
-               
                 <div className="container mx-auto">
                   <div className="grid grid-cols-1 gap-6 md:grid-cols-2 py-10 md:py-20">
                     <div className="w-full px-4 mr-auto ml-auto -mt-5">
-                      <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto">
+                      <div className="w-full lg:w-6/12 ml-auto mr-auto text-center">
                         <div className="mt-10">
                           <h1 className="text-white font-semibold text-3xl">
                             {t('our_work_title')}
@@ -144,7 +139,7 @@ export default function chrome({ images, STATIC_FILES_URL }) {
           <div className="container mx-auto px-4 pt-20">
           <div className="container mx-auto mt-5">
                   <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto md:text-center">
-                    <div className="md:mt-10">
+                    <div className="mt-10">
                       <h1 className="text-bluegray-0 font-semibold text-3xl">
                         {t('what_do_we_fix_title')}
                       </h1>
@@ -249,18 +244,18 @@ export default function chrome({ images, STATIC_FILES_URL }) {
 
           <div className="container mx-auto px-4 lg:pt-23 lg:pb-32">
           <div className="container mx-auto ">
-                  <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto md:text-center mb-5">
+                  <div className="w-full lg:w-6/12 ml-auto mr-auto md:mb-5">
                     <div>
-                      <h1 className="text-white font-semibold text-3xl invisible">
+                      <h1 className="text-white font-semibold md:text-3xl invisible">
                         {t('gallery_title')}
                       </h1>
 
                     </div>
                   </div>
                   <div className="">
-                  <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto md:text-center mb-20">
+                  <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center mb-10 md:mb-20">
                     <div>
-                      <h1 className="text-white font-semibold text-4xl">
+                      <h1 className="text-4xl mt-5 font-semibold text-white">
                         {t('gallery_title')}
                       </h1>
 
@@ -279,7 +274,15 @@ export default function chrome({ images, STATIC_FILES_URL }) {
                 </div>
           </div>
         </section>
-       
+
+        {!isMobile &&
+            <ImagePreview
+              showModal={showModal}
+              setShowModal={setShowModal}
+              src={imgSrc}
+              toggleModal={toggleModal}
+            ></ImagePreview>
+          }
        
       </main>
       <Footer></Footer>

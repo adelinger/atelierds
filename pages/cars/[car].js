@@ -84,41 +84,40 @@ function viewCar({ carData, STATIC_FILES_URL }) {
                   <div className='md:ml-5 px-3 mb-3'>
                     <div className="">
                       <h1 class="title-font font-size:1.5rem text-xl mb-4 font-medium font-semibold text-white">
-                        Description
+                       {t('carsPage:description')}
                       </h1>
-                      <p className="text-gray-300"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-                        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
-                        type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining
-                        essentially unchanged.</p>
+                      <p className="text-gray-300"> {t('carsPage:description_text')}</p>
                     </div>
                     <div className="w-auto md:w-auto h-auto md:h-17  py-2  rounded-xl focus:outline-0">
                       <h1 class="title-font font-size:1.5rem text-xl mb-4 font-medium font-semibold text-white ">
-                      Car specs
+                      {t('carsPage:specs')}
                       </h1>
-                      <li className=" text-1x1  leading-relaxed text-gray-300">Year: {carData.carYear}</li>
-                      <li className=" text-1x1  leading-relaxed text-gray-300">Color: {carData.carColor} </li>
-                      <li className=" text-1x1  leading-relaxed text-gray-300">Engine power: {carData.carYear}</li>
-                      <li className=" text-1x1  leading-relaxed text-gray-300">Engine type: {carData.carYear}</li>
-                      <li className=" text-1x1  leading-relaxed text-gray-300">Kilometers: {carData.carYear}</li>
-                      <p className="mt-4 text-1x1 leading-relaxed text-white font-bold">Price: {carData.carYear} (€)</p>
+                      <li className=" text-1x1  leading-relaxed text-gray-300">{t('carsPage:year')}: {carData.carYear}</li>
+                      <li className=" text-1x1  leading-relaxed text-gray-300">{t('carsPage:color')}: {carData.carColor} </li>
+                      <li className=" text-1x1  leading-relaxed text-gray-300">{t('carsPage:engine_power')}: {carData.carYear}</li>
+                      <li className=" text-1x1  leading-relaxed text-gray-300">{t('carsPage:engine_type')}: {carData.carYear}</li>
+                      <li className=" text-1x1  leading-relaxed text-gray-300">{t('carsPage:kilometers')}: {carData.carYear}</li>
+                      <p className="mt-4 text-1x1 leading-relaxed text-white font-bold">{t('carsPage:price')}: {carData.carYear} (€)</p>
                     </div>
 
                     <div className=' md:px-0 mt-3 mb-1'>
                       <div className="md:float-left md:absolute h-content py-2 rounded-xl focus:outline-0">
                         <div className='grid grid-cols-1 grid-flow-col md:grid-cols-2'>
-                          <div>
-                            <button onClick={handleGalleryBtnClick} type="button" className='text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 
-                        font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800"'>
-                              <span className='mr-2'>See the gallery</span>
-                              <i class='fas fa-image mt-1'></i>
+                          <div className='text-center'>
+                            <button onClick={handleGalleryBtnClick} type="button" style={{minWidth: 240}} className='mr-2 btn-primary-indigo-slim'>
+                              <span className='mr-2 text-center w-full'>{t('carsPage:see_the_gallery')}
+                              <i class='fas fa-image mt-1 ml-2'></i>
+                              </span>
                             </button>
                           </div>
 
                           <div>
-                            <button onClick={handleEmailbtnClick} type="button" className='text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 
+                            <button onClick={handleEmailbtnClick} type="button" style={{minWidth: 240}} className='text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 
                         font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800"'>
-                              <span className='mr-2'>Send an inquiry</span>
-                              <i class='fas fa-envelope mt-1'></i>
+                              <span className='mr-2 w-full'>{t('carsPage:send')}
+                              <i class='fas fa-envelope mt-1 ml-2'></i>
+                              </span>
+                              
                             </button>
                           </div>
                           <div>

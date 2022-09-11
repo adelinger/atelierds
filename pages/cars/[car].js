@@ -112,8 +112,7 @@ function viewCar({ carData, STATIC_FILES_URL }) {
                           </div>
 
                           <div>
-                            <button onClick={handleEmailbtnClick} type="button" style={{minWidth: 240}} className='text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 
-                        font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800"'>
+                            <button onClick={handleEmailbtnClick} type="button" style={{minWidth: 240}} className='btn-primary-indigo-slim'>
                               <span className='mr-2 w-full'>{t('carsPage:send')}
                               <i class='fas fa-envelope mt-1 ml-2'></i>
                               </span>

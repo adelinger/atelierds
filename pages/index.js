@@ -42,7 +42,7 @@ export default function Landing() {
                   </p>
 
                   <Link href="cars">
-                    <a className="text-center mt-5 inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                    <a className=" mt-5 py-2 px-6 btn-primary-indigo ">
                     {t('check_our_cars')}
                     </a>
                   </Link>

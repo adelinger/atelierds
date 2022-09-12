@@ -40,9 +40,9 @@ export default function bodywork() {
               className="w-full h-full absolute opacity-75 bg-black"
             ></span>
           </div>
-          <div className="container relative mx-auto py-5">
+          <div className="container relative mx-auto py-5 pt-24">
           <div className="w-full lg:w-6/12 ml-auto mr-auto text-center">
-                        <div className="mb-10">
+                        <div className="mb-1">
                         <h1 className="text-white font-semibold text-5xl">
                     {t('main_title')}
                   </h1>

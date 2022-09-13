@@ -8,6 +8,7 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import CardEmail from 'components/Cards/CardEmail';
 import ImagePreview from 'components/Modals/ImagePreview';
+import { useRouter } from 'next/router';
 
 function viewCar({ carData, STATIC_FILES_URL }) {
   const { t } = useTranslation('common', 'carsPage');
@@ -20,6 +21,7 @@ function viewCar({ carData, STATIC_FILES_URL }) {
   const [imgSrc, setImgSrc] = useState();
   const galleryRef = useRef(null);
   const [showUpBtn, setShowUpBtn] = useState();
+  const router = useRouter();
 
 
   const handleEmailbtnClick = () => {
@@ -104,16 +106,20 @@ function viewCar({ carData, STATIC_FILES_URL }) {
                       <div className="md:float-left md:absolute h-content py-2 rounded-xl focus:outline-0">
                         <div className='grid grid-cols-1 grid-flow-col md:grid-cols-2'>
                           <div className='text-center'>
-                            <button onClick={handleGalleryBtnClick} type="button" style={{minWidth: 240}} className='mr-2 btn-primary-indigo-slim'>
+                            <button onClick={handleGalleryBtnClick} type="button" style={{maxWidth:200}} className='mr-2 btn-primary-indigo-slim w-full'>
+                            
                               <span className='mr-2 text-center w-full'>{t('carsPage:see_the_gallery')}
+                              {router.locale === 'fr' && 
+                              <br />}
                               <i class='fas fa-image mt-1 ml-2'></i>
+                             
                               </span>
                             </button>
                           </div>
 
                           <div>
-                            <button onClick={handleEmailbtnClick} type="button" style={{minWidth: 240}} className='btn-primary-indigo-slim'>
-                              <span className='mr-2 w-full'>{t('carsPage:send')}
+                            <button onClick={handleEmailbtnClick} type="button" style={{maxWidth:200}}  className='btn-primary-indigo-slim ml-2 '>
+                              <span className='mr-2 '>{t('carsPage:send')}
                               <i class='fas fa-envelope mt-1 ml-2'></i>
                               </span>
                               

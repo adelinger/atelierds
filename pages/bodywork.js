@@ -27,7 +27,7 @@ export default function bodywork() {
     <>
       <Navbar transparent></Navbar>
       <main>
-        <div className="relative pt-16 md:pb-32 flex content-center items-center justify-center min-h-screen-75">
+        <div className="relative pt-32 md:pt-0 pb-32 md:pb-0 flex content-center items-center justify-center min-h-screen-75">
           <div
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{
@@ -37,13 +37,12 @@ export default function bodywork() {
           >
             <span
               id="blackOverlay"
-              className="w-full h-full absolute opacity-50 bg-black"
+              className="w-full h-full absolute opacity-75 bg-black"
             ></span>
           </div>
-
           <div className="container relative mx-auto collapse">
-            <div className="items-center flex flex-wrap">
-              <div className="container mx-auto py-5 md:mt-20">
+          <div className="items-center flex flex-wrap">
+              <div className="container mx-auto">
 
                 <div class="grid grid-cols-1 md:grid-cols-6 gap-4">
 
@@ -130,8 +129,33 @@ export default function bodywork() {
 
                 </div>
               </div>
+              </div>
 
-              <div className='container'>
+          </div>
+          <div
+            className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-16"
+            style={{ transform: "translateZ(0)" }}
+          >
+            <svg
+              className="absolute bottom-0 overflow-hidden"
+              xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="none"
+              version="1.1"
+              viewBox="0 0 2560 100"
+              x="0"
+              y="0"
+            >
+              <polygon
+                className="text-blueGray-200 fill-current"
+                points="2560 0 2560 100 0 100"
+              ></polygon>
+            </svg>
+          </div>
+        </div>
+
+        <section className="pb-20 -mb-10 bg-blueGray-200 -mt-24 px-3">
+          <div className="container mx-auto px-4 pt-20">
+          <div className='container'>
                 
                 <div id="portfolio" class="section relative z-0 py-12 md:py-8 ">
                   <div class="flex flex-wrap flex-row">
@@ -269,16 +293,10 @@ export default function bodywork() {
               </div>
 
             </div>
-          </div>
-          {!isMobile &&
-            <ImagePreview
-              showModal={showModal}
-              setShowModal={setShowModal}
-              src={imgSrc}
-              toggleModal={toggleModal}
-            ></ImagePreview>
-          }
-        </div>
+          
+          
+        </section>
+
       </main>
       <Footer></Footer>
     </>

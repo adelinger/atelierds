@@ -43,30 +43,29 @@ export default function bodywork() {
 
           <div className="container relative mx-auto collapse">
             <div className="items-center flex flex-wrap">
-              <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center mt-10">
-                <div className="text-center">
-                  <h1 className="text-white font-semibold text-5xl">
-                    {t('main_title')}
-                  </h1>
-                </div>
-              </div>
               <div className="container mx-auto py-5 md:mt-20">
+
                 <div class="grid grid-cols-1 md:grid-cols-6 gap-4">
 
-                  <div class="col-span-3 px-5 md:ml-10 md:-mt-10">
+                  <div class="col-span-3 px-5 md:ml-10">
+                    <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
+                      <h1 className="text-white font-semibold text-3xl">
+                        {t('main_title')}
+                      </h1>
+                    </div>
+
                     <div class="items-center justify-center">
-                      <h1 class="text-3xl hidden md:block leading-normal text-white font-bold mb-4 "> <br></br></h1>
-                      <p class="text-gray-300 leading-relaxed font-light text-xl mx-auto pb-2"><div dangerouslySetInnerHTML={
+                      <p class="text-lg font-light leading-relaxed mt-4 text-white"><div dangerouslySetInnerHTML={
                         { __html: t('text_1', { interpolation: { escapeValue: false } }) }
                       } />
-                        <br></br>  <div dangerouslySetInnerHTML={
+                         <div dangerouslySetInnerHTML={
                           { __html: t('text_2', { interpolation: { escapeValue: false } }) }
                         } />
                       </p>
-
                     </div>
+
                     <ul className="list-none mt-6">
-                      <li className="py-2">
+                      <li className="py-1">
                         <div className="flex items-center">
                           <div>
                             <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-blueGray-100 mr-3">
@@ -75,7 +74,7 @@ export default function bodywork() {
                           </div>
                           <div>
                             <h4 className="text-gray-300">
-                            {t('direct')}
+                              {t('direct')}
                             </h4>
                           </div>
                         </div>
@@ -89,7 +88,7 @@ export default function bodywork() {
                           </div>
                           <div>
                             <h4 className="text-gray-300">
-                            {t('top')}
+                              {t('top')}
                             </h4>
                           </div>
                         </div>
@@ -103,7 +102,7 @@ export default function bodywork() {
                           </div>
                           <div>
                             <h4 className="text-gray-300">
-                            {t('toughest')}
+                              {t('toughest')}
                             </h4>
                           </div>
                         </div>
@@ -117,7 +116,7 @@ export default function bodywork() {
                           </div>
                           <div>
                             <h4 className="text-gray-300">
-                            {t('expert')}
+                              {t('expert')}
                             </h4>
                           </div>
                         </div>
@@ -133,12 +132,7 @@ export default function bodywork() {
               </div>
 
               <div className='container'>
-                <div className="text-center px-5 py-5 md:mt-10" >
-                  <h3 className="text-white font-semibold text-3xl">
-                  {t('work_gallery')}
-                    
-                  </h3>
-                </div>
+                
                 <div id="portfolio" class="section relative z-0 py-12 md:py-8 ">
                   <div class="flex flex-wrap flex-row">
                     <figure class="flex-shrink max-w-full px-3 w-full sm:w-1/2 lg:w-1/5 group wow fadeInUp" data-wow-duration="1s">

@@ -3,5 +3,15 @@
   "title_message": "Qui puoi vedere quali auto abbiamo in vendita al momento.",
   "read_more":"Leggi di più",
   "year":"Anno",
-  "car_gallery":"Galleria auto"
+  "car_gallery":"Galleria auto",
+  "description":"Descrizione",
+  "description_text":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+  "specs":"Specifiche dell'auto",
+  "color":"Colore",
+  "engine_power":"Potenza del motore",
+  "engine_type":"Tipo di motore",
+  "kilometers":"Chilometri",
+  "price":"Prezzo",
+  "see_the_gallery":"Guarda la galleria",
+  "send":"Invia una richiesta"
 }

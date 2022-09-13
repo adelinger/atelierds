@@ -72,8 +72,7 @@ export default function chrome({ images, STATIC_FILES_URL }) {
                         {t('our_work_text_3')}
                       </p>
                       <div className='md:mt-20 text-center'>
-                        <button onClick={executeScroll} type="button" class="text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 
-                        font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">
+                        <button onClick={executeScroll} type="button" class="btn-primary-indigo-slim">
                           {t('see_gallery_btn')}
                           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />

@@ -1728,6 +1728,10 @@ select {
   min-height: 100vh;
 }
 
+.min-h-full {
+  min-height: 100%;
+}
+
 .w-full {
   width: 100%;
 }
@@ -1772,12 +1776,21 @@ select {
   width: 50%;
 }
 
+.w-min {
+  width: -webkit-min-content;
+  width: min-content;
+}
+
 .min-w-0 {
   min-width: 0px;
 }
 
 .min-w-48 {
   min-width: 12rem;
+}
+
+.min-w-full {
+  min-width: 100%;
 }
 
 .max-w-full {
@@ -2375,6 +2388,10 @@ select {
 
 .pt-1 {
   padding-top: 0.25rem;
+}
+
+.pt-24 {
+  padding-top: 6rem;
 }
 
 .text-left {

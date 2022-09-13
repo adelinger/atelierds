@@ -142,13 +142,6 @@ function viewCar({ carData, STATIC_FILES_URL }) {
         </div>
 
         <section className="pb-20 -mb-10 bg-blueGray-200 -mt-24 px-3">
-          <div className='container'>
-            <div className="text-center px-5 py-5 md:mt-10" >
-              <h3 className="text-black font-semibold text-3xl">
-                {t('carsPage:car_gallery')}
-              </h3>
-            </div>
-          </div>
           <div ref={galleryRef} className="md: mt-5">
             <div class="container mx-auto space-y-2 lg:space-y-0 lg:gap-2 lg:grid lg:grid-cols-3">
               {carData.listOfImages.map((image, index) => {

@@ -347,7 +347,8 @@ export default function Landing() {
                     className="shadow-lg rounded-full mx-auto max-w-120-px"
                   />
                   <div className="pt-6 text-center">
-                    <h5 className="text-xl font-bold">{t('antun')}</h5>
+                    {/* <h5 className="text-xl font-bold">{t('antun')}</h5> */}
+                    <h5 className="text-xl font-bold">Jon Doe</h5>
                     <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
                     {t('antun_text')}
                     </p>

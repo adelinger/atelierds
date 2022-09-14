@@ -28,8 +28,9 @@ export default function interior() {
                         <div className="items-center flex flex-wrap">
                             <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
                                 <div className="mt-10 text-center">
-                                    <h1 className="text-white font-semibold text-5xl">
-                                    {t('leatherPage:leather')}
+                                    <h1 className="text-white font-semibold text-3xl">
+                                    {/* {t('leatherPage:leather')} */}
+                                     *PAGE UNDER CONSTRUCTION*
                                     </h1>
 
                                 </div>

@@ -44,7 +44,7 @@ const LanguagesDropdown = () => {
     <>
       <a
       id="languageButton"
-        className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+        className="lg:text-white lg:hover:text-gray-700 text-gray-500 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
         href="#"
         ref={btnDropdownRef}
         onClick={(e) => {

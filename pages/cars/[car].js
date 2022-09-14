@@ -14,14 +14,13 @@ function viewCar({ carData, STATIC_FILES_URL }) {
   const { t } = useTranslation('common', 'carsPage');
   const FILES_URL = STATIC_FILES_URL + carData.carPhotosPath + '/';
   const profilePhoto = FILES_URL + carData.carProfilePhotoPath;
-  const title = carData.carMake + ' ' + carData.carModel;
   const [showEmailForm, setShowEmailForm] = useState();
   const baseRef = useRef(null);
   const [showModal, setShowModal] = useState(false);
   const [imgSrc, setImgSrc] = useState();
+  const [src, setSrc] = useState(profilePhoto);
   const galleryRef = useRef(null);
   const [showUpBtn, setShowUpBtn] = useState();
-  const router = useRouter();
 
 
   const handleEmailbtnClick = () => {
@@ -43,6 +42,7 @@ function viewCar({ carData, STATIC_FILES_URL }) {
       setShowModal(!showModal);
     }
   }
+  
 
   return (
     <>
@@ -65,8 +65,12 @@ function viewCar({ carData, STATIC_FILES_URL }) {
             <div className="container mx-auto py-5 md:mt-20">
               <div className='grid grid-cols-1 md:grid-cols-2 gap-2 content-start'>
                 <div>
-                  <img className='center-image' src={profilePhoto}></img>
-
+                  <img className ='center-image md:min-h-30' 
+                   
+                   src={src}
+                  onMouseOver={e => (setSrc(FILES_URL + carData.listOfImages[carData.listOfImages.length-1]))} 
+                  onMouseOut={e => (setSrc(FILES_URL + carData.carProfilePhotoPath))} onClick={handleGalleryBtnClick}
+                  ></img>
                 </div>
 
                 <div className='md:ml-5 px-3 mb-3'>
@@ -142,13 +146,6 @@ function viewCar({ carData, STATIC_FILES_URL }) {
         </div>
 
         <section className="pb-20 -mb-10 bg-blueGray-200 -mt-24 px-3">
-          <div className='container'>
-            <div className="text-center px-5 py-5 md:mt-10" >
-              <h3 className="text-black font-semibold text-3xl">
-                {t('carsPage:car_gallery')}
-              </h3>
-            </div>
-          </div>
           <div ref={galleryRef} className="md: mt-5">
             <div class="container mx-auto space-y-2 lg:space-y-0 lg:gap-2 lg:grid lg:grid-cols-3">
               {carData.listOfImages.map((image, index) => {

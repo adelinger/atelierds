@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { createPopper } from "@popperjs/core";
 import { useRouter } from "next/router";
+
+import listenForOutsideClicks from "utils/listen-for-outside-clicks";
 
 const LanguagesDropdown = () => {
   // dropdown props
@@ -8,6 +10,10 @@ const LanguagesDropdown = () => {
   const btnDropdownRef = React.createRef();
   const popoverDropdownRef = React.createRef();
   const router = useRouter();
+  const [isOpen, setIsOpen] = useState(false);
+  const [listening, setListening] = useState(false);
+  const menuRef = React.createRef();
+
   const openDropdownPopover = () => {
     createPopper(btnDropdownRef.current, popoverDropdownRef.current, {
       placement: "bottom-start",
@@ -18,6 +24,16 @@ const LanguagesDropdown = () => {
     setDropdownPopoverShow(false);
   };
 
+  const closeOnOutsideClick = (e) => {
+    if(e.target.id !== 'languageDropdownHolder' && e.target.id !== 'languageButton'){
+      closeDropdownPopover();
+    }
+  }
+
+  useEffect(() => {
+    document.body.addEventListener('click', closeOnOutsideClick);
+},
+);
 
   const handleLocaleChange = (value) => (event) => {
     router.push(router.route, router.asPath, {
@@ -27,6 +43,7 @@ const LanguagesDropdown = () => {
   return (
     <>
       <a
+      id="languageButton"
         className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
         href="#"
         ref={btnDropdownRef}
@@ -43,6 +60,7 @@ const LanguagesDropdown = () => {
       </a>
       
       <div
+      id="languageDropdownHolder"
         ref={popoverDropdownRef}
         className={
           (dropdownPopoverShow ? "block " : "hidden ") +

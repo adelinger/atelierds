@@ -58,3 +58,38 @@
       margin-right: auto;
     }
   }
+
+  
+
+.arrow span {
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-bottom: 5px solid rgba(216, 216, 216, 0.902);
+    border-left: 5px solid rgba(216, 216, 216, 0.902);
+    transform: rotate(135deg);
+    cursor: pointer;
+    animation-name: example;
+    animation: pulse 1.3s infinite;
+    position: relative;
+    animation-name: example;
+    animation-fill-mode: forwards;
+    ;
+}
+
+
+@keyframes example {
+  0% {
+      opacity: 0;
+      transform: rotate(135deg) translate(-0px, -0px);
+  }
+
+  50% {
+      opacity: 1;
+  }
+
+  100% {
+      opacity: 0;
+      transform: rotate(135deg) translate(0px, 0px);
+  }
+}

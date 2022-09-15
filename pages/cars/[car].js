@@ -8,7 +8,7 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import CardEmail from 'components/Cards/CardEmail';
 import ImagePreview from 'components/Modals/ImagePreview';
-import { useRouter } from 'next/router';
+import router, { useRouter } from 'next/router';
 
 function viewCar({ carData, STATIC_FILES_URL }) {
   const { t } = useTranslation('common', 'carsPage');
@@ -62,18 +62,17 @@ function viewCar({ carData, STATIC_FILES_URL }) {
             ></span>
           </div>
           <div className="container relative mx-auto">
-            <div className="container mx-auto py-5 md:mt-20">
+            <div className="container mx-auto py-5 mt-10 md:mt-20">
               <div className='grid grid-cols-1 md:grid-cols-2 gap-2 content-start'>
                 <div>
-                  <img className ='center-image md:min-h-30' 
-                   
+                  <img className ='center-image md:min-h-30 md:cursor-pointer' 
                    src={src}
                   onMouseOver={e => (setSrc(FILES_URL + carData.listOfImages[carData.listOfImages.length-1]))} 
                   onMouseOut={e => (setSrc(FILES_URL + carData.carProfilePhotoPath))} onClick={handleGalleryBtnClick}
                   ></img>
                 </div>
 
-                <div className='md:ml-5 px-3 mb-3'>
+                <div className='md:ml-5 px-3 mb-3 mt-5 md:mt-0'>
                   <div className="">
                   <h1 className="text-white font-semibold text-3xl">
                       {carData.carModel + ' ' + carData.carMake}
@@ -94,17 +93,18 @@ function viewCar({ carData, STATIC_FILES_URL }) {
 
                   <div className=' md:px-0 mt-3 mb-1'>
                     <div className="md:float-left md:absolute h-content py-2 rounded-xl focus:outline-0">
-                      <div className='grid grid-cols-1 grid-flow-col md:grid-cols-2'>
-                        <div className='text-center'>
-                          <button onClick={handleGalleryBtnClick} type="button" style={{ minWidth: 240 }} className='mr-2 btn-primary-indigo-slim'>
+                      <div className='grid grid-cols-2 grid-flow-col md:grid-cols-2'>
+                        <div className='text-center w-full pr-1'>
+                          <button onClick={handleGalleryBtnClick} type="button" className='btn-primary-indigo-slim w-full md:min-w-15'>
                             <span className='mr-2 text-center w-full'>{t('carsPage:see_the_gallery')}
+                            {router.locale === 'fr' && isMobile && <br></br>} 
                               <i class='fas fa-image mt-1 ml-2'></i>
                             </span>
                           </button>
                         </div>
 
-                        <div>
-                          <button onClick={handleEmailbtnClick} type="button" style={{ minWidth: 240 }} className='btn-primary-indigo-slim'>
+                        <div className='w-full pl-1'>
+                          <button onClick={handleEmailbtnClick} type="button" className='btn-primary-indigo-slim md:min-w-15'>
                             <span className='mr-2 w-full'>{t('carsPage:send')}
                               <i class='fas fa-envelope mt-1 ml-2'></i>
                             </span>
@@ -145,7 +145,7 @@ function viewCar({ carData, STATIC_FILES_URL }) {
           </div>
         </div>
 
-        <section className="pb-20 -mb-10 bg-blueGray-200 -mt-24 px-3">
+        <section className="pb-20 pt-20 -mb-10 bg-blueGray-200 -mt-20 px-3">
           <div ref={galleryRef} className="md: mt-5">
             <div class="container mx-auto space-y-2 lg:space-y-0 lg:gap-2 lg:grid lg:grid-cols-3">
               {carData.listOfImages.map((image, index) => {

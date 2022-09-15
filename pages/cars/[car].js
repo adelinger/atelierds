@@ -38,6 +38,8 @@ function viewCar({ carData, STATIC_FILES_URL }) {
 
   const handleButtonUpClick = () => {
     baseRef.current.scrollIntoView({ behavior: 'smooth' });
+    setShowEmailForm(false);
+    setShowUpBtn(false);
     //setShowUpBtn(false);
   }
 
@@ -72,7 +74,8 @@ function viewCar({ carData, STATIC_FILES_URL }) {
                   <img className ='center-image md:min-h-30 md:cursor-pointer' 
                    src={src}
                   onMouseOver={e => (setSrc(FILES_URL + carData.listOfImages[carData.listOfImages.length-1]))} 
-                  onMouseOut={e => (setSrc(FILES_URL + carData.carProfilePhotoPath))} onClick={handleGalleryBtnClick}
+                  onMouseOut={e => (setSrc(FILES_URL + carData.carProfilePhotoPath))} 
+                  onClick={handleGalleryBtnClick}
                   ></img>
                 </div>
 

@@ -59,25 +59,37 @@
     }
   }
 
-  .arrow {
-    position: absolute;
-    top: 92%;
-    left: 49%;
-}
+  
 
 .arrow span {
     display: block;
     width: 30px;
     height: 30px;
-    /*kreira crtu određene debljine*/
-    border-bottom: 5px solid rgb(59, 4, 137);
-    /*kreira crtu određene debljine*/
-    border-left: 5px solid rgb(59, 4, 137);
-    /*rotira kreirane crte za određeno stupnjeva*/
+    border-bottom: 5px solid rgba(216, 216, 216, 0.902);
+    border-left: 5px solid rgba(216, 216, 216, 0.902);
     transform: rotate(135deg);
-    animation: scroll 2s infinite;
+    cursor: pointer;
+    animation-name: example;
+    animation: pulse 1.3s infinite;
+    position: relative;
+    animation-name: example;
+    animation-fill-mode: forwards;
+    ;
 }
 
-.arrow span:nth-child(2) {
-    animation: -.2;
+
+@keyframes example {
+  0% {
+      opacity: 0;
+      transform: rotate(135deg) translate(-0px, -0px);
+  }
+
+  50% {
+      opacity: 1;
+  }
+
+  100% {
+      opacity: 0;
+      transform: rotate(135deg) translate(0px, 0px);
+  }
 }

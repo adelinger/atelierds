@@ -1373,24 +1373,20 @@ select {
   bottom: auto;
 }
 
-.top-6 {
-  top: 1.5rem;
-}
-
-.right-8 {
-  right: 2rem;
+.bottom-20 {
+  bottom: 5rem;
 }
 
 .right-10 {
   right: 2.5rem;
 }
 
-.bottom-10 {
-  bottom: 2.5rem;
+.top-6 {
+  top: 1.5rem;
 }
 
-.bottom-20 {
-  bottom: 5rem;
+.right-8 {
+  right: 2rem;
 }
 
 .z-0 {
@@ -2724,30 +2720,58 @@ select {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.arrow {
-  position: absolute;
-  top: 92%;
-  left: 49%;
-}
-
 .arrow span {
   display: block;
   width: 30px;
   height: 30px;
-  /*kreira crtu određene debljine*/
-  border-bottom: 5px solid rgb(59, 4, 137);
-  /*kreira crtu određene debljine*/
-  border-left: 5px solid rgb(59, 4, 137);
-  /*rotira kreirane crte za određeno stupnjeva*/
+  border-bottom: 5px solid rgba(216, 216, 216, 0.902);
+  border-left: 5px solid rgba(216, 216, 216, 0.902);
   -webkit-transform: rotate(135deg);
           transform: rotate(135deg);
-  -webkit-animation: scroll 2s infinite;
-          animation: scroll 2s infinite;
+  cursor: pointer;
+  -webkit-animation: pulse 1.3s infinite;
+          animation: pulse 1.3s infinite;
+  position: relative;
+  -webkit-animation-name: example;
+          animation-name: example;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
 }
 
-.arrow span:nth-child(2) {
-  -webkit-animation: -.2;
-          animation: -.2;
+@-webkit-keyframes example {
+  0% {
+    opacity: 0;
+    -webkit-transform: rotate(135deg) translate(-0px, -0px);
+            transform: rotate(135deg) translate(-0px, -0px);
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: rotate(135deg) translate(0px, 0px);
+            transform: rotate(135deg) translate(0px, 0px);
+  }
+}
+
+@keyframes example {
+  0% {
+    opacity: 0;
+    -webkit-transform: rotate(135deg) translate(-0px, -0px);
+            transform: rotate(135deg) translate(-0px, -0px);
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: rotate(135deg) translate(0px, 0px);
+            transform: rotate(135deg) translate(0px, 0px);
+  }
 }
 
 .hover\:scale-125:hover {

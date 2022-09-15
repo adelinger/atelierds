@@ -70,7 +70,7 @@ export default function Footer() {
 
                 <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-4"></hr>
                 <div class=" sm:items-center sm:justify-between">
-                    <span class="text-sm text-gray-500 flex sm:justify-center dark:text-gray-400">© {new Date().getFullYear()}{" "} <a href="#" class="hover:underline"></a>{t('footer:copyright')}
+                    <span class="text-sm text-gray-500 flex sm:justify-center dark:text-gray-400">© {new Date().getFullYear()}{"  "}  <a href="#" class="hover:underline"></a> {t('footer:copyright')}
                     </span>
                 </div>
             </footer>

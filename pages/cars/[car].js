@@ -29,12 +29,16 @@ function viewCar({ carData, STATIC_FILES_URL }) {
     if (showEmailForm) {
       baseRef.current.scrollIntoView({ behavior: 'smooth' });
     }
-
-    setShowUpBtn(!showUpBtn);
+    setShowUpBtn(true);
   }
 
   const handleGalleryBtnClick = () => {
     galleryRef.current.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  const handleButtonUpClick = () => {
+    baseRef.current.scrollIntoView({ behavior: 'smooth' });
+    //setShowUpBtn(false);
   }
 
   const toggleModal = () => {
@@ -145,7 +149,7 @@ function viewCar({ carData, STATIC_FILES_URL }) {
           </div>
         </div>
 
-        <section className="pb-20 pt-20 -mb-10 bg-blueGray-200 -mt-20 px-3">
+        <section id="gallery" className="pb-20 pt-20 -mb-10 bg-blueGray-200 -mt-20 px-3">
           <div ref={galleryRef} className="md: mt-5">
             <div class="container mx-auto space-y-2 lg:space-y-0 lg:gap-2 lg:grid lg:grid-cols-3">
               {carData.listOfImages.map((image, index) => {
@@ -199,8 +203,13 @@ function viewCar({ carData, STATIC_FILES_URL }) {
         }
 
         {showUpBtn &&
-          <input type="image" className='float-right mr-5 fixed bottom-0 right-0 mb-5' src="/img/arrow_up.webp" id="scrollUpBtn" width="60" height="60"
-          ></input>
+          // <input type="arrow" className='float-right mr-5 fixed bottom-0 right-0 mb-5' src="" id="scrollUpBtn" width="60" height="60"
+          // ></input>
+          <button className='float-right mr-5 fixed bottom-20 right-10 mb-5' onClick={handleButtonUpClick}>
+          <div class="arrow"  >
+              <span></span>
+          </div>
+      </button>
         }
       </main>
       <Footer />

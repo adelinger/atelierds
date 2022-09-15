@@ -129,7 +129,7 @@ export default function bodywork() {
 
                   <div class="col-span-3 px-5">
                     <Image src={src} alt='bodywork place' width={700} height={500}
-                    onMouseOver={e => (setSrc('/img/body_work.webp'))} 
+                    onMouseOver={e => (setSrc('/img/body_work2.webp'))} 
                     onMouseOut={e => (setSrc('/img/body_work_place.webp'))} />
                   </div>
 
@@ -297,7 +297,14 @@ export default function bodywork() {
                   </div>
                 </div>
               </div>
-
+              {!isMobile &&
+              <ImagePreview
+              showModal={showModal}
+              setShowModal={setShowModal}
+              src={imgSrc}
+              toggleModal={toggleModal}
+              ></ImagePreview>
+            }
             </div>
           
           

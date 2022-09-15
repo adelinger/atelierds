@@ -58,3 +58,26 @@
       margin-right: auto;
     }
   }
+
+  .arrow {
+    position: absolute;
+    top: 92%;
+    left: 49%;
+}
+
+.arrow span {
+    display: block;
+    width: 30px;
+    height: 30px;
+    /*kreira crtu određene debljine*/
+    border-bottom: 5px solid rgb(59, 4, 137);
+    /*kreira crtu određene debljine*/
+    border-left: 5px solid rgb(59, 4, 137);
+    /*rotira kreirane crte za određeno stupnjeva*/
+    transform: rotate(135deg);
+    animation: scroll 2s infinite;
+}
+
+.arrow span:nth-child(2) {
+    animation: -.2;
+}

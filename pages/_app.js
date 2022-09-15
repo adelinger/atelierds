@@ -14,7 +14,6 @@ import { AuthProvider } from "auth/hook/auth";
 import AuthStateChanged from "auth/layout/AuthStateChanges";
 
 Router.events.on("routeChangeStart", (url) => {
-  console.log(`Loading: ${url}`);
   document.body.classList.add("body-page-transition");
   ReactDOM.render(
     <PageChange path={url} />,

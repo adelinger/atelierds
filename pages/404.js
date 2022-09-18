@@ -28,13 +28,13 @@ return (
           href="#"
           class="px-6 py-2 text-sm font-semibold text-blue-800 bg-blue-100"
           onClick={handleOnClick}
-          >Go home</a
+          >Go home </a
         >
       </div>
       <div class="mt-4">
         <img
-          src="https://cdn.pixabay.com/photo/2016/11/22/23/13/black-dog-1851106__340.jpg"
-          alt="img"
+          src="img/errors/404_dog.jpeg"
+          alt="404 not found"
           class="object-cover w-full h-full"
         />
       </div>

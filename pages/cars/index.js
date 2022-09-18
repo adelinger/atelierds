@@ -9,16 +9,16 @@ import Footer from "components/Footers/Footer.js";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { getSingleCar, loadCars } from "lib/apiCalls";
 import CarCard from "components/Cards/CarCard";
+import Image from "next/image";
 
-export default function carsForSale({cars, serverUrl}) {
-
-
+export default function carsForSale({ cars, serverUrl }) {
   const { t } = useTranslation('carsPage');
+  
   return (
     <>
-      <Navbar/>
+      <Navbar />
       <main>
-      <div className="relative pt-16 pb-16 md:pb-32 flex content-center items-center justify-center min-h-screen-75">
+        <div className="relative pt-16 pb-16 md:pb-32 flex content-center items-center justify-center min-h-screen-75">
           <div
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{
@@ -39,27 +39,43 @@ export default function carsForSale({cars, serverUrl}) {
                     {t('cars_for_sale')}
                   </h1>
                   <p className="mt-4 text-lg text-blueGray-200">
-                  {t('title_message')}
+                    {cars.length === 0 ? 
+                    <p className="text-gray-100 mt-10 mb-10">We are sorry, we do not have any cars for sale at the moment.</p>
+                    :
+                    t('title_message')
+                  }
+                    
                   </p>
                 </div>
               </div>
               <div className="container mx-auto ">
-                
-              <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-3">
-           {cars.map (car => 
-                   <div className="mt-5 mb-5 ml-auto mr-auto" >
-                     <CarCard car={car} serverUrl={serverUrl}></CarCard>
-                     </div>
-                  )}
-               
-            </div>
+                {
+                  cars.length === 0 ? 
+                 <div className="text-center">
+                    <Image
+                    src="/img/errors/no-results.png"
+                    width={300}
+                    height={300}
+                    ></Image>
+                 </div>
+                    :
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-3">
+                      {cars.map(car =>
+                        <div className="mt-5 mb-5 ml-auto mr-auto" >
+                          <CarCard car={car} serverUrl={serverUrl}></CarCard>
+                        </div>
+                      )}
+
+                    </div>
+                }
+
 
               </div>
-              
+
             </div>
           </div>
-        
-          </div>
+
+        </div>
 
       </main>
       <Footer />
@@ -68,21 +84,23 @@ export default function carsForSale({cars, serverUrl}) {
 }
 
 
-export async function getStaticProps({locale}){
-  const cars =  await loadCars();
+
+
+export async function getStaticProps({ locale }) {
+  const cars = await loadCars();
   const { STATIC_FILES_URL } = process.env;
   return {
-      props: {
-        cars: cars,
-        serverUrl: STATIC_FILES_URL,
-        ...await serverSideTranslations(locale, ['common', 'carsPage', 'footer']),
-      }
+    props: {
+      cars: cars,
+      serverUrl: STATIC_FILES_URL,
+      ...await serverSideTranslations(locale, ['common', 'carsPage', 'footer']),
+    }
   }
 }
 
 
 export async function getCarData(id) {
-    const car = await getSingleCar(id);
+  const car = await getSingleCar(id);
 
   // Combine the data with the id
   return {

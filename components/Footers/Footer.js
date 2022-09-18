@@ -9,7 +9,7 @@ export default function Footer() {
     return (
         <>
 
-            <footer class="bg-white sm:p-6 dark:bg-gray-800">
+            <footer class="bg-white sm:p-6 dark:bg-gray-800 p-4 md:px-4">
                 <div class="md:flex md:justify-between">
                     <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
                         <div className="md:mr-5">
@@ -69,8 +69,8 @@ export default function Footer() {
                 </div>
 
                 <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-4"></hr>
-                <div class=" sm:items-center sm:justify-between">
-                    <span class="text-sm text-gray-500 flex sm:justify-center dark:text-gray-400">© {new Date().getFullYear()}{"  "}  <a href="#" class="hover:underline"></a> {t('footer:copyright')}
+                <div class=" sm:items-center sm:justify-between ">
+                    <span class="text-sm text-gray-500 flex justify-center dark:text-gray-400">© {new Date().getFullYear()}{"  "}  <a href="#" class="hover:underline"></a>&nbsp; {t('footer:copyright')}
                     </span>
                 </div>
             </footer>

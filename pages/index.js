@@ -294,7 +294,7 @@ export default function Landing() {
               <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
                 <div className="px-6">
                   <img
-                    alt="..."
+                    alt="Company member picture"
                     src="/img/team-1-800x800.jpg"
                     className="shadow-lg rounded-full mx-auto max-w-120-px"
                   />
@@ -310,7 +310,7 @@ export default function Landing() {
               <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
                 <div className="px-6">
                   <img
-                    alt="..."
+                    alt="Company member picture"
                     src="/img/team-1-800x800.jpg"
                     className="shadow-lg rounded-full mx-auto max-w-120-px"
                   />
@@ -326,7 +326,7 @@ export default function Landing() {
               <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
                 <div className="px-6">
                   <img
-                    alt="..."
+                    alt="Company member picture"
                     src="/img/team-1-800x800.jpg"
                     className="shadow-lg rounded-full mx-auto max-w-120-px"
                   />
@@ -342,7 +342,7 @@ export default function Landing() {
               <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 px-4">
                 <div className="px-6">
                   <img
-                    alt="..."
+                    alt="Company member picture"
                     src="/img/team-1-800x800.jpg"
                     className="shadow-lg rounded-full mx-auto max-w-120-px"
                   />

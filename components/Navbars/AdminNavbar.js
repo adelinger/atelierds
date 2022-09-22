@@ -11,10 +11,10 @@ export default function Navbar() {
           {/* Brand */}
           <a
             className="text-white text-sm uppercase hidden lg:inline-block font-semibold"
-            href="#"
-            onClick={(e) => e.preventDefault()}
+            href="/"
+            target="_blank"
           >
-            Dashboard
+            GO TO WEBSITE
           </a>
    
           {/* User */}

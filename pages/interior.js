@@ -40,7 +40,7 @@ export default function interior() {
                                     <div className="mt-5 mb-5" >
                                         <div class="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                                             <a href="#">
-                                                <img class="rounded-t-lg" src="/img/interior/cuire_naturelle.jpg" alt="Cuir naturelle leather" style={{ minHeight: 250 }}></img>
+                                                <img class="rounded-t-lg" src="/img/interior/cuire_naturelle.webp" alt="Cuir naturelle leather" style={{ minHeight: 250 }}></img>
                                             </a>
                                             <div class="p-5">
                                                 <div className='text-center'>
@@ -60,7 +60,7 @@ export default function interior() {
                                     < div className="mt-5 mb-5" >
                                         <div class="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                                             <a href="#">
-                                                <img class="rounded-t-lg" src="/img/interior/cuire_noire.jpg" alt="cuir noire leather" style={{ minHeight: 250, width: 700 }} ></img>
+                                                <img class="rounded-t-lg" src="/img/interior/cuire_noire.webp" alt="cuir noire leather" style={{ minHeight: 250, width: 700 }} ></img>
                                             </a>
                                             <div class="p-5">
                                                 <div className='text-center'>
@@ -80,7 +80,7 @@ export default function interior() {
                                     < div className="mt-5 mb-5" >
                                         <div class="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                                             <a href="#">
-                                                <img class="rounded-t-lg" src="/img/interior/cuir_tabac.jpg" alt="Cuir tabac leather" style={{ minHeight: 250, width: 700 }} ></img>
+                                                <img class="rounded-t-lg" src="/img/interior/cuir_tabac.webp" alt="Cuir tabac leather" style={{ minHeight: 250, width: 700 }} ></img>
                                             </a>
                                             <div class="p-5">
                                                 <div className='text-center'>
@@ -100,7 +100,7 @@ export default function interior() {
                                     < div className="mt-5 mb-5" >
                                         <div class="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                                             <a href="#">
-                                                <img class="rounded-t-lg" src="/img/interior/naturelle_foncee.jpg" alt="Naturelle foncée leather" style={{ minHeight: 250, width: 700 }} ></img>
+                                                <img class="rounded-t-lg" src="/img/interior/naturelle_foncee.webp" alt="Naturelle foncée leather" style={{ minHeight: 250, width: 700 }} ></img>
                                             </a>
                                             <div class="p-5">
                                                 <div className='text-center'>

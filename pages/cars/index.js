@@ -53,7 +53,8 @@ export default function carsForSale({ cars, serverUrl }) {
                   cars.length === 0 ? 
                  <div className="text-center">
                     <Image
-                    src="/img/errors/no-results.png"
+                    alt="No results" 
+                    src="/img/errors/no-results.webp"
                     width={300}
                     height={300}
                     ></Image>

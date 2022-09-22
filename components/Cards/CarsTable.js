@@ -8,7 +8,7 @@ import Alert from "components/Alerts/Alert";
 import { CircularProgress, Link } from "@mui/material";
 
 export default function CarsTable({ color, auth }) {
-  const {logout} = auth;
+  const { logout } = auth;
   const [cars, setCars] = useState()
   const [isSuccess, setIsSuccess] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
@@ -34,20 +34,20 @@ export default function CarsTable({ color, auth }) {
         setShowLoader(false);
       })
       .catch((error) => {
-        if(error.response.status === 401){
+        if (error.response.status === 401) {
           logout();
         }
         setShowLoader(false);
       });
   };
 
-  function onChangeStatusClick(id){
+  function onChangeStatusClick(id) {
     setShowLoader(true);
     api
       .updateCarStatus(id, 2)
       .then(data => {
-       handleApiResponse(true);
-       fetchCars();
+        handleApiResponse(true);
+        fetchCars();
       })
       .catch((error) => {
         handleApiResponse(false);
@@ -59,8 +59,8 @@ export default function CarsTable({ color, auth }) {
     api
       .deleteCar(id)
       .then(data => {
-       handleApiResponse(true);
-       fetchCars();
+        handleApiResponse(true);
+        fetchCars();
       })
       .catch((error) => {
         handleApiResponse(false);
@@ -72,29 +72,25 @@ export default function CarsTable({ color, auth }) {
   }, [])
 
   function colorDot(car) {
-   
-   if(car.atelierCarStatus.atelierCarStatusID === 1){
-    return <i className='fas fa-circle mr-2 text-blue-600'>Available</i>
-   }
-   if(car.atelierCarStatus.atelierCarStatusID === 3){
-    return <i className='fas fa-circle mr-2 text-orange-500'>Reservered</i>
-   }
-   if(car.atelierCarStatus.atelierCarStatusID === 2){
-    return <i className='fas fa-circle mr-2 text-gray-500'>Sold</i>
-   }
+
+    if (car.atelierCarStatus.atelierCarStatusID === 1) {
+      return <i className='fas fa-circle mr-2 text-blue-600'>Available</i>
+    }
+    if (car.atelierCarStatus.atelierCarStatusID === 3) {
+      return <i className='fas fa-circle mr-2 text-orange-500'>Reservered</i>
+    }
+    if (car.atelierCarStatus.atelierCarStatusID === 2) {
+      return <i className='fas fa-circle mr-2 text-gray-500'>Sold</i>
+    }
 
     return <i className='fas fa-circle mr-2 text-blue-600'>Available</i>
   }
 
-
-  if (!cars) {
-    return <p>No List to show</p>
-  }
 
   return (
 
     <>
-    
+
       <div
         className={
           "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded " +
@@ -194,48 +190,56 @@ export default function CarsTable({ color, auth }) {
               </tr>
             </thead>
             <tbody>
-              {cars.map(car =>
-                <tr data={car.atelierCarID}>
-                  <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
-                    <Link href={`update/${encodeURIComponent(car.atelierCarID)}`}>
-                    <img
-                      src={process.env.NEXT_PUBLIC_STATIC_FILES_URL + car.carPhotosPath +'/' + car.carProfilePhotoPath}
-                      className="h-12 w-12 bg-white rounded-full border"
-                      alt="..."
-                    ></img>{" "}
-                    </Link>
-                  
-                    <Link href={`update/${encodeURIComponent(car.atelierCarID)}`}>
-                      <a className={
-                        "ml-3 font-bold " +
-                        +(color === "light" ? "text-blueGray-600" : "text-white")
-                      }></a>
-                    
-                      {car.carMake + ' ' + car.carModel}
-                    </Link>
-                  </th>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    {car.carPrice}€
-                  </td>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    {colorDot(car)}
-                  </td>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    <div className="flex">
-                    <i className="fas fa-user text-bluegray-500 mr-2"></i> {car.addedByUser}
-                   
-                    </div>
-                  </td>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    <div className="flex items-center">
-                      <i className="fas fa-table text-bluegray-500 mr-2"></i> 500
-                    </div>
-                  </td>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-                    <CarPreviewDropdown onDeleteClick={onDeleteClick} onStatusUpdate={onChangeStatusClick} carId={car.atelierCarID} carStatus={car.atelierCarStatus.carStatus} />
-                  </td>
-                </tr>
-              )}
+              {
+                !cars ?
+                  <div className="text-3xl m-5">
+                    <p>Currently there are no added cars.</p>
+                  </div>
+                  :
+                  cars.map(car =>
+                    <tr data={car.atelierCarID}>
+                      <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
+                        <Link href={`update/${encodeURIComponent(car.atelierCarID)}`}>
+                          <img
+                            src={process.env.NEXT_PUBLIC_STATIC_FILES_URL + car.carPhotosPath + '/' + car.carProfilePhotoPath}
+                            className="h-12 w-12 bg-white rounded-full border"
+                            alt="..."
+                          ></img>{" "}
+                        </Link>
+
+                        <Link href={`update/${encodeURIComponent(car.atelierCarID)}`}>
+                          <a className={
+                            "ml-3 font-bold " +
+                            +(color === "light" ? "text-blueGray-600" : "text-white")
+                          }></a>
+
+                          {car.carMake + ' ' + car.carModel}
+                        </Link>
+                      </th>
+                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                        {car.carPrice}€
+                      </td>
+                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                        {colorDot(car)}
+                      </td>
+                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                        <div className="flex">
+                          <i className="fas fa-user text-bluegray-500 mr-2"></i> {car.addedByUser}
+
+                        </div>
+                      </td>
+                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                        <div className="flex items-center">
+                          <i className="fas fa-table text-bluegray-500 mr-2"></i> 500
+                        </div>
+                      </td>
+                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
+                        <CarPreviewDropdown onDeleteClick={onDeleteClick} onStatusUpdate={onChangeStatusClick} carId={car.atelierCarID} carStatus={car.atelierCarStatus.carStatus} />
+                      </td>
+                    </tr>
+                  )
+              }
+
             </tbody>
           </table>
         </div>

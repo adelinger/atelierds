@@ -206,10 +206,9 @@ function viewCar({ carData, STATIC_FILES_URL }) {
         }
 
         {showUpBtn &&
-          // <input type="arrow" className='float-right mr-5 fixed bottom-0 right-0 mb-5' src="" id="scrollUpBtn" width="60" height="60"
-          // ></input>
-          <button className='float-right mr-5 fixed bottom-20 right-10 mb-5' onClick={handleButtonUpClick}>
+          <button className='float-right mr-5 fixed bottom-10 right-10 mb-30' onClick={handleButtonUpClick}>
           <div class="arrow"  >
+              <span></span>
               <span></span>
           </div>
       </button>

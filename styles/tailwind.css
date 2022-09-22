@@ -3423,4 +3423,14 @@ select {
     --tw-text-opacity: 1;
     color: rgb(100 116 139 / var(--tw-text-opacity));
   }
+
+  .lg\:hover\:text-slate-500:hover {
+    --tw-text-opacity: 1;
+    color: rgb(100 116 139 / var(--tw-text-opacity));
+  }
+
+  .lg\:hover\:text-gray-500:hover {
+    --tw-text-opacity: 1;
+    color: rgb(107 114 128 / var(--tw-text-opacity));
+  }
 }

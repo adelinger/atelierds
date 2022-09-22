@@ -13,7 +13,7 @@ export default function Navbar(props) {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
   const locale = router.locale;
-  const [imgSrc, setImgSrc] = useState('../../img/logo/logo_white.png');
+  const [imgSrc, setImgSrc] = useState('../../img/logo/logo_white.webp');
 
   const { t } = useTranslation('index');
 
@@ -34,8 +34,8 @@ export default function Navbar(props) {
             <Link href="/">
             <a href={`/${router.locale}/`} class="flex items-center">
                 <img src={imgSrc} class="image_back" alt="AtelierDS Logo" 
-                onMouseOver={e => (setImgSrc('../../img/logo/logo_bgray.png'))} 
-                onMouseOut={e => (setImgSrc('../../img/logo/logo_white.png'))} 
+                onMouseOver={e => (setImgSrc('../../img/logo/logo_gray.webp'))} 
+                onMouseOut={e => (setImgSrc('../../img/logo/logo_white.webp'))} 
                 style={{height:70, width:120}}></img>
                
                 <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"></span>

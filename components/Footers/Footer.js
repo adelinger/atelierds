@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export default function Footer() {
     const { t } = useTranslation();
-    const [src, setSrc] = useState('../../img/logo/logo.png');
+    const [src, setSrc] = useState('../../img/logo/logo.webp');
 
     return (
         <>
@@ -60,8 +60,8 @@ export default function Footer() {
                     <div class="mb-6 md:mb-0 hidden md:block">
                         <a href="/" class="flex items-center">
                             <img src={src} class="mr-3 h-8 mt-5 md:mt-0" alt="AtelierDS Logo" style={{ height: 70, width: 120 }}
-                                onMouseOver={e => (setSrc('../../img/logo/logo_black.png'))}
-                                onMouseOut={e => (setSrc('../../img/logo/logo.png'))}></img>
+                                onMouseOver={e => (setSrc('../../img/logo/logo_black.webp'))}
+                                onMouseOut={e => (setSrc('../../img/logo/logo.webp'))}></img>
 
                             <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"></span>
                         </a>

@@ -35,7 +35,7 @@ return (
       </div>
       <div class="mt-4">
         <img
-          src="/img/errors/404_dog.jpeg"
+          src="/img/errors/404_dog.webp"
           alt="404 not found"
           class="object-cover w-full h-full"
         />

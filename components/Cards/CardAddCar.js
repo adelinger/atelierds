@@ -32,6 +32,7 @@ export default function CardSettings({ auth, carData }) {
     const [carStatus, setCarStatus] = useState(carData?.atelierCarStatus?.atelierCarStatusID ?? 1)
 
     const [isUpdate, setIsUpdate] = useState(false);
+    let uploadErrorMessage ='Images are not uploaded';
 
     useEffect(() => {
         checkAuth();
@@ -109,7 +110,7 @@ export default function CardSettings({ auth, carData }) {
             const upload = await uploadToServer();
 
             if(!upload){
-                handleApiResponse(false, 'Your images are not uploaded');
+                 handleApiResponse(false, uploadErrorMessage);
                 return;
             }
         }   
@@ -191,10 +192,16 @@ export default function CardSettings({ auth, carData }) {
 
        try {
         const upload = await uploadeImages(body)
+
+        if(!upload.isUploadSuccessful){
+            uploadErrorMessage = upload.uploadMessage;
+            return false;
+        }
         
         return true;    
 
        } catch (error) {
+        
         return false;
        }
 

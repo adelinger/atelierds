@@ -14,14 +14,22 @@ export default function interior() {
     const [showModal, setShowModal] = useState();
     const { imgSrc, setImgSrc } = useState();
     const scrollRef = useRef(null)
-    const [leatherName, setLeatherName] = useState();
-    const [leatherDesc, setLeatherDesc] = useState();
+    const [leatherName, setLeatherName] = useState('Cuire naturelle');
+    const [leatherDesc, setLeatherDesc] = useState('some text about Cuire naturelle');
 
+    const leatherNames = ['Cuire naturelle', 'Cuir Tabac', 'Cuire Noire', 'Naturelle Foncee'];
+    const leatherDescriptions = ['some text about Cuire naturelle','some text about Cuir Tabac', 
+    'some text about Cuire Noire', 'some text about Naturelle Foncee']
 
     const toggleModal = () => {
         if (!isMobile) {
             setShowModal(!showModal);
         }
+    }
+
+    const onClickThumbnail = (e) => {
+        setLeatherName(leatherNames[e])
+        setLeatherDesc(leatherDescriptions[e])
     }
 
 
@@ -50,14 +58,14 @@ export default function interior() {
                             <div className="w-full lg:w-6/12 mt-5 md:mt-20 md:px-4 ml-auto mr-auto text-center">
                                 <div>
                                     <h1 className="text-white font-semibold text-5xl">
-                                        {t('leatherPage:leather')}
+                                        {leatherName}
                                     </h1>
                                     <p className="mt-4 text-lg text-blueGray-200 px-1">
-                                        {t('welcome_text')}
+                                        {leatherDesc}
                                     </p>
                                 </div>
                                 <div className='pt-20 px-3'>
-                                    <Carousel showStatus={false}>
+                                    <Carousel showStatus={false} onChange={onClickThumbnail} autoPlay={true} infiniteLoop={true}>
                                         <div className='h-48'>
                                             <img src="/img/interior/cuire_naturelle.webp" />
 

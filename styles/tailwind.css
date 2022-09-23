@@ -1389,6 +1389,14 @@ select {
   right: 2rem;
 }
 
+.top-5 {
+  top: 1.25rem;
+}
+
+.top-2 {
+  top: 0.5rem;
+}
+
 .z-0 {
   z-index: 0;
 }
@@ -1634,6 +1642,10 @@ select {
 
 .mr-0 {
   margin-right: 0px;
+}
+
+.mt-20 {
+  margin-top: 5rem;
 }
 
 .block {

@@ -34,10 +34,10 @@ export default function interior() {
             <main>
                 <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
                     <div
-                        className="absolute top-0 w-full h-full bg-center bg-cover"
+                        className="absolute w-full h-full bg-center bg-cover"
                         style={{
                             backgroundImage:
-                                "url('/img/interior/interior_background.jpeg')",
+                                "url('/img/interior/sewing2.webp')",
                         }}
                     >
                         <span
@@ -47,7 +47,7 @@ export default function interior() {
                     </div>
                     <div className="container relative mx-auto">
                         <div className="items-center flex flex-wrap">
-                            <div className="w-full lg:w-6/12 mt-5 md:mt-0 md:px-4 ml-auto mr-auto text-center">
+                            <div className="w-full lg:w-6/12 mt-5 md:mt-20 md:px-4 ml-auto mr-auto text-center">
                                 <div>
                                     <h1 className="text-white font-semibold text-5xl">
                                         {t('leatherPage:leather')}

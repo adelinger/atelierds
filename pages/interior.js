@@ -1,12 +1,33 @@
 import Footer from 'components/Footers/Footer';
 import Navbar from 'components/Navbars/IndexNavbar';
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { isMobile } from 'react-device-detect';
+import ImagePreview from 'components/Modals/ImagePreview';
+import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 
 export default function interior() {
     const { t } = useTranslation(['index', 'footer', 'common', 'leatherPage']);
+    const [showModal, setShowModal] = useState();
+    const { imgSrc, setImgSrc } = useState();
+    const scrollRef = useRef(null)
+    const [leatherName, setLeatherName] = useState();
+    const [leatherDesc, setLeatherDesc] = useState();
+
+
+    const toggleModal = () => {
+        if (!isMobile) {
+            setShowModal(!showModal);
+        }
+    }
+
+
+    const executeScroll = () => scrollRef.current.scrollIntoView({ behavior: 'smooth' });
+
+
     return (
         <>
             <Navbar transparent></Navbar>
@@ -16,114 +37,123 @@ export default function interior() {
                         className="absolute top-0 w-full h-full bg-center bg-cover"
                         style={{
                             backgroundImage:
-                                "url('/img/light-grey-19.webp')",
+                                "url('/img/interior/interior_background.jpeg')",
                         }}
                     >
                         <span
                             id="blackOverlay"
-                            className="w-full h-full absolute opacity-50 bg-black"
+                            className="w-full h-full absolute opacity-75 bg-black"
                         ></span>
                     </div>
-                    <div className="container relative mx-auto collapse">
+                    <div className="container relative mx-auto">
                         <div className="items-center flex flex-wrap">
-                            <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
-                                <div className="mt-10 text-center">
-                                    <h1 className="text-white font-semibold text-3xl">
-                                    {/* {t('leatherPage:leather')} */}
-                                     *PAGE UNDER CONSTRUCTION*
+                            <div className="w-full lg:w-6/12 mt-5 md:mt-0 md:px-4 ml-auto mr-auto text-center">
+                                <div>
+                                    <h1 className="text-white font-semibold text-5xl">
+                                        {t('leatherPage:leather')}
                                     </h1>
+                                    <p className="mt-4 text-lg text-blueGray-200 px-1">
+                                        {t('welcome_text')}
+                                    </p>
+                                </div>
+                                <div className='pt-20 px-3'>
+                                    <Carousel showStatus={false}>
+                                        <div className='h-48'>
+                                            <img src="/img/interior/cuire_naturelle.webp" />
 
+                                        </div>
+                                        <div className='h-48'>
+                                            <img src="/img/interior/cuir_tabac.webp" />
+
+                                        </div>
+                                        <div className='h-48'>
+                                            <img src="/img/interior/cuire_noire.webp" />
+
+                                        </div>
+                                        <div className='h-48'>
+                                            <img src="/img/interior/naturelle_foncee.webp" />
+
+                                        </div>
+                                    </Carousel>
                                 </div>
                             </div>
-                            <div className="container mx-auto ">
-                                <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2 place-items-center">
-                                    <div className="mt-5 mb-5" >
-                                        <div class="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                                            <a href="#">
-                                                <img class="rounded-t-lg" src="/img/interior/cuire_naturelle.webp" alt="Cuir naturelle leather" style={{ minHeight: 250 }}></img>
-                                            </a>
-                                            <div class="p-5">
-                                                <div className='text-center'>
-                                                    <a href="#">
-                                                        <h5 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{t('leatherPage:cuir_naturelle')}</h5><small className='mb-2'>{t('leatherPage:cuir_naturelle_year')}</small>
-                                                    </a>
-
-                                                    <p class="collapse-title mb-3 font-normal text-gray-700 dark:text-gray-400">{t('leatherPage:cuir_naturelle_text')}</p>
-                                                    <a href="#" class="btn-primary-indigo-slim">
-                                                    {t('leatherPage:read_more')}
-                                                        <svg class="ml-2 mt-1 mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    < div className="mt-5 mb-5" >
-                                        <div class="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                                            <a href="#">
-                                                <img class="rounded-t-lg" src="/img/interior/cuire_noire.webp" alt="cuir noire leather" style={{ minHeight: 250, width: 700 }} ></img>
-                                            </a>
-                                            <div class="p-5">
-                                                <div className='text-center'>
-                                                    <a href="#">
-                                                        <h5 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white"> {t('leatherPage:cuir_noire')}</h5><small className='mb-2'>{t('leatherPage:cuir_noire_year')}</small>
-                                                    </a>
-
-                                                    <p class=" mb-3 font-normal text-gray-700 dark:text-gray-400">{t('leatherPage:cuir_noire_text')}</p>
-                                                    <a href="#" class="btn-primary-indigo-slim">
-                                                    {t('leatherPage:read_more')}
-                                                        <svg class="ml-2 mt-1 mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    < div className="mt-5 mb-5" >
-                                        <div class="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                                            <a href="#">
-                                                <img class="rounded-t-lg" src="/img/interior/cuir_tabac.webp" alt="Cuir tabac leather" style={{ minHeight: 250, width: 700 }} ></img>
-                                            </a>
-                                            <div class="p-5">
-                                                <div className='text-center'>
-                                                    <a href="#">
-                                                        <h5 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{t('leatherPage:cuir_tabac')}</h5> <small className='mb-2'>{t('leatherPage:cuir_tabac_year')}</small>
-                                                    </a>
-
-                                                    <p class=" mb-3 font-normal text-gray-700 dark:text-gray-400">{t('leatherPage:cuir_tabac_text')}</p>
-                                                    <a href="#" class="btn-primary-indigo-slim">
-                                                    {t('leatherPage:read_more')}
-                                                        <svg class="ml-2 mt-1 mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    < div className="mt-5 mb-5" >
-                                        <div class="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                                            <a href="#">
-                                                <img class="rounded-t-lg" src="/img/interior/naturelle_foncee.webp" alt="Naturelle foncée leather" style={{ minHeight: 250, width: 700 }} ></img>
-                                            </a>
-                                            <div class="p-5">
-                                                <div className='text-center'>
-                                                    <a href="#">
-                                                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{t('leatherPage:naturelle_foncée')}</h5>
-                                                    </a>
-
-                                                    <p class=" mb-3 font-normal text-gray-700 dark:text-gray-400">{t('leatherPage:naturelle_foncée_text')}</p>
-                                                    <a href="#" class="btn-primary-indigo-slim">
-                                                    {t('leatherPage:read_more')}
-                                                        <svg class="ml-2 mt-1 mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
+                    </div>
+                    <div
+                        className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-16"
+                        style={{ transform: "translateZ(0)" }}
+                    >
+                        <svg
+                            className="absolute bottom-0 overflow-hidden"
+                            xmlns="http://www.w3.org/2000/svg"
+                            preserveAspectRatio="none"
+                            version="1.1"
+                            viewBox="0 0 2560 100"
+                            x="0"
+                            y="0"
+                        >
+                            <polygon
+                                className="text-blueGray-200 fill-current"
+                                points="2560 0 2560 100 0 100"
+                            ></polygon>
+                        </svg>
                     </div>
                 </div>
 
+                <section className="pb-20 -mb-10 bg-blueGray-200 -mt-24 px-3">
+                    <div className="container mx-auto px-4 w-2/4">
+
+                    </div>
+                </section>
+
+                <section id='third-section' ref={scrollRef} className="pb-5 relative block bg-blueGray-800">
+                    <div
+                        className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20"
+                        style={{ transform: "translateZ(0)" }}
+                    >
+                        <svg
+                            className="absolute bottom-0 overflow-hidden"
+                            xmlns="http://www.w3.org/2000/svg"
+                            preserveAspectRatio="none"
+                            version="1.1"
+                            viewBox="0 0 2560 100"
+                            x="0"
+                            y="0"
+                        >
+                            <polygon
+                                className="text-blueGray-800 fill-current"
+                                points="2560 0 2560 100 0 100"
+                            ></polygon>
+                        </svg>
+                    </div>
+
+                    <div className="container mx-auto px-4 lg:pt-23 lg:pb-32">
+                        <div className="container mx-auto ">
+
+                            <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto md:text-center mb-5">
+                                <div>
+                                    <h1 className="text-white font-semibold text-3xl invisible">
+                                        {t('gallery_title')}
+                                    </h1>
+                                </div>
+                            </div>
+
+                            <div className="">
+                                <div class="container mx-auto space-y-2 lg:space-y-0 lg:gap-2 lg:grid lg:grid-cols-3">
+
+                                </div>
+                            </div>
+                        </div>
+                        {!isMobile &&
+                            <ImagePreview
+                                showModal={showModal}
+                                setShowModal={setShowModal}
+                                src={imgSrc}
+                                toggleModal={toggleModal}
+                            ></ImagePreview>
+                        }
+                    </div>
+                </section>
             </main>
             <Footer></Footer>
         </>

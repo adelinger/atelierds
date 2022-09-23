@@ -32,14 +32,14 @@ export default function Navbar(props) {
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between" ref={menuRef}>
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start mt-2">
             <Link href="/">
-            <a href={`/${router.locale}/`} class="flex items-center">
-                <img src={imgSrc} class="image_back" alt="AtelierDS Logo" 
-                onMouseOver={e => (setImgSrc('../../img/logo/logo_gray.webp'))} 
-                onMouseOut={e => (setImgSrc('../../img/logo/logo_white.webp'))} 
-                style={{height:70, width:120}}></img>
-               
+              <a href={`/${router.locale}/`} class="flex items-center">
+                <img src={imgSrc} class="image_back" alt="AtelierDS Logo"
+                  onMouseOver={e => (setImgSrc('../../img/logo/logo_gray.webp'))}
+                  onMouseOut={e => (setImgSrc('../../img/logo/logo_white.webp'))}
+                  style={{ height: 70, width: 120 }}></img>
+
                 <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"></span>
-            </a>
+              </a>
             </Link>
             <button
               className="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
@@ -56,7 +56,19 @@ export default function Navbar(props) {
             }
           >
             <ul className="flex flex-col lg:flex-row list-none mr-auto">
+              <li className="flex items-center">
+                <Link href="/">
+                  <a
+                    href={`/${router.locale}/`}
+                    className={
+                      "lg:text-white lg:hover:text-gray-500 text-gray-500 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                    }
+                  >
+                    {t('common:homepage')}
+                  </a>
+                </Link>
 
+              </li>
               <li className="flex items-center">
                 <Link href="/cars">
                   <a
@@ -78,7 +90,7 @@ export default function Navbar(props) {
                       "lg:text-white lg:hover:text-gray-500 text-gray-500 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                     }
                   >
-                    {t('common:interior_navbar')}
+                    {t('common:leather_navbar')}
                   </a>
                 </Link>
 
@@ -91,7 +103,7 @@ export default function Navbar(props) {
                       "lg:text-white lg:hover:text-gray-500 text-gray-500 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                     }
                   >
-                   {t('common:chrome_parts')} 
+                    {t('common:chrome_parts')}
                   </a>
                 </Link>
 
@@ -116,7 +128,7 @@ export default function Navbar(props) {
                       "lg:text-white lg:hover:text-gray-500 text-gray-500 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                     }
                   >
-                   {t('common:contact')} 
+                    {t('common:contact')}
                   </a>
                 </Link>
 
@@ -147,12 +159,12 @@ export default function Navbar(props) {
                 </a>
               </li>
               <li className="flex items-center">
-              <LanguagesDropdown />
+                <LanguagesDropdown />
               </li>
-              
+
             </ul>
           </div>
-          
+
         </div>
       </nav>
     </>

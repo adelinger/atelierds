@@ -1584,6 +1584,10 @@ select {
   margin-bottom: 0.25rem;
 }
 
+.mb-10 {
+  margin-bottom: 2.5rem;
+}
+
 .mt-3 {
   margin-top: 0.75rem;
 }
@@ -1594,10 +1598,6 @@ select {
 
 .ml-2 {
   margin-left: 0.5rem;
-}
-
-.mb-10 {
-  margin-bottom: 2.5rem;
 }
 
 .mr-8 {
@@ -1700,16 +1700,12 @@ select {
   height: 3rem;
 }
 
-.h-96 {
-  height: 24rem;
+.h-48 {
+  height: 12rem;
 }
 
 .h-4 {
   height: 1rem;
-}
-
-.h-48 {
-  height: 12rem;
 }
 
 .h-10 {
@@ -1772,6 +1768,10 @@ select {
   width: 4rem;
 }
 
+.w-2\/4 {
+  width: 50%;
+}
+
 .w-auto {
   width: auto;
 }
@@ -1789,18 +1789,6 @@ select {
 }
 
 .w-6\/12 {
-  width: 50%;
-}
-
-.w-2\/3 {
-  width: 66.666667%;
-}
-
-.w-48 {
-  width: 12rem;
-}
-
-.w-2\/4 {
   width: 50%;
 }
 
@@ -2370,16 +2358,16 @@ select {
   padding-top: 0px;
 }
 
+.pb-16 {
+  padding-bottom: 4rem;
+}
+
 .pr-1 {
   padding-right: 0.25rem;
 }
 
 .pl-1 {
   padding-left: 0.25rem;
-}
-
-.pb-16 {
-  padding-bottom: 4rem;
 }
 
 .pt-2 {
@@ -2542,11 +2530,6 @@ select {
   color: rgb(30 66 159 / var(--tw-text-opacity));
 }
 
-.text-blueGray-700 {
-  --tw-text-opacity: 1;
-  color: rgb(51 65 85 / var(--tw-text-opacity));
-}
-
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -2570,6 +2553,11 @@ select {
 .text-gray-100 {
   --tw-text-opacity: 1;
   color: rgb(243 244 246 / var(--tw-text-opacity));
+}
+
+.text-blueGray-700 {
+  --tw-text-opacity: 1;
+  color: rgb(51 65 85 / var(--tw-text-opacity));
 }
 
 .text-blueGray-800 {
@@ -3401,14 +3389,14 @@ select {
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
   }
 
-  .lg\:hover\:text-blueGray-200:hover {
-    --tw-text-opacity: 1;
-    color: rgb(226 232 240 / var(--tw-text-opacity));
-  }
-
   .lg\:hover\:text-gray-700:hover {
     --tw-text-opacity: 1;
     color: rgb(55 65 81 / var(--tw-text-opacity));
+  }
+
+  .lg\:hover\:text-blueGray-200:hover {
+    --tw-text-opacity: 1;
+    color: rgb(226 232 240 / var(--tw-text-opacity));
   }
 
   .lg\:hover\:text-gray-500:hover {

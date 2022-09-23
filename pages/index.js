@@ -81,8 +81,8 @@ export default function Landing() {
                     <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-blueGray-700">
                       <i class="fas fa-couch"></i>
                     </div>
-                    <h6 className="text-xl font-semibold">{t('interior')}</h6>
-                    <p className="mt-2 mb-4 text-blueGray-500">{t('interior_text')}</p>
+                    <h6 className="text-xl font-semibold">{t('leather')}</h6>
+                    <p className="mt-2 mb-4 text-blueGray-500">{t('leather_text')}</p>
                     <Link href="/interior">
                       <a
                         href="/interior"

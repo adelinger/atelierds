@@ -22,7 +22,6 @@ export default function bodywork() {
   }
 
 
-
   return (
     <>
       <Navbar transparent></Navbar>

@@ -269,9 +269,16 @@ export default function chrome({ images, STATIC_FILES_URL }) {
                 </div>
               </div>
             </div>
+            {!isMobile &&
+              <ImagePreview
+                showModal={showModal}
+                setShowModal={setShowModal}
+                src={imgSrc}
+                toggleModal={toggleModal}
+              ></ImagePreview>
+            }
           </div>
         </section>
-
 
       </main>
       <Footer></Footer>

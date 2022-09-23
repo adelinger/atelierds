@@ -20,7 +20,7 @@ export default function chrome({ images, STATIC_FILES_URL }) {
 
   const [showModal, setShowModal] = useState(false);
   const [imgSrc, setImgSrc] = useState();
-
+  const [showUpBtn, setShowUpBtn] = useState();
   const toggleModal = () => {
     if (!isMobile) {
       setShowModal(!showModal);
@@ -276,6 +276,15 @@ export default function chrome({ images, STATIC_FILES_URL }) {
                 src={imgSrc}
                 toggleModal={toggleModal}
               ></ImagePreview>
+            }
+
+            {showUpBtn &&
+              <button className='float-right mr-5 fixed bottom-10 right-10 mb-30' onClick={executeScroll}>
+                <div class="arrow"  >
+                  <span></span>
+                  <span></span>
+                </div>
+              </button>
             }
           </div>
         </section>

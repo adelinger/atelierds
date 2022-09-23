@@ -59,7 +59,16 @@
     }
   }
 
+  .carousel .thumb {
+    border-color: #808080 !important
+  }
   
+
+   .carousel .selected{
+    border-color: #FFFFFF!important;
+}
+
+
 
 .arrow span {
     display: block;

@@ -65,7 +65,7 @@ export default function interior() {
                                     </p>
                                 </div>
                                 <div className='pt-20 px-3'>
-                                    <Carousel showStatus={false} onChange={onClickThumbnail} autoPlay={true} infiniteLoop={true}>
+                                    <Carousel interval={5000} showStatus={false} onChange={onClickThumbnail} autoPlay={true} infiniteLoop={true}>
                                         <div className='h-48'>
                                             <img src="/img/interior/cuire_naturelle.webp" />
 

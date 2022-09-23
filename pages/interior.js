@@ -106,7 +106,7 @@ export default function interior() {
                     </div>
                 </section>
 
-                <section id='third-section' ref={scrollRef} className="pb-5 relative block bg-blueGray-800">
+                <section id='third-section' ref={scrollRef} className="pb-5 relative block bg-blueGray-200">
                     <div
                         className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20"
                         style={{ transform: "translateZ(0)" }}
@@ -121,7 +121,7 @@ export default function interior() {
                             y="0"
                         >
                             <polygon
-                                className="text-blueGray-800 fill-current"
+                                className="text-blueGray-200 fill-current"
                                 points="2560 0 2560 100 0 100"
                             ></polygon>
                         </svg>

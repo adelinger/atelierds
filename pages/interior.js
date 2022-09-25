@@ -10,16 +10,19 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 
 export default function interior() {
-    const { t } = useTranslation(['index', 'footer', 'common', 'leatherPage']);
+    const { t } = useTranslation(['leatherPage']);
     const [showModal, setShowModal] = useState();
     const { imgSrc, setImgSrc } = useState();
     const scrollRef = useRef(null)
     const [leatherName, setLeatherName] = useState('Cuire naturelle');
-    const [leatherDesc, setLeatherDesc] = useState('some text about Cuire naturelle');
+    const [leatherDesc, setLeatherDesc] = useState(t('leatherPage:cuir_naturelle_text'));
+    const [leatherYear, setLeatherYear] = useState(t('leatherPage:cuir_naturelle_year'));
 
     const leatherNames = ['Cuire naturelle', 'Cuir Tabac', 'Cuire Noire', 'Naturelle Foncee'];
-    const leatherDescriptions = ['some text about Cuire naturelle','some text about Cuir Tabac', 
-    'some text about Cuire Noire', 'some text about Naturelle Foncee']
+    const leatherYears = [t('leatherPage:cuire_naturelle_year'),t('cuir_tabac_year'), 
+    t('cuire_noire_year'), t('naturelle_foncee_year')]
+    const leatherDescriptions = [t('leatherPage:cuir_naturelle_text'),t('cuir_tabac_text'), 
+    t('cuir_noire_text'), t('naturelle_foncée_text')]
 
     const toggleModal = () => {
         if (!isMobile) {
@@ -27,9 +30,11 @@ export default function interior() {
         }
     }
 
-    const onClickThumbnail = (e) => {
+    const onChangeThumbnail = (e) => {
         setLeatherName(leatherNames[e])
         setLeatherDesc(leatherDescriptions[e])
+        setLeatherYear(leatherYears[e])
+        
     }
 
 
@@ -60,12 +65,14 @@ export default function interior() {
                                     <h1 className="text-white font-semibold text-5xl">
                                         {leatherName}
                                     </h1>
+                                    <small className='text-white'>{leatherYear}</small>
                                     <p className="mt-4 text-lg text-blueGray-200 px-1">
+                                        
                                         {leatherDesc}
                                     </p>
                                 </div>
                                 <div className='pt-20 px-3'>
-                                    <Carousel interval={5000} showStatus={false} onChange={onClickThumbnail} autoPlay={true} infiniteLoop={true}>
+                                    <Carousel interval={5000} showStatus={false} onChange={onChangeThumbnail} autoPlay={true} infiniteLoop={true}>
                                         <div className='h-48'>
                                             <img src="/img/interior/cuire_naturelle.webp" />
 

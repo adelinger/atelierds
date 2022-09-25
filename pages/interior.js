@@ -18,11 +18,11 @@ export default function interior() {
     const [leatherDesc, setLeatherDesc] = useState(t('leatherPage:cuir_naturelle_text'));
     const [leatherYear, setLeatherYear] = useState(t('leatherPage:cuir_naturelle_year'));
 
-    const leatherNames = ['Cuire naturelle', 'Cuir Tabac', 'Cuire Noire', 'Naturelle Foncee'];
-    const leatherYears = [t('leatherPage:cuire_naturelle_year'),t('cuir_tabac_year'), 
-    t('cuire_noire_year'), t('naturelle_foncee_year')]
-    const leatherDescriptions = [t('leatherPage:cuir_naturelle_text'),t('cuir_tabac_text'), 
-    t('cuir_noire_text'), t('naturelle_foncée_text')]
+    const leatherNames = ['Cuire naturelle', 'Cuir Tabac', 'Cuire Noire', 'Naturelle Foncée'];
+    const leatherYears = [t('cuir_naturelle_year'),t('cuir_tabac_year'), 
+    t('cuir_noire_year'), t('naturelle_foncee_year')]
+    const leatherDescriptions = [t('cuir_naturelle_text'),t('cuir_tabac_text'), 
+    t('cuir_noire_text'), t('naturelle_foncee_text')]
 
     const toggleModal = () => {
         if (!isMobile) {

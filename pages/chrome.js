@@ -13,28 +13,35 @@ import { useTranslation } from 'next-i18next';
 
 export default function chrome({ images, STATIC_FILES_URL }) {
   const { t } = useTranslation('chromePage');
-
   const FILES_URL = STATIC_FILES_URL + 'chrome/';
   const scrollRef = useRef(null)
-  const executeScroll = () => scrollRef.current.scrollIntoView({ behavior: 'smooth' });
-
+  const scrollUpRef = useRef(null)
   const [showModal, setShowModal] = useState(false);
   const [imgSrc, setImgSrc] = useState();
-  const [showUpBtn, setShowUpBtn] = useState();
+  const [showUpButton, setShowUpButton] = useState(false)
+
+
   const toggleModal = () => {
     if (!isMobile) {
       setShowModal(!showModal);
     }
   }
 
+  const executeScroll = () => {
+    scrollRef.current.scrollIntoView({ behavior: 'smooth' });
+    setShowUpButton(true);
+  }
 
-
+  const goUp = () => {
+    scrollUpRef.current.scrollIntoView({ behavior: 'smooth' });
+    setShowUpButton(false);
+  }
 
   return (
     <>
       <Navbar transparent></Navbar>
       <main>
-        <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
+        <div ref={scrollUpRef} className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
           <div
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{
@@ -48,9 +55,6 @@ export default function chrome({ images, STATIC_FILES_URL }) {
             ></span>
           </div>
           <div className="container relative mx-auto">
-
-
-
             <div className="container mx-auto">
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2 py-10 md:py-20">
                 <div className="w-full px-4 mr-auto ml-auto -mt-5">
@@ -278,14 +282,16 @@ export default function chrome({ images, STATIC_FILES_URL }) {
               ></ImagePreview>
             }
 
-            {showUpBtn &&
-              <button className='float-right mr-5 fixed bottom-10 right-10 mb-30' onClick={executeScroll}>
+            {showUpButton &&
+              <button onClick={goUp} className='float-right mr-5 fixed bottom-10 right-10 mb-30' >
                 <div class="arrow"  >
                   <span></span>
                   <span></span>
                 </div>
               </button>
             }
+
+
           </div>
         </section>
 

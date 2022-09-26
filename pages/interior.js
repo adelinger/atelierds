@@ -61,7 +61,7 @@ export default function interior() {
                     <div className="container relative mx-auto">
                         <div className="items-center flex flex-wrap">
                             <div className="w-full lg:w-6/12 mt-5 md:mt-20 md:px-4 ml-auto mr-auto text-center">
-                                <div>
+                                <div className='h-48'>
                                     <h1 className="text-white font-semibold text-5xl">
                                         {leatherName}
                                     </h1>

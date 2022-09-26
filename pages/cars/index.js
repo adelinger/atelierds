@@ -23,7 +23,7 @@ export default function carsForSale({ cars, serverUrl }) {
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{
               backgroundImage:
-                "url('/img/image_ds.webp')",
+                "url('/img/citroen_ds_garrage.webp')",
             }}
           >
             <span
@@ -64,14 +64,14 @@ export default function carsForSale({ cars, serverUrl }) {
               y="0"
             >
               <polygon
-                className="text-blueGray-800 fill-current"
+                className="text-blueGray-200 fill-current"
                 points="2560 0 2560 100 0 100"
               ></polygon>
             </svg>
           </div>
         </div>
 
-        <section className="pb-20 bg-blueGray-800 -mt-72">
+        <section className="pb-20 bg-blueGray-200">
           <div className="container mx-auto px-4">
             <div className="flex flex-wrap">
             <div className="relative flex flex-col min-w-0 break-words w-full mb-8 rounded-lg">

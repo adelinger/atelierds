@@ -50,7 +50,7 @@ export default function interior() {
                         className="absolute w-full h-full bg-center bg-cover"
                         style={{
                             backgroundImage:
-                                "url('/img/interior/sewing2.webp')",
+                                "url('/img/interior/sewing1.webp')",
                         }}
                     >
                         <span

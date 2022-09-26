@@ -23,7 +23,7 @@ export default function carsForSale({ cars, serverUrl }) {
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{
               backgroundImage:
-                "url('/img/citroen_ds_garrage.webp')",
+                "url('/img/citroen_ds_garrage_cover.webp')",
             }}
           >
             <span

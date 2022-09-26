@@ -35,17 +35,23 @@ export default function carsForSale({ cars, serverUrl }) {
             <div className="items-center flex flex-wrap">
               <div className="w-full lg:w-6/12 mt-5 md:mt-0 md:px-4 ml-auto mr-auto text-center">
                 <div>
-                <h1 className="text-white font-semibold text-5xl mt-5">
+                  <h1 className="text-white font-semibold text-5xl mt-5">
                     {t('cars_for_sale')}
                   </h1>
                   <p className="mt-4 text-lg text-blueGray-200">
-                    {cars.length === 0 ? 
-                    <p className="text-gray-100 mt-10 mb-10">We are sorry, we do not have any cars for sale at the moment.</p>
-                    :
-                    t('title_message')
-                  }
-                    
+                    {cars.length === 0 ?
+                      <p className="text-gray-100 mt-10 mb-10">We are sorry, we do not have any cars for sale at the moment.</p>
+                      :
+                      t('title_message')
+                    }
                   </p>
+
+                  <Link href="sort_by">
+                    <a className=" mt-5 py-2 px-6 btn-primary-indigo ">
+                    {t('sort_by')}
+                    </a>
+                  </Link>
+
                 </div>
               </div>
             </div>
@@ -74,7 +80,7 @@ export default function carsForSale({ cars, serverUrl }) {
         <section className="pb-20 bg-blueGray-200">
           <div className="container mx-auto px-4">
             <div className="flex flex-wrap">
-            <div className="relative flex flex-col min-w-0 break-words w-full mb-8 rounded-lg">
+              <div className="relative flex flex-col min-w-0 break-words w-full mb-8 rounded-lg">
                 {
                   cars.length === 0 ?
                     <div className="text-center">
@@ -92,10 +98,10 @@ export default function carsForSale({ cars, serverUrl }) {
                           <CarCard car={car} serverUrl={serverUrl}></CarCard>
                         </div>
                       )}
-  
+
                     </div>
                 }
-             </div>
+              </div>
 
             </div>
           </div>

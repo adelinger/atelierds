@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 
@@ -13,6 +13,12 @@ import Image from "next/image";
 
 export default function carsForSale({ cars, serverUrl }) {
   const { t } = useTranslation('carsPage');
+  const dropdownMenuRef = useRef();
+  const [isDropdownVisible, setIsDropdownVisible] = useState();
+
+  const toggleDropdown = () => {
+    setIsDropdownVisible(!isDropdownVisible);
+  }
 
   return (
     <>
@@ -23,7 +29,7 @@ export default function carsForSale({ cars, serverUrl }) {
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{
               backgroundImage:
-                "url('/img/citroen_ds_garrage_cover.webp')",
+                "url('/img/cars/citroen_ds_garrage_cover.webp')",
             }}
           >
             <span
@@ -45,13 +51,38 @@ export default function carsForSale({ cars, serverUrl }) {
                       t('title_message')
                     }
                   </p>
-
-                  <Link href="sort_by">
-                    <a className=" mt-5 py-2 px-6 btn-primary-indigo ">
-                    {t('sort_by')}
-                    </a>
-                  </Link>
-
+                    <div>
+                      <button id="dropdownRadioBgHoverButton" onClick={toggleDropdown} data-dropdown-toggle="dropdownRadioBgHover" class="mt-5 btn-primary-indigo inline-flex items-center" type="button">Sort Cars By<svg class="ml-2 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                      <div id="dropdownRadioBgHover" ref={dropdownMenuRef}
+                        class={`${isDropdownVisible ? '' : 'hidden'} ml-auto mr-auto z-10 w-52 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600`}>
+                        <ul class="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownRadioBgHoverButton">
+                          <li>
+                            <div class="flex p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                              <input id="default-radio-6" type="radio" value="" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"></input>
+                              <label for="default-radio-6" class="ml-2  text-sm font-medium text-gray-900 rounded dark:text-gray-300">Year - Younger First</label>
+                            </div>
+                          </li>
+                          <li>
+                            <div class="flex p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                              <input id="default-radio-6" type="radio" value="" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"></input>
+                              <label for="default-radio-6" class="ml-2  text-sm font-medium text-gray-900 rounded dark:text-gray-300">Year - Older First</label>
+                            </div>
+                          </li>
+                          <li>
+                            <div class="flex p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                              <input id="default-radio-6" type="radio" value="" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"></input>
+                              <label for="default-radio-6" class="ml-2  text-sm font-medium text-gray-900 rounded dark:text-gray-300">Price - Lower First</label>
+                            </div>
+                          </li>
+                          <li>
+                            <div class="flex p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                              <input id="default-radio-6" type="radio" value="" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"></input>
+                              <label for="default-radio-6" class="ml-2  text-sm font-medium text-gray-900 rounded dark:text-gray-300">Price - Higher First</label>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
                 </div>
               </div>
             </div>

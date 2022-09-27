@@ -7,22 +7,43 @@ import { isMobile } from 'react-device-detect';
 import ImagePreview from 'components/Modals/ImagePreview';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import Image from "next/image";
 
 
 export default function interior() {
     const { t } = useTranslation(['leatherPage']);
     const [showModal, setShowModal] = useState();
-    const { imgSrc, setImgSrc } = useState();
+    const [imgSrc, setImgSrc] = useState();
     const scrollRef = useRef(null)
     const [leatherName, setLeatherName] = useState('Cuire naturelle');
     const [leatherDesc, setLeatherDesc] = useState(t('leatherPage:cuir_naturelle_text'));
     const [leatherYear, setLeatherYear] = useState(t('leatherPage:cuir_naturelle_year'));
+    const [useTimer, setUseTimer] = useState(true);
+    const [selectedIndex, setSelectedIndex] = useState(0);
 
     const leatherNames = ['Cuire naturelle', 'Cuir Tabac', 'Cuire Noire', 'Naturelle Foncée'];
-    const leatherYears = [t('cuir_naturelle_year'),t('cuir_tabac_year'), 
+    const leatherYears = [t('cuir_naturelle_year'), t('cuir_tabac_year'),
     t('cuir_noire_year'), t('naturelle_foncee_year')]
-    const leatherDescriptions = [t('cuir_naturelle_text'),t('cuir_tabac_text'), 
+    const leatherDescriptions = [t('cuir_naturelle_text'), t('cuir_tabac_text'),
     t('cuir_noire_text'), t('naturelle_foncee_text')]
+
+    const cuire_naturelle_images = ['/img/interior/leather_1.jpg', '/img/interior/leather_1.jpg', '/img/interior/leather_1.jpg',
+        '/img/interior/leather_1.jpg', '/img/interior/leather_1.jpg', '/img/interior/leather_1.jpg','/img/interior/leather_1.jpg',
+        '/img/interior/leather_1.jpg'];
+
+        const cuire_tabac_images = ['/img/interior/leather_2.jpg', '/img/interior/leather_2.jpg', '/img/interior/leather_2.jpg',
+        '/img/interior/leather_2.jpg', '/img/interior/leather_2.jpg', '/img/interior/leather_2.jpg','/img/interior/leather_2.jpg',
+        '/img/interior/leather_2.jpg'];
+
+        const cuire_noire_images = ['/img/interior/leather_3.jpg', '/img/interior/leather_3.jpg', '/img/interior/leather_3.jpg',
+        '/img/interior/leather_3.jpg', '/img/interior/leather_3.jpg', '/img/interior/leather_3.jpg','/img/interior/leather_3.jpg',
+        '/img/interior/leather_3.jpg'];
+
+        const naturelle_fonce_images = ['/img/interior/leather_4.jpg', '/img/interior/leather_4.jpg', '/img/interior/leather_4.jpg',
+        '/img/interior/leather_4.jpg', '/img/interior/leather_4.jpg', '/img/interior/leather_4.jpg','/img/interior/leather_4.jpg',
+        '/img/interior/leather_4.jpg'];
+
+        const leather_images = [cuire_naturelle_images, cuire_tabac_images, cuire_noire_images, naturelle_fonce_images];
 
     const toggleModal = () => {
         if (!isMobile) {
@@ -34,9 +55,14 @@ export default function interior() {
         setLeatherName(leatherNames[e])
         setLeatherDesc(leatherDescriptions[e])
         setLeatherYear(leatherYears[e])
+        setSelectedIndex(e);
+        setUseTimer(true);
     }
 
-    const executeScroll = () => scrollRef.current.scrollIntoView({ behavior: 'smooth' });
+    const executeScroll = () => {
+        scrollRef.current.scrollIntoView({ behavior: 'smooth' });
+        setUseTimer(false);
+    }
 
     return (
         <>
@@ -64,12 +90,12 @@ export default function interior() {
                                     </h1>
                                     <small className='text-white'>{leatherYear}</small>
                                     <p className="mt-4 text-lg text-blueGray-200 px-1">
-                                        
                                         {leatherDesc}
                                     </p>
                                 </div>
                                 <div className='pt-20 px-3'>
-                                    <Carousel interval={5000} showStatus={false} onChange={onChangeThumbnail} autoPlay={true} infiniteLoop={true}>
+                                    <Carousel interval={5000} showStatus={false} onChange={onChangeThumbnail} autoPlay={useTimer} infiniteLoop={true}
+                                            onClickItem={executeScroll} className='md:cursor-pointer'>
                                         <div className='h-48'>
                                             <img src="/img/interior/cuire_naturelle.webp" />
                                         </div>
@@ -135,22 +161,34 @@ export default function interior() {
                         </svg>
                     </div>
 
+
+
                     <div className="container mx-auto px-4 lg:pt-23 lg:pb-32">
                         <div className="container mx-auto ">
 
                             <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto md:text-center mb-5">
                                 <div>
-                                    <h1 className="text-white font-semibold text-3xl invisible">
-                                        {t('gallery_title')}
+                                    <h1 className="font-semibold text-3xl">
+                                        Gallery
                                     </h1>
                                 </div>
                             </div>
 
-                            <div className="">
-                                <div class="container mx-auto space-y-2 lg:space-y-0 lg:gap-2 lg:grid lg:grid-cols-3">
-
-                                </div>
-                            </div>
+                            <div class="container mx-auto space-y-2 lg:space-y-0 lg:gap-2 lg:grid lg:grid-cols-4">
+                                       {
+                                        leather_images[selectedIndex].map( (image, index) => {
+                                           return <div class="w-full rounded md:hover:opacity-50 md:cursor-pointer">
+                                            <Image src={image} 
+                                                width={500}
+                                                height={400}                
+                                                alt="Citroen leather image" 
+                                                onClick={() => { toggleModal(), setImgSrc('/img/interior/leather_1.jpg')}}>
+                                            </Image>
+                                        </div>
+                                        })
+                                       }
+                                    </div>
+                                    
                         </div>
                         {!isMobile &&
                             <ImagePreview

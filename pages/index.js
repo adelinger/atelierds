@@ -83,9 +83,9 @@ export default function Landing() {
                     </div>
                     <h6 className="text-xl font-semibold">{t('leather')}</h6>
                     <p className="mt-2 mb-4 text-blueGray-500">{t('leather_text')}</p>
-                    <Link href="/interior">
+                    <Link href="/leather">
                       <a
-                        href="/interior"
+                        href="/leather"
                         className="btn-primary-indigo"
                       >
                         <span>{t('see_more')}</span>

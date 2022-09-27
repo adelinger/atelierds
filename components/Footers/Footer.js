@@ -26,7 +26,7 @@ export default function Footer() {
                             <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">{t('footer:our_work')}</h2>
                             <ul class="text-gray-600 dark:text-gray-400 ml-5">
                                 <li className="list-disc">
-                                    <a href="/interior" class="hover:underline">{t('common:interior')}</a>
+                                    <a href="/leather" class="hover:underline">{t('common:interior')}</a>
                                 </li>
                                 <li class="mt-2 list-disc">
                                     <a href="/chrome" class="hover:underline">{t('common:chrome')}</a>

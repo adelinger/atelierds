@@ -83,9 +83,9 @@ export default function Navbar(props) {
 
               </li>
               <li className="flex items-center">
-                <Link href="/interior">
+                <Link href="/leather">
                   <a
-                    href={`/${router.locale}/interior`}
+                    href={`/${router.locale}/leather`}
                     className={
                       "lg:text-white lg:hover:text-gray-500 text-gray-500 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                     }

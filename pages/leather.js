@@ -34,12 +34,9 @@ export default function interior() {
         setLeatherName(leatherNames[e])
         setLeatherDesc(leatherDescriptions[e])
         setLeatherYear(leatherYears[e])
-        
     }
 
-
     const executeScroll = () => scrollRef.current.scrollIntoView({ behavior: 'smooth' });
-
 
     return (
         <>
@@ -50,7 +47,7 @@ export default function interior() {
                         className="absolute w-full h-full bg-center bg-cover"
                         style={{
                             backgroundImage:
-                                "url('/img/interior/sewing1.webp')",
+                                "url('/img/interior/sewing2.webp')",
                         }}
                     >
                         <span
@@ -75,19 +72,15 @@ export default function interior() {
                                     <Carousel interval={5000} showStatus={false} onChange={onChangeThumbnail} autoPlay={true} infiniteLoop={true}>
                                         <div className='h-48'>
                                             <img src="/img/interior/cuire_naturelle.webp" />
-
                                         </div>
                                         <div className='h-48'>
                                             <img src="/img/interior/cuir_tabac.webp" />
-
                                         </div>
                                         <div className='h-48'>
                                             <img src="/img/interior/cuire_noire.webp" />
-
                                         </div>
                                         <div className='h-48'>
                                             <img src="/img/interior/naturelle_foncee.webp" />
-
                                         </div>
                                     </Carousel>
                                 </div>

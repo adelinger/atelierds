@@ -12,7 +12,7 @@ import { useTranslation } from 'next-i18next';
 export default function bodywork() {
   const [showModal, setShowModal] = useState(false);
   const [imgSrc, setImgSrc] = useState();
-  const [src, setSrc] = useState('/img/body_work_place.webp');
+  const [src, setSrc] = useState('/img/bodywork/body_work_place.webp');
   const { t } = useTranslation('bodyworkPage');
 
   const toggleModal = () => {
@@ -128,8 +128,8 @@ export default function bodywork() {
 
                   <div class="col-span-3 px-5">
                     <Image src={src} alt='bodywork place' width={700} height={500}
-                    onMouseOver={e => (setSrc('/img/body_work2.webp'))} 
-                    onMouseOut={e => (setSrc('/img/body_work_place.webp'))} />
+                    onMouseOver={e => (setSrc('/img/bodywork/body_work2.webp'))} 
+                    onMouseOut={e => (setSrc('/img/bodywork/body_work_place.webp'))} />
                   </div>
 
                 </div>

@@ -21,7 +21,7 @@ export default function CarCard({ car, serverUrl }) {
           <div className="w-full px-4 mr-auto ml-auto mr-auto" >
             <div className="break-words bg-white w-full shadow-lg rounded-lg bg-blueGray-700  mx-auto" style={{ minHeight: 530 }}>
               <a href={`cars/${encodeURIComponent(car.atelierCarID)}`}  >
-                <img class="rounded-t-lg" src={serverUrl + car.carPhotosPath + '/' + car.carProfilePhotoPath} alt={car.carMake + ' ' + car.carModel} style={{minHeight: 300 }} />
+                <img class="rounded-t-lg" src={serverUrl + car.carPhotosPath + '/' + car.carProfilePhotoPath} alt={car.carMake + ' ' + car.carModel} style={{minHeight: 230 }} />
               </a>
               <blockquote className="relative p-8 mb-4">
                 <svg

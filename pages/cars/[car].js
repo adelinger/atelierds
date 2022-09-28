@@ -209,7 +209,6 @@ function viewCar({ carData, STATIC_FILES_URL }) {
           <button className='float-right mr-5 fixed bottom-10 right-10 mb-30' onClick={handleButtonUpClick}>
           <div class="arrow"  >
               <span></span>
-              <span></span>
           </div>
       </button>
         }

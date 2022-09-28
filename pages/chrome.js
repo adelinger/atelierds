@@ -286,7 +286,6 @@ export default function chrome({ images, STATIC_FILES_URL }) {
               <button onClick={goUp} className='float-right mr-5 fixed bottom-10 right-10 mb-30' >
                 <div class="arrow"  >
                   <span></span>
-                  <span></span>
                 </div>
               </button>
             }

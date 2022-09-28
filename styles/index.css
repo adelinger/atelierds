@@ -74,8 +74,8 @@
     display: block;
     width: 30px;
     height: 30px;
-    border-bottom: 5px solid rgba(216, 216, 216, 0.902);
-    border-left: 5px solid rgba(216, 216, 216, 0.902);
+    border-bottom: 5px solid rgba(11, 11, 11, 0.66);
+    border-left: 5px solid rgba(11, 11, 11, 0.66);
     transform: rotate(135deg);
     cursor: pointer;
     animation-name: example;

@@ -49,6 +49,12 @@ export default function interior() {
         if (!isMobile) {
             setShowModal(!showModal);
         }
+
+        if(showModal){
+            setUseTimer(true);
+        }else{
+            setUseTimer(false);
+        }
     }
 
     const onChangeThumbnail = (e) => {

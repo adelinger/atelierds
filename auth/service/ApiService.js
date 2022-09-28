@@ -22,6 +22,9 @@ export default class ApiService {
     this.client = axios.create({baseURL: this.api_url, timeout: 31000, headers: headers});
     return this.client;
   };
+  getCarsPublic = (pageSize) => {
+    return this.init().get('/' + pageSize === undefined ? '?pageSize='+pageSize : '');
+  };
   getCars = (params) => {
     return this.init().get("get-private", {params: params});
   };

@@ -18,6 +18,13 @@ export default function carsForSale({ cars, serverUrl }) {
   const [isDropdownVisible, setIsDropdownVisible] = useState();
   const [carsList, setCarsList] = useState(cars);
 
+  useEffect(() => {
+    document.body.addEventListener('click', handleClick);
+    return () => {
+        document.body.removeEventListener('click', handleClick);
+      };
+    }, []);
+
   const api = new ApiService();
 
   const getAllCars = async (e) => {
@@ -34,6 +41,14 @@ export default function carsForSale({ cars, serverUrl }) {
   const toggleDropdown = () => {
     setIsDropdownVisible(!isDropdownVisible);
   }
+
+  const handleClick = (event) => {
+    if(dropdownMenuRef){
+      if(event.target.id !== 'dropdownRadioBgHover' && event.target.id !== 'dropdownRadioBgHoverButton') {
+        setIsDropdownVisible(false);
+    }
+    }
+}
 
   return (
     <>
@@ -66,7 +81,7 @@ export default function carsForSale({ cars, serverUrl }) {
                       t('title_message')
                     }
                   </p>
-                  <div className="relative">
+                  <div className="relative" >
                     <button id="dropdownRadioBgHoverButton" onClick={toggleDropdown} data-dropdown-toggle="dropdownRadioBgHover" class="mt-5 btn-primary-indigo inline-flex items-center" type="button">Sort Cars By<svg class="ml-2 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                     <div id="dropdownRadioBgHover" ref={dropdownMenuRef}
                       class={`${isDropdownVisible ? '' : 'hidden'} absolute left-0 right-0 ml-auto mr-auto mt-1 z-10 w-52 bg-white rounded divide-y divide-gray-100 

@@ -21,11 +21,11 @@ export default function interior() {
     const [useTimer, setUseTimer] = useState(true);
     const [selectedIndex, setSelectedIndex] = useState(0);
 
-    const leatherNames = ['Cuire naturelle', 'Cuir Tabac', 'Cuire Noire', 'Naturelle Foncée'];
+    const leatherNames = ['Cuire naturelle', 'Cuir Tabac', 'Cuire Noire', 'Naturelle Foncée', 'Prestige Beige'];
     const leatherYears = [t('cuir_naturelle_year'), t('cuir_tabac_year'),
-    t('cuir_noire_year'), t('naturelle_foncee_year')]
+    t('cuir_noire_year'), t('naturelle_foncee_year'), t('prestige_beige_year')]
     const leatherDescriptions = [t('cuir_naturelle_text'), t('cuir_tabac_text'),
-    t('cuir_noire_text'), t('naturelle_foncee_text')]
+    t('cuir_noire_text'), t('naturelle_foncee_text'), t('prestige_beige_text')]
 
     const cuire_naturelle_images = ['/img/interior/leather_1.jpg', '/img/interior/leather_1.jpg', '/img/interior/leather_1.jpg',
         '/img/interior/leather_1.jpg', '/img/interior/leather_1.jpg', '/img/interior/leather_1.jpg','/img/interior/leather_1.jpg',
@@ -43,7 +43,11 @@ export default function interior() {
         '/img/interior/leather_4.jpg', '/img/interior/leather_4.jpg', '/img/interior/leather_4.jpg','/img/interior/leather_4.jpg',
         '/img/interior/leather_4.jpg'];
 
-        const leather_images = [cuire_naturelle_images, cuire_tabac_images, cuire_noire_images, naturelle_fonce_images];
+        const prestige_beige_images = ['/img/interior/leather_4.jpg', '/img/interior/leather_4.jpg', '/img/interior/leather_4.jpg',
+        '/img/interior/leather_4.jpg', '/img/interior/leather_4.jpg', '/img/interior/leather_4.jpg','/img/interior/leather_4.jpg',
+        '/img/interior/leather_4.jpg'];
+
+        const leather_images = [cuire_naturelle_images, cuire_tabac_images, cuire_noire_images, naturelle_fonce_images, prestige_beige_images];
 
     const toggleModal = () => {
         if (!isMobile) {
@@ -113,6 +117,9 @@ export default function interior() {
                                         </div>
                                         <div className='h-48'>
                                             <img src="/img/interior/naturelle_foncee.webp" />
+                                        </div>
+                                        <div className='h-48'>
+                                            <img src="/img/interior/prestige_beige.webp" />
                                         </div>
                                     </Carousel>
                                 </div>

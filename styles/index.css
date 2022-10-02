@@ -10,7 +10,7 @@
       @apply inline-flex text-white bg-indigo-500 border-0 py-1 px-3 focus:outline-none hover:bg-indigo-600 rounded text-lg
     }
     .btn-primary-gray {
-      @apply inline-flex text-white bg-gray-500 border-0 py-1 px-3 focus:outline-none hover:bg-gray-600 rounded text-lg
+      @apply inline-flex text-white bg-gray-600 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-lg
     }
 
     .btn-primary-indigo-slim {

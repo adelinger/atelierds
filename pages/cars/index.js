@@ -188,7 +188,7 @@ export default function carsForSale({ cars, serverUrl }) {
             </div>
             {carsList.length === 9 &&
               <div className="w-full text-center">
-                <button className="mt-5 btn-primary-indigo" onClick={onShowMoreButtonClick}>Show more...</button>
+                <button className="mt-5 btn-primary-gray" onClick={onShowMoreButtonClick}>Show more...</button>
               </div>
             }
           </div>

@@ -17,19 +17,21 @@ export default function carsForSale({ cars, serverUrl }) {
   const dropdownMenuRef = useRef();
   const [isDropdownVisible, setIsDropdownVisible] = useState();
   const [carsList, setCarsList] = useState(cars);
+  const [sortButtonTitle, setSortButtonTitle] = useState('Sort cars by')
+  const [sortOrder, setSortOrder] = useState('newest');
 
   useEffect(() => {
     document.body.addEventListener('click', handleClick);
     return () => {
-        document.body.removeEventListener('click', handleClick);
-      };
-    }, []);
+      document.body.removeEventListener('click', handleClick);
+    };
+  }, []);
 
   const api = new ApiService();
 
-  const getAllCars = async (e) => {
+   function getAllCars (pageSize, sortParam) {
     api
-      .getCarsPublic()
+      .getCarsPublic(pageSize, sortParam)
       .then(response => response.data)
       .then(data => {
         setCarsList(data);
@@ -38,17 +40,27 @@ export default function carsForSale({ cars, serverUrl }) {
       });
   }
 
+  const onShowMoreButtonClick = () => {
+     getAllCars(0, sortOrder);
+  }
+
   const toggleDropdown = () => {
     setIsDropdownVisible(!isDropdownVisible);
   }
+  
+  const onRadioButtonChange = (event) => {
+    setSortOrder(event.target.value);
+    getAllCars(9, event.target.value);
+  }
 
   const handleClick = (event) => {
-    if(dropdownMenuRef){
-      if(event.target.id !== 'dropdownRadioBgHover' && event.target.id !== 'dropdownRadioBgHoverButton') {
+    if (dropdownMenuRef) {
+      if (event.target.id !== 'dropdownRadioBgHover' && event.target.id !== 'dropdownRadioBgHoverButton') {
         setIsDropdownVisible(false);
+        return;
+      }
     }
-    }
-}
+  }
 
   return (
     <>
@@ -82,7 +94,7 @@ export default function carsForSale({ cars, serverUrl }) {
                     }
                   </p>
                   <div className="relative" >
-                    <button id="dropdownRadioBgHoverButton" onClick={toggleDropdown} data-dropdown-toggle="dropdownRadioBgHover" class="mt-5 btn-primary-indigo inline-flex items-center" type="button">Sort Cars By<svg class="ml-2 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                    <button id="dropdownRadioBgHoverButton" onClick={toggleDropdown} data-dropdown-toggle="dropdownRadioBgHover" class="mt-5 btn-primary-indigo inline-flex items-center" type="button">{sortButtonTitle}<svg class="ml-2 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                     <div id="dropdownRadioBgHover" ref={dropdownMenuRef}
                       class={`${isDropdownVisible ? '' : 'hidden'} absolute left-0 right-0 ml-auto mr-auto mt-1 z-10 w-52 bg-white rounded divide-y divide-gray-100 
                         shadow dark:bg-gray-700 dark:divide-gray-600`}>
@@ -90,7 +102,7 @@ export default function carsForSale({ cars, serverUrl }) {
                         <li>
                           <div class="flex p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
                             <label for="default-radio-1" class="mr-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">
-                              <input id="default-radio-1" type="radio" value="" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 
+                              <input onClick={() => {setSortButtonTitle(('Sort cars by: year'))}} onChange={onRadioButtonChange} id="default-radio-1" type="radio" value="carYearDesc" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 
                               focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"></input>
                               &nbsp; Year - Younger First
                             </label>
@@ -99,7 +111,7 @@ export default function carsForSale({ cars, serverUrl }) {
                         <li>
                           <div class="flex p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
                             <label for="default-radio-2" class="text-sm font-medium text-gray-900 rounded dark:text-gray-300">
-                              <input id="default-radio-2" type="radio" value="" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300
+                              <input onClick={() => {setSortButtonTitle(('Sort cars by: year'))}}  onChange={onRadioButtonChange} id="default-radio-2" type="radio" value="carYearAsc" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300
                                focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"></input>
                               &nbsp; Year - Older First</label>
                           </div>
@@ -107,7 +119,7 @@ export default function carsForSale({ cars, serverUrl }) {
                         <li>
                           <div class="flex p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
                             <label for="default-radio-3" class="text-sm font-medium text-gray-900 rounded dark:text-gray-300">
-                              <input id="default-radio-3" type="radio" value="" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 
+                              <input onClick={() => {setSortButtonTitle(('Sort cars by: price'))}} onChange={onRadioButtonChange} id="default-radio-3" type="radio" value="carPriceAsc" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 
                               focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"></input>
                               &nbsp; Price - Lower First</label>
                           </div>
@@ -115,7 +127,7 @@ export default function carsForSale({ cars, serverUrl }) {
                         <li>
                           <div class="flex p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
                             <label for="default-radio-4" class="text-sm font-medium text-gray-900 rounded dark:text-gray-300">
-                              <input id="default-radio-4" type="radio" value="" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 
+                              <input onClick={() => {setSortButtonTitle(('Sort cars by: price'))}} onChange={onRadioButtonChange} id="default-radio-4" type="radio" value="carPriceDesc" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 
                               focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"></input>
                               &nbsp; Price - Higher First</label>
                           </div>
@@ -175,9 +187,9 @@ export default function carsForSale({ cars, serverUrl }) {
               </div>
             </div>
             {carsList.length === 9 &&
-            <div className="w-full text-center">
-            <button className="mt-5 btn-primary-indigo" onClick={getAllCars}>Show more...</button>
-          </div>
+              <div className="w-full text-center">
+                <button className="mt-5 btn-primary-indigo" onClick={onShowMoreButtonClick}>Show more...</button>
+              </div>
             }
           </div>
         </section>
@@ -192,7 +204,7 @@ export default function carsForSale({ cars, serverUrl }) {
 
 
 export async function getStaticProps({ locale }) {
-  const cars = await loadCars(9);
+  const cars = await loadCars(9, 'newest');
   const { STATIC_FILES_URL } = process.env;
   return {
     props: {

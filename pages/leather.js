@@ -174,7 +174,7 @@ export default function interior() {
 
                             <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto md:text-center mb-5">
                                 <div>
-                                    <h1 className="font-semibold text-3xl">
+                                    <h1 className="font-semibold text-3xl invisible">
                                         Gallery
                                     </h1>
                                 </div>

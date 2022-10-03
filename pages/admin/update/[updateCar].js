@@ -53,7 +53,7 @@ export async function getStaticProps({ params }) {
   }
 
   export async function getStaticPaths() {
-    const cars = await loadCars();
+    const cars = await loadCars('', 'newest');
     const paths = cars.map(car => ({
       params: { updateCar: car.atelierCarID.toString() }
     })

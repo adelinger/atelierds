@@ -236,7 +236,7 @@ export async function getStaticProps({ params, locale }) {
 
 
 export async function getStaticPaths({ locales }) {
-  const cars = await loadCars();
+  const cars = await loadCars('', 'newest');
 
   // generate the paths
   const paths = cars.map((car) => locales.map((locale) => ({

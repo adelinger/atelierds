@@ -89,7 +89,34 @@
     position: relative;
     animation-name: example;
     animation-fill-mode: forwards;
-    ;
+}
+
+.arrow_left span {
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-bottom: 5px solid rgba(11, 11, 11, 0.66);
+  border-left: 5px solid rgba(11, 11, 11, 0.66);
+ 
+  cursor: pointer;
+  animation: pulse 1.3s infinite;
+  position: relative;
+  animation-name: example;
+  animation-fill-mode: forwards;
+}
+
+.arrow_right span {
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-bottom: 5px solid rgba(11, 11, 11, 0.66);
+  border-left: 5px solid rgba(11, 11, 11, 0.66);
+ 
+  cursor: pointer;
+  animation: pulse 1.3s infinite;
+  position: relative;
+  animation-name: example;
+  animation-fill-mode: forwards;
 }
 
 

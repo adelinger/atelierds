@@ -215,6 +215,20 @@ export default function interior() {
                         }
                     </div>
                 </section>
+
+                <button className='float-left mr-5 fixed bottom-10 left-10 mb-30' >
+                    <div class="arrow_left -rotate-90"  >
+                        <span></span>
+                    </div>
+                </button>
+
+
+                <button className='float-right mr-5 fixed bottom-10 right-10 mb-30' >
+                    <div class="arrow_right rotate-90"  >
+                        <span></span>
+                    </div>
+                </button>
+
             </main>
             <Footer></Footer>
         </>

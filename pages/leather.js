@@ -197,7 +197,7 @@ export default function interior() {
                                                 width={500}
                                                 height={400}
                                                 alt="Citroen leather image"
-                                                onClick={() => { toggleModal(), setImgSrc('/img/interior/leather_1.jpg') }}>
+                                                onClick={() => { toggleModal(), setImgSrc('/img/interior/') }}>
                                             </Image>
                                         </div>
                                     })

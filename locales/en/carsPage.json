@@ -13,5 +13,14 @@
   "kilometers":"Kilometers",
   "price":"Price",
   "see_the_gallery":"See the gallery",
-  "send":"Send an inquiry"
+  "send":"Send an inquiry",
+  "no_cars_message":"We are sorry, we do not have any cars for sale at the moment.",
+  "sort_cars_by":"Sort Cars By:",
+  "sort_cars_by_year":"Sort Cars By: Year",
+  "sort_cars_by_price":"Sort Cars By: Price",
+  "year_younger":"Year - Younger First",
+  "year_older":"Year - Older First",
+  "price_lower":"Price - Lower First",
+  "price_higher":"Price - Higher First",
+  "show_more":"Show more..."
 }

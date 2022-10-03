@@ -13,5 +13,14 @@
   "kilometers":"Kilometer",
   "price":"Preis",
   "see_the_gallery":"Sehen Sie sich die Galerie an",
-  "send":"Senden Sie eine Anfrage"
+  "send":"Senden Sie eine Anfrage",
+  "no_cars_message":"Es tut uns leid, wir haben im Moment keine Autos zum Verkauf.",
+  "sort_cars_by":"Autos Sortieren Nach:",
+  "sort_cars_by_year":"Autos Sortieren Nach: Jahr",
+ "sort_cars_by_price":"Autos Sortieren Nach: Preis",
+ "year_younger":"Jahr - Jüngere zuerst",
+ "year_older":"Jahr - Älter zuerst",
+ "price_lower":"Preis - Niedriger zuerst",
+ "price_higher":"Preis - zuerst höher",
+  "show_more":"Mehr laden..."
 }

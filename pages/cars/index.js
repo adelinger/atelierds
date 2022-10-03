@@ -17,7 +17,7 @@ export default function carsForSale({ cars, serverUrl }) {
   const dropdownMenuRef = useRef();
   const [isDropdownVisible, setIsDropdownVisible] = useState();
   const [carsList, setCarsList] = useState(cars);
-  const [sortButtonTitle, setSortButtonTitle] = useState('Sort cars by')
+  const [sortButtonTitle, setSortButtonTitle] = useState(t('sort_cars_by'))
   const [sortOrder, setSortOrder] = useState('newest');
 
   useEffect(() => {
@@ -88,7 +88,7 @@ export default function carsForSale({ cars, serverUrl }) {
                   </h1>
                   <p className="mt-4 text-lg text-blueGray-200">
                     {cars.length === 0 ?
-                      <p className="text-gray-100 mt-10 mb-10">We are sorry, we do not have any cars for sale at the moment.</p>
+                      <p className="text-gray-100 mt-10 mb-10">{t('no_cars_message')}</p>
                       :
                       t('title_message')
                     }
@@ -98,38 +98,38 @@ export default function carsForSale({ cars, serverUrl }) {
                     <div id="dropdownRadioBgHover" ref={dropdownMenuRef}
                       class={`${isDropdownVisible ? '' : 'hidden'} absolute left-0 right-0 ml-auto mr-auto mt-1 z-10 w-52 bg-white rounded divide-y divide-gray-100 
                         shadow dark:bg-gray-700 dark:divide-gray-600`}>
-                      <ul class="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownRadioBgHoverButton">
+                      <ul class="content-start p-2 space-y-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownRadioBgHoverButton">
                         <li>
                           <div class="flex p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
                             <label for="default-radio-1" class="mr-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">
-                              <input onClick={() => {setSortButtonTitle(('Sort cars by: year'))}} onChange={onRadioButtonChange} id="default-radio-1" type="radio" value="carYearDesc" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 
+                              <input onClick={() => {setSortButtonTitle((t('sort_cars_by_year')))}} onChange={onRadioButtonChange} id="default-radio-1" type="radio" value="carYearDesc" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 
                               focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"></input>
-                              &nbsp; Year - Younger First
+                              &nbsp; {t('year_younger')}
                             </label>
                           </div>
                         </li>
                         <li>
                           <div class="flex p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
                             <label for="default-radio-2" class="text-sm font-medium text-gray-900 rounded dark:text-gray-300">
-                              <input onClick={() => {setSortButtonTitle(('Sort cars by: year'))}}  onChange={onRadioButtonChange} id="default-radio-2" type="radio" value="carYearAsc" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300
+                              <input onClick={() => {setSortButtonTitle((t('sort_cars_by_year')))}}  onChange={onRadioButtonChange} id="default-radio-2" type="radio" value="carYearAsc" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300
                                focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"></input>
-                              &nbsp; Year - Older First</label>
+                              &nbsp; {t('year_older')}</label>
                           </div>
                         </li>
                         <li>
                           <div class="flex p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
                             <label for="default-radio-3" class="text-sm font-medium text-gray-900 rounded dark:text-gray-300">
-                              <input onClick={() => {setSortButtonTitle(('Sort cars by: price'))}} onChange={onRadioButtonChange} id="default-radio-3" type="radio" value="carPriceAsc" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 
+                              <input onClick={() => {setSortButtonTitle((t('sort_cars_by_price')))}} onChange={onRadioButtonChange} id="default-radio-3" type="radio" value="carPriceAsc" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 
                               focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"></input>
-                              &nbsp; Price - Lower First</label>
+                              &nbsp; {t('price_lower')}</label>
                           </div>
                         </li>
                         <li>
                           <div class="flex p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
                             <label for="default-radio-4" class="text-sm font-medium text-gray-900 rounded dark:text-gray-300">
-                              <input onClick={() => {setSortButtonTitle(('Sort cars by: price'))}} onChange={onRadioButtonChange} id="default-radio-4" type="radio" value="carPriceDesc" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 
+                              <input onClick={() => {setSortButtonTitle((t('sort_cars_by_price')))}} onChange={onRadioButtonChange} id="default-radio-4" type="radio" value="carPriceDesc" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 
                               focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"></input>
-                              &nbsp; Price - Higher First</label>
+                              &nbsp; {t('price_higher')}</label>
                           </div>
                         </li>
                       </ul>
@@ -188,7 +188,7 @@ export default function carsForSale({ cars, serverUrl }) {
             </div>
             {carsList.length === 9 &&
               <div className="w-full text-center">
-                <button className="mt-5 btn-primary-gray" onClick={onShowMoreButtonClick}>Show more...</button>
+                <button className="mt-5 btn-primary-gray" onClick={onShowMoreButtonClick}>{t('show_more')}</button>
               </div>
             }
           </div>

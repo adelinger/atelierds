@@ -27,36 +27,38 @@ export default function interior() {
     const leatherDescriptions = [t('cuir_naturelle_text'), t('cuir_tabac_text'),
     t('cuir_noire_text'), t('naturelle_foncee_text'), t('prestige_beige_text')]
 
-    const cuire_naturelle_images = ['/img/interior/leather_1.jpg', '/img/interior/leather_1.jpg', '/img/interior/leather_1.jpg',
-        '/img/interior/leather_1.jpg', '/img/interior/leather_1.jpg', '/img/interior/leather_1.jpg','/img/interior/leather_1.jpg',
-        '/img/interior/leather_1.jpg'];
+    const cuire_naturelle_images = ['/img/interior/ciure_naturelle/ciure_naturelle1.webp', '/img/interior/ciure_naturelle/ciure_naturelle2.webp', '/img/interior/ciure_naturelle/ciure_naturelle3.webp', '/img/interior/ciure_naturelle/ciure_naturelle4.webp',
+        '/img/interior/ciure_naturelle/ciure_naturelle5.webp', '/img/interior/ciure_naturelle/ciure_naturelle6.webp', '/img/interior/ciure_naturelle/ciure_naturelle7.webp',
+        '/img/interior/ciure_naturelle/ciure_naturelle8.webp', '/img/interior/ciure_naturelle/ciure_naturelle9.webp', '/img/interior/ciure_naturelle/ciure_naturelle10.webp', '/img/interior/ciure_naturelle/ciure_naturelle11.webp', '/img/interior/ciure_naturelle/ciure_naturelle12.webp',
+        '/img/interior/ciure_naturelle/ciure_naturelle13.webp', '/img/interior/ciure_naturelle/ciure_naturelle14.webp', '/img/interior/ciure_naturelle/ciure_naturelle15.webp'];
 
-        const cuire_tabac_images = ['/img/interior/leather_2.jpg', '/img/interior/leather_2.jpg', '/img/interior/leather_2.jpg',
-        '/img/interior/leather_2.jpg', '/img/interior/leather_2.jpg', '/img/interior/leather_2.jpg','/img/interior/leather_2.jpg',
-        '/img/interior/leather_2.jpg'];
+    const cuire_tabac_images = ['/img/interior/ciur_tabac/cuir_tabac1.webp', '/img/interior/ciur_tabac/cuir_tabac2.webp', '/img/interior/ciur_tabac/cuir_tabac3.webp',
+        '/img/interior/ciur_tabac/cuir_tabac4.webp', '/img/interior/ciur_tabac/cuir_tabac5.webp', '/img/interior/ciur_tabac/cuir_tabac6.webp', '/img/interior/ciur_tabac/cuir_tabac7.webp', '/img/interior/ciur_tabac/cuir_tabac8.webp',
+        '/img/interior/ciur_tabac/cuir_tabac9.webp', '/img/interior/ciur_tabac/cuir_tabac10.webp', '/img/interior/ciur_tabac/cuir_tabac11.webp', '/img/interior/ciur_tabac/cuir_tabac12.webp'];
 
-        const cuire_noire_images = ['/img/interior/leather_3.jpg', '/img/interior/leather_3.jpg', '/img/interior/leather_3.jpg',
-        '/img/interior/leather_3.jpg', '/img/interior/leather_3.jpg', '/img/interior/leather_3.jpg','/img/interior/leather_3.jpg',
-        '/img/interior/leather_3.jpg'];
+    const cuire_noire_images = ['/img/interior/ciure_noire/ciure_noire1.webp', '/img/interior/ciure_noire/ciure_noire2.webp', '/img/interior/ciure_noire/ciure_noire3.webp', '/img/interior/ciure_noire/ciure_noire4.webp', '/img/interior/ciure_noire/ciure_noire5.webp',
+        '/img/interior/ciure_noire/ciure_noire6.webp', '/img/interior/ciure_noire/ciure_noire7.webp', '/img/interior/ciure_noire/ciure_noire8.webp', '/img/interior/ciure_noire/ciure_noire9.webp', '/img/interior/ciure_noire/ciure_noire10.webp', '/img/interior/ciure_noire/ciure_noire11.webp',
+        '/img/interior/ciure_noire/ciure_noire12.webp', '/img/interior/ciure_noire/ciure_noire13.webp', '/img/interior/ciure_noire/ciure_noire14.webp', '/img/interior/ciure_noire/ciure_noire15.webp',
+        '/img/interior/ciure_noire/ciure_noire16.webp', '/img/interior/ciure_noire/ciure_noire17.webp', '/img/interior/ciure_noire/ciure_noire18.webp', '/img/interior/ciure_noire/ciure_noire19.webp', '/img/interior/ciure_noire/ciure_noire20.webp', '/img/interior/ciure_noire/ciure_noire21.webp', '/img/interior/ciure_noire/ciure_noire22.webp'];
 
-        const naturelle_fonce_images = ['/img/interior/leather_4.jpg', '/img/interior/leather_4.jpg', '/img/interior/leather_4.jpg',
-        '/img/interior/leather_4.jpg', '/img/interior/leather_4.jpg', '/img/interior/leather_4.jpg','/img/interior/leather_4.jpg',
-        '/img/interior/leather_4.jpg'];
+    const naturelle_fonce_images = ['/img/interior/naturelle_foncee/naturelle_foncee1.webp', '/img/interior/naturelle_foncee/naturelle_foncee2.webp', '/img/interior/naturelle_foncee/naturelle_foncee3.webp', '/img/interior/naturelle_foncee/naturelle_foncee4.webp', '/img/interior/naturelle_foncee/naturelle_foncee5.webp', '/img/interior/naturelle_foncee/naturelle_foncee6.webp',
+        '/img/interior/naturelle_foncee/naturelle_foncee7.webp', '/img/interior/naturelle_foncee/naturelle_foncee8.webp', '/img/interior/naturelle_foncee/naturelle_foncee9.webp', '/img/interior/naturelle_foncee/naturelle_foncee10.webp', '/img/interior/naturelle_foncee/naturelle_foncee11.webp', '/img/interior/naturelle_foncee/naturelle_foncee12.webp', '/img/interior/naturelle_foncee/naturelle_foncee13.webp',
+        '/img/interior/naturelle_foncee/naturelle_foncee14.webp', '/img/interior/naturelle_foncee/naturelle_foncee15.webp'];
 
-        const prestige_beige_images = ['/img/interior/leather_4.jpg', '/img/interior/leather_4.jpg', '/img/interior/leather_4.jpg',
-        '/img/interior/leather_4.jpg', '/img/interior/leather_4.jpg', '/img/interior/leather_4.jpg','/img/interior/leather_4.jpg',
-        '/img/interior/leather_4.jpg'];
+    const prestige_beige_images = ['/img/interior/prestige_beige/prestige_beige1.webp', '/img/interior/prestige_beige/prestige_beige2.webp', '/img/interior/prestige_beige/prestige_beige3.webp', '/img/interior/prestige_beige/prestige_beige4.webp',
+        '/img/interior/prestige_beige/prestige_beige5.webp', '/img/interior/prestige_beige/prestige_beige6.webp', '/img/interior/prestige_beige/prestige_beige7.webp',
+        '/img/interior/prestige_beige/prestige_beige8.webp'];
 
-        const leather_images = [cuire_naturelle_images, cuire_tabac_images, cuire_noire_images, naturelle_fonce_images, prestige_beige_images];
+    const leather_images = [cuire_naturelle_images, cuire_tabac_images, cuire_noire_images, naturelle_fonce_images, prestige_beige_images];
 
     const toggleModal = () => {
         if (!isMobile) {
             setShowModal(!showModal);
         }
 
-        if(showModal){
+        if (showModal) {
             setUseTimer(true);
-        }else{
+        } else {
             setUseTimer(false);
         }
     }
@@ -105,7 +107,7 @@ export default function interior() {
                                 </div>
                                 <div className='pt-20 px-3'>
                                     <Carousel interval={5000} showStatus={false} onChange={onChangeThumbnail} autoPlay={useTimer} infiniteLoop={true}
-                                            onClickItem={executeScroll} className='md:cursor-pointer'>
+                                        onClickItem={executeScroll} className='md:cursor-pointer'>
                                         <div className='h-48'>
                                             <img src="/img/interior/cuire_naturelle.webp" />
                                         </div>
@@ -188,20 +190,20 @@ export default function interior() {
                             </div>
 
                             <div class="container mx-auto space-y-2 lg:space-y-0 lg:gap-2 lg:grid lg:grid-cols-4">
-                                       {
-                                        leather_images[selectedIndex].map( (image, index) => {
-                                           return <div class="w-full rounded md:hover:opacity-50 md:cursor-pointer">
-                                            <Image src={image} 
+                                {
+                                    leather_images[selectedIndex].map((image, index) => {
+                                        return <div class="w-full rounded md:hover:opacity-50 md:cursor-pointer">
+                                            <Image src={image}
                                                 width={500}
-                                                height={400}                
-                                                alt="Citroen leather image" 
-                                                onClick={() => { toggleModal(), setImgSrc('/img/interior/leather_1.jpg')}}>
+                                                height={400}
+                                                alt="Citroen leather image"
+                                                onClick={() => { toggleModal(), setImgSrc('/img/interior/leather_1.jpg') }}>
                                             </Image>
                                         </div>
-                                        })
-                                       }
-                                    </div>
-                                    
+                                    })
+                                }
+                            </div>
+
                         </div>
                         {!isMobile &&
                             <ImagePreview

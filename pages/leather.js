@@ -27,19 +27,19 @@ export default function interior() {
     const leatherDescriptions = [t('cuir_naturelle_text'), t('cuir_tabac_text'),
     t('cuir_noire_text'), t('naturelle_foncee_text'), t('prestige_beige_text')]
 
-    const cuire_naturelle_images = ['/img/interior/ciure_naturelle/ciure_naturelle1.webp', '/img/interior/ciure_naturelle/ciure_naturelle2.webp', '/img/interior/ciure_naturelle/ciure_naturelle3.webp', '/img/interior/ciure_naturelle/ciure_naturelle4.webp',
-        '/img/interior/ciure_naturelle/ciure_naturelle5.webp', '/img/interior/ciure_naturelle/ciure_naturelle6.webp', '/img/interior/ciure_naturelle/ciure_naturelle7.webp',
-        '/img/interior/ciure_naturelle/ciure_naturelle8.webp', '/img/interior/ciure_naturelle/ciure_naturelle9.webp', '/img/interior/ciure_naturelle/ciure_naturelle10.webp', '/img/interior/ciure_naturelle/ciure_naturelle11.webp', '/img/interior/ciure_naturelle/ciure_naturelle12.webp',
-        '/img/interior/ciure_naturelle/ciure_naturelle13.webp', '/img/interior/ciure_naturelle/ciure_naturelle14.webp', '/img/interior/ciure_naturelle/ciure_naturelle15.webp'];
+    const cuire_naturelle_images = ['/img/interior/cuire_naturelle/cuire_naturelle1.webp', '/img/interior/cuire_naturelle/cuire_naturelle2.webp', '/img/interior/cuire_naturelle/cuire_naturelle3.webp', '/img/interior/cuire_naturelle/cuire_naturelle4.webp',
+        '/img/interior/cuire_naturelle/cuire_naturelle5.webp', '/img/interior/cuire_naturelle/cuire_naturelle6.webp', '/img/interior/cuire_naturelle/cuire_naturelle7.webp',
+        '/img/interior/cuire_naturelle/cuire_naturelle8.webp', '/img/interior/cuire_naturelle/cuire_naturelle9.webp', '/img/interior/cuire_naturelle/cuire_naturelle10.webp', '/img/interior/cuire_naturelle/cuire_naturelle11.webp', '/img/interior/cuire_naturelle/cuire_naturelle12.webp',
+        '/img/interior/cuire_naturelle/cuire_naturelle13.webp', '/img/interior/cuire_naturelle/cuire_naturelle14.webp', '/img/interior/cuire_naturelle/cuire_naturelle15.webp'];
 
-    const cuire_tabac_images = ['/img/interior/ciur_tabac/cuir_tabac1.webp', '/img/interior/ciur_tabac/cuir_tabac2.webp', '/img/interior/ciur_tabac/cuir_tabac3.webp',
-        '/img/interior/ciur_tabac/cuir_tabac4.webp', '/img/interior/ciur_tabac/cuir_tabac5.webp', '/img/interior/ciur_tabac/cuir_tabac6.webp', '/img/interior/ciur_tabac/cuir_tabac7.webp', '/img/interior/ciur_tabac/cuir_tabac8.webp',
-        '/img/interior/ciur_tabac/cuir_tabac9.webp', '/img/interior/ciur_tabac/cuir_tabac10.webp', '/img/interior/ciur_tabac/cuir_tabac11.webp', '/img/interior/ciur_tabac/cuir_tabac12.webp'];
+    const cuire_tabac_images = ['/img/interior/cuir_tabac/cuir_tabac1.webp', '/img/interior/cuir_tabac/cuir_tabac2.webp', '/img/interior/cuir_tabac/cuir_tabac3.webp',
+        '/img/interior/cuir_tabac/cuir_tabac4.webp', '/img/interior/cuir_tabac/cuir_tabac5.webp', '/img/interior/cuir_tabac/cuir_tabac6.webp', '/img/interior/cuir_tabac/cuir_tabac7.webp', '/img/interior/cuir_tabac/cuir_tabac8.webp',
+        '/img/interior/cuir_tabac/cuir_tabac9.webp', '/img/interior/cuir_tabac/cuir_tabac10.webp', '/img/interior/cuir_tabac/cuir_tabac11.webp', '/img/interior/cuir_tabac/cuir_tabac12.webp'];
 
-    const cuire_noire_images = ['/img/interior/ciure_noire/ciure_noire1.webp', '/img/interior/ciure_noire/ciure_noire2.webp', '/img/interior/ciure_noire/ciure_noire3.webp', '/img/interior/ciure_noire/ciure_noire4.webp', '/img/interior/ciure_noire/ciure_noire5.webp',
-        '/img/interior/ciure_noire/ciure_noire6.webp', '/img/interior/ciure_noire/ciure_noire7.webp', '/img/interior/ciure_noire/ciure_noire8.webp', '/img/interior/ciure_noire/ciure_noire9.webp', '/img/interior/ciure_noire/ciure_noire10.webp', '/img/interior/ciure_noire/ciure_noire11.webp',
-        '/img/interior/ciure_noire/ciure_noire12.webp', '/img/interior/ciure_noire/ciure_noire13.webp', '/img/interior/ciure_noire/ciure_noire14.webp', '/img/interior/ciure_noire/ciure_noire15.webp',
-        '/img/interior/ciure_noire/ciure_noire16.webp', '/img/interior/ciure_noire/ciure_noire17.webp', '/img/interior/ciure_noire/ciure_noire18.webp', '/img/interior/ciure_noire/ciure_noire19.webp', '/img/interior/ciure_noire/ciure_noire20.webp', '/img/interior/ciure_noire/ciure_noire21.webp', '/img/interior/ciure_noire/ciure_noire22.webp'];
+    const cuire_noire_images = ['/img/interior/cuire_noire/cuire_noire1.webp', '/img/interior/cuire_noire/cuire_noire2.webp', '/img/interior/cuire_noire/cuire_noire3.webp', '/img/interior/cuire_noire/cuire_noire4.webp', '/img/interior/cuire_noire/cuire_noire5.webp',
+        '/img/interior/cuire_noire/cuire_noire6.webp', '/img/interior/cuire_noire/cuire_noire7.webp', '/img/interior/cuire_noire/cuire_noire8.webp', '/img/interior/cuire_noire/cuire_noire9.webp', '/img/interior/cuire_noire/cuire_noire10.webp', '/img/interior/cuire_noire/cuire_noire11.webp',
+        '/img/interior/cuire_noire/cuire_noire12.webp', '/img/interior/cuire_noire/cuire_noire14.webp', '/img/interior/cuire_noire/cuire_noire15.webp',
+        '/img/interior/cuire_noire/cuire_noire16.webp', '/img/interior/cuire_noire/cuire_noire17.webp', '/img/interior/cuire_noire/cuire_noire18.webp', '/img/interior/cuire_noire/cuire_noire19.webp', '/img/interior/cuire_noire/cuire_noire20.webp', '/img/interior/cuire_noire/cuire_noire21.webp', '/img/interior/cuire_noire/cuire_noire22.webp'];
 
     const naturelle_fonce_images = ['/img/interior/naturelle_foncee/naturelle_foncee1.webp', '/img/interior/naturelle_foncee/naturelle_foncee2.webp', '/img/interior/naturelle_foncee/naturelle_foncee3.webp', '/img/interior/naturelle_foncee/naturelle_foncee4.webp', '/img/interior/naturelle_foncee/naturelle_foncee5.webp', '/img/interior/naturelle_foncee/naturelle_foncee6.webp',
         '/img/interior/naturelle_foncee/naturelle_foncee7.webp', '/img/interior/naturelle_foncee/naturelle_foncee8.webp', '/img/interior/naturelle_foncee/naturelle_foncee9.webp', '/img/interior/naturelle_foncee/naturelle_foncee10.webp', '/img/interior/naturelle_foncee/naturelle_foncee11.webp', '/img/interior/naturelle_foncee/naturelle_foncee12.webp', '/img/interior/naturelle_foncee/naturelle_foncee13.webp',

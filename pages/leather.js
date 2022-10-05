@@ -237,19 +237,6 @@ export default function interior() {
                             </div>
 
                         </div>
-                        <div>
-                            <button  className='float-left fixed ml-10' style={{ top: '50%', bottom: '50%' }}>
-                                <div class="arrow_left_gallery rotate-45 "  >
-                                    <span style={{ animation: 'animate-none' }} ></span>
-                                </div>
-                            </button>
-    
-                            <button  className='float-right mr-10 fixed right-80' style={{ top: '50%', bottom: '50%' }}>
-                                <div class="arrow_right_gallery rotate-[-140deg] "  >
-                                    <span style={{ animation: 'animate-none' }} ></span>
-                                </div>
-                            </button>
-                        </div>
                         {!isMobile &&
                             <ImagePreview
                                 showModal={showModal}
@@ -262,7 +249,7 @@ export default function interior() {
                 </section>
 
                 {
-                    !isMobile && showlideButtons &&
+                    !isMobile && showlideButtons && !showModal &&
                     <div>
                         <button onClick={onPreviousImage} className='float-left fixed ml-10' style={{ top: '50%', bottom: '50%' }}>
                             <div class="arrow_left -rotate-90"  >

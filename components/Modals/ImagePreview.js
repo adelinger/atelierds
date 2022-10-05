@@ -40,6 +40,20 @@ function ImagePreview({showModal, setShowModal, src, toggleModal}) {
 
     
     <img id="modal-img" ref={imageTagRef} src={src} class="max-w-[1000px] max-h-[800px] object-cover px-20 py-20" />
+
+    <div>
+                            <button  className='float-left left-0 fixed ml-20' style={{ top: '50%', bottom: '50%' }}>
+                                <div class="arrow_left_gallery rotate-45 "  >
+                                    <span style={{ animation: 'animate-none' }} ></span>
+                                </div>
+                            </button>
+    
+                            <button  className='float-right mr-20 fixed right-0' style={{ top: '50%', bottom: '50%' }}>
+                                <div class="arrow_right_gallery rotate-[-140deg] "  >
+                                    <span style={{ animation: 'animate-none' }} ></span>
+                                </div>
+                            </button>
+                        </div>
     </div>
     }
         

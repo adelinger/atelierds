@@ -1,6 +1,6 @@
 import Footer from 'components/Footers/Footer';
 import Navbar from 'components/Navbars/IndexNavbar';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { isMobile } from 'react-device-detect';
@@ -15,11 +15,13 @@ export default function interior() {
     const [showModal, setShowModal] = useState();
     const [imgSrc, setImgSrc] = useState();
     const scrollRef = useRef(null)
+    const carouselRef = useRef(null);
     const [leatherName, setLeatherName] = useState('Cuire naturelle');
     const [leatherDesc, setLeatherDesc] = useState(t('leatherPage:cuir_naturelle_text'));
     const [leatherYear, setLeatherYear] = useState(t('leatherPage:cuir_naturelle_year'));
     const [useTimer, setUseTimer] = useState(true);
     const [selectedIndex, setSelectedIndex] = useState(0);
+    const [showlideButtons, setShowSlideButtons] = useState(false);
 
     const leatherNames = ['Cuire naturelle', 'Cuir Tabac', 'Cuire Noire', 'Naturelle Foncée', 'Prestige Beige'];
     const leatherYears = [t('cuir_naturelle_year'), t('cuir_tabac_year'),
@@ -76,6 +78,37 @@ export default function interior() {
         setUseTimer(false);
     }
 
+    const onNextImage = () => {
+        
+    }
+
+    const onPreviousImage = () => {
+
+    }
+
+
+    const handleScroll = () => {
+        const { offsetTop } = scrollRef.current
+        const position = window.pageYOffset;
+
+        if (position >= (offsetTop - (offsetTop * 0.2))) {
+            setUseTimer(false);
+            setShowSlideButtons(true);
+        } else {
+            setUseTimer(true);
+            setShowSlideButtons(false);
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll, { passive: true });
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+
     return (
         <>
             <Navbar transparent></Navbar>
@@ -105,7 +138,7 @@ export default function interior() {
                                         {leatherDesc}
                                     </p>
                                 </div>
-                                <div className='pt-20 px-3'>
+                                <div ref={carouselRef} className='pt-20 px-3'>
                                     <Carousel interval={5000} showStatus={false} onChange={onChangeThumbnail} autoPlay={useTimer} infiniteLoop={true}
                                         onClickItem={executeScroll} className='md:cursor-pointer'>
                                         <div className='h-48'>
@@ -216,18 +249,25 @@ export default function interior() {
                     </div>
                 </section>
 
-                <button className='float-left mr-5 fixed bottom-10 left-10 mb-30' >
-                    <div class="arrow_left -rotate-90"  >
-                        <span></span>
-                    </div>
-                </button>
+                {
+                    showlideButtons &&
+                    <div>
+                        <button onClick={onNextImage} className='float-left fixed ml-10' style={{ top: '50%', bottom: '50%' }}>
+                            <div class="arrow_left -rotate-90"  >
+                                <span style={{ animation: 'pulse 3s infinite !important' }} ></span>
+                            </div>
+                        </button>
 
 
-                <button className='float-right mr-5 fixed bottom-10 right-10 mb-30' >
-                    <div class="arrow_right rotate-90"  >
-                        <span></span>
+                        <button onClick={onPreviousImage} className='float-right mr-10 fixed right-0' style={{ top: '50%', bottom: '50%' }}>
+                            <div class="arrow_right rotate-90"  >
+                                <span style={{ animation: 'pulse 3s infinite !important' }} ></span>
+                            </div>
+                        </button>
                     </div>
-                </button>
+                }
+
+
 
             </main>
             <Footer></Footer>

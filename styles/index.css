@@ -119,6 +119,34 @@
   animation-fill-mode: forwards;
 }
 
+.arrow_left_gallery span {
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-bottom: 5px solid rgba(255, 255, 255, 0.957);
+  border-left: 5px solid rgba(255, 255, 255, 0.957);
+ 
+  cursor: pointer;
+  animation: pulse 1.3s infinite;
+  position: relative;
+  animation-name: example;
+  animation-fill-mode: forwards;
+}
+
+.arrow_right_gallery span {
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-bottom: 5px solid rgba(255, 255, 255, 0.957);
+  border-left: 5px solid rgba(255, 255, 255, 0.957);
+ 
+  cursor: pointer;
+  animation: pulse 1.3s infinite;
+  position: relative;
+  animation-name: example;
+  animation-fill-mode: forwards;
+}
+
 
 @keyframes example {
   0% {

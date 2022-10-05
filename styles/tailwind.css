@@ -1407,6 +1407,10 @@ select {
   right: 2.5rem;
 }
 
+.right-80 {
+  right: 20rem;
+}
+
 .top-6 {
   top: 1.5rem;
 }
@@ -1886,6 +1890,18 @@ select {
   border-collapse: collapse;
 }
 
+.rotate-45 {
+  --tw-rotate: 45deg;
+  -webkit-transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+          transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.rotate-\[-140deg\] {
+  --tw-rotate: -140deg;
+  -webkit-transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+          transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .-rotate-90 {
   --tw-rotate: -90deg;
   -webkit-transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -1901,6 +1917,11 @@ select {
 .transform {
   -webkit-transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
           transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.animate-none {
+  -webkit-animation: none;
+          animation: none;
 }
 
 @-webkit-keyframes spin {
@@ -2854,6 +2875,38 @@ select {
   height: 30px;
   border-bottom: 5px solid rgba(11, 11, 11, 0.66);
   border-left: 5px solid rgba(11, 11, 11, 0.66);
+  cursor: pointer;
+  -webkit-animation: pulse 1.3s infinite;
+          animation: pulse 1.3s infinite;
+  position: relative;
+  -webkit-animation-name: example;
+          animation-name: example;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+.arrow_left_gallery span {
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-bottom: 5px solid rgba(255, 255, 255, 0.957);
+  border-left: 5px solid rgba(255, 255, 255, 0.957);
+  cursor: pointer;
+  -webkit-animation: pulse 1.3s infinite;
+          animation: pulse 1.3s infinite;
+  position: relative;
+  -webkit-animation-name: example;
+          animation-name: example;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+.arrow_right_gallery span {
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-bottom: 5px solid rgba(255, 255, 255, 0.957);
+  border-left: 5px solid rgba(255, 255, 255, 0.957);
   cursor: pointer;
   -webkit-animation: pulse 1.3s infinite;
           animation: pulse 1.3s infinite;

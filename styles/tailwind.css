@@ -2839,8 +2839,8 @@ select {
   border-bottom: 5px solid rgba(11, 11, 11, 0.66);
   border-left: 5px solid rgba(11, 11, 11, 0.66);
   cursor: pointer;
-  -webkit-animation: pulse 4s infinite;
-          animation: pulse 4s infinite;
+  -webkit-animation: pulse 1.3s infinite;
+          animation: pulse 1.3s infinite;
   position: relative;
   -webkit-animation-name: example;
           animation-name: example;
@@ -2855,8 +2855,8 @@ select {
   border-bottom: 5px solid rgba(11, 11, 11, 0.66);
   border-left: 5px solid rgba(11, 11, 11, 0.66);
   cursor: pointer;
-  -webkit-animation: pulse 4s infinite;
-          animation: pulse 4s infinite;
+  -webkit-animation: pulse 1.3s infinite;
+          animation: pulse 1.3s infinite;
   position: relative;
   -webkit-animation-name: example;
           animation-name: example;

@@ -22,6 +22,7 @@ export default function interior() {
     const [useTimer, setUseTimer] = useState(true);
     const [selectedIndex, setSelectedIndex] = useState(0);
     const [showlideButtons, setShowSlideButtons] = useState(false);
+    const [selectedImage, setSelectedImage] = useState(0);
 
     const leatherNames = ['Cuire naturelle', 'Cuir Tabac', 'Cuire Noire', 'Naturelle Foncée', 'Prestige Beige'];
     const leatherYears = [t('cuir_naturelle_year'), t('cuir_tabac_year'),
@@ -72,18 +73,18 @@ export default function interior() {
         setSelectedIndex(e);
         setUseTimer(true);
     }
-
+  
     const executeScroll = () => {
         scrollRef.current.scrollIntoView({ behavior: 'smooth' });
         setUseTimer(false);
     }
 
     const onNextImage = () => {
-        
+        setSelectedImage(selectedIndex+1)
     }
 
     const onPreviousImage = () => {
-
+        setSelectedImage(selectedIndex-1)
     }
 
 
@@ -140,7 +141,7 @@ export default function interior() {
                                 </div>
                                 <div ref={carouselRef} className='pt-20 px-3'>
                                     <Carousel interval={5000} showStatus={false} onChange={onChangeThumbnail} autoPlay={useTimer} infiniteLoop={true}
-                                        onClickItem={executeScroll} className='md:cursor-pointer'>
+                                        onClickItem={executeScroll} className='md:cursor-pointer' selectedItem={selectedImage}>
                                         <div className='h-48'>
                                             <img src="/img/interior/cuire_naturelle.webp" />
                                         </div>
@@ -250,16 +251,16 @@ export default function interior() {
                 </section>
 
                 {
-                    showlideButtons &&
+                    !isMobile && showlideButtons &&
                     <div>
-                        <button onClick={onNextImage} className='float-left fixed ml-10' style={{ top: '50%', bottom: '50%' }}>
+                        <button onClick={onPreviousImage} className='float-left fixed ml-10' style={{ top: '50%', bottom: '50%' }}>
                             <div class="arrow_left -rotate-90"  >
                                 <span style={{ animation: 'pulse 3s infinite !important' }} ></span>
                             </div>
                         </button>
 
 
-                        <button onClick={onPreviousImage} className='float-right mr-10 fixed right-0' style={{ top: '50%', bottom: '50%' }}>
+                        <button onClick={onNextImage} className='float-right mr-10 fixed right-0' style={{ top: '50%', bottom: '50%' }}>
                             <div class="arrow_right rotate-90"  >
                                 <span style={{ animation: 'pulse 3s infinite !important' }} ></span>
                             </div>

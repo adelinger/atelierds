@@ -39,16 +39,16 @@ export default function interior() {
             '/img/interior/cuir_tabac/cuir_tabac8.webp', '/img/interior/cuir_tabac/cuir_tabac9.webp', '/img/interior/cuir_tabac/cuir_tabac10.webp', '/img/interior/cuir_tabac/cuir_tabac12.webp'];
 
     const cuire_noire_images =
-        [ '/img/interior/cuire_noire/cuire_noire10.webp', '/img/interior/cuire_noire/cuire_noire11.webp', '/img/interior/cuire_noire/cuire_noire14.webp', '/img/interior/cuire_noire/cuire_noire15.webp',
-         '/img/interior/cuire_noire/cuire_noire17.webp', '/img/interior/cuire_noire/cuire_noire18.webp', '/img/interior/cuire_noire/cuire_noire19.webp', '/img/interior/cuire_noire/cuire_noire20.webp'];
+        ['/img/interior/cuire_noire/cuire_noire10.webp', '/img/interior/cuire_noire/cuire_noire11.webp', '/img/interior/cuire_noire/cuire_noire14.webp', '/img/interior/cuire_noire/cuire_noire15.webp',
+            '/img/interior/cuire_noire/cuire_noire17.webp', '/img/interior/cuire_noire/cuire_noire18.webp', '/img/interior/cuire_noire/cuire_noire19.webp', '/img/interior/cuire_noire/cuire_noire20.webp'];
 
     const naturelle_fonce_images =
-        [ '/img/interior/naturelle_foncee/naturelle_foncee2.webp', '/img/interior/naturelle_foncee/naturelle_foncee6.webp', '/img/interior/naturelle_foncee/naturelle_foncee7.webp', '/img/interior/naturelle_foncee/naturelle_foncee8.webp',
-           '/img/interior/naturelle_foncee/naturelle_foncee11.webp', '/img/interior/naturelle_foncee/naturelle_foncee12.webp', '/img/interior/naturelle_foncee/naturelle_foncee13.webp','/img/interior/naturelle_foncee/naturelle_foncee14.webp'];
+        ['/img/interior/naturelle_foncee/naturelle_foncee2.webp', '/img/interior/naturelle_foncee/naturelle_foncee6.webp', '/img/interior/naturelle_foncee/naturelle_foncee7.webp', '/img/interior/naturelle_foncee/naturelle_foncee8.webp',
+            '/img/interior/naturelle_foncee/naturelle_foncee11.webp', '/img/interior/naturelle_foncee/naturelle_foncee12.webp', '/img/interior/naturelle_foncee/naturelle_foncee13.webp', '/img/interior/naturelle_foncee/naturelle_foncee14.webp'];
 
     const prestige_beige_images =
         ['/img/interior/prestige_beige/prestige_beige1.webp', '/img/interior/prestige_beige/prestige_beige2.webp', '/img/interior/prestige_beige/prestige_beige3.webp', '/img/interior/prestige_beige/prestige_beige4.webp',
-            '/img/interior/prestige_beige/prestige_beige5.webp', '/img/interior/prestige_beige/prestige_beige6.webp', '/img/interior/prestige_beige/prestige_beige7.webp','/img/interior/prestige_beige/prestige_beige8.webp'];
+            '/img/interior/prestige_beige/prestige_beige5.webp', '/img/interior/prestige_beige/prestige_beige6.webp', '/img/interior/prestige_beige/prestige_beige7.webp', '/img/interior/prestige_beige/prestige_beige8.webp'];
 
     const leather_images = [cuire_naturelle_images, cuire_tabac_images, cuire_noire_images, naturelle_fonce_images, prestige_beige_images];
 

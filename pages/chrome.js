@@ -5,21 +5,22 @@ import Image from 'next/image';
 
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import ImagePreview from 'components/Modals/ImagePreview';
-import { BrowserView } from 'react-device-detect';
 import { isMobile } from 'react-device-detect';
-import { getPictures } from 'lib/apiCalls';
 import { useTranslation } from 'next-i18next';
 
 
-export default function chrome({ images, STATIC_FILES_URL }) {
+export default function chrome() {
   const { t } = useTranslation('chromePage');
-  const FILES_URL = STATIC_FILES_URL + 'chrome/';
   const scrollRef = useRef(null)
   const scrollUpRef = useRef(null)
   const [showModal, setShowModal] = useState(false);
   const [imgSrc, setImgSrc] = useState();
   const [showUpButton, setShowUpButton] = useState(false)
 
+  const chrome_images = ['/img/chrome/chrome_page_1.webp', '/img/chrome/chrome_page_2.webp',
+    '/img/chrome/chrome_page_3.webp', '/img/chrome/chrome_page_4.webp', '/img/chrome/chrome_page_5.webp',
+    '/img/chrome/chrome_page_6.webp', '/img/chrome/chrome_page_7.webp', '/img/chrome/chrome_page_8.webp',
+    '/img/chrome/chrome_page_9.webp']
 
   const toggleModal = () => {
     if (!isMobile) {
@@ -263,10 +264,10 @@ export default function chrome({ images, STATIC_FILES_URL }) {
 
               <div className="">
                 <div class="container mx-auto space-y-2 lg:space-y-0 lg:gap-2 lg:grid lg:grid-cols-3">
-                  {images.listOfImages.map((image, index) => {
+                  {chrome_images.map((image, index) => {
                     return <div class="w-full rounded md:hover:opacity-50 md:cursor-pointer">
-                      <img src={FILES_URL + image}
-                        alt="chrome restoration image" onClick={() => { toggleModal(), setImgSrc(FILES_URL + image) }}>
+                      <img src={image}
+                        alt="chrome restoration image" onClick={() => { toggleModal(), setImgSrc(image) }}>
                       </img>
                     </div>
                   })}
@@ -301,15 +302,9 @@ export default function chrome({ images, STATIC_FILES_URL }) {
 }
 
 export async function getStaticProps({ params, locale }) {
-  const images = await getPictures('chrome');
-
-  const { STATIC_FILES_URL } = process.env;
-
   return {
     props: {
       ...await serverSideTranslations(locale, ['common', 'chromePage', 'footer']),
-      images,
-      STATIC_FILES_URL,
     },
   };
 }

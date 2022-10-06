@@ -16,6 +16,7 @@ export default function chrome() {
   const [showModal, setShowModal] = useState(false);
   const [imgSrc, setImgSrc] = useState();
   const [showUpButton, setShowUpButton] = useState(false)
+  const [selectedIndex, setSelectedIndex] = useState();
 
   const chrome_images = ['/img/chrome/chrome_page_1.webp', '/img/chrome/chrome_page_2.webp',
     '/img/chrome/chrome_page_3.webp', '/img/chrome/chrome_page_4.webp', '/img/chrome/chrome_page_5.webp',
@@ -267,7 +268,7 @@ export default function chrome() {
                   {chrome_images.map((image, index) => {
                     return <div class="w-full rounded md:hover:opacity-50 md:cursor-pointer">
                       <img src={image}
-                        alt="chrome restoration image" onClick={() => { toggleModal(), setImgSrc(image) }}>
+                        alt="chrome restoration image" onClick={() => { toggleModal(), setSelectedIndex(index)}}>
                       </img>
                     </div>
                   })}
@@ -278,8 +279,10 @@ export default function chrome() {
               <ImagePreview
                 showModal={showModal}
                 setShowModal={setShowModal}
-                src={imgSrc}
+                imagesList={chrome_images}
                 toggleModal={toggleModal}
+                selectedIndex={selectedIndex}
+                setSelectedIndex={setSelectedIndex}
               ></ImagePreview>
             }
 

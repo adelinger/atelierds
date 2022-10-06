@@ -23,6 +23,7 @@ export default function interior() {
     const [selectedIndex, setSelectedIndex] = useState(0);
     const [showlideButtons, setShowSlideButtons] = useState(false);
     const [selectedImage, setSelectedImage] = useState(0);
+    const [galleryImageSelectedIndex, setGalleryImageSelectedIndex] = useState();
 
     const leatherNames = ['Cuire naturelle', 'Cuir Tabac', 'Cuire Noire', 'Naturelle Foncée', 'Prestige Beige'];
     const leatherYears = [t('cuir_naturelle_year'), t('cuir_tabac_year'),
@@ -90,7 +91,7 @@ export default function interior() {
         const { offsetTop } = scrollRef.current
         const position = window.pageYOffset;
 
-        if (position >= (offsetTop - (offsetTop * 0.2))) {
+        if (position >= (offsetTop - (offsetTop * 0.4))) {
             setUseTimer(false);
             setShowSlideButtons(true);
         } else {
@@ -229,7 +230,7 @@ export default function interior() {
                                                 width={500}
                                                 height={400}
                                                 alt="Citroen leather image"
-                                                onClick={() => { toggleModal(), setImgSrc(image) }}>
+                                                onClick={() => { toggleModal(), setImgSrc(image), setGalleryImageSelectedIndex(index) }}>
                                             </Image>
                                         </div>
                                     })
@@ -241,8 +242,10 @@ export default function interior() {
                             <ImagePreview
                                 showModal={showModal}
                                 setShowModal={setShowModal}
-                                src={imgSrc}
                                 toggleModal={toggleModal}
+                                imagesList={leather_images[selectedIndex]}
+                                selectedIndex={galleryImageSelectedIndex}
+                                setSelectedIndex={setGalleryImageSelectedIndex}
                             ></ImagePreview>
                         }
                     </div>

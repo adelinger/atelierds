@@ -17,10 +17,21 @@ function viewCar({ carData, STATIC_FILES_URL }) {
   const [showEmailForm, setShowEmailForm] = useState();
   const baseRef = useRef(null);
   const [showModal, setShowModal] = useState(false);
-  const [imgSrc, setImgSrc] = useState();
   const [src, setSrc] = useState(profilePhoto);
   const galleryRef = useRef(null);
   const [showUpBtn, setShowUpBtn] = useState();
+  const [selectedIndex, setSelectedIndex] = useState();
+  const [fullPathImages, setFullPathImages] = useState(getFullPathImages);
+  
+  function getFullPathImages () {
+    let images = [];
+
+    for (let i = 0; i < carData.listOfImages.length; i++) {
+      images.push(FILES_URL + carData.listOfImages[i]);
+    }
+
+    return images;
+  }
 
 
   const handleEmailbtnClick = () => {
@@ -158,7 +169,7 @@ function viewCar({ carData, STATIC_FILES_URL }) {
               {carData.listOfImages.map((image, index) => {
                 return <div class="w-full rounded md:hover:opacity-50 md:cursor-pointer">
                   <img src={FILES_URL + image}
-                    alt="chrome restoration image" className='max-h-80 min-h-full min-w-full' onClick={() => { toggleModal(), setImgSrc(FILES_URL + image) }}>
+                    alt="chrome restoration image" className='max-h-80 min-h-full min-w-full' onClick={() => { toggleModal(), setSelectedIndex(index)}}>
                   </img>
                 </div>
               })}
@@ -200,7 +211,9 @@ function viewCar({ carData, STATIC_FILES_URL }) {
           <ImagePreview
             showModal={showModal}
             setShowModal={setShowModal}
-            src={imgSrc}
+            imagesList={fullPathImages}
+            selectedIndex={selectedIndex}
+            setSelectedIndex={setSelectedIndex}
             toggleModal={toggleModal}
           ></ImagePreview>
         }

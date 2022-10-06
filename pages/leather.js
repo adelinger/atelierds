@@ -12,8 +12,7 @@ import Image from "next/image";
 
 export default function interior() {
     const { t } = useTranslation(['leatherPage']);
-    const [showModal, setShowModal] = useState();
-    const [imgSrc, setImgSrc] = useState();
+    const [showModal, setShowModal] = useState(null);
     const scrollRef = useRef(null)
     const carouselRef = useRef(null);
     const [leatherName, setLeatherName] = useState('Cuire naturelle');
@@ -99,6 +98,18 @@ export default function interior() {
             setShowSlideButtons(false);
         }
     };
+
+    useEffect(() => {
+        if (showModal) {
+          document.body.style.overflow = 'hidden';
+          document.body.style.paddingRight = '15px';
+        }
+        return () => {
+          document.body.style.overflow = 'unset';
+          document.body.style.paddingRight = '0px';
+        };
+      }, [showModal]);
+   
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll, { passive: true });
@@ -230,7 +241,7 @@ export default function interior() {
                                                 width={500}
                                                 height={400}
                                                 alt="Citroen leather image"
-                                                onClick={() => { toggleModal(), setImgSrc(image), setGalleryImageSelectedIndex(index) }}>
+                                                onClick={() => { toggleModal(), setGalleryImageSelectedIndex(index) }}>
                                             </Image>
                                         </div>
                                     })

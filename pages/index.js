@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 
@@ -9,15 +9,45 @@ import Footer from "components/Footers/Footer.js";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import CardEmail from "components/Cards/CardEmail";
 
-
 export default function Landing() {
   const { t } = useTranslation(['index', 'footer', 'common']);
+  const [showUpBtn, setShowUpBtn] = useState();
+  const scrollRef = useRef(); 
+  const baseRef = useRef();
+
+  const handleButtonUpClick = () => {
+    baseRef.current.scrollIntoView({ behavior: 'smooth' });
+    setShowUpBtn(false);
+    //setShowUpBtn(false);
+  }
+
+  const handleScroll = () => {
+    const { offsetTop } = scrollRef.current
+    const position = window.pageYOffset;
+
+    if (position >= (offsetTop - (offsetTop * 0.1))) {
+        setShowUpBtn(true)
+        return;
+    } 
+
+    setShowUpBtn(false);
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+        window.removeEventListener('scroll', handleScroll);
+    };
+}, []);
+
+
 
   return (
     <>
       <Navbar transparent />
       <main>
-        <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
+        <div ref={baseRef} className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
           <div
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{
@@ -38,12 +68,12 @@ export default function Landing() {
                     {t('AtelierDS')}
                   </h1>
                   <p className="mt-4 text-lg text-blueGray-200 px-1">
-                   {t('welcome_text')}
+                    {t('welcome_text')}
                   </p>
 
                   <Link href="cars">
                     <a className=" mt-5 py-2 px-6 btn-primary-indigo ">
-                    {t('check_our_cars')}
+                      {t('check_our_cars')}
                     </a>
                   </Link>
 
@@ -104,7 +134,7 @@ export default function Landing() {
                     </div>
                     <h6 className="text-xl font-semibold">{t('chrome_parts')}</h6>
                     <p className="mt-2 mb-4 text-blueGray-500">
-                    {t('chrome_parts_text')}
+                      {t('chrome_parts_text')}
                     </p>
                     <Link href="chrome">
 
@@ -127,7 +157,7 @@ export default function Landing() {
                     </div>
                     <h6 className="text-xl font-semibold">{t('body_restauration')}</h6>
                     <p className="mt-2 mb-4 text-blueGray-500">
-                    {t('body_restauration_text')}
+                      {t('body_restauration_text')}
                     </p>
                     <Link href="bodywork">
                       <a
@@ -154,13 +184,13 @@ export default function Landing() {
                   <i class="fas fa-shipping-fast"></i>
                 </div>
                 <h3 className="text-3xl mb-2 font-semibold leading-normal">
-                {t('working_with_us')}
+                  {t('working_with_us')}
                 </h3>
                 <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
-                {t('working_with_us_text1')}
+                  {t('working_with_us_text1')}
                 </p>
                 <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
-                {t('working_with_us_text2')}
+                  {t('working_with_us_text2')}
                 </p>
               </div>
 
@@ -184,10 +214,10 @@ export default function Landing() {
                       ></polygon>
                     </svg>
                     <h4 className="text-xl font-bold text-white">
-                    {t('quality_service')}
+                      {t('quality_service')}
                     </h4>
                     <p className="text-md font-light mt-2 text-white">
-                    {t('quality_service_text')}
+                      {t('quality_service_text')}
                     </p>
                   </blockquote>
                 </div>
@@ -196,7 +226,7 @@ export default function Landing() {
           </div>
         </section>
 
-        <section className="relative py-20">
+        <section ref={scrollRef}  className="relative py-20">
           <div
             className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20"
             style={{ transform: "translateZ(0)" }}
@@ -228,7 +258,7 @@ export default function Landing() {
                 <div className="md:pr-12">
                   <h3 className="text-3xl font-semibold">{t('a_growing_company')}</h3>
                   <p className="mt-4 text-lg leading-relaxed text-blueGray-500">
-                  {t('a_growing_company_text')}
+                    {t('a_growing_company_text')}
                   </p>
                   <ul className="list-none mt-6">
                     <li className="py-2">
@@ -240,7 +270,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-500">
-                          {t('personal_touch')}
+                            {t('personal_touch')}
                           </h4>
                         </div>
                       </div>
@@ -254,7 +284,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-500">
-                          {t('perfect_blend')}
+                            {t('perfect_blend')}
                           </h4>
                         </div>
                       </div>
@@ -268,7 +298,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-500">
-                          {t('crafted_with_love')}
+                            {t('crafted_with_love')}
                           </h4>
                         </div>
                       </div>
@@ -286,7 +316,7 @@ export default function Landing() {
               <div className="w-full lg:w-6/12 px-4">
                 <h2 className="text-4xl font-semibold">{t('people_working_on_a_project')}</h2>
                 <p className="text-lg leading-relaxed m-4 text-blueGray-500">
-                {t('people_working_on_a_project_text')}
+                  {t('people_working_on_a_project_text')}
                 </p>
               </div>
             </div>
@@ -301,7 +331,7 @@ export default function Landing() {
                   <div className="pt-6 text-center">
                     <h5 className="text-xl font-bold">{t('enzo')}</h5>
                     <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
-                    {t('enzo_text')}
+                      {t('enzo_text')}
                     </p>
 
                   </div>
@@ -317,7 +347,7 @@ export default function Landing() {
                   <div className="pt-6 text-center">
                     <h5 className="text-xl font-bold">{t('luki')}</h5>
                     <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
-                    {t('luki_text')}
+                      {t('luki_text')}
                     </p>
 
                   </div>
@@ -333,7 +363,7 @@ export default function Landing() {
                   <div className="pt-6 text-center">
                     <h5 className="text-xl font-bold">{t('christian')}</h5>
                     <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
-                    {t('christian_text')}
+                      {t('christian_text')}
                     </p>
 
                   </div>
@@ -350,7 +380,7 @@ export default function Landing() {
                     {/* <h5 className="text-xl font-bold">{t('antun')}</h5> */}
                     <h5 className="text-xl font-bold">Jon Doe</h5>
                     <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
-                    {t('antun_text')}
+                      {t('antun_text')}
                     </p>
 
                   </div>
@@ -388,10 +418,10 @@ export default function Landing() {
                   <i className="fas fa-medal text-xl"></i>
                 </div>
                 <h6 className="text-xl mt-5 font-semibold text-white">
-                {t('excellent_services')}
+                  {t('excellent_services')}
                 </h6>
                 <p className="mt-2 mb-4 text-blueGray-400">
-                {t('excellent_services_text')}
+                  {t('excellent_services_text')}
                 </p>
               </div>
               <div className="w-full lg:w-3/12 px-4 text-center">
@@ -399,10 +429,10 @@ export default function Landing() {
                   <i className="fas fa-poll text-xl"></i>
                 </div>
                 <h5 className="text-xl mt-5 font-semibold text-white">
-                {t('we_growing')}
+                  {t('we_growing')}
                 </h5>
                 <p className="mt-2 mb-4 text-blueGray-400">
-                {t('we_growing_text')}
+                  {t('we_growing_text')}
                 </p>
               </div>
               <div className="w-full mb-5 lg:-mb-5 lg:w-3/12 px-4 text-center">
@@ -410,10 +440,10 @@ export default function Landing() {
                   <i className="fas fa-lightbulb text-xl"></i>
                 </div>
                 <h5 className="text-xl mt-5 font-semibold text-white">
-                {t('like')}
+                  {t('like')}
                 </h5>
                 <p className="mt-2 mb-4 text-blueGray-400">
-                {t('like_text')}
+                  {t('like_text')}
                 </p>
               </div>
             </div>
@@ -426,6 +456,13 @@ export default function Landing() {
             </div>
           </div>
         </section>
+        {showUpBtn &&
+          <button className='float-right mr-5 fixed bottom-10 right-10 mb-30' onClick={handleButtonUpClick}>
+            <div class="arrow"  >
+              <span></span>
+            </div>
+          </button>
+        }
       </main>
       <Footer />
     </>

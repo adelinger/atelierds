@@ -14,7 +14,6 @@ export default function chrome() {
   const scrollRef = useRef(null)
   const scrollUpRef = useRef(null)
   const [showModal, setShowModal] = useState(false);
-  const [imgSrc, setImgSrc] = useState();
   const [showUpButton, setShowUpButton] = useState(false)
   const [selectedIndex, setSelectedIndex] = useState();
 
@@ -38,6 +37,26 @@ export default function chrome() {
     scrollUpRef.current.scrollIntoView({ behavior: 'smooth' });
     setShowUpButton(false);
   }
+
+  const handleScroll = () => {
+    const { offsetTop } = scrollRef.current
+    const position = window.pageYOffset;
+
+    if (position >= (offsetTop - (offsetTop * 0.1))) {
+        setShowUpButton(true)
+        return;
+    } 
+
+    setShowUpButton(false);
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+        window.removeEventListener('scroll', handleScroll);
+    };
+}, []); 
 
   return (
     <>

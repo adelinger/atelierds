@@ -22,8 +22,8 @@ function viewCar({ carData, STATIC_FILES_URL }) {
   const [showUpBtn, setShowUpBtn] = useState();
   const [selectedIndex, setSelectedIndex] = useState();
   const [fullPathImages, setFullPathImages] = useState(getFullPathImages);
-  
-  function getFullPathImages () {
+
+  function getFullPathImages() {
     let images = [];
 
     for (let i = 0; i < carData.listOfImages.length; i++) {
@@ -59,7 +59,7 @@ function viewCar({ carData, STATIC_FILES_URL }) {
       setShowModal(!showModal);
     }
   }
-  
+
 
   return (
     <>
@@ -82,17 +82,17 @@ function viewCar({ carData, STATIC_FILES_URL }) {
             <div className="container mx-auto py-5 mt-10 md:mt-20">
               <div className='grid grid-cols-1 md:grid-cols-2 gap-2 content-start'>
                 <div>
-                  <img className ='center-image md:min-h-30 md:cursor-pointer' 
-                   src={src}
-                  onMouseOver={e => (setSrc(FILES_URL + carData.listOfImages[carData.listOfImages.length-1]))} 
-                  onMouseOut={e => (setSrc(FILES_URL + carData.carProfilePhotoPath))} 
-                  onClick={handleGalleryBtnClick}
+                  <img className='center-image md:min-h-30 md:cursor-pointer'
+                    src={src}
+                    onMouseOver={e => (setSrc(FILES_URL + carData.listOfImages[carData.listOfImages.length - 1]))}
+                    onMouseOut={e => (setSrc(FILES_URL + carData.carProfilePhotoPath))}
+                    onClick={handleGalleryBtnClick}
                   ></img>
                 </div>
 
                 <div className='md:ml-5 px-3 mb-3 mt-5 md:mt-0'>
                   <div className="">
-                  <h1 className="text-white font-semibold text-3xl">
+                    <h1 className="text-white font-semibold text-3xl">
                       {carData.carModel + ' ' + carData.carMake}
                     </h1>
                     <p className="text-gray-300 mt-5"> {t('carsPage:description_text')}</p>
@@ -115,7 +115,7 @@ function viewCar({ carData, STATIC_FILES_URL }) {
                         <div className='text-center w-full pr-1'>
                           <button onClick={handleGalleryBtnClick} type="button" className='btn-primary-indigo-slim w-full md:min-w-15'>
                             <span className='mr-2 text-center w-full'>{t('carsPage:see_the_gallery')}
-                            {router.locale === 'fr' && isMobile && <br></br>} 
+                              {router.locale === 'fr' && isMobile && <br></br>}
                               <i class='fas fa-image mt-1 ml-2'></i>
                             </span>
                           </button>
@@ -169,7 +169,7 @@ function viewCar({ carData, STATIC_FILES_URL }) {
               {carData.listOfImages.map((image, index) => {
                 return <div class="w-full rounded md:hover:opacity-50 md:cursor-pointer">
                   <img src={FILES_URL + image}
-                    alt="chrome restoration image" className='max-h-80 min-h-full min-w-full' onClick={() => { toggleModal(), setSelectedIndex(index)}}>
+                    alt="chrome restoration image" className='max-h-80 min-h-full min-w-full' onClick={() => { toggleModal(), setSelectedIndex(index) }}>
                   </img>
                 </div>
               })}
@@ -178,33 +178,33 @@ function viewCar({ carData, STATIC_FILES_URL }) {
         </section>
 
         {showEmailForm &&
-        <section className="pb-5 relative block bg-blueGray-800">
-           <div
-            className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20"
-            style={{ transform: "translateZ(0)" }}
-          >
-            <svg
-              className="absolute bottom-0 overflow-hidden"
-              xmlns="http://www.w3.org/2000/svg"
-              preserveAspectRatio="none"
-              version="1.1"
-              viewBox="0 0 2560 100"
-              x="0"
-              y="0"
+          <section className="pb-5 relative block bg-blueGray-800">
+            <div
+              className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20"
+              style={{ transform: "translateZ(0)" }}
             >
-              <polygon
-                className="text-blueGray-800 fill-current"
-                points="2560 0 2560 100 0 100"
-              ></polygon>
-            </svg>
-          </div>
-          <div className="container mx-auto px-4">
-            <div className="flex flex-wrap justify-center">
-             
-                <CardEmail t={t} car={carData} ></CardEmail>
+              <svg
+                className="absolute bottom-0 overflow-hidden"
+                xmlns="http://www.w3.org/2000/svg"
+                preserveAspectRatio="none"
+                version="1.1"
+                viewBox="0 0 2560 100"
+                x="0"
+                y="0"
+              >
+                <polygon
+                  className="text-blueGray-800 fill-current"
+                  points="2560 0 2560 100 0 100"
+                ></polygon>
+              </svg>
             </div>
-          </div>
-        </section>
+            <div className="container mx-auto px-4">
+              <div className="flex flex-wrap justify-center">
+
+                <CardEmail t={t} car={carData} ></CardEmail>
+              </div>
+            </div>
+          </section>
         }
 
         {!isMobile &&
@@ -220,10 +220,10 @@ function viewCar({ carData, STATIC_FILES_URL }) {
 
         {showUpBtn &&
           <button className='float-right mr-5 fixed bottom-10 right-10 mb-30' onClick={handleButtonUpClick}>
-          <div class="arrow"  >
+            <div class="arrow"  >
               <span></span>
-          </div>
-      </button>
+            </div>
+          </button>
         }
       </main>
       <Footer />

@@ -94,19 +94,11 @@ export default function chrome() {
             </svg>
           </div>
         </div>
-
-        <section className="pb-20 bg-blueGray-200 -mt-24">
-          <div className="container mx-auto px-4">
-
-            
-          </div>
-        </section>
-
         <section className="pb-20 -mb-10 bg-blueGray-700 -mt-24 px-3">
           <div className="container mx-auto px-4 pt-20">
             <div className="container mx-auto mt-5">
               <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto md:text-center">
-                <div className="md:mt-10 pt-5">
+                <div className="md:mt-8">
                   <h1 className="text-white font-semibold text-3xl">
                     {t('what_do_we_fix_title')}
                   </h1>

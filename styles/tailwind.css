@@ -3322,6 +3322,10 @@ select {
     margin-top: -0.25rem;
   }
 
+  .md\:mt-8 {
+    margin-top: 2rem;
+  }
+
   .md\:block {
     display: block;
   }

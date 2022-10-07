@@ -88,18 +88,18 @@ export default function chrome() {
               y="0"
             >
               <polygon
-                className="text-blueGray-700 fill-current"
+                className="text-blueGray-200 fill-current"
                 points="2560 0 2560 100 0 100"
               ></polygon>
             </svg>
           </div>
         </div>
-        <section className="pb-20 -mb-10 bg-blueGray-700 -mt-24 px-3">
+        <section className="pb-20 -mb-10 bg-blueGray-200 -mt-24 px-3">
           <div className="container mx-auto px-4 pt-20">
             <div className="container mx-auto mt-5">
               <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto md:text-center">
                 <div className="md:mt-8">
-                  <h1 className="text-white font-semibold text-3xl">
+                  <h1 className="text-blueGray-500 font-semibold text-3xl">
                     {t('what_do_we_fix_title')}
                   </h1>
 
@@ -107,8 +107,8 @@ export default function chrome() {
               </div>
               <div className="grid grid-cols-1 gap-6 md:grid-cols-3 place-items-center mt-5">
                 <div >
-                  <h3 className="text-1xl mb-2 leading-normal font-bold text-white">{t('fix_type_1')}</h3>
-                  <ul className='list-disc font-light text-white'>
+                  <h3 className="text-1xl mb-2 leading-normal font-bold text-blueGray-500">{t('fix_type_1')}</h3>
+                  <ul className='list-disc font-light text-blueGray-500'>
                     <li>{t('fix_1_1')}</li>
                     <li>{t('fix_1_2')}</li>
                     <li>{t('fix_1_3')}</li>
@@ -129,8 +129,8 @@ export default function chrome() {
                   </ul>
                 </div>
                 < div className="md:mt-5 md:mb-5" >
-                  <h3 className="text-1xl mb-2 font-bold leading-normal text-white">{t('fix_type_2')}</h3>
-                  <ul className='list-disc font-light text-white'>
+                  <h3 className="text-1xl mb-2 font-bold leading-normal text-blueGray-500">{t('fix_type_2')}</h3>
+                  <ul className='list-disc font-light text-blueGray-500'>
                     <li>{t('fix_2_1')}</li>
                     <li>{t('fix_2_2')}</li>
                     <li>{t('fix_2_3')}</li>
@@ -152,8 +152,8 @@ export default function chrome() {
                   </ul>
                 </div>
                 < div className="md:mt-5 md:mb-5" >
-                  <h3 className="text-1xl mb-2 font-bold leading-normal text-white">{t('fix_type_3')}</h3>
-                  <ul className='list-disc font-light text-white'>
+                  <h3 className="text-1xl mb-2 font-bold leading-normal text-blueGray-500">{t('fix_type_3')}</h3>
+                  <ul className='list-disc font-light text-blueGray-500'>
                     <li>{t('fix_3_1')}</li>
                     <li>{t('fix_3_2')}</li>
                     <li>{t('fix_3_3')}</li>
@@ -180,7 +180,7 @@ export default function chrome() {
           </div>
         </section>
 
-        <section id='third-section' ref={scrollRef} className="pb-5 relative block bg-blueGray-200">
+        <section id='third-section' ref={scrollRef} className="pb-5 relative block bg-blueGray-100">
           <div
             className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20"
             style={{ transform: "translateZ(0)" }}
@@ -195,7 +195,7 @@ export default function chrome() {
               y="0"
             >
               <polygon
-                className="text-blueGray-200 fill-current"
+                className="text-blueGray-100 fill-current"
                 points="2560 0 2560 100 0 100"
               ></polygon>
             </svg>

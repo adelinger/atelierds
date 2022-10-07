@@ -43,12 +43,12 @@ export default function chrome() {
     <>
       <Navbar transparent></Navbar>
       <main>
-      <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
+      <div ref={scrollUpRef}  className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
           <div
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{
               backgroundImage:
-                "url('/img/chrome/chrome_cover.webp')",
+                "url('/img/chrome/chrome_cover2.jpeg')",
             }}
           >
             <span
@@ -66,7 +66,7 @@ export default function chrome() {
                   <p className="mt-4 text-lg text-blueGray-200 px-1">
                   {t('our_work_text_1')}
                   </p>
-                  <button onClick={executeScroll} type="button" class="btn-primary-indigo-slim mt-7">
+                  <button onClick={executeScroll} type="button" class="py-2 px-6 btn-primary-indigo mt-7">
                       {t('see_gallery_btn')}
                      
                     </button>
@@ -74,7 +74,25 @@ export default function chrome() {
               </div>
             </div>
           </div>
-       
+          <div
+            className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-16"
+            style={{ transform: "translateZ(0)" }}
+          >
+            <svg
+              className="absolute bottom-0 overflow-hidden"
+              xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="none"
+              version="1.1"
+              viewBox="0 0 2560 100"
+              x="0"
+              y="0"
+            >
+              <polygon
+                className="text-blueGray-700 fill-current"
+                points="2560 0 2560 100 0 100"
+              ></polygon>
+            </svg>
+          </div>
         </div>
 
         <section className="pb-20 bg-blueGray-200 -mt-24">

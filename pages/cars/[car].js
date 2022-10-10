@@ -54,11 +54,31 @@ function viewCar({ carData, STATIC_FILES_URL }) {
     //setShowUpBtn(false);
   }
 
+  const handleScroll = () => {
+    const { offsetTop } = galleryRef.current
+    const position = window.pageYOffset;
+
+    if (position >= (offsetTop - (offsetTop * 0.1))) {
+        setShowUpBtn(true)
+        return;
+    } 
+
+    setShowUpBtn(false);
+  }
+
   const toggleModal = () => {
     if (!isMobile) {
       setShowModal(!showModal);
     }
   }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+        window.removeEventListener('scroll', handleScroll);
+    };
+}, []); 
 
 
   return (

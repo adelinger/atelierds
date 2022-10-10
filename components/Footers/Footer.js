@@ -69,8 +69,8 @@ export default function Footer() {
                 </div>
 
                 <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-4"></hr>
-                <div class=" sm:items-center sm:justify-between ">
-                    <span class="text-sm text-gray-500 flex justify-center dark:text-gray-400">© {new Date().getFullYear()}{"  "}  <a href="#" class="hover:underline"></a>&nbsp; {t('footer:copyright')}
+                <div class="sm:items-center sm:justify-between ">
+                    <span class="text-sm text-gray-500 flex justify-center dark:text-gray-400">© {new Date().getFullYear("")}<a href="#" class="hover:underline"></a>&nbsp;{t('footer:copyright')}
                     </span>
                 </div>
             </footer>

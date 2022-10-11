@@ -19,6 +19,16 @@ export default function carsForSale({ cars, serverUrl }) {
   const [carsList, setCarsList] = useState(cars);
   const [sortButtonTitle, setSortButtonTitle] = useState(t('sort_cars_by'))
   const [sortOrder, setSortOrder] = useState('newest');
+  const [showUpButton, setShowUpButton] = useState();
+  const scrollUpRef = useRef();
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+        window.removeEventListener('scroll', handleScroll);
+    };
+}, []); 
 
   useEffect(() => {
     document.body.addEventListener('click', handleClick);
@@ -26,6 +36,24 @@ export default function carsForSale({ cars, serverUrl }) {
       document.body.removeEventListener('click', handleClick);
     };
   }, []);
+
+  const goUp = () => {
+    scrollUpRef.current.scrollIntoView({ behavior: 'smooth' });
+    setShowUpButton(false);
+  }
+
+  const handleScroll = () => {
+    const half = window.innerHeight;
+    const position = window.pageYOffset;
+
+    if (position >= half) {
+        setShowUpButton(true)
+        return;
+    } 
+
+    setShowUpButton(false);
+  }
+
 
   const api = new ApiService();
 
@@ -66,7 +94,7 @@ export default function carsForSale({ cars, serverUrl }) {
     <>
       <Navbar />
       <main>
-        <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
+        <div ref={scrollUpRef} className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
           <div
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{
@@ -197,7 +225,13 @@ export default function carsForSale({ cars, serverUrl }) {
             }
           </div>
         </section>
-
+        {showUpButton &&
+              <button onClick={goUp} className='float-right mr-5 fixed bottom-10 right-10 mb-30' >
+                <div class="arrow"  >
+                  <span></span>
+                </div>
+              </button>
+            }
       </main>
       <Footer />
     </>

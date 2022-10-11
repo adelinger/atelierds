@@ -18,18 +18,25 @@ export default function interior() {
     const [leatherName, setLeatherName] = useState('Cuire naturelle');
     const [leatherDesc, setLeatherDesc] = useState(t('leatherPage:cuir_naturelle_text'));
     const [leatherYear, setLeatherYear] = useState(t('leatherPage:cuir_naturelle_year'));
+    const [leatherCar, setLeatherCar] = useState('Citroen DS');
     const [useTimer, setUseTimer] = useState(true);
     const [selectedIndex, setSelectedIndex] = useState(0);
     const [showlideButtons, setShowSlideButtons] = useState(false);
     const [selectedImage, setSelectedImage] = useState(0);
     const [galleryImageSelectedIndex, setGalleryImageSelectedIndex] = useState();
+    const prefix = '/img/interior/';
 
-    const leatherNames = ['Cuire naturelle', 'Cuir Tabac', 'Cuire Noire', 'Naturelle Foncée', 'Prestige Beige'];
+    const leatherNames = ['Cuire naturelle', 'Cuir Tabac', 'Cuire Noire', 'Naturelle Foncée', 'Prestige Beige', 'Beige Claire', 'Rouge', 'Cassis', 'Tabac Blonde'];
     const leatherYears = [t('cuir_naturelle_year'), t('cuir_tabac_year'),
-    t('cuir_noire_year'), t('naturelle_foncee_year'), t('prestige_beige_year')]
+    t('cuir_noire_year'), t('naturelle_foncee_year'), t('prestige_beige_year', '', '', '', '')]
     const leatherDescriptions = [t('cuir_naturelle_text'), t('cuir_tabac_text'),
-    t('cuir_noire_text'), t('naturelle_foncee_text'), t('prestige_beige_text')]
+    t('cuir_noire_text'), t('naturelle_foncee_text'), t('prestige_beige_text'), '', '', '', '']
+    const leatherCars = ['Citroen DS', 'Citroen SM, Citroen DS', 'Citroen SM, Citroen DS, Citroen CX Serie I, Citroen CX Serie II',
+        'Citroen SM, Citroen DS, Citroen CX Serie I', 'Citroen CX Serie I', 'Citroen CX Serie I', 'Citroen CX Serie I',
+        'Citroen CX Serie II', 'Citroen CX Serie I']
 
+    const leather_images_srcs = ['cuire_naturelle.webp', 'cuir_tabac.webp', 'cuire_noire.webp', 'naturelle_foncee.webp', 'prestige_beige.webp',
+     'sample.jpg', 'sample.jpg', 'sample.jpg', 'sample.jpg']
     const cuire_naturelle_images =
         ['/img/interior/cuire_naturelle/cuire_naturelle8.webp', '/img/interior/cuire_naturelle/cuire_naturelle10.webp', '/img/interior/cuire_naturelle/cuire_naturelle11.webp', '/img/interior/cuire_naturelle/cuire_naturelle14.webp',
             '/img/interior/cuire_naturelle/cuire_naturelle13.webp', '/img/interior/cuire_naturelle/cuire_naturelle5.webp', '/img/interior/cuire_naturelle/cuire_naturelle6.webp', '/img/interior/cuire_naturelle/cuire_naturelle15.webp'];
@@ -50,7 +57,20 @@ export default function interior() {
         ['/img/interior/prestige_beige/prestige_beige1.webp', '/img/interior/prestige_beige/prestige_beige2.webp', '/img/interior/prestige_beige/prestige_beige3.webp', '/img/interior/prestige_beige/prestige_beige4.webp',
             '/img/interior/prestige_beige/prestige_beige5.webp', '/img/interior/prestige_beige/prestige_beige6.webp', '/img/interior/prestige_beige/prestige_beige7.webp', '/img/interior/prestige_beige/prestige_beige8.webp'];
 
-    const leather_images = [cuire_naturelle_images, cuire_tabac_images, cuire_noire_images, naturelle_fonce_images, prestige_beige_images];
+    const beige_claire_images = ['/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg', 
+    '/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg'];
+
+    const rouge_images = ['/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg', 
+    '/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg'];
+
+    const cassis_images =  ['/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg', 
+    '/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg'];
+
+    const cuire_noire =  ['/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg', 
+    '/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg'];
+
+    const leather_images = [cuire_naturelle_images, cuire_tabac_images, cuire_noire_images,
+        naturelle_fonce_images, prestige_beige_images, beige_claire_images, rouge_images, cassis_images, cuire_noire];
 
     const toggleModal = () => {
         if (!isMobile) {
@@ -68,6 +88,7 @@ export default function interior() {
         setLeatherName(leatherNames[e])
         setLeatherDesc(leatherDescriptions[e])
         setLeatherYear(leatherYears[e])
+        setLeatherCar(leatherCars[e]);
         setSelectedIndex(e);
         setUseTimer(true);
     }
@@ -101,15 +122,15 @@ export default function interior() {
 
     useEffect(() => {
         if (showModal) {
-          document.body.style.overflow = 'hidden';
-          document.body.style.paddingRight = '15px';
+            document.body.style.overflow = 'hidden';
+            document.body.style.paddingRight = '15px';
         }
         return () => {
-          document.body.style.overflow = 'unset';
-          document.body.style.paddingRight = '0px';
+            document.body.style.overflow = 'unset';
+            document.body.style.paddingRight = '0px';
         };
-      }, [showModal]);
-   
+    }, [showModal]);
+
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll, { passive: true });
@@ -140,33 +161,25 @@ export default function interior() {
                     <div className="container relative mx-auto">
                         <div className="items-center flex flex-wrap">
                             <div className="w-full lg:w-6/12 mt-5 md:mt-20 md:px-4 ml-auto mr-auto text-center">
-                                <div className='h-48 md:py-0 pt-10'>
+                                <div className='h-60 md:h-48 md:py-0 pt-10'>
                                     <h1 className="text-white font-semibold text-5xl">
                                         {leatherName}
                                     </h1>
-                                    <small className='text-white'>{leatherYear}</small>
+                                    <small className='text-white'>{leatherYear} </small>
+                                    <br></br>
+                                    <small className='text-white'>{leatherCar} </small>
                                     <p className="mt-4 text-lg text-blueGray-200 px-1">
                                         {leatherDesc}
                                     </p>
                                 </div>
-                                <div ref={carouselRef} className='pt-20 px-3'>
+                                <div ref={carouselRef} className='pt-14 px-3'>
                                     <Carousel interval={5000} showStatus={false} onChange={onChangeThumbnail} autoPlay={useTimer} infiniteLoop={true}
-                                        onClickItem={executeScroll} className='md:cursor-pointer' selectedItem={selectedImage}>
-                                        <div className='h-48'>
-                                            <img src="/img/interior/cuire_naturelle.webp" />
-                                        </div>
-                                        <div className='h-48'>
-                                            <img src="/img/interior/cuir_tabac.webp" />
-                                        </div>
-                                        <div className='h-48'>
-                                            <img src="/img/interior/cuire_noire.webp" />
-                                        </div>
-                                        <div className='h-48'>
-                                            <img src="/img/interior/naturelle_foncee.webp" />
-                                        </div>
-                                        <div className='h-48'>
-                                            <img src="/img/interior/prestige_beige.webp" />
-                                        </div>
+                                        onClickItem={executeScroll} className='md:cursor-pointer ' selectedItem={selectedImage}>
+                                        {leather_images_srcs.map((image, index) => {
+                                            return <div className='h-48'>
+                                                <img src={prefix + image} />
+                                            </div>
+                                        })}
                                     </Carousel>
                                 </div>
                             </div>

@@ -24,7 +24,8 @@ function ImagePreview({ showModal, setShowModal, toggleModal, imagesList, select
 
         const handleClick = (event) => {
             if (ref) {
-                if (event.target.id === 'modal' && event.target.id !== 'modal-img') {
+                if (event.target.id === 'modal' && event.target.id !== 'modal-img' &&
+                    event.target.id !== 'prev-btn-div' && event.target.id !== 'next-btn-div') {
                     setShowModal(false);
                 }
             }
@@ -54,19 +55,22 @@ function ImagePreview({ showModal, setShowModal, toggleModal, imagesList, select
                     class="max-w-[1000px] max-h-[800px] object-cover px-20 py-20" />
 
                     <div>
-                        <button onClick={onPreviousImageClick} 
-                        className={`float-left left-0 fixed ml-20 ${selectedIndex === 0 ? 'hidden' : ''} `}  style={{ top: '50%', bottom: '50%' }}>
-                            <div class="arrow_left_gallery rotate-45 "  >
-                                <span style={{ animation: 'animate-none' }} ></span>
-                            </div>
-                        </button>
+                       <div id='prev-btn-div' className={`float-left left-0 h-72 w-72 fixed ${selectedIndex === 0 ? 'hidden' : ''} `}  style={{ top: '35%', bottom: '50%' }}>
+                            <button onClick={onPreviousImageClick} className={`float-left left-0 fixed ml-20 ${selectedIndex === 0 ? 'hidden' : ''} `}  style={{ top: '50%', bottom: '50%' }}>
+                                <div class="arrow_left_gallery rotate-45 "  >
+                                    <span style={{ animation: 'animate-none' }} ></span>
+                                </div>
+                            </button>
+                       </div>
 
-                        <button onClick={onNextImageClick} className={`float-right mr-20 fixed right-0 ${selectedIndex < imagesList.length -1 ? '' : 'hidden' }`}
-                         style={{ top: '50%', bottom: '50%' }}>
-                            <div class="arrow_right_gallery rotate-[-140deg] "  >
-                                <span style={{ animation: 'animate-none' }} ></span>
-                            </div>
-                        </button>
+                       <div id='next-btn-div' className={`float-right h-72 w-72 fixed right-0 ${selectedIndex < imagesList.length -1 ? '' : 'hidden' }`}  style={{ top: '35%', bottom: '50%' }}>
+                            <button onClick={onNextImageClick} className={`float-right mr-20 fixed right-0 ${selectedIndex < imagesList.length -1 ? '' : 'hidden' }`}
+                             style={{ top: '50%', bottom: '50%' }}>
+                                <div class="arrow_right_gallery rotate-[-140deg] "  >
+                                    <span style={{ animation: 'animate-none' }} ></span>
+                                </div>
+                            </button>
+                       </div>
                     </div>
                 </div>
             }

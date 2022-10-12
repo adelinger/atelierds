@@ -8,7 +8,6 @@ import ImagePreview from 'components/Modals/ImagePreview';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Image from "next/image";
-import { CircularProgress } from '@mui/material';
 
 
 export default function interior() {
@@ -25,7 +24,6 @@ export default function interior() {
     const [showlideButtons, setShowSlideButtons] = useState(false);
     const [selectedImage, setSelectedImage] = useState(0);
     const [galleryImageSelectedIndex, setGalleryImageSelectedIndex] = useState();
-    const [showLoader, setShowLoader] = useState(); 
     const prefix = '/img/interior/';
 
     const leatherNames = ['Cuire naturelle', 'Cuir Tabac', 'Cuire Noire', 'Naturelle Foncée', 'Prestige Beige', 'Beige Claire', 'Rouge', 'Cassis', 'Tabac Blonde'];
@@ -93,11 +91,6 @@ export default function interior() {
         setLeatherCar(leatherCars[e]);
         setSelectedIndex(e);
         setUseTimer(true);
-        setShowLoader(true);
-
-        setTimeout(() => {
-            setShowLoader(false);
-          }, 1000);
     }
 
 
@@ -253,9 +246,9 @@ export default function interior() {
                     <div className="container mx-auto px-4 lg:pt-23 lg:pb-32">
                         <div className="container mx-auto ">
                             <div className='text-center'>
-                                {showLoader &&
+                                {/* {showLoader &&
                                 <CircularProgress />
-                                } 
+                                }  */}
                             </div>
                             <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto md:text-center mb-5">
                                 <div>
@@ -272,6 +265,8 @@ export default function interior() {
                                             <Image src={image}
                                                 width={500}
                                                 height={400}
+                                                placeholder="blur"
+                                                blurDataURL='/img/blur.png'
                                                 alt="Citroen leather image"
                                                 onClick={() => { toggleModal(), setGalleryImageSelectedIndex(index) }}>
                                             </Image>

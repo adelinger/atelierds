@@ -22,6 +22,7 @@ function viewCar({ carData, STATIC_FILES_URL }) {
   const [showUpBtn, setShowUpBtn] = useState();
   const [selectedIndex, setSelectedIndex] = useState();
   const [fullPathImages, setFullPathImages] = useState(getFullPathImages);
+  const [halfIsScrolled, setHalfIsScrolled] = useState(); 
 
   function getFullPathImages() {
     let images = [];
@@ -60,6 +61,7 @@ function viewCar({ carData, STATIC_FILES_URL }) {
 
     if (position >= (offsetTop - (offsetTop * 0.1))) {
         setShowUpBtn(true)
+        setHalfIsScrolled(true);
         return;
     } 
 
@@ -79,6 +81,16 @@ function viewCar({ carData, STATIC_FILES_URL }) {
         window.removeEventListener('scroll', handleScroll);
     };
 }, []); 
+
+useEffect(() => {
+  if(showModal){
+    setShowUpBtn(false);
+  }else{
+    if(halfIsScrolled){
+      setShowUpBtn(true);
+    }
+  }
+}, [showModal]); 
 
 
   return (

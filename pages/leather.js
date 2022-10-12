@@ -8,6 +8,7 @@ import ImagePreview from 'components/Modals/ImagePreview';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Image from "next/image";
+import { CircularProgress, LinearProgress } from '@mui/material';
 
 
 export default function interior() {
@@ -24,6 +25,7 @@ export default function interior() {
     const [showlideButtons, setShowSlideButtons] = useState(false);
     const [selectedImage, setSelectedImage] = useState(0);
     const [galleryImageSelectedIndex, setGalleryImageSelectedIndex] = useState();
+    const [showLoader, setShowLoader] = useState(false);
     const prefix = '/img/interior/';
 
     const leatherNames = ['Cuire naturelle', 'Cuir Tabac', 'Cuire Noire', 'Naturelle Foncée', 'Prestige Beige', 'Beige Claire', 'Rouge', 'Cassis', 'Tabac Blonde'];
@@ -91,6 +93,11 @@ export default function interior() {
         setLeatherCar(leatherCars[e]);
         setSelectedIndex(e);
         setUseTimer(true);
+        setShowLoader(true);
+
+        setTimeout(() => {
+            setShowLoader(false);
+          }, 500);
     }
 
 
@@ -246,9 +253,9 @@ export default function interior() {
                     <div className="container mx-auto px-4 lg:pt-23 lg:pb-32">
                         <div className="container mx-auto ">
                             <div className='text-center'>
-                                {/* {showLoader &&
-                                <CircularProgress />
-                                }  */}
+                                {showLoader &&
+                                <LinearProgress color="inherit" />
+                                } 
                             </div>
                             <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto md:text-center mb-5">
                                 <div>
@@ -261,7 +268,7 @@ export default function interior() {
                             <div class="container mx-auto space-y-2 lg:space-y-0 lg:gap-2 lg:grid lg:grid-cols-4">
                                 {
                                     leather_images[selectedIndex].map((image, index) => {
-                                        return <div class="w-full rounded md:hover:opacity-50 md:cursor-pointer">
+                                        return <div class={`${showLoader && 'blur'} w-full rounded md:hover:opacity-50 md:cursor-pointer`}>
                                             <Image src={image}
                                                 width={500}
                                                 height={400}

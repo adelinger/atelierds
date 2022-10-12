@@ -8,6 +8,7 @@ import ImagePreview from 'components/Modals/ImagePreview';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Image from "next/image";
+import { CircularProgress } from '@mui/material';
 
 
 export default function interior() {
@@ -24,6 +25,7 @@ export default function interior() {
     const [showlideButtons, setShowSlideButtons] = useState(false);
     const [selectedImage, setSelectedImage] = useState(0);
     const [galleryImageSelectedIndex, setGalleryImageSelectedIndex] = useState();
+    const [showLoader, setShowLoader] = useState(); 
     const prefix = '/img/interior/';
 
     const leatherNames = ['Cuire naturelle', 'Cuir Tabac', 'Cuire Noire', 'Naturelle Foncée', 'Prestige Beige', 'Beige Claire', 'Rouge', 'Cassis', 'Tabac Blonde'];
@@ -36,7 +38,7 @@ export default function interior() {
         'Citroen CX Serie II', 'Citroen CX Serie I']
 
     const leather_images_srcs = ['cuire_naturelle.webp', 'cuir_tabac.webp', 'cuire_noire.webp', 'naturelle_foncee.webp', 'prestige_beige.webp',
-     'sample.jpg', 'sample.jpg', 'sample.jpg', 'sample.jpg']
+        'sample.jpg', 'sample.jpg', 'sample.jpg', 'sample.jpg']
     const cuire_naturelle_images =
         ['/img/interior/cuire_naturelle/cuire_naturelle8.webp', '/img/interior/cuire_naturelle/cuire_naturelle10.webp', '/img/interior/cuire_naturelle/cuire_naturelle11.webp', '/img/interior/cuire_naturelle/cuire_naturelle14.webp',
             '/img/interior/cuire_naturelle/cuire_naturelle13.webp', '/img/interior/cuire_naturelle/cuire_naturelle5.webp', '/img/interior/cuire_naturelle/cuire_naturelle6.webp', '/img/interior/cuire_naturelle/cuire_naturelle15.webp'];
@@ -57,17 +59,17 @@ export default function interior() {
         ['/img/interior/prestige_beige/prestige_beige1.webp', '/img/interior/prestige_beige/prestige_beige2.webp', '/img/interior/prestige_beige/prestige_beige3.webp', '/img/interior/prestige_beige/prestige_beige4.webp',
             '/img/interior/prestige_beige/prestige_beige5.webp', '/img/interior/prestige_beige/prestige_beige6.webp', '/img/interior/prestige_beige/prestige_beige7.webp', '/img/interior/prestige_beige/prestige_beige8.webp'];
 
-    const beige_claire_images = ['/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg', 
-    '/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg'];
+    const beige_claire_images = ['/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg',
+        '/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg'];
 
-    const rouge_images = ['/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg', 
-    '/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg'];
+    const rouge_images = ['/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg',
+        '/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg'];
 
-    const cassis_images =  ['/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg', 
-    '/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg'];
+    const cassis_images = ['/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg',
+        '/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg'];
 
-    const cuire_noire =  ['/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg', 
-    '/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg'];
+    const cuire_noire = ['/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg',
+        '/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg', '/img/interior/sample.jpg'];
 
     const leather_images = [cuire_naturelle_images, cuire_tabac_images, cuire_noire_images,
         naturelle_fonce_images, prestige_beige_images, beige_claire_images, rouge_images, cassis_images, cuire_noire];
@@ -91,7 +93,13 @@ export default function interior() {
         setLeatherCar(leatherCars[e]);
         setSelectedIndex(e);
         setUseTimer(true);
+        setShowLoader(true);
+
+        setTimeout(() => {
+            setShowLoader(false);
+          }, 1000);
     }
+
 
     const executeScroll = () => {
         scrollRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -173,8 +181,15 @@ export default function interior() {
                                     </p>
                                 </div>
                                 <div ref={carouselRef} className='pt-14 px-3'>
-                                    <Carousel interval={5000} showStatus={false} onChange={onChangeThumbnail} autoPlay={useTimer} infiniteLoop={true}
-                                        onClickItem={executeScroll} className='md:cursor-pointer ' selectedItem={selectedImage}>
+                                    <Carousel
+                                        interval={5000}
+                                        showStatus={false}
+                                        onChange={onChangeThumbnail}
+                                        autoPlay={useTimer}
+                                        infiniteLoop={true}
+                                        onClickItem={executeScroll} 
+                                        selectedItem={selectedImage}
+                                        className='md:cursor-pointer '>
                                         {leather_images_srcs.map((image, index) => {
                                             return <div className='h-48'>
                                                 <img src={prefix + image} />
@@ -237,7 +252,11 @@ export default function interior() {
 
                     <div className="container mx-auto px-4 lg:pt-23 lg:pb-32">
                         <div className="container mx-auto ">
-
+                            <div className='text-center'>
+                                {showLoader &&
+                                <CircularProgress />
+                                } 
+                            </div>
                             <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto md:text-center mb-5">
                                 <div>
                                     <h1 className="font-semibold text-3xl invisible">
@@ -274,6 +293,7 @@ export default function interior() {
                         }
                     </div>
                 </section>
+
 
                 {
                     !isMobile && showlideButtons && !showModal &&

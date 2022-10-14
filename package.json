@@ -1,29 +1,46 @@
 {
-  "name": "notus-nextjs",
-  "homepage": "https://demos.creative-tim.com/notus-nextjs",
+  "name": "atelier-ds",
+  "homepage": "atelierds.net",
   "version": "1.1.0",
-  "description": "Notus NextJS - A free Tailwind CSS, NextJS and React Ui Kit and Admin by Creative Tim.",
-  "repository": "https://github.com/creativetimofficial/notus-nextjs",
+  "description": "AtelierDS - Citroen ds website",
+  "repository": "https://github.com/adelinger/atelierds",
   "license": "MIT",
   "dependencies": {
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
     "@fortawesome/fontawesome-free": "5.15.3",
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@fortawesome/react-fontawesome": "^0.1.18",
+    "@material-tailwind/react": "^1.2.3",
+    "@mui/material": "^5.8.2",
     "@popperjs/core": "2.9.1",
-    "@tailwindcss/forms": "0.2.1",
+    "axios": "^0.27.2",
     "chart.js": "2.9.4",
+    "country-flag-icons": "^1.4.26",
+    "firebase": "^9.8.1",
+    "flowbite": "^1.4.7",
     "gulp": "4.0.2",
     "gulp-append-prepend": "1.0.8",
     "next": "10.0.9",
+    "next-i18next": "^11.0.0",
+    "postcss-cli": "^10.0.0",
     "react": "17.0.1",
+    "react-cookie": "^4.1.1",
+    "react-device-detect": "^2.2.2",
     "react-dom": "17.0.1",
+    "react-onclickoutside": "^6.12.2",
+    "react-responsive-carousel": "^3.2.23",
     "react-scripts": "4.0.3",
-    "tailwindcss": "2.0.4"
+    "react-slideshow-image": "^3.7.5",
+    "swr": "^1.3.0"
   },
   "scripts": {
     "start": "next start",
     "build": "next build",
     "dev": "next dev",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm run build:tailwind && npm run dev",
-    "build:tailwind": "tailwind build styles/index.css -o styles/tailwind.css"
+    "build:tailwind": " tailwind build styles/index.css -o styles/tailwind.css --watch"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -44,7 +61,12 @@
     "typescript": "4.2.3"
   },
   "devDependencies": {
-    "autoprefixer": "10.2.5",
-    "postcss": "8.2.8"
+    "@tailwindcss/aspect-ratio": "^0.4.0",
+    "@tailwindcss/forms": "^0.5.2",
+    "@tailwindcss/line-clamp": "^0.4.0",
+    "@tailwindcss/typography": "^0.5.4",
+    "autoprefixer": "^10.4.7",
+    "postcss": "^8.4.16",
+    "tailwindcss": "^3.1.6"
   }
 }

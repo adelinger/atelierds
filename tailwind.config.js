@@ -2,13 +2,14 @@ const plugin = require("tailwindcss/plugin");
 const colors = require("tailwindcss/colors");
 
 module.exports = {
-  purge: {
-    enabled: true,
-    content: ["./**/*.html", "./*.html", "./**/*.js", "./*.js"],
-    options: {
-      safelist: [],
-    },
-  },
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./layouts/**/*.{js,ts,jsx,tsx}",
+    "./pages/admin/**/*.{js,ts,jsx,tsx}",
+    "./pages/admin/cars/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+  ],
+  
   theme: {
     colors: {
       ...colors,
@@ -86,8 +87,13 @@ module.exports = {
     "visited",
     "disabled",
   ],
+  corePlugins: {
+    aspectRatio: false,
+  },
   plugins: [
-    require("@tailwindcss/forms"),
+    require('flowbite/plugin'),
+    require("@tailwindcss/forms"),  
+    require('@tailwindcss/aspect-ratio'), 
     plugin(function ({ addComponents, theme }) {
       const screens = theme("screens", {});
       addComponents([

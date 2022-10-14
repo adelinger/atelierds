@@ -250,7 +250,7 @@ export default function interior() {
 
 
 
-                    <div className="container mx-auto px-4 lg:pt-23 lg:pb-32">
+                    <div className="container mx-auto px-4 lg:pt-23 lg:pb-14">
                         <div className="container mx-auto ">
                             <div className='text-center'>
                                 {showLoader &&
@@ -293,6 +293,24 @@ export default function interior() {
                                 }
                             </div>
 
+                            {
+                    !isMobile && showlideButtons && !showModal &&
+                    <div className=''>
+                        <button onClick={onPreviousImage} className='float-left left-0 absolute ml-10' style={{ top: '50%', transform: 'translateY(-50%)'}}>
+                            <div class="arrow_left -rotate-90"  >
+                                <span style={{ animation: 'pulse 3s infinite !important' }} ></span>
+                            </div>
+                        </button>
+
+
+                        <button onClick={onNextImage} className='float-right mr-10 absolute right-0' style={{ top: '50%', transform: 'translateY(-50%)'}}>
+                            <div class="arrow_right rotate-90"  >
+                                <span style={{ animation: 'pulse 3s infinite !important' }} ></span>
+                            </div>
+                        </button>
+                    </div>
+                }
+
                         </div>
                         {!isMobile &&
                             <ImagePreview
@@ -308,23 +326,7 @@ export default function interior() {
                 </section>
 
 
-                {
-                    !isMobile && showlideButtons && !showModal &&
-                    <div>
-                        <button onClick={onPreviousImage} className='float-left fixed ml-10' style={{ top: '50%', bottom: '50%' }}>
-                            <div class="arrow_left -rotate-90"  >
-                                <span style={{ animation: 'pulse 3s infinite !important' }} ></span>
-                            </div>
-                        </button>
-
-
-                        <button onClick={onNextImage} className='float-right mr-10 fixed right-0' style={{ top: '50%', bottom: '50%' }}>
-                            <div class="arrow_right rotate-90"  >
-                                <span style={{ animation: 'pulse 3s infinite !important' }} ></span>
-                            </div>
-                        </button>
-                    </div>
-                }
+               
 
 
 

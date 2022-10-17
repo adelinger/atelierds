@@ -3,18 +3,18 @@ import React, { useEffect, useState } from "react";
 import { CircularProgress } from "@mui/material";
 import Alert from "components/Alerts/Alert";
 import { uploadeImages, addNewCar } from "lib/apiCalls";
-import  { useRouter } from 'next/router'
+import { useRouter } from 'next/router'
 
 export default function CardSettings({ auth, carData }) {
     const { user } = auth;
-    const {logout} = auth;
+    const { logout } = auth;
     const router = useRouter()
 
     const [images, setImages] = useState(carData?.listOfImages ?? []);
     const [uploadImages, setUploadImages] = useState([]);
     const [selectedImage, setSelectedImage] = useState(carData?.carProfilePhotoPath);
     const [imageKey, setImageKey] = useState(Math.random());
-    
+
     const [alertMessage, setAlertMessage] = useState('Error. Something went wrong.');
 
     const [carModel, setCarModel] = useState(carData?.carModel);
@@ -32,40 +32,40 @@ export default function CardSettings({ auth, carData }) {
     const [carStatus, setCarStatus] = useState(carData?.atelierCarStatus?.atelierCarStatusID ?? 1)
 
     const [isUpdate, setIsUpdate] = useState(false);
-    let uploadErrorMessage ='Images are not uploaded';
+    let uploadErrorMessage = 'Images are not uploaded';
 
     useEffect(() => {
         checkAuth();
 
-        if(carData){
+        if (carData) {
             setImages(carData?.listOfImages)
             setIsUpdate(true)
-        }else{
+        } else {
             setIsUpdate(false);
         }
-    
-      }, [])
 
-      function onlyNumbers(num){
+    }, [])
+
+    function onlyNumbers(num) {
         let value = num;
-        if ( /[^0-9]+/.test(num.value) ){
-            value = num.replace(/[^0-9]*/g,"")
+        if (/[^0-9]+/.test(num.value)) {
+            value = num.replace(/[^0-9]*/g, "")
         }
         return value;
     }
-     
-       const checkAuth = () => {
-         api
-           .checkAuth()
-           .then(data => {     
-           })
-           .catch((error) => {
-             if(error.response.status === 401){
-               logout();
-             }
-           });
-        }
-    
+
+    const checkAuth = () => {
+        api
+            .checkAuth()
+            .then(data => {
+            })
+            .catch((error) => {
+                if (error.response.status === 401) {
+                    logout();
+                }
+            });
+    }
+
     const carObject = {
         "atelierCarStatus": {
             "atelierCarStatusID": carStatus
@@ -82,7 +82,7 @@ export default function CardSettings({ auth, carData }) {
         "carProfilePhotoPath": selectedImage ?? '',
         "carPhotosPath": carData?.carPhotosPath ?? '',
         "carKilometers": parseInt(carKilometers),
-        "atelierCarID" : carData?.atelierCarID ?? 0
+        "atelierCarID": carData?.atelierCarID ?? 0
     }
 
     const api = new ApiService();
@@ -94,52 +94,52 @@ export default function CardSettings({ auth, carData }) {
         setShowAlert(false);
 
         //when adding new car, uploading at least one picture is mandatory
-        if(!isUpdate && uploadImages.length === 0){
+        if (!isUpdate && uploadImages.length === 0) {
             handleApiResponse(false, 'You have to upload at least one picture.');
             return;
         }
 
         //in cases of update, user deletes all the pictures, uploadImages will be 0. Check total 
         //amount of images for this car, if zero, throw error
-        if(images.length === 0){
+        if (images.length === 0) {
             handleApiResponse(false, 'You have to upload at least one picture.');
             return;
         }
 
-        if(uploadImages.length > 0){
+        if (uploadImages.length > 0) {
             const upload = await uploadToServer();
 
-            if(!upload){
-                 handleApiResponse(false, uploadErrorMessage);
+            if (!upload) {
+                handleApiResponse(false, uploadErrorMessage);
                 return;
             }
-        }   
-
-       
-
-        if(isUpdate){
-            api
-            .updateCar(carObject)
-            .then(data => {
-                handleApiResponse(true, 'Changes saved successfuly.');
-            })
-            .catch((error) => {
-                handleApiResponse(false);
-            });
-        }else{
-            api
-            .addNewCar(carObject)
-            .then(data => {
-                handleApiResponse(true, 'You added car successfuly.');
-                router.push('/admin/dashboard')
-            })
-            .catch((error) => {
-                handleApiResponse(false);
-            });
         }
-       
 
-       
+
+
+        if (isUpdate) {
+            api
+                .updateCar(carObject)
+                .then(data => {
+                    handleApiResponse(true, 'Changes saved successfuly.');
+                })
+                .catch((error) => {
+                    handleApiResponse(false);
+                });
+        } else {
+            api
+                .addNewCar(carObject)
+                .then(data => {
+                    handleApiResponse(true, 'You added car successfuly.');
+                    router.push('/admin/dashboard')
+                })
+                .catch((error) => {
+                    handleApiResponse(false);
+                });
+        }
+
+
+
     }
 
     function handleApiResponse(Success, message = 'Something went wrong.') {
@@ -154,16 +154,16 @@ export default function CardSettings({ auth, carData }) {
             for (let file of event.target.files) {
 
                 let url = (URL.createObjectURL(file));
-                let index = images.findIndex(x => x==url)
+                let index = images.findIndex(x => x == url)
                 index === -1 ? images.push(url) : null
 
-                index = -1; 
-                if(uploadImages.length > 0){
-                    index = uploadImages.findIndex(x => x.name==file.name)
+                index = -1;
+                if (uploadImages.length > 0) {
+                    index = uploadImages.findIndex(x => x.name == file.name)
                 }
                 (index === -1 && URL.createObjectURL(file).includes('blob')) ? uploadImages.push(file) : null
             }
-            if(images.length ===1 && uploadImages.length === 1){
+            if (images.length === 1 && uploadImages.length === 1) {
                 setSelectedImage(uploadImages[0].name);
             }
 
@@ -171,39 +171,39 @@ export default function CardSettings({ auth, carData }) {
         }
     };
 
-    const uploadToServer = async () => {   
-        if(uploadImages.length === 0){
+    const uploadToServer = async () => {
+        if (uploadImages.length === 0) {
             handleApiResponse(false, 'You have to upload at least one image.')
         }
         const body = new FormData();
         let timestamp = new Date().getTime();
-        if(!isUpdate){
-            carObject.carPhotosPath = carMake + "_" + carModel + "_"+ timestamp;
+        if (!isUpdate) {
+            carObject.carPhotosPath = carMake + "_" + carModel + "_" + timestamp;
         }
-        
+
         var filesLength = uploadImages.length;
         for (var i = 0; i < filesLength; i++) {
             body.append("uploadedImages", uploadImages[i]);
         }
 
         body.append("folderName", carObject.carPhotosPath);
-       
+
         carObject.carProfilePhotoPath = selectedImage;
 
-       try {
-        const upload = await uploadeImages(body)
+        try {
+            const upload = await uploadeImages(body)
 
-        if(!upload.isUploadSuccessful){
-            uploadErrorMessage = upload.uploadMessage;
+            if (!upload.isUploadSuccessful) {
+                uploadErrorMessage = upload.uploadMessage;
+                return false;
+            }
+
+            return true;
+
+        } catch (error) {
+
             return false;
         }
-        
-        return true;    
-
-       } catch (error) {
-        
-        return false;
-       }
 
     };
 
@@ -214,29 +214,29 @@ export default function CardSettings({ auth, carData }) {
     const handleImageDeleteClick = (event) => {
         event.preventDefault();
 
-        if(images.length === 1){
+        if (images.length === 1) {
             handleApiResponse(false, "You can't delete last photo.");
-            return; 
+            return;
         }
 
-        if(isUpdate && !images[event.target.value].includes('blob') ){
+        if (isUpdate && !images[event.target.value].includes('blob')) {
             setShowLoader(true);
-         api
-      .deleteFile(carData.carPhotosPath + '/' + images[event.target.value])
-      .then(response => handleApiResponse(true, 'Successfully deleted image.'))
-      .catch((error) => {
-        handleApiResponse(false);
-      });
+            api
+                .deleteFile(carData.carPhotosPath + '/' + images[event.target.value])
+                .then(response => handleApiResponse(true, 'Successfully deleted image.'))
+                .catch((error) => {
+                    handleApiResponse(false);
+                });
         }
 
         setImages(images.filter(item => item !== images[event.target.value]));
         setUploadImages(uploadImages.filter(item => item !== uploadImages[event.target.value]))
-        if(selectedImage===uploadImages[event.target.value]){
+        if (selectedImage === uploadImages[event.target.value]) {
             setSelectedImage(uploadImages[0].name);
         }
-       
+
     }
-    
+
     const handleSelectedImageClick = (event) => {
         let imageName = event.target.value;
 
@@ -248,7 +248,7 @@ export default function CardSettings({ auth, carData }) {
             <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
                 <div className="rounded-t bg-white mb-0 px-6 py-6">
                     <div className="text-center flex justify-between">
-                        <h6 className="text-blueGray-700 text-xl font-bold">{isUpdate? 'Update data' : 'Add new car'}</h6>
+                        <h6 className="text-blueGray-700 text-xl font-bold">{isUpdate ? 'Update data' : 'Add new car'}</h6>
                     </div>
 
                 </div>
@@ -268,7 +268,7 @@ export default function CardSettings({ auth, carData }) {
                                         Car make
                                     </label>
                                     <input
-                                         value={carMake}
+                                        value={carMake}
                                         type="text"
                                         required
                                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
@@ -304,7 +304,7 @@ export default function CardSettings({ auth, carData }) {
                                         Car year
                                     </label>
                                     <input
-                                    value={carYear}
+                                        value={carYear}
                                         required
                                         type="number"
                                         min="1800"
@@ -324,7 +324,7 @@ export default function CardSettings({ auth, carData }) {
                                         Car color
                                     </label>
                                     <input
-                                    value={carColor}
+                                        value={carColor}
                                         type="text"
                                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                         placeholder="Type car color here"
@@ -341,7 +341,7 @@ export default function CardSettings({ auth, carData }) {
                                         Engine power (ps)
                                     </label>
                                     <input
-                                    value={carEnginePower}
+                                        value={carEnginePower}
                                         type="text"
                                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                         placeholder="Type car engine power here"
@@ -382,19 +382,24 @@ export default function CardSettings({ auth, carData }) {
 
                                     </label>
                                     <input
-                                    value={carPrice}
+                                        value={carPrice}
                                         required
                                         type="number"
                                         min="1"
                                         step="1"
-                                        
+
                                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                         placeholder="Type the price here"
-                                       
+
                                         onChange={e => setCarPrice(onlyNumbers(e.target.value))}
                                     />
                                 </div>
+                                <div class="flex items-center pl-4 rounded border border-gray-200 dark:border-gray-700">
+                                    <input id="bordered-checkbox-1" type="checkbox" value="" name="bordered-checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                    <label for="bordered-checkbox-1" class="py-4 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">Price on inquiry</label>
+                                </div>
                             </div>
+
                             <div className="w-full lg:w-6/12 px-4">
                                 <div className="relative w-full mb-3">
                                     <label
@@ -404,7 +409,7 @@ export default function CardSettings({ auth, carData }) {
 
                                     </label>
                                     <input
-                                    value={carKilometers}
+                                        value={carKilometers}
                                         required
                                         type="number"
                                         min="1"
@@ -419,10 +424,10 @@ export default function CardSettings({ auth, carData }) {
                         </div>
 
                         <div className="ml-4">
-                        
+                            <br></br>
                             <div>
                                 <div>
-                                <label
+                                    <label
                                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                                         htmlFor="text"
                                     >Car status</label>
@@ -447,24 +452,24 @@ export default function CardSettings({ auth, carData }) {
                         <div className="ml-4 mt-5">
                             <div className="container">
                                 <div class="grid grid-cols-1 md:grid-cols-6 gap-6">
-                                    {images.map((item, key) =>  
+                                    {images.map((item, key) =>
                                         <div className="mt-5 mb-5" style={{ width: "200px", height: "200px" }} >
                                             <a href="#" onClick={handleImageOnClick}>
-                                                <img src={(isUpdate && !item.includes('blob')) ? process.env.NEXT_PUBLIC_STATIC_FILES_URL +carData.carPhotosPath + '/' + item : item} 
-                                                class="h-48 w-96 mr-5 mb-1" style={{ width: "100%", height: "85%" }}></img>
+                                                <img src={(isUpdate && !item.includes('blob')) ? process.env.NEXT_PUBLIC_STATIC_FILES_URL + carData.carPhotosPath + '/' + item : item}
+                                                    class="h-48 w-96 mr-5 mb-1" style={{ width: "100%", height: "85%" }}></img>
                                             </a>
                                             <button class="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-xs px-4 py-2 
                                             rounded shadow hover:shadow-md outline-none 
                                             focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
-                                            onClick={handleImageDeleteClick} value={key}
+                                                onClick={handleImageDeleteClick} value={key}
                                             >
                                                 <i class="fa-solid fa-x"></i> Delete
                                             </button>
                                             {/* Unexplainable disaster.  */}
-                                            <button class={`font-bold ${(images[key] === selectedImage || (key >= images.length-uploadImages.length && uploadImages[(uploadImages.length-(images.length-key))]?.name === selectedImage)) 
-                                            ? 'bg-blueGray-800 text-white black active:bg-blueGray-800' : 'bg-blueGray-200 text-gray black active:bg-blueGray-800'}  uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150`} type="button"
-                                            value={images[key].includes('blob') ? uploadImages[uploadImages.length - (images.length - key)]?.name : images[key]} key={imageKey} onClick={handleSelectedImageClick}
-                                           
+                                            <button class={`font-bold ${(images[key] === selectedImage || (key >= images.length - uploadImages.length && uploadImages[(uploadImages.length - (images.length - key))]?.name === selectedImage))
+                                                ? 'bg-blueGray-800 text-white black active:bg-blueGray-800' : 'bg-blueGray-200 text-gray black active:bg-blueGray-800'}  uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150`} type="button"
+                                                value={images[key].includes('blob') ? uploadImages[uploadImages.length - (images.length - key)]?.name : images[key]} key={imageKey} onClick={handleSelectedImageClick}
+
                                             >
                                                 <i class="fa-solid fa-x"></i> Set as main
                                             </button>
@@ -477,7 +482,7 @@ export default function CardSettings({ auth, carData }) {
 
                             <div>
                                 <div>
-                                <label
+                                    <label
                                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                                         htmlFor="text"
                                     >Add pictures for car</label>
@@ -525,7 +530,7 @@ export default function CardSettings({ auth, carData }) {
                                     className="content-between bg-lightBlue-500 active:bg-lightBlue-700 hover:shadow-lg text-white font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                                     type="submit    "
                                 >
-                                 {isUpdate ? 'Save changes' : 'Add new car'} 
+                                    {isUpdate ? 'Save changes' : 'Add new car'}
                                 </button></div>
                             <div class="flex px-2 "></div>
 

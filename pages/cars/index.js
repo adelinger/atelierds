@@ -13,7 +13,6 @@ import Image from "next/image";
 import ApiService from "auth/service/ApiService";
 
 export default function carsForSale({ cars, serverUrl }) {
-  const cars = fallback;
   const { t } = useTranslation('carsPage');
   const dropdownMenuRef = useRef();
   const [isDropdownVisible, setIsDropdownVisible] = useState();

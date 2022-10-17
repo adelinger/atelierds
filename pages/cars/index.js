@@ -248,24 +248,10 @@ export async function getStaticProps({ locale }) {
     props: {
       cars: cars,
       serverUrl: STATIC_FILES_URL,
-      ...await serverSideTranslations(locale, ['common', 'carsPage', 'footer']),
-      revalidate:10,
-    }
+      ...await serverSideTranslations(locale, ['common', 'carsPage', 'footer']), 
+    },
+    revalidate:10,
   }
-}
-
-export async function getStaticPaths({ locales }) {
-  const cars = await loadCars(9, 'newest');
-
-  // generate the paths
-  const paths = cars.map((car) => locales.map((locale) => ({
-    params: { car: car.atelierCarID.toString() },
-    locale: locale
-  })))
-    .flat() // Flatten array to avoid nested arrays
-
-  return { paths, fallback: 'blocking' }
-
 }
 
 

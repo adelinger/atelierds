@@ -274,8 +274,8 @@ export async function getStaticProps({ params, locale }) {
       ...await serverSideTranslations(locale, ['common', 'footer', 'carsPage']),
       carData,
       STATIC_FILES_URL,
-      revalidate: 10,
     },
+    revalidate:10,
   };
 }
 

@@ -290,6 +290,6 @@ export async function getStaticPaths({ locales }) {
   })))
     .flat() // Flatten array to avoid nested arrays
 
-  return { paths, fallback: true }
+  return { paths, fallback: 'blocking' }
 
 }

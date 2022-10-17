@@ -12,7 +12,7 @@ import CarCard from "components/Cards/CarCard";
 import Image from "next/image";
 import ApiService from "auth/service/ApiService";
 
-export default function carsForSale({ fallback, serverUrl }) {
+export default function carsForSale({ cars, serverUrl }) {
   const cars = fallback;
   const { t } = useTranslation('carsPage');
   const dropdownMenuRef = useRef();

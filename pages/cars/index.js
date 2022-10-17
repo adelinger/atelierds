@@ -241,7 +241,7 @@ export default function carsForSale({ cars, serverUrl }) {
 
 
 
-export async function getStaticProps({ locale }) {
+export async function getServerSideProps({ locale }) {
   const cars = await loadCars(9, 'newest');
   const { STATIC_FILES_URL } = process.env;
   return {
@@ -249,8 +249,7 @@ export async function getStaticProps({ locale }) {
       cars: cars,
       serverUrl: STATIC_FILES_URL,
       ...await serverSideTranslations(locale, ['common', 'carsPage', 'footer']), 
-    },
-    revalidate: 10,
+    }
   }
 }
 

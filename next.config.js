@@ -7,6 +7,10 @@ const nextConfig = {
         source: '/admin',
         destination: '/admin/dashboard',
         permanent: true,
+        experimental: {
+          // Defaults to 50MB
+          isrMemoryCacheSize: 0,
+        },
       },
     ]
   },

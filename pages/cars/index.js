@@ -12,7 +12,8 @@ import CarCard from "components/Cards/CarCard";
 import Image from "next/image";
 import ApiService from "auth/service/ApiService";
 
-export default function carsForSale({ cars, serverUrl }) {
+export default function carsForSale({ fallback, serverUrl }) {
+  const cars = fallback;
   const { t } = useTranslation('carsPage');
   const dropdownMenuRef = useRef();
   const [isDropdownVisible, setIsDropdownVisible] = useState();
@@ -241,7 +242,7 @@ export default function carsForSale({ cars, serverUrl }) {
 
 
 
-export async function getServerSideProps({ locale }) {
+export async function getStaticProps({ locale }) {
   const cars = await loadCars(9, 'newest');
   const { STATIC_FILES_URL } = process.env;
   return {
@@ -249,7 +250,8 @@ export async function getServerSideProps({ locale }) {
       cars: cars,
       serverUrl: STATIC_FILES_URL,
       ...await serverSideTranslations(locale, ['common', 'carsPage', 'footer']), 
-    }
+    },
+    revalidate: 10,
   }
 }
 

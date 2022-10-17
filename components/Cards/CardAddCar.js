@@ -41,6 +41,7 @@ export default function CardSettings({ auth, carData }) {
         if (carData) {
             setImages(carData?.listOfImages)
             setIsUpdate(true)
+            carData.carPrice === 0 && setIsInquiryChecked(true);
         } else {
             setIsUpdate(false);
         }

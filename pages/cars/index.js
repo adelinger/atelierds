@@ -254,6 +254,20 @@ export async function getStaticProps({ locale }) {
   }
 }
 
+export async function getStaticPaths({ locales }) {
+  const cars = await loadCars(9, 'newest');
+
+  // generate the paths
+  const paths = cars.map((car) => locales.map((locale) => ({
+    params: { car: car.atelierCarID.toString() },
+    locale: locale
+  })))
+    .flat() // Flatten array to avoid nested arrays
+
+  return { paths, fallback: 'blocking' }
+
+}
+
 
 export async function getCarData(id) {
   const car = await getSingleCar(id);

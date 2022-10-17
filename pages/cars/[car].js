@@ -281,16 +281,16 @@ export async function getServerSideProps({ params, locale }) {
 
 
 
-export async function getStaticPaths({ locales }) {
-  const cars = await loadCars('', 'newest');
+// export async function getStaticPaths({ locales }) {
+//   const cars = await loadCars('', 'newest');
 
-  // generate the paths
-  const paths = cars.map((car) => locales.map((locale) => ({
-    params: { car: car.atelierCarID.toString() },
-    locale: locale
-  })))
-    .flat() // Flatten array to avoid nested arrays
+//   // generate the paths
+//   const paths = cars.map((car) => locales.map((locale) => ({
+//     params: { car: car.atelierCarID.toString() },
+//     locale: locale
+//   })))
+//     .flat() // Flatten array to avoid nested arrays
 
-  return { paths, fallback: 'blocking' }
+//   return { paths, fallback: 'blocking' }
 
-}
+// }

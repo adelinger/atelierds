@@ -266,7 +266,7 @@ export default viewCar;
 
 
 
-export async function getStaticProps({ params, locale }) {
+export async function getServerSideProps({ params, locale }) {
   const carData = await getSingleCar(params.car);
   const { STATIC_FILES_URL } = process.env;
   return {

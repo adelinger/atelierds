@@ -2564,6 +2564,10 @@ select {
   padding-top: 0.25rem;
 }
 
+.pl-4 {
+  padding-left: 1rem;
+}
+
 .text-left {
   text-align: left;
 }
@@ -3220,6 +3224,10 @@ select {
   --tw-ring-offset-color: #374151;
 }
 
+.dark .dark\:ring-offset-gray-800 {
+  --tw-ring-offset-color: #1F2937;
+}
+
 .dark .dark\:hover\:bg-gray-600:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(75 85 99 / var(--tw-bg-opacity));
@@ -3712,14 +3720,6 @@ select {
 
   .lg\:pt-0 {
     padding-top: 0px;
-  }
-
-  .lg\:pb-24 {
-    padding-bottom: 6rem;
-  }
-
-  .lg\:pb-20 {
-    padding-bottom: 5rem;
   }
 
   .lg\:pb-14 {

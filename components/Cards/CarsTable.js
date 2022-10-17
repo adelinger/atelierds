@@ -217,7 +217,7 @@ export default function CarsTable({ color, auth }) {
                         </Link>
                       </th>
                       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        {car.carPrice}€
+                        { car.carPrice === 0 ? 'On inquiry' : car.carPrice +'€'}
                       </td>
                       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                         {colorDot(car)}
@@ -230,7 +230,7 @@ export default function CarsTable({ color, auth }) {
                       </td>
                       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                         <div className="flex items-center">
-                          <i className="fas fa-table text-bluegray-500 mr-2"></i> 500
+                          <i className="fas fa-table text-bluegray-500 mr-2"></i> Not implemented
                         </div>
                       </td>
                       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">

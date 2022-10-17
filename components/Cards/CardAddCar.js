@@ -30,6 +30,7 @@ export default function CardSettings({ auth, carData }) {
     const [showloader, setShowLoader] = useState(false);
     const [carKilometers, setCarkilometers] = useState(carData?.carKilometers);
     const [carStatus, setCarStatus] = useState(carData?.atelierCarStatus?.atelierCarStatusID ?? 1)
+    const [inquiryChecked, setIsInquiryChecked] = useState();
 
     const [isUpdate, setIsUpdate] = useState(false);
     let uploadErrorMessage = 'Images are not uploaded';
@@ -243,6 +244,11 @@ export default function CardSettings({ auth, carData }) {
         setSelectedImage(imageName);
     }
 
+    const onCheckboxClicked = () =>  {
+        setIsInquiryChecked(!inquiryChecked);
+        setCarPrice(0);
+    }
+
     return (
         <>
             <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
@@ -387,19 +393,19 @@ export default function CardSettings({ auth, carData }) {
                                         type="number"
                                         min="1"
                                         step="1"
-
                                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                        placeholder="Type the price here"
-
+                                        disabled={inquiryChecked}
                                         onChange={e => setCarPrice(onlyNumbers(e.target.value))}
                                     />
-                                </div>
-                                <div class="flex items-center pl-4 rounded border border-gray-200 dark:border-gray-700">
-                                    <input id="bordered-checkbox-1" type="checkbox" value="" name="bordered-checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                    <label for="bordered-checkbox-1" class="py-4 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">Price on inquiry</label>
+                                    <div class="flex items-center mt-2 pl-4 rounded border border-gray-200 dark:border-gray-700">
+                                        <input id="bordered-checkbox-1" checked={inquiryChecked} type="checkbox" value="" name="bordered-checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 
+                                        dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" onClick={onCheckboxClicked}>
+                                        
+                                        </input>
+                                        <label for="bordered-checkbox-1" class="py-4 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">Price on inquiry</label>
+                                    </div>
                                 </div>
                             </div>
-
                             <div className="w-full lg:w-6/12 px-4">
                                 <div className="relative w-full mb-3">
                                     <label
@@ -424,7 +430,7 @@ export default function CardSettings({ auth, carData }) {
                         </div>
 
                         <div className="ml-4">
-                            <br></br>
+
                             <div>
                                 <div>
                                     <label

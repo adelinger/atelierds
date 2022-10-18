@@ -30,13 +30,13 @@ export default class ApiService {
   };
   addNewCar = (data) => {
     const res = this.init().post("/add", data);
-    fetch("/api/revalidate?path='/cars'&secret=fDm8n8AuCG0xiYfFf6fY");
+    fetch("/api/revalidate?path=/cars&secret=fDm8n8AuCG0xiYfFf6fY");
 
     return res;
   };
   updateCar = (data) => {
     const res = this.init().put("/updateCar", data);
-    fetch("/api/revalidate?path='/cars'&secret=fDm8n8AuCG0xiYfFf6fY");
+    fetch("/api/revalidate?path=/cars&secret=fDm8n8AuCG0xiYfFf6fY");
     return res;
   };
   deleteCar = (id) => {

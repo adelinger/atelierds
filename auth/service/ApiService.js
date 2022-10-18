@@ -29,15 +29,10 @@ export default class ApiService {
     return this.init().get("get-private", {params: params});
   };
   addNewCar = (data) => {
-    const res = this.init().post("/add", data);
-    fetch("/api/revalidate?path=/cars&secret=fDm8n8AuCG0xiYfFf6fY");
-
-    return res;
+    return this.init().post("/add", data);
   };
   updateCar = (data) => {
-    const res = this.init().put("/updateCar", data);
-    fetch("/api/revalidate?path=/cars&secret=fDm8n8AuCG0xiYfFf6fY");
-    return res;
+    return this.init().put("/updateCar", data);
   };
   deleteCar = (id) => {
     return this.init().delete("/"+id);

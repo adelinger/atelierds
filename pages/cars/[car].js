@@ -10,7 +10,7 @@ import CardEmail from 'components/Cards/CardEmail';
 import ImagePreview from 'components/Modals/ImagePreview';
 import router, { useRouter } from 'next/router';
 
-function viewCar({ carData, STATIC_FILES_URL }) {
+function ViewCar({ carData, STATIC_FILES_URL }) {
   const { t } = useTranslation('common', 'carsPage');
   const FILES_URL = STATIC_FILES_URL + carData.carPhotosPath + '/';
   const profilePhoto = FILES_URL + carData.carProfilePhotoPath;
@@ -56,11 +56,11 @@ function viewCar({ carData, STATIC_FILES_URL }) {
   }
 
   const handleScroll = () => {
-    const { offsetTop } = galleryRef.current
+    const { offsetTop } = galleryRef.current;
     const position = window.pageYOffset;
 
     if (position >= (offsetTop - (offsetTop * 0.1))) {
-        setShowUpBtn(true)
+        setShowUpBtn(true);
         setHalfIsScrolled(true);
         return;
     } 
@@ -99,8 +99,7 @@ useEffect(() => {
       <main>
         <div ref={baseRef} className="relative pt-16 md:pb-32 flex content-center items-center justify-center min-h-screen-75">
           <div
-            className="absolute top-0 w-full h-full bg-center bg-cover"
-            style={{
+            className="absolute top-0 w-full h-full bg-center bg-cover" style={{
               backgroundImage:
                 "url('/img/light-grey-19.webp')",
             }}
@@ -175,8 +174,7 @@ useEffect(() => {
 
           </div>
           <div
-            className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-16"
-            style={{ transform: "translateZ(0)" }}
+            className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-16" style={{ transform: "translateZ(0)" }}
           >
             <svg
               className="absolute bottom-0 overflow-hidden"
@@ -200,8 +198,8 @@ useEffect(() => {
             <div class="container mx-auto space-y-2 lg:space-y-0 lg:gap-2 lg:grid lg:grid-cols-3">
               {carData.listOfImages.map((image, index) => {
                 return <div class="w-full rounded md:hover:opacity-50 md:cursor-pointer">
-                  <img src={FILES_URL + image}
-                    alt="chrome restoration image" className='max-h-80 min-h-full min-w-full' onClick={() => { toggleModal(), setSelectedIndex(index) }}>
+                  <img src={FILES_URL + image} alt="chrome restoration image" className='max-h-80 min-h-full min-w-full' 
+                  onClick={() => { toggleModal(); setSelectedIndex(index) }}>
                   </img>
                 </div>
               })}
@@ -212,8 +210,7 @@ useEffect(() => {
         {showEmailForm &&
           <section className="pb-5 relative block bg-blueGray-800">
             <div
-              className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20"
-              style={{ transform: "translateZ(0)" }}
+              className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20" style={{ transform: "translateZ(0)" }}
             >
               <svg
                 className="absolute bottom-0 overflow-hidden"
@@ -262,7 +259,7 @@ useEffect(() => {
     </>
   );
 }
-export default viewCar;
+export default ViewCar;
 
 
 

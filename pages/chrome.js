@@ -9,7 +9,7 @@ import { isMobile } from 'react-device-detect';
 import { useTranslation } from 'next-i18next';
 
 
-export default function chrome() {
+export default function Chrome() {
   const { t } = useTranslation('chromePage');
   const scrollRef = useRef(null)
   const scrollUpRef = useRef(null)
@@ -39,7 +39,7 @@ export default function chrome() {
   }
 
   const handleScroll = () => {
-    const { offsetTop } = scrollRef.current
+    const { offsetTop } = scrollRef.current;
     const position = window.pageYOffset;
 
     if (position >= (offsetTop - (offsetTop * 0.1))) {
@@ -64,8 +64,7 @@ export default function chrome() {
       <main>
       <div ref={scrollUpRef}  className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
           <div
-            className="absolute top-0 w-full h-full bg-center bg-cover"
-            style={{
+            className="absolute top-0 w-full h-full bg-center bg-cover" style={{
               backgroundImage:
                 "url('/img/chrome/chrome_cover2.jpeg')",
             }}
@@ -94,8 +93,7 @@ export default function chrome() {
             </div>
           </div>
           <div
-            className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-16"
-            style={{ transform: "translateZ(0)" }}
+            className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-16" style={{ transform: "translateZ(0)" }}
           >
             <svg
               className="absolute bottom-0 overflow-hidden"
@@ -201,8 +199,7 @@ export default function chrome() {
 
         <section id='third-section' ref={scrollRef} className="pb-5 relative block bg-blueGray-100">
           <div
-            className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20"
-            style={{ transform: "translateZ(0)" }}
+            className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20" style={{ transform: "translateZ(0)" }}
           >
             <svg
               className="absolute bottom-0 overflow-hidden"
@@ -235,8 +232,7 @@ export default function chrome() {
                 <div class="container mx-auto space-y-2 lg:space-y-0 lg:gap-2 lg:grid lg:grid-cols-3">
                   {chrome_images.map((image, index) => {
                     return <div class="w-full rounded md:hover:opacity-50 md:cursor-pointer">
-                      <img src={image}
-                        alt="chrome restoration image" onClick={() => { toggleModal(), setSelectedIndex(index)}}>
+                      <img src={image} alt="chrome restoration image" onClick={() => { toggleModal(); setSelectedIndex(index)}}>
                       </img>
                     </div>
                   })}

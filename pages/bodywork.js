@@ -1,6 +1,6 @@
 import Footer from 'components/Footers/Footer';
 import Navbar from 'components/Navbars/IndexNavbar';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { isMobile } from 'react-device-detect';
 import ImagePreview from 'components/Modals/ImagePreview';
@@ -9,9 +9,8 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from 'next-i18next';
 
 
-export default function bodywork() {
+export default function Bodywork() {
   const [showModal, setShowModal] = useState(false);
-  const [imgSrc, setImgSrc] = useState();
   const [src, setSrc] = useState('/img/bodywork/body_work_place.webp');
   const { t } = useTranslation('bodyworkPage');
   const [selectedIndex, setSelectedIndex] = useState();
@@ -175,9 +174,8 @@ export default function bodywork() {
                       return <figure class="flex-shrink max-w-full px-3 w-full sm:w-1/2 lg:w-1/5 group wow fadeInUp" data-wow-duration="1s">
                         <div class="relative overflow-hidden cursor-pointer mb-6">
                           <a role='button' data-gallery="gallery1" data-glightbox="title: My title; description: This is a wider card with supporting text below as a natural lead-in to additional content" class="glightbox3">
-                            <img class="block w-full h-auto transform duration-500 hover:scale-125"
-                              onClick={() => { toggleModal(), setSelectedIndex(index) }} src={image} alt="Citroen DS"></img>
-                            <div onClick={() => { toggleModal(), setSelectedIndex(index) }} class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
+                            <img class="block w-full h-auto transform duration-500 hover:scale-125" onClick={() => { toggleModal(); setSelectedIndex(index) }} src={image} alt="Citroen DS"></img>
+                            <div onClick={() => { toggleModal(); setSelectedIndex(index) }} class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
                               <h3 class="text-base leading-normal font-semibold my-1 text-white">Citroen</h3>
                               <small class="d-block">{chromeImagesTitles[index]}</small>
                             </div>

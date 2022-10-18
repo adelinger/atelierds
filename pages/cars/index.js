@@ -12,7 +12,7 @@ import CarCard from "components/Cards/CarCard";
 import Image from "next/image";
 import ApiService from "auth/service/ApiService";
 
-export default function carsForSale({ cars, serverUrl }) {
+export default function CarsForSale({ cars, serverUrl }) {
   const { t } = useTranslation('carsPage');
   const dropdownMenuRef = useRef();
   const [isDropdownVisible, setIsDropdownVisible] = useState();
@@ -172,8 +172,7 @@ export default function carsForSale({ cars, serverUrl }) {
             </div>
           </div>
           <div
-            className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-16"
-            style={{ transform: "translateZ(0)" }}
+            className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-16" style={{ transform: "translateZ(0)" }}
           >
             <svg
               className="absolute bottom-0 overflow-hidden"

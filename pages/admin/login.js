@@ -4,7 +4,7 @@ import Link from "next/link";
 import Auth from 'layouts/Auth'
 import { CircularProgress } from "@mui/material";
 
-function login({ auth, pathname }) {
+function Login({ auth, pathname }) {
   const email = useRef();
   const password = useRef();
   const [showLoader, setShowLoader] = useState();
@@ -99,4 +99,4 @@ function login({ auth, pathname }) {
   );
 }
 
-export default withPublic(login);
+export default withPublic(Login);

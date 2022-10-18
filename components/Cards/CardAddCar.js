@@ -1,8 +1,10 @@
+
+
 import ApiService from "auth/service/ApiService";
 import React, { useEffect, useState } from "react";
 import { CircularProgress } from "@mui/material";
 import Alert from "components/Alerts/Alert";
-import { uploadeImages, addNewCar } from "lib/apiCalls";
+import { uploadeImages } from "lib/apiCalls";
 import { useRouter } from 'next/router'
 
 export default function CardSettings({ auth, carData }) {
@@ -156,20 +158,22 @@ export default function CardSettings({ auth, carData }) {
             for (let file of event.target.files) {
 
                 let url = (URL.createObjectURL(file));
-                let index = images.findIndex(x => x == url)
-                index === -1 ? images.push(url) : null
+                let index = images.findIndex(x => x === url);
+                /* eslint-disable no-unused-expressions */
+                index === -1 ? images.push(url) : null;
 
                 index = -1;
                 if (uploadImages.length > 0) {
-                    index = uploadImages.findIndex(x => x.name == file.name)
+                    index = uploadImages.findIndex(x => x.name == file.name);
                 }
-                (index === -1 && URL.createObjectURL(file).includes('blob')) ? uploadImages.push(file) : null
+                /* eslint-disable no-unused-expressions */
+                (index === -1 && URL.createObjectURL(file).includes('blob')) ? uploadImages.push(file) : null;
             }
             if (images.length === 1 && uploadImages.length === 1) {
                 setSelectedImage(uploadImages[0].name);
             }
 
-            setImageKey(Math.random())
+            setImageKey(Math.random());
         }
     };
 

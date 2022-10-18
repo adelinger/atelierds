@@ -11,7 +11,7 @@ import Image from "next/image";
 import { CircularProgress, LinearProgress, Skeleton } from '@mui/material';
 
 
-export default function interior() {
+export default function Interior() {
     const { t } = useTranslation(['leatherPage']);
     const [showModal, setShowModal] = useState(null);
     const scrollRef = useRef(null)
@@ -281,10 +281,10 @@ export default function interior() {
                                                 <Image src={image}
                                                     width={500}
                                                     height={400}
-                                                    placeholder="blur"
+                                                    placeholder='blur'
                                                     blurDataURL='/img/blur.png'
-                                                    alt="Citroen leather image"
-                                                    onClick={() => { toggleModal(), setGalleryImageSelectedIndex(index) }}>
+                                                    alt='Citroen leather image' 
+                                                    onClick={() => { toggleModal(); setGalleryImageSelectedIndex(index) }}>
                                                 </Image>
                                             }
 

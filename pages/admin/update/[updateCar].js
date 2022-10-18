@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import ApiService from "auth/service/ApiService";
 import { useEffect } from "react";
 
-function updateCar({carData, auth}) {
+function UpdateCar({carData, auth}) {
   const {logout} = auth;
 
     const api = new ApiService();
@@ -39,7 +39,7 @@ function updateCar({carData, auth}) {
      );
 }
 
-export default withProtected(updateCar);
+export default withProtected(UpdateCar);
 
 
 export async function getStaticProps({ params }) {

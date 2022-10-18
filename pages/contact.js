@@ -4,7 +4,7 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 
-function contact() {
+function Contact() {
   const { t } = useTranslation (['footer', 'common', 'contact']);
   return (
     <>
@@ -108,7 +108,7 @@ function contact() {
   );
 }
 
-export default contact;
+export default Contact;
 
 export const getStaticProps = async ({ locale }) => ({
   props: {

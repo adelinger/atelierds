@@ -272,7 +272,7 @@ export async function getStaticProps({ params, locale }) {
       carData,
       STATIC_FILES_URL,
     },
-    //revalidate: 60,
+    revalidate: 60,
   };
 }
 

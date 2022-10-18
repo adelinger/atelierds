@@ -39,7 +39,7 @@ export default function CarCard({ car, serverUrl }) {
               </svg>
               <div class="p-5">
                 <a href="#">
-                  <h5 class="mb-2 text-2xl font-bold tracking-tight text-white dark:text-white">{car.carModel + ' ' + car.carMake}</h5>
+                  <h5 class="mb-2 text-2xl font-bold tracking-tight text-white dark:text-white">{car.carMake + ' ' + car.carModel}</h5>
                 </a>
                 <div>
                   <p class="mb-3 font-normal text-blueGray-400 dark:text-white-400">

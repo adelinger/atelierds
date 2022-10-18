@@ -249,7 +249,7 @@ export async function getStaticProps({ locale }) {
       serverUrl: STATIC_FILES_URL,
       ...await serverSideTranslations(locale, ['common', 'carsPage', 'footer']), 
     },
-    revalidate: 10,
+    //revalidate: 60,
   }
 }
 

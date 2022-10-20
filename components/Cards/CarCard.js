@@ -24,7 +24,8 @@ export default function CarCard({ car, serverUrl }) {
           <div className="break-words bg-white w-full shadow-lg rounded-lg bg-blueGray-700  mx-auto" style={{ minHeight: 530 }}>
             <div className="min-h-48" style={{ minHeight: 230 }}>
               <a href={`cars/${encodeURIComponent(car.atelierCarID)}`}  >
-                <Image width={360} 
+                <Image 
+                width={370} 
                 height={270} 
                 class="rounded-t-lg mr-auto transform duration-500" 
                 loader={() => src} src={src}  
@@ -46,10 +47,8 @@ export default function CarCard({ car, serverUrl }) {
                   className="text-blueGray-700 fill-current"
                 ></polygon>
               </svg>
-              <div class="p-5">
-                <a href="#">
-                  <h5 class="mb-2 text-2xl font-bold tracking-tight text-white dark:text-white">{car.carMake + ' ' + car.carModel}</h5>
-                </a>
+              <div class="p-1">
+                  <div className="h-15"><h5 class="h-16 mb-2 text-2xl font-bold tracking-tight text-white dark:text-white">{car.carMake + ' ' + car.carModel}</h5></div>
                 <div>
                   <p class="mb-3 font-normal text-blueGray-400 dark:text-white-400">
                     {t('carsPage:year')}: {car.carYear}

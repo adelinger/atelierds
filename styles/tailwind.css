@@ -1879,6 +1879,16 @@ select {
   width: 50%;
 }
 
+.w-max {
+  width: -webkit-max-content;
+  width: max-content;
+}
+
+.w-min {
+  width: -webkit-min-content;
+  width: min-content;
+}
+
 .min-w-0 {
   min-width: 0px;
 }

@@ -232,8 +232,17 @@ export default function Chrome() {
                 <div class="container mx-auto space-y-2 lg:space-y-0 lg:gap-2 lg:grid lg:grid-cols-3">
                   {chrome_images.map((image, index) => {
                     return <div class="w-full rounded md:hover:opacity-50 md:cursor-pointer">
-                      <img src={image} alt="chrome restoration image" onClick={() => { toggleModal(); setSelectedIndex(index)}}>
-                      </img>
+                      <Image
+                       src={image}
+                       className='transform duration-500'
+                       width={400}
+                       height={300}
+                       alt="chrome restoration image" 
+                       loading='lazy'
+                       placeholder='blur'
+                       blurDataURL='/img/blur.png'
+                       onClick={() => { toggleModal(); setSelectedIndex(index)}}>
+                      </Image>
                     </div>
                   })}
                 </div>

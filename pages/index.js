@@ -8,6 +8,7 @@ import Navbar from "components/Navbars/IndexNavbar";
 import Footer from "components/Footers/Footer.js";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import CardEmail from "components/Cards/CardEmail";
+import Image from "next/image";
 
 export default function Landing() {
   const { t } = useTranslation(['index', 'footer', 'common']);
@@ -196,11 +197,14 @@ export default function Landing() {
 
               <div className="w-full md:w-4/12 px-4 mr-auto ml-auto">
                 <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-blueGray-700">
-                  <img
+                  <Image
                     alt="Citroen Garrage"
                     src="/img/citroen_ds_garrage.webp"
-                    className="w-full align-middle rounded-t-lg"
-                  />
+                    width={385}
+                    height={255}
+                    className="w-full align-middle rounded-t-lg transform duration-500"
+                    loading="lazy"
+                  ></Image>
                   <blockquote className="relative p-8 mb-4">
                     <svg
                       preserveAspectRatio="none"

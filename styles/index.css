@@ -27,7 +27,10 @@
     .min-w-15 {
       min-width: 15rem;
     }
-
+    .iframe-container {
+      -webkit-filter: blur(3px);
+      filter: blur(3px);
+    }
     .min-h-30 {
       min-height:30rem;
     }

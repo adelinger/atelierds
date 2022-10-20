@@ -97,7 +97,7 @@ export default function Interior() {
 
         setTimeout(() => {
             setShowLoader(false);
-        }, 400);
+        }, 200);
     }
 
 
@@ -191,8 +191,12 @@ export default function Interior() {
                                         selectedItem={selectedImage}
                                         className='md:cursor-pointer '>
                                         {leather_images_srcs.map((image, index) => {
-                                            return <div className='h-48'>
-                                                <img src={prefix + image} />
+                                            return <div className='h-48 duration-500'>
+                                                <img 
+                                                src={prefix + image} 
+                                                placeholder='blur'
+                                                blurDataURL='/img/blur.png'
+                                                 />
                                             </div>
                                         })}
                                     </Carousel>
@@ -278,7 +282,7 @@ export default function Interior() {
                                                     <span class="sr-only">Loading...</span>
                                                 </div>
                                                 :
-                                                <Image src={image}
+                                                <Image className='duration-500' src={image}
                                                     width={500}
                                                     height={400}
                                                     placeholder='blur'

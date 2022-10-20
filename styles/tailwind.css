@@ -1337,6 +1337,11 @@ select {
   --tw-ring-color: rgb(66 56 157 / var(--tw-ring-opacity));
 }
 
+.iframe-container {
+  -webkit-filter: blur(3px);
+  filter: blur(3px);
+}
+
 .min-h-screen {
   min-height: 100vh;
 }

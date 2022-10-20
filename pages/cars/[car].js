@@ -9,6 +9,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import CardEmail from 'components/Cards/CardEmail';
 import ImagePreview from 'components/Modals/ImagePreview';
 import router, { useRouter } from 'next/router';
+import Image from 'next/image';
 
 function ViewCar({ carData, STATIC_FILES_URL }) {
   const { t } = useTranslation('common', 'carsPage');
@@ -92,6 +93,9 @@ useEffect(() => {
   }
 }, [showModal]); 
 
+const myLoader=({src})=>{
+  return FILES_URL + src;
+}
 
   return (
     <>
@@ -113,12 +117,15 @@ useEffect(() => {
             <div className="container mx-auto py-5 mt-10 md:mt-20">
               <div className='grid grid-cols-1 md:grid-cols-2 gap-2 content-start'>
                 <div>
-                  <img className='center-image md:min-h-30 md:cursor-pointer'
-                    src={src}
+                  <Image className='center-image md:min-h-30 md:cursor-pointer transform duration-500'
+                    loader={() => src} src={src} 
                     onMouseOver={e => (setSrc(FILES_URL + carData.listOfImages[carData.listOfImages.length - 1]))}
                     onMouseOut={e => (setSrc(FILES_URL + carData.carProfilePhotoPath))}
                     onClick={handleGalleryBtnClick}
-                  ></img>
+                    width={630}
+                    height={480}
+                    loading="lazy"
+                  ></Image>
                 </div>
 
                 <div className='md:ml-5 px-3 mb-3 mt-5 md:mt-0'>
@@ -197,10 +204,20 @@ useEffect(() => {
           <div ref={galleryRef} className="md: mt-5">
             <div class="container mx-auto space-y-2 lg:space-y-0 lg:gap-2 lg:grid lg:grid-cols-3">
               {carData.listOfImages.map((image, index) => {
+                const mySrc = FILES_URL + image;
                 return <div class="w-full rounded md:hover:opacity-50 md:cursor-pointer">
-                  <img src={FILES_URL + image} alt="chrome restoration image" className='max-h-80 min-h-full min-w-full' 
+                  <Image
+                   src={myLoader(image)}
+                   loader={() => mySrc} mySrc={FILES_URL+image} 
+                   width={400}
+                   height={300}
+                   loading="lazy"
+                   alt={carData.carMake + ' ' +carData.carModel + ' image'} 
+                   className='max-h-80 min-h-full min-w-full transform duration-500' 
+                   placeholder='blur'
+                   blurDataURL='/img/blur.png'
                   onClick={() => { toggleModal(); setSelectedIndex(index) }}>
-                  </img>
+                  </Image>
                 </div>
               })}
             </div>

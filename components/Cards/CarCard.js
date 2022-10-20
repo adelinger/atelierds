@@ -1,6 +1,7 @@
 import { Link } from "@mui/material";
 import { auto } from "@popperjs/core";
 import { useTranslation } from "next-i18next";
+import Image from "next/image";
 import React from "react";
 import { height } from "tailwindcss/defaultTheme";
 
@@ -13,6 +14,7 @@ export default function CarCard({ car, serverUrl }) {
   }
 
   const { t } = useTranslation('index', 'common', 'carsPage');
+  const src = serverUrl + car.carPhotosPath + '/' + car.carProfilePhotoPath;
 
 
   return (
@@ -22,7 +24,14 @@ export default function CarCard({ car, serverUrl }) {
           <div className="break-words bg-white w-full shadow-lg rounded-lg bg-blueGray-700  mx-auto" style={{ minHeight: 530 }}>
             <div className="min-h-48" style={{ minHeight: 230 }}>
               <a href={`cars/${encodeURIComponent(car.atelierCarID)}`}  >
-                <img class="rounded-t-lg mr-auto" src={serverUrl + car.carPhotosPath + '/' + car.carProfilePhotoPath} alt={car.carMake + ' ' + car.carModel} style={{ height:270 }} />
+                <Image width={360} 
+                height={270} 
+                class="rounded-t-lg mr-auto transform duration-500" 
+                loader={() => src} src={src}  
+                loading="lazy"
+                placeholder='blur'
+                blurDataURL='/img/blur.png'
+                 />
               </a>
             </div>
             <blockquote className="relative p-8 mb-4">
@@ -51,7 +60,10 @@ export default function CarCard({ car, serverUrl }) {
 
                   <Link href={`cars/${encodeURIComponent(car.atelierCarID)}`} class="mt-3 btn-primary-indigo-slim">
                     {t('carsPage:read_more')}
-                    <svg class="ml-2 mt-1 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                    <svg class="ml-2 mt-1 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" 
+                      d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" 
+                      clip-rule="evenodd"></path></svg>
                   </Link>
                   <p className={`float-right text-3x1 font-bold mt-5 text-blueGray-400 w-28 ${car.carPrice == 0 && 'mt-1.5'}`} >
                     {car.carPrice != 0 ? numberWithCommas(car.carPrice) + ',00' + ' €' : t('common:price_on_enquiry')}

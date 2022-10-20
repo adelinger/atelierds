@@ -11,6 +11,7 @@ import { getSingleCar, loadCars } from "lib/apiCalls";
 import CarCard from "components/Cards/CarCard";
 import Image from "next/image";
 import ApiService from "auth/service/ApiService";
+import { LinearProgress } from "@mui/material";
 
 export default function CarsForSale({ cars, serverUrl }) {
   const { t } = useTranslation('carsPage');
@@ -20,15 +21,17 @@ export default function CarsForSale({ cars, serverUrl }) {
   const [sortButtonTitle, setSortButtonTitle] = useState(t('sort_cars_by'))
   const [sortOrder, setSortOrder] = useState('newest');
   const [showUpButton, setShowUpButton] = useState();
+  const [showMoreLoader, setShowMoreLoader] = useState();
+  const [showSortLoader, setShowSortLoader] = useState();
   const scrollUpRef = useRef();
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
-        window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
-}, []); 
+  }, []);
 
   useEffect(() => {
     document.body.addEventListener('click', handleClick);
@@ -47,9 +50,9 @@ export default function CarsForSale({ cars, serverUrl }) {
     const position = window.pageYOffset;
 
     if (position >= half) {
-        setShowUpButton(true)
-        return;
-    } 
+      setShowUpButton(true)
+      return;
+    }
 
     setShowUpButton(false);
   }
@@ -63,12 +66,16 @@ export default function CarsForSale({ cars, serverUrl }) {
       .then(response => response.data)
       .then(data => {
         setCarsList(data);
+        setShowMoreLoader(false)
+        setShowSortLoader(false);
       })
       .catch((error) => {
+        setShowMoreLoader(false);
       });
   }
 
   const onShowMoreButtonClick = () => {
+    setShowMoreLoader(true);
     getAllCars(0, sortOrder);
   }
 
@@ -77,6 +84,7 @@ export default function CarsForSale({ cars, serverUrl }) {
   }
 
   const onRadioButtonChange = (event) => {
+    setShowSortLoader(true);
     setSortOrder(event.target.value);
     getAllCars(9, event.target.value);
   }
@@ -195,6 +203,12 @@ export default function CarsForSale({ cars, serverUrl }) {
           <div className="container mx-auto px-4">
             <div className="flex flex-wrap">
               <div className="relative flex flex-col min-w-0 break-words w-full mb-8 rounded-lg">
+                {showSortLoader &&
+                  <div className="mt-10 mb-5">
+                    <LinearProgress color="inherit"></LinearProgress>
+                  </div>
+                }
+
                 {
                   carsList.length === 0 ?
                     <div className="text-center">
@@ -217,20 +231,28 @@ export default function CarsForSale({ cars, serverUrl }) {
                 }
               </div>
             </div>
+
+            {showMoreLoader &&
+              <div className="mt-1 mb-5">
+                <LinearProgress color="inherit"></LinearProgress>
+              </div>
+            }
+
             {carsList.length === 9 &&
               <div className="w-full text-center">
                 <button className="mt-5 btn-primary-gray" onClick={onShowMoreButtonClick}>{t('show_more')}</button>
               </div>
             }
+
           </div>
         </section>
         {showUpButton &&
-              <button onClick={goUp} className='float-right mr-5 fixed bottom-10 right-10 mb-30' >
-                <div class="arrow"  >
-                  <span></span>
-                </div>
-              </button>
-            }
+          <button onClick={goUp} className='float-right mr-5 fixed bottom-10 right-10 mb-30' >
+            <div class="arrow"  >
+              <span></span>
+            </div>
+          </button>
+        }
       </main>
       <Footer />
     </>
@@ -247,7 +269,7 @@ export async function getStaticProps({ locale }) {
     props: {
       cars: cars,
       serverUrl: STATIC_FILES_URL,
-      ...await serverSideTranslations(locale, ['common', 'carsPage', 'footer']), 
+      ...await serverSideTranslations(locale, ['common', 'carsPage', 'footer']),
     },
     revalidate: 10,
   }

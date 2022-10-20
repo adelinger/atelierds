@@ -26,13 +26,13 @@ function Contact() {
           <div className="container relative mx-auto ">
             <div className="container mx-auto py-10 md:py-24">
               <div className="items-center flex flex-wrap ">
-                <div className="w-full md:w-6/12 mr-auto px-4 order-2  mt-5 md:mt-0 ">
+                <div className="w-full md:w-6/12 mr-auto px-4 order-2 mt-5 md:mt-0 ">
                   <iframe className="w-full " 
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2747.043428777947!2d11.349270715443705!3d46.4874524791264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47829d237ca09b07%3A0x27e4b5c51d4a05e3!2sAtelier%20Ds!5e0!3m2!1shr!2shr!4v1658485833256!5m2!1shr!2shr" 
                   width="600"
                    height="350" 
                    allowfullscreen="" 
-                   loading="lazy"
+                   loading="eager"
                    referrerpolicy="no-referrer-when-downgrade">
                    </iframe>
                 </div>

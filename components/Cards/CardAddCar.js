@@ -250,7 +250,7 @@ export default function CardSettings({ auth, carData }) {
         setSelectedImage(imageName);
     }
 
-    const onCheckboxClicked = () =>  {
+    const onCheckboxClicked = () => {
         setIsInquiryChecked(!inquiryChecked);
         setCarPrice(0);
     }
@@ -406,7 +406,7 @@ export default function CardSettings({ auth, carData }) {
                                     <div class="flex items-center mt-2 pl-4 rounded border border-gray-200 dark:border-gray-700">
                                         <input id="bordered-checkbox-1" checked={inquiryChecked} type="checkbox" value="" name="bordered-checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 
                                         dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" onClick={onCheckboxClicked}>
-                                        
+
                                         </input>
                                         <label for="bordered-checkbox-1" class="py-4 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">Price on inquiry</label>
                                     </div>
@@ -464,16 +464,16 @@ export default function CardSettings({ auth, carData }) {
                         <div className="ml-4 mt-5">
                             <div className="container">
                                 <div class="grid sm:grid-cols-1 md:grid-cols-5 xl:grid-cols-7 md:gap-5 ">
-                                    {images.map((item, key) =>{
-                                    
-                                    const mySrc = (isUpdate && !item.includes('blob')) ? process.env.NEXT_PUBLIC_STATIC_FILES_URL + carData.carPhotosPath + '/' + item : item
+                                    {images.map((item, key) => {
+
+                                        const mySrc = (isUpdate && !item.includes('blob')) ? process.env.NEXT_PUBLIC_STATIC_FILES_URL + carData.carPhotosPath + '/' + item : item
                                         return <div className="mt-5 mb-5" style={{ width: "200px", height: "200px" }} >
                                             <a href="#" onClick={handleImageOnClick}>
-                                                <Image 
-                                               loader={() => mySrc} mySrc={(isUpdate && !item.includes('blob')) ? process.env.NEXT_PUBLIC_STATIC_FILES_URL + carData.carPhotosPath + '/' + item : item} 
-                                                width={200}
-                                                height={150}
-                                                src={mySrc}
+                                                <Image
+                                                    loader={() => mySrc} mySrc={(isUpdate && !item.includes('blob')) ? process.env.NEXT_PUBLIC_STATIC_FILES_URL + carData.carPhotosPath + '/' + item : item}
+                                                    width={200}
+                                                    height={150}
+                                                    src={mySrc}
                                                     class="h-48 w-96 mb-1" style={{ width: "100%", height: "85%" }}></Image>
                                             </a>
                                             <div className="w-max">
@@ -488,13 +488,13 @@ export default function CardSettings({ auth, carData }) {
                                                 <button class={`font-bold ${(images[key] === selectedImage || (key >= images.length - uploadImages.length && uploadImages[(uploadImages.length - (images.length - key))]?.name === selectedImage))
                                                     ? 'bg-blueGray-800 text-white black active:bg-blueGray-800' : 'bg-blueGray-200 text-gray black active:bg-blueGray-800'}  uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150`} type="button"
                                                     value={images[key].includes('blob') ? uploadImages[uploadImages.length - (images.length - key)]?.name : images[key]} key={imageKey} onClick={handleSelectedImageClick}
-    
+
                                                 >
                                                     <i class="fa-solid fa-x"></i> Set as main
                                                 </button>
                                             </div>
                                         </div>
-                                        }
+                                    }
                                     )}
 
                                 </div>

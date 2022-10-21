@@ -260,7 +260,7 @@ export default function Landing() {
               </div>
               <div className="w-full md:w-5/12 ml-auto px-4">
                 <div className="md:pr-12">
-                  <h3 className="text-3xl font-semibold">{t('a_growing_company')}</h3>
+                  <h3 className="text-3xl font-semibold md:mt-0 mt-5">{t('a_growing_company')}</h3>
                   <p className="mt-4 text-lg leading-relaxed text-blueGray-500">
                     {t('a_growing_company_text')}
                   </p>

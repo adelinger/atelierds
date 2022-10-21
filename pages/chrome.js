@@ -240,7 +240,7 @@ export default function Chrome() {
                        alt="chrome restoration image" 
                        loading='lazy'
                        placeholder='blur'
-                       blurDataURL='/img/blur.png'
+                       blurDataURL='/img/blue_blur.png'
                        onClick={() => { toggleModal(); setSelectedIndex(index)}}>
                       </Image>
                     </div>

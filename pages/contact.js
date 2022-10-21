@@ -3,18 +3,23 @@ import Navbar from "components/Navbars/IndexNavbar";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Image from "next/image";
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
 
 function Contact() {
   const { t } = useTranslation (['footer', 'common', 'contact']);
-  const [showFrame, setShowFrame] = useState();
+  const [showLoadImage, setShowLoadImage] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setShowLoadImage(false);
+  }, 400);
+}, []);
 
   return (
     <>
       <Navbar transparent></Navbar>
       <main>
-        <div className="relative pt-16 pb-20 flex content-center items-center justify-center min-h-screen-75">
+        <div className="relative pt-16 pb-0 md:pb-16 flex content-center items-center justify-center min-h-screen-75">
           <div
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{
@@ -30,27 +35,26 @@ function Contact() {
           <div className="container relative mx-auto ">
             <div className="container mx-auto py-10 md:py-24">
               <div className="items-center flex flex-wrap ">
-                <div className="w-full md:w-6/12 mr-auto px-4 order-2 mt-5 md:mt-0 relative">
-                 <div className='absolute' style={{transform: 'translateY(-50%)'}}> 
-                    <Image
-                    width={600}
-                    height={350}
-                    className='transform duration-500'
-                    loading='lazy'
-                    placeholder='blur'
-                    blurDataURL='/img/blur.png'
-                    src='/img/contact/gmap_screenshot.webp'
-                    ></Image>
-                 </div>
-                 <div className='absolute'> 
-                    <iframe className={`${!showFrame ? 'visible' : 'hidden'} absolute z-10 translate-y-2/4`}
+                <div className="w-full md:w-6/12 mr-auto px-4 order-2 mt-5 md:mt-0 ">
+                <div style={{minHeight:350}} className={`${showLoadImage ? 'visibile' : 'hidden'}`}>
+                  <Image
+                      width={610}
+                      height={350}
+                      className='transform duration-500'
+                      loading='lazy'  
+                      placeholder='blur'
+                      blurDataURL='/img/blur.png'
+                      src='/img/contact/gmap_screenshot.webp'
+                      ></Image>
+                </div>
+                <div className={`${!showLoadImage ? 'visible' : 'hidden'}`}>
+                    <iframe className="w-full " 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2747.043428777947!2d11.349270715443705!3d46.4874524791264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47829d237ca09b07%3A0x27e4b5c51d4a05e3!2sAtelier%20Ds!5e0!3m2!1shr!2shr!4v1658485833256!5m2!1shr!2shr" 
-                    width="600"
+                     width="600"
                      height="350" 
                      allowfullscreen="" 
                      loading="eager"
-                     referrerpolicy="no-referrer-when-downgrade"
-                     style={{transform: 'translateY(-50%)'}}>
+                     referrerpolicy="no-referrer-when-downgrade">
                      </iframe>
                  </div>
                 </div>

@@ -442,7 +442,7 @@ export default function CardSettings({ auth, carData }) {
                                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                                         htmlFor="text"
                                     >Car status</label>
-                                    <select value={carStatus} onChange={e => setCarStatus(e.target.value)}
+                                    <select value={carStatus} onChange={e => setCarStatus(parseInt(e.target.value))}
                                         class="form-select appearance-noneblock w-full px-3 py-1.5 text-base font-normal text-gray-700
                                          bg-white bg-clip-padding bg-no-repeat
                                          border border-solid border-gray-300

@@ -28,20 +28,64 @@ export default class ApiService {
   getCars = (params) => {
     return this.init().get("get-private", {params: params});
   };
-  addNewCar = (data) => {
-    return this.init().post("/add", data);
+  addNewCar = async (data) => {
+    try {
+      const res = await this.init().post("/add", data);
+      if (res.status === 200) {
+        await fetch("/api/revalidate?path=/cars&secret=fDm8n8AuCG0xiYfFf6fY");
+        await fetch("/api/revalidate?path=/cars/" + data.atelierCarID + "&secret=fDm8n8AuCG0xiYfFf6fY");
+      }
+      return res;
+    } catch (error) {
+      return error;
+    };
+    
   };
-  updateCar = (data) => {
-    return this.init().put("/updateCar", data);
+  
+  updateCar = async (data) => {
+    await this.init().put("/updateCar", data).then(async res => {
+      if(res.status === 200){
+        await fetch("/api/revalidate?path=/cars&secret=fDm8n8AuCG0xiYfFf6fY");
+        await fetch("/api/revalidate?path=/cars/"+data.atelierCarID+"&secret=fDm8n8AuCG0xiYfFf6fY");
+      }
+      
+      return res;
+  })
+  .catch((error) => {
+    return error;
+  });;
+    
+    
   };
-  deleteCar = (id) => {
-    return this.init().delete("/"+id);
+  deleteCar = async (id) => {
+     await this.init().delete("/"+id).then(async res => {
+      if(res.status === 200){
+        await fetch("/api/revalidate?path=/cars&secret=fDm8n8AuCG0xiYfFf6fY");
+      }
+      
+      return res;
+  })
+  .catch((error) => {
+    return error;
+  });;
+    
   };
   deleteFile = (fileName) => {
     return this.init().delete("/DeleteFile/"+ fileName);
   };
-  updateCarStatus = (carId, newCarStatusId) => {
-    return this.init().put("/UpdateCarStatus?carId="+carId+"&newCarStatusId="+newCarStatusId);
+  updateCarStatus = async (carId, newCarStatusId) => {
+    await this.init().put("/UpdateCarStatus?carId="+carId+"&newCarStatusId="+newCarStatusId)
+    .then(async res => {
+      if(res.status === 200){
+        await fetch("/api/revalidate?path=/cars&secret=fDm8n8AuCG0xiYfFf6fY");
+        await fetch("/api/revalidate?path=/cars/"+carId+"&secret=fDm8n8AuCG0xiYfFf6fY");
+      }
+      
+      return res;
+  })
+  .catch((error) => {
+    return error;
+  });
   };
   sendEmail = (emailData) => {
     return this.init().post('/sendEmail', emailData);

@@ -141,7 +141,7 @@ export default function CarsForSale({ cars, serverUrl }) {
                       <ul class="content-start p-2 space-y-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownRadioBgHoverButton">
                         <li>
                           <div class="flex p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                            <label for="default-radio-1" class="mr-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">
+                            <label for="default-radio-1" class="text-left mr-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">
                               <input onClick={() => { setSortButtonTitle((t('sort_cars_by_year'))) }} onChange={onRadioButtonChange} id="default-radio-1" type="radio" value="carYearDesc" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 
                               focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"></input>
                               &nbsp; {t('year_younger')}
@@ -150,7 +150,7 @@ export default function CarsForSale({ cars, serverUrl }) {
                         </li>
                         <li>
                           <div class="flex p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                            <label for="default-radio-2" class="text-sm font-medium text-gray-900 rounded dark:text-gray-300">
+                            <label for="default-radio-2" class="text-left text-sm font-medium text-gray-900 rounded dark:text-gray-300">
                               <input onClick={() => { setSortButtonTitle((t('sort_cars_by_year'))) }} onChange={onRadioButtonChange} id="default-radio-2" type="radio" value="carYearAsc" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300
                                focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"></input>
                               &nbsp; {t('year_older')}</label>
@@ -158,7 +158,7 @@ export default function CarsForSale({ cars, serverUrl }) {
                         </li>
                         <li>
                           <div class="flex p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                            <label for="default-radio-3" class="text-sm font-medium text-gray-900 rounded dark:text-gray-300">
+                            <label for="default-radio-3" class="text-left text-sm font-medium text-gray-900 rounded dark:text-gray-300">
                               <input onClick={() => { setSortButtonTitle((t('sort_cars_by_price'))) }} onChange={onRadioButtonChange} id="default-radio-3" type="radio" value="carPriceAsc" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 
                               focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"></input>
                               &nbsp; {t('price_lower')}</label>
@@ -166,7 +166,7 @@ export default function CarsForSale({ cars, serverUrl }) {
                         </li>
                         <li>
                           <div class="flex p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                            <label for="default-radio-4" class="text-sm font-medium text-gray-900 rounded dark:text-gray-300">
+                            <label for="default-radio-4" class="text-left text-sm font-medium text-gray-900 rounded dark:text-gray-300">
                               <input onClick={() => { setSortButtonTitle((t('sort_cars_by_price'))) }} onChange={onRadioButtonChange} id="default-radio-4" type="radio" value="carPriceDesc" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 
                               focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"></input>
                               &nbsp; {t('price_higher')}</label>

@@ -6,6 +6,7 @@ import { CircularProgress } from "@mui/material";
 import Alert from "components/Alerts/Alert";
 import { uploadeImages } from "lib/apiCalls";
 import { useRouter } from 'next/router'
+import Image from "next/image";
 
 export default function CardSettings({ auth, carData }) {
     const { user } = auth;
@@ -169,7 +170,7 @@ export default function CardSettings({ auth, carData }) {
                 /* eslint-disable no-unused-expressions */
                 (index === -1 && URL.createObjectURL(file).includes('blob')) ? uploadImages.push(file) : null;
             }
-            if (images.length === 1 && uploadImages.length === 1) {
+            if (images.length > 1 && uploadImages.length > 1) {
                 setSelectedImage(uploadImages[0].name);
             }
 
@@ -462,29 +463,38 @@ export default function CardSettings({ auth, carData }) {
 
                         <div className="ml-4 mt-5">
                             <div className="container">
-                                <div class="grid grid-cols-1 md:grid-cols-6 gap-6">
-                                    {images.map((item, key) =>
-                                        <div className="mt-5 mb-5" style={{ width: "200px", height: "200px" }} >
+                                <div class="grid sm:grid-cols-1 md:grid-cols-5 xl:grid-cols-7 md:gap-5 ">
+                                    {images.map((item, key) =>{
+                                    
+                                    const mySrc = (isUpdate && !item.includes('blob')) ? process.env.NEXT_PUBLIC_STATIC_FILES_URL + carData.carPhotosPath + '/' + item : item
+                                        return <div className="mt-5 mb-5" style={{ width: "200px", height: "200px" }} >
                                             <a href="#" onClick={handleImageOnClick}>
-                                                <img src={(isUpdate && !item.includes('blob')) ? process.env.NEXT_PUBLIC_STATIC_FILES_URL + carData.carPhotosPath + '/' + item : item}
-                                                    class="h-48 w-96 mr-5 mb-1" style={{ width: "100%", height: "85%" }}></img>
+                                                <Image 
+                                               loader={() => mySrc} mySrc={(isUpdate && !item.includes('blob')) ? process.env.NEXT_PUBLIC_STATIC_FILES_URL + carData.carPhotosPath + '/' + item : item} 
+                                                width={200}
+                                                height={150}
+                                                src={mySrc}
+                                                    class="h-48 w-96 mb-1" style={{ width: "100%", height: "85%" }}></Image>
                                             </a>
-                                            <button class="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-xs px-4 py-2 
-                                            rounded shadow hover:shadow-md outline-none 
-                                            focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
-                                                onClick={handleImageDeleteClick} value={key}
-                                            >
-                                                <i class="fa-solid fa-x"></i> Delete
-                                            </button>
-                                            {/* Unexplainable disaster.  */}
-                                            <button class={`font-bold ${(images[key] === selectedImage || (key >= images.length - uploadImages.length && uploadImages[(uploadImages.length - (images.length - key))]?.name === selectedImage))
-                                                ? 'bg-blueGray-800 text-white black active:bg-blueGray-800' : 'bg-blueGray-200 text-gray black active:bg-blueGray-800'}  uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150`} type="button"
-                                                value={images[key].includes('blob') ? uploadImages[uploadImages.length - (images.length - key)]?.name : images[key]} key={imageKey} onClick={handleSelectedImageClick}
-
-                                            >
-                                                <i class="fa-solid fa-x"></i> Set as main
-                                            </button>
+                                            <div className="w-max">
+                                                <button class="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-xs px-4 py-2 
+                                                rounded shadow hover:shadow-md outline-none 
+                                                focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
+                                                    onClick={handleImageDeleteClick} value={key}
+                                                >
+                                                    <i class="fa-solid fa-x"></i> Delete
+                                                </button>
+                                                {/* Unexplainable disaster.  */}
+                                                <button class={`font-bold ${(images[key] === selectedImage || (key >= images.length - uploadImages.length && uploadImages[(uploadImages.length - (images.length - key))]?.name === selectedImage))
+                                                    ? 'bg-blueGray-800 text-white black active:bg-blueGray-800' : 'bg-blueGray-200 text-gray black active:bg-blueGray-800'}  uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150`} type="button"
+                                                    value={images[key].includes('blob') ? uploadImages[uploadImages.length - (images.length - key)]?.name : images[key]} key={imageKey} onClick={handleSelectedImageClick}
+    
+                                                >
+                                                    <i class="fa-solid fa-x"></i> Set as main
+                                                </button>
+                                            </div>
                                         </div>
+                                        }
                                     )}
 
                                 </div>

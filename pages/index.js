@@ -329,7 +329,7 @@ export default function Landing() {
                 <div className="px-6">
                   <img
                     alt="Company member picture"
-                    src="/img/team-1-800x800.jpg"
+                    src="/img/landing/ceo.png"
                     className="shadow-lg rounded-full mx-auto max-w-120-px"
                   />
                   <div className="pt-6 text-center">
@@ -345,7 +345,7 @@ export default function Landing() {
                 <div className="px-6">
                   <img
                     alt="Company member picture"
-                    src="/img/team-1-800x800.jpg"
+                    src="/img/landing/sofa.png"
                     className="shadow-lg rounded-full mx-auto max-w-120-px"
                   />
                   <div className="pt-6 text-center">
@@ -361,7 +361,7 @@ export default function Landing() {
                 <div className="px-6">
                   <img
                     alt="Company member picture"
-                    src="/img/team-1-800x800.jpg"
+                    src="/img/landing/transport.png"
                     className="shadow-lg rounded-full mx-auto max-w-120-px"
                   />
                   <div className="pt-6 text-center">
@@ -377,12 +377,11 @@ export default function Landing() {
                 <div className="px-6">
                   <img
                     alt="Company member picture"
-                    src="/img/team-1-800x800.jpg"
+                    src="/img/landing/car.png"
                     className="shadow-lg rounded-full mx-auto max-w-120-px"
                   />
                   <div className="pt-6 text-center">
-                    {/* <h5 className="text-xl font-bold">{t('antun')}</h5> */}
-                    <h5 className="text-xl font-bold">Jon Doe</h5>
+                    <h5 className="text-xl font-bold">{t('antun')}</h5>
                     <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
                       {t('antun_text')}
                     </p>

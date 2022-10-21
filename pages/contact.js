@@ -4,16 +4,23 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { isMobile } from "react-device-detect";
 
 function Contact() {
   const { t } = useTranslation (['footer', 'common', 'contact']);
   const [showLoadImage, setShowLoadImage] = useState(true);
+  const [screenshotSrc, setSchreenshotSrc] = useState('/img/contact/gmap_screenshot.webp');
 
   useEffect(() => {
     setTimeout(() => {
       setShowLoadImage(false);
   }, 400);
 }, []);
+
+useEffect(() => {
+ isMobile ? setSchreenshotSrc('/img/contact/gmap_screenshot_mobile.webp') 
+ : setSchreenshotSrc('/img/contact/gmap_screenshot.webp');
+}, [isMobile]);
 
   return (
     <>
@@ -36,15 +43,16 @@ function Contact() {
             <div className="container mx-auto py-10 md:py-24">
               <div className="items-center flex flex-wrap ">
                 <div className="w-full md:w-6/12 mr-auto px-4 order-2 mt-5 md:mt-0 ">
-                <div style={{minHeight:350}} className={`${showLoadImage ? 'visibile' : 'hidden'}`}>
+                <div  className={`${showLoadImage ? 'visibile' : 'hidden'}`}>
                   <Image
                       width={610}
-                      height={350}
+                      height={!isMobile ? '350px' : '596px'}
                       className='transform duration-500'
                       loading='lazy'  
                       placeholder='blur'
                       blurDataURL='/img/blur.png'
-                      src='/img/contact/gmap_screenshot.webp'
+                      src={screenshotSrc}
+                     style={{height:'350px'}}
                       ></Image>
                 </div>
                 <div className={`${!showLoadImage ? 'visible' : 'hidden'}`}>

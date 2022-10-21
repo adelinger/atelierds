@@ -7,6 +7,7 @@ const nextConfig = {
         source: '/admin',
         destination: '/admin/dashboard',
         permanent: true,
+        outputFileTracing: true,
       },
     ]
   },

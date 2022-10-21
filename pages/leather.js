@@ -26,6 +26,7 @@ export default function Interior() {
     const [selectedImage, setSelectedImage] = useState(0);
     const [galleryImageSelectedIndex, setGalleryImageSelectedIndex] = useState();
     const [showLoader, setShowLoader] = useState(false);
+    const [isManualSlide, setIsManualSlide] = useState();
     const prefix = '/img/interior/';
 
     const leatherNames = ['Cuire naturelle', 'Cuir Tabac', 'Cuire Noire', 'Naturelle Foncée', 'Prestige Beige', 'Beige Claire', 'Rouge', 'Cassis', 'Tabac Blonde'];
@@ -92,7 +93,7 @@ export default function Interior() {
         setLeatherYear(leatherYears[e])
         setLeatherCar(leatherCars[e]);
         setSelectedIndex(e);
-        setUseTimer(true);
+        !isManualSlide ? setUseTimer(true) : setUseTimer(false);
         setShowLoader(true);
 
         setTimeout(() => {
@@ -108,10 +109,12 @@ export default function Interior() {
 
     const onNextImage = () => {
         setSelectedImage(selectedIndex + 1)
+        setIsManualSlide(true);
     }
 
     const onPreviousImage = () => {
         setSelectedImage(selectedIndex - 1)
+        setIsManualSlide(true);
     }
 
 

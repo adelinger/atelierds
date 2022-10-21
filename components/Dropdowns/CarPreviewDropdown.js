@@ -4,10 +4,7 @@ import listenForOutsideClicks from "utils/listen-for-outside-clicks";
 import ConfirmDialog from "components/Alerts/ConfirmDialog";
 import { Link } from "@mui/material";
 
-
 function CarPreviewDropdown({onDeleteClick, onStatusUpdate, carId, carStatus}) {
-  
-  const popoverDropdownRef = React.createRef();
   const btnRef = useRef(null);
   const [listening, setListening] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -18,9 +15,6 @@ function CarPreviewDropdown({onDeleteClick, onStatusUpdate, carId, carStatus}) {
   const [isDelete, setIsDelete] = useState(false);
 
   const toggle = () =>{
-    createPopper(btnRef.current, popoverDropdownRef.current, {
-      placement: "left-start",
-    });
     setIsOpen(!isOpen);
   } 
 
@@ -66,10 +60,9 @@ function CarPreviewDropdown({onDeleteClick, onStatusUpdate, carId, carStatus}) {
         <i className="fas fa-ellipsis-v"></i>
       </a>
       <div
-        ref={popoverDropdownRef}
         className={
           (isOpen ? "block " : "hidden ") +
-          "bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
+          "bg-white absolute right-0 text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
         }
       >
         <Link href={`update/${encodeURIComponent(carId)}`} style={{ textDecoration: 'none' }}>

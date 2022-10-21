@@ -7,10 +7,10 @@ const nextConfig = {
         source: '/admin',
         destination: '/admin/dashboard',
         permanent: true,
-        outputFileTracing: true,
       },
     ]
   },
+  outputFileTracing: true,
   // other stuff
   i18n,
 };

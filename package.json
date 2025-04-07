@@ -6,7 +6,7 @@
   "repository": "https://github.com/adelinger/atelierds",
   "license": "MIT",
   "engines": {
-    "node": ">=16.x"
+    "node": "18.17.0"
   },
   "dependencies": {
     "@emotion/react": "^11.9.0",
@@ -44,7 +44,7 @@
     "dev": "next dev",
     "build-export": "next build && next export",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm run build:tailwind && npm run dev",
-    "build:tailwind": " tailwind build styles/index.css -o styles/tailwind.css --watch"
+    "build:tailwind": "tailwind build styles/index.css -o styles/tailwind.css --watch"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -333,7 +333,7 @@ export default function Landing() {
                     className="shadow-lg rounded-full mx-auto max-w-120-px"
                   />
                   <div className="pt-6 text-center">
-                    <h5 className="text-xl font-bold">{t('enzo')}</h5>
+                    <h5 className="text-xl font-bold">Mr. CEO</h5>
                     <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
                       {t('enzo_text')}
                     </p>
@@ -349,7 +349,7 @@ export default function Landing() {
                     className="shadow-lg rounded-full mx-auto max-w-120-px"
                   />
                   <div className="pt-6 text-center">
-                    <h5 className="text-xl font-bold">{t('luki')}</h5>
+                    <h5 className="text-xl font-bold">Mr. chrome</h5>
                     <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
                       {t('luki_text')}
                     </p>
@@ -365,7 +365,7 @@ export default function Landing() {
                     className="shadow-lg rounded-full mx-auto max-w-120-px"
                   />
                   <div className="pt-6 text-center">
-                    <h5 className="text-xl font-bold">{t('christian')}</h5>
+                    <h5 className="text-xl font-bold">Mr. Transport</h5>
                     <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
                       {t('christian_text')}
                     </p>
@@ -381,7 +381,7 @@ export default function Landing() {
                     className="shadow-lg rounded-full mx-auto max-w-120-px"
                   />
                   <div className="pt-6 text-center">
-                    <h5 className="text-xl font-bold">{t('antun')}</h5>
+                    <h5 className="text-xl font-bold">Mr. Bodywork</h5>
                     <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
                       {t('antun_text')}
                     </p>

@@ -1,162 +1,81 @@
 import React from "react";
+import { useTranslation } from "next-i18next";
+import { useState } from "react";
 
 export default function Footer() {
-  return (
-    <>
-      <footer className="relative bg-blueGray-200 pt-8 pb-6">
-        <div
-          className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20"
-          style={{ transform: "translateZ(0)" }}
-        >
-          <svg
-            className="absolute bottom-0 overflow-hidden"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="none"
-            version="1.1"
-            viewBox="0 0 2560 100"
-            x="0"
-            y="0"
-          >
-            <polygon
-              className="text-blueGray-200 fill-current"
-              points="2560 0 2560 100 0 100"
-            ></polygon>
-          </svg>
-        </div>
-        <div className="container mx-auto px-4">
-          <div className="flex flex-wrap text-center lg:text-left">
-            <div className="w-full lg:w-6/12 px-4">
-              <h4 className="text-3xl font-semibold">Let's keep in touch!</h4>
-              <h5 className="text-lg mt-0 mb-2 text-blueGray-600">
-                Find us on any of these platforms, we respond 1-2 business days.
-              </h5>
-              <div className="mt-6 lg:mb-0 mb-6">
-                <button
-                  className="bg-white text-lightBlue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
-                  type="button"
-                >
-                  <i className="fab fa-twitter"></i>
-                </button>
-                <button
-                  className="bg-white text-lightBlue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
-                  type="button"
-                >
-                  <i className="fab fa-facebook-square"></i>
-                </button>
-                <button
-                  className="bg-white text-pink-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
-                  type="button"
-                >
-                  <i className="fab fa-dribbble"></i>
-                </button>
-                <button
-                  className="bg-white text-blueGray-800 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
-                  type="button"
-                >
-                  <i className="fab fa-github"></i>
-                </button>
-              </div>
-            </div>
-            <div className="w-full lg:w-6/12 px-4">
-              <div className="flex flex-wrap items-top mb-6">
-                <div className="w-full lg:w-4/12 px-4 ml-auto">
-                  <span className="block uppercase text-blueGray-500 text-sm font-semibold mb-2">
-                    Useful Links
-                  </span>
-                  <ul className="list-unstyled">
-                    <li>
-                      <a
-                        className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                        href="https://www.creative-tim.com/presentation?ref=nnjs-footer"
-                      >
-                        About Us
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                        href="https://blog.creative-tim.com?ref=nnjs-footer"
-                      >
-                        Blog
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                        href="https://www.github.com/creativetimofficial?ref=nnjs-footer"
-                      >
-                        Github
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                        href="https://www.creative-tim.com/bootstrap-themes/free?ref=nnjs-footer"
-                      >
-                        Free Products
-                      </a>
-                    </li>
-                  </ul>
+    const { t } = useTranslation();
+    const [src, setSrc] = useState('../../img/logo/logo.webp');
+
+    return (
+        <>
+
+            <footer class="bg-white sm:p-6 dark:bg-gray-800 p-4 md:px-4">
+                <div class="md:flex md:justify-between">
+                    <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+                        <div className="md:mr-5">
+                            <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">{t('footer:office_title')}</h2>
+                            <ul class="text-gray-600 dark:text-gray-400 text-sm">
+                                <li><i class="fa fa-user"></i> Enzo Forgione </li>
+                                <li class="hover:underline mt-2"><i class="fa fa-map-marker"></i><a target="_blank" rel="noopener noreferrer" href="https://goo.gl/maps/kkYBJw6h1TzhvsUKA"> I-39100 Bolzano</a></li>
+                                <li class="hover:underline mt-2"><i class="fa fa-mobile"></i> <a href="tel:(39) 3472408435">+39/347/2408435</a> </li>
+                                <li class="hover:underline mt-2"><i class="fa fa-envelope"></i><a href="mailto:info@atelierds.net"> info@atelierds.net</a></li>
+
+                            </ul>
+                        </div>
+                        <div className="ml-5">
+                            <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">{t('footer:our_work')}</h2>
+                            <ul class="text-gray-600 dark:text-gray-400 ml-5">
+                                <li className="list-disc">
+                                    <a href="/leather" class="hover:underline">{t('common:interior')}</a>
+                                </li>
+                                <li class="mt-2 list-disc">
+                                    <a href="/chrome" class="hover:underline">{t('common:chrome')}</a>
+                                </li>
+                                <li className="mt-2 list-disc">
+                                    <a href="/bodywork" class="hover:underline">{t('common:bodywork')}</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div className="md:ml-5">
+                            <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">{t('footer:about_us')}</h2>
+                            <ul class="text-gray-600 dark:text-gray-400 ml-5">
+                                <li className="list-disc" >
+                                    <a href="/contact" class="hover:underline">{t('footer:contact')}</a>
+                                </li>
+                                <li class="mt-2 list-disc">
+                                    <a href="https://autotoni.hr" target={'_blank'} class="hover:underline">{t('footer:our_partner')}</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="mb-6 md:mb-0  md:hidden">
+                            <a href="/" class="flex items-center">
+                                <img src={src} class="mr-3 h-8 mt-5 md:mt-0" alt="AtelierDS Logo"
+                                    style={{ height: 70, width: 120 }}></img>
+                                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"></span>
+                            </a>
+                        </div>
+
+                    </div>
+                    <div class="mb-6 md:mb-0 hidden md:block">
+                        <a href="/" class="flex items-center">
+                            <img src={src} class="mr-3 h-8 mt-5 md:mt-0" alt="AtelierDS Logo" style={{ height: 70, width: 120 }}
+                                onMouseOver={e => (setSrc('../../img/logo/logo_black.webp'))}
+                                onMouseOut={e => (setSrc('../../img/logo/logo.webp'))}></img>
+
+                            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"></span>
+                        </a>
+                    </div>
                 </div>
-                <div className="w-full lg:w-4/12 px-4">
-                  <span className="block uppercase text-blueGray-500 text-sm font-semibold mb-2">
-                    Other Resources
-                  </span>
-                  <ul className="list-unstyled">
-                    <li>
-                      <a
-                        className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                        href="https://github.com/creativetimofficial/notus-nextjs/blob/main/LICENSE.md?ref=nnjs-footer"
-                      >
-                        MIT License
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                        href="https://creative-tim.com/terms?ref=nnjs-footer"
-                      >
-                        Terms & Conditions
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                        href="https://creative-tim.com/privacy?ref=nnjs-footer"
-                      >
-                        Privacy Policy
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                        href="https://creative-tim.com/contact-us?ref=nnjs-footer"
-                      >
-                        Contact Us
-                      </a>
-                    </li>
-                  </ul>
+
+                <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-4"></hr>
+                <div class="sm:items-center sm:justify-between ">
+                    <span class="text-sm text-gray-500 flex justify-center dark:text-gray-400">© {new Date().getFullYear("")}<a href="#" class="hover:underline"></a>&nbsp;{t('footer:copyright')}
+                    </span>
                 </div>
-              </div>
-            </div>
-          </div>
-          <hr className="my-6 border-blueGray-300" />
-          <div className="flex flex-wrap items-center md:justify-between justify-center">
-            <div className="w-full md:w-4/12 px-4 mx-auto text-center">
-              <div className="text-sm text-blueGray-500 font-semibold py-1">
-                Copyright © {new Date().getFullYear()} Notus NextJS by{" "}
-                <a
-                  href="https://www.creative-tim.com?ref=nnjs-footer"
-                  className="text-blueGray-500 hover:text-blueGray-800"
-                >
-                  Creative Tim
-                </a>
-                .
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </>
-  );
+            </footer>
+
+        </>
+    );
 }
+

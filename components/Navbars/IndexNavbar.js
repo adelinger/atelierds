@@ -1,97 +1,170 @@
-import React from "react";
 import Link from "next/link";
-// components
+import React, { useEffect, useRef, useState } from "react";
+import { useTranslation } from "next-i18next";
+import { useRouter } from 'next/router'
 
-import IndexDropdown from "components/Dropdowns/IndexDropdown.js";
+// components
+import LanguagesDropdown from 'components/Dropdowns/languagesDropdown.js';
+import listenForOutsideClicks from "utils/listen-for-outside-clicks";
 
 export default function Navbar(props) {
-  const [navbarOpen, setNavbarOpen] = React.useState(false);
+  const menuRef = useRef(null);
+  const [listening, setListening] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
+  const locale = router.locale;
+  const [imgSrc, setImgSrc] = useState('../../img/logo/logo_white.webp');
+
+  const { t } = useTranslation('index');
+
+  const toggle = () => setIsOpen(!isOpen);
+
+  useEffect(listenForOutsideClicks(
+    listening,
+    setListening,
+    menuRef,
+    setIsOpen,
+  ));
+
   return (
     <>
-      <nav className="top-0 fixed z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-white shadow">
-        <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
-          <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
+      <nav className="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg">
+        <div className="container px-4 mx-auto flex flex-wrap items-center justify-between" ref={menuRef}>
+          <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start mt-2">
             <Link href="/">
-              <a
-                className="text-blueGray-700 text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
-                href="#pablo"
-              >
-                Notus NextJS
+              <a href={`/${router.locale}/`} class="flex items-center">
+                <img src={imgSrc} class="image_back" alt="AtelierDS Logo"
+                  onMouseOver={e => (setImgSrc('../../img/logo/logo_gray.webp'))}
+                  onMouseOut={e => (setImgSrc('../../img/logo/logo_white.webp'))}
+                  style={{ height: 70, width: 120 }}></img>
+
+                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"></span>
               </a>
             </Link>
             <button
               className="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
               type="button"
-              onClick={() => setNavbarOpen(!navbarOpen)}
+              onClick={toggle}
             >
-              <i className="fas fa-bars"></i>
+              <i className="text-white fas fa-bars"></i>
             </button>
           </div>
           <div
             className={
-              "lg:flex flex-grow items-center bg-white lg:bg-opacity-0 lg:shadow-none" +
-              (navbarOpen ? " block" : " hidden")
+              "lg:flex flex-grow items-center bg-white lg:bg-opacity-0 lg:shadow-none overflow-auto" +
+              (isOpen ? " block" : " hidden")
             }
-            id="example-navbar-warning"
           >
             <ul className="flex flex-col lg:flex-row list-none mr-auto">
               <li className="flex items-center">
-                <a
-                  className="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                  href="https://www.creative-tim.com/learning-lab/tailwind/nextjs/overview/notus?ref=nnjs-index-navbar"
-                >
-                  <i className="text-blueGray-400 far fa-file-alt text-lg leading-lg mr-2" />{" "}
-                  Docs
-                </a>
+                <Link href="/">
+                  <a
+                    href={`/${router.locale}/`}
+                    className={
+                      "lg:text-white lg:hover:text-gray-500 text-gray-500 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                    }
+                  >
+                    {t('common:homepage')}
+                  </a>
+                </Link>
+
+              </li>
+              <li className="flex items-center">
+                <Link href="/cars">
+                  <a
+                    href={`/${router.locale}/cars`}
+                    className={
+                      "lg:text-white lg:hover:text-gray-500 text-gray-500 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                    }
+                  >
+                    {t('common:cars_for_sale')}
+                  </a>
+                </Link>
+
+              </li>
+              <li className="flex items-center">
+                <Link href="/leather">
+                  <a
+                    href={`/${router.locale}/leather`}
+                    className={
+                      "lg:text-white lg:hover:text-gray-500 text-gray-500 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                    }
+                  >
+                    {t('common:leather_navbar')}
+                  </a>
+                </Link>
+
+              </li>
+              <li className="flex items-center">
+                <Link href="/chrome">
+                  <a
+                    href={`/${router.locale}/chrome`}
+                    className={
+                      "lg:text-white lg:hover:text-gray-500 text-gray-500 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                    }
+                  >
+                    {t('common:chrome_parts')}
+                  </a>
+                </Link>
+
+              </li>
+              <li className="flex items-center">
+                <Link href='/bodywork' locale={router.locale}>
+                  <a
+                    href={`/${router.locale}/bodywork`}
+                    className={
+                      "lg:text-white lg:hover:text-gray-500 text-gray-500 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                    }
+                  >
+                    {t('common:body_restoration')}
+                  </a>
+                </Link>
+              </li>
+              <li className="flex items-center">
+                <Link href="/contact">
+                  <a
+                    href="/contact"
+                    className={
+                      "lg:text-white lg:hover:text-gray-500 text-gray-500 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                    }
+                  >
+                    {t('common:contact')}
+                  </a>
+                </Link>
+
               </li>
             </ul>
             <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
               <li className="flex items-center">
-                <IndexDropdown />
               </li>
               <li className="flex items-center">
                 <a
-                  className="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                  href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdemos.creative-tim.com%2Fnotus-nextjs%2F"
+                  className="lg:text-white lg:hover:text-gray-500 text-gray-500 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                  href="https://www.facebook.com/Atelier-DS-2049109098648782/"
                   target="_blank"
                 >
-                  <i className="text-blueGray-400 fab fa-facebook text-lg leading-lg " />
-                  <span className="lg:hidden inline-block ml-2">Share</span>
+                  <i className="lg:text-blueGray-200 text-blueGray-400 fab fa-facebook text-lg leading-lg hover:text-gray-500" />
+                  <span className="lg:hidden inline-block ml-2" >Check our Facebook</span>
                 </a>
               </li>
 
               <li className="flex items-center">
                 <a
-                  className="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                  href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdemos.creative-tim.com%2Fnotus-nextjs%2F&text=Start%20your%20development%20with%20a%20Free%20Tailwind%20CSS%20and%20NextJS%20UI%20Kit%20and%20Admin.%20Let%20Notus%20NextJS%20amaze%20you%20with%20its%20cool%20features%20and%20build%20tools%20and%20get%20your%20project%20to%20a%20whole%20new%20level."
+                  className="lg:text-white lg:hover:text-gray-500 text-gray-500 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold "
+                  href=""
                   target="_blank"
                 >
-                  <i className="text-blueGray-400 fab fa-twitter text-lg leading-lg " />
-                  <span className="lg:hidden inline-block ml-2">Tweet</span>
+                  <i className="lg:text-blueGray-200 text-blueGray-400 fab fa-instagram text-lg leading-lg hover:text-gray-500" />
+                  <span className="lg:hidden inline-block ml-2">Check our instagram</span>
                 </a>
               </li>
-
               <li className="flex items-center">
-                <a
-                  className="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                  href="https://github.com/creativetimofficial/notus-nextjs?ref=nnjs-index-navbar"
-                  target="_blank"
-                >
-                  <i className="text-blueGray-400 fab fa-github text-lg leading-lg " />
-                  <span className="lg:hidden inline-block ml-2">Star</span>
-                </a>
+                <LanguagesDropdown />
               </li>
 
-              <li className="flex items-center">
-                <button
-                  className="bg-blueGray-700 text-white active:bg-blueGray-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
-                  type="button"
-                >
-                  <i className="fas fa-arrow-alt-circle-down"></i> Download
-                </button>
-              </li>
             </ul>
           </div>
+
         </div>
       </nav>
     </>
